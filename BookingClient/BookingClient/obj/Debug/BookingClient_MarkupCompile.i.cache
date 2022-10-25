@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingClient\BookingClient\obj\Debug\
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\
 BookingClient
 none
 false
 DEBUG;TRACE
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingClient\BookingClient\App.xaml
-3-1605016478
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\App.xaml
+4-938793066
 
-8-1855073798
+10794035281
 13-1505183044
-MainWindow.xaml;Pages\Page1.xaml;Pages\Page2.xaml;
+MainWindow.xaml;Pages\Page1.xaml;Pages\Page2.xaml;Theme\MenuButtonTheme.xaml;
 slpashscreen1.png
 True
 

@@ -5,12 +5,96 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookingClient"
         mc:Ignorable="d"
-        Title="Bookimg Client" Height="450" Width="800" Cursor="" MinWidth="800" MinHeight="450" ShowInTaskbar="False" WindowStartupLocation="CenterScreen">
+        Title="Bookimg Client"
+        Height="450"
+        Width="800"
+        Cursor=""
+        MinWidth="800"
+        MinHeight="450"
+        Background="White"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="CanResizeWithGrip">
+
+    <!--<window.datacontext>
+        <mainvievmodel/>
+    </window.datacontext>-->
+    
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.ColumnSpan="2"
+                Background="Gray"
+                MouseLeftButtonDown="Border_MouseLeftButtonDown">
+            <Grid HorizontalAlignment="Stretch">
+                <Label Content="BookingCliend"
+                       Foreground="Gray"/>
+
+                <StackPanel HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                    
+                    <Button Width="20" 
+                            Height="20"
+                            Background="Transparent"
+                            Content="_"
+                            BorderThickness="0"
+                            Foreground="White"
+                            FontWeight="Bold"/>
+
+                    <Button Width="20" 
+                            Height="20"
+                            Background="Transparent"
+                            Content="☐"
+                            BorderThickness="0"
+                            Foreground="White"
+                            FontWeight="Bold"/>
+
+                    <Button Width="20" 
+                            Height="20"
+                            Background="Transparent"
+                            Content="✕"
+                            BorderThickness="0"
+                            Foreground="White"
+                            FontWeight="Bold"
+                            Click="ButtonExit"/>
+                    
+                </StackPanel>
+            </Grid> 
+            
+            
+        </Border>
+        
+    </Grid>
+    
+    
+        
+    <!--<Border Background="AntiqueWhite"
+            >
+    --><!--<Grid>
         <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Background="#eab676">
             <Button x:Name="Page1Button" Click="ShowPage1" Content="Страница 1"/>
             <Button x:Name="Page2Button" Click="ShowPage2" Content="Страница 2"/>
             <Frame x:Name="RootFrame" NavigationUIVisibility="Hidden" Height="379"/>
         </StackPanel>
-    </Grid>
+    </Grid>--><!--
+
+        <RadioButton Content="Home"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Center"
+                     Height="50"
+                     Foreground="Black"
+                     FontSize="20"
+                     Style="{StaticResource MenuButtonTheme}">
+            
+        </RadioButton>
+        
+    </Border>-->
 </Window>

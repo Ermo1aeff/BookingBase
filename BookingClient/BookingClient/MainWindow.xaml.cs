@@ -25,15 +25,25 @@ namespace BookingClient
             InitializeComponent();
         }
 
-        private void ShowPage1(object sender, RoutedEventArgs e)
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            RootFrame.Navigate(new Pages.Page1());
+            DragMove();
         }
 
-        private void ShowPage2(object sender, RoutedEventArgs e)
+        private void ButtonExit(object sender, RoutedEventArgs e)
         {
-            RootFrame.Navigate(new Pages.Page2());
+            Close();
         }
+
+        //private void ShowPage1(object sender, RoutedEventArgs e)
+        //{
+        //    RootFrame.Navigate(new Pages.Page1());
+        //}
+
+        //private void ShowPage2(object sender, RoutedEventArgs e)
+        //{
+        //    RootFrame.Navigate(new Pages.Page2());
+        //}
 
     }
 }
