@@ -22,7 +22,7 @@
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="32"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -34,6 +34,7 @@
         <Border Grid.ColumnSpan="2"
                 Background="Gray"
                 MouseLeftButtonDown="Border_MouseLeftButtonDown">
+            
             <Grid HorizontalAlignment="Stretch">
                 <Label Content="BookingCliend"
                        Foreground="Gray"/>
@@ -41,26 +42,25 @@
                 <StackPanel HorizontalAlignment="Right"
                             Orientation="Horizontal">
                     
-                    <Button Width="20" 
-                            Height="20"
+                    <Button Width="46" Height="32"
                             Background="Transparent"
-                            Content="_"
+                            Content="—"
                             BorderThickness="0"
                             Foreground="White"
                             FontWeight="Bold"/>
 
-                    <Button Width="20" 
-                            Height="20"
+                    <Button Width="46" Height="32"
+                            FontSize="16"
                             Background="Transparent"
                             Content="☐"
                             BorderThickness="0"
                             Foreground="White"
                             FontWeight="Bold"/>
 
-                    <Button Width="20" 
-                            Height="20"
+                    <Button Width="46" Height="32"
+                            FontSize="14"
                             Background="Transparent"
-                            Content="✕"
+                            Content="╳"
                             BorderThickness="0"
                             Foreground="White"
                             FontWeight="Bold"
@@ -69,22 +69,7 @@
                 </StackPanel>
             </Grid> 
             
-            
         </Border>
-        
-    </Grid>
-    
-    
-        
-    <!--<Border Background="AntiqueWhite"
-            >
-    --><!--<Grid>
-        <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Background="#eab676">
-            <Button x:Name="Page1Button" Click="ShowPage1" Content="Страница 1"/>
-            <Button x:Name="Page2Button" Click="ShowPage2" Content="Страница 2"/>
-            <Frame x:Name="RootFrame" NavigationUIVisibility="Hidden" Height="379"/>
-        </StackPanel>
-    </Grid>--><!--
 
         <RadioButton Content="Home"
                      VerticalAlignment="Center"
@@ -93,8 +78,9 @@
                      Foreground="Black"
                      FontSize="20"
                      Style="{StaticResource MenuButtonTheme}">
-            
+
         </RadioButton>
-        
-    </Border>-->
+
+    </Grid>
+
 </Window>
