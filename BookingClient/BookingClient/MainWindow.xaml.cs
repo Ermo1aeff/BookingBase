@@ -39,30 +39,11 @@ namespace BookingClient
         {
             SizeToContent = SizeToContent.Width;
             SizeToContent = SizeToContent.Height;
-            //Width = SystemParameters.MaximizedPrimaryScreenWidth;
-            //this.Height = SystemParameters.MaximizedPrimaryScreenHeight;
-            //this.Left = 0;
-            //this.Top = 0;
-            //this.WindowState = WindowState.Normal;
-
-            //Application.Current.MainWindow.MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
-            //Application.Current.MainWindow.WindowState = WindowState.Maximized;
         }
 
         private void ButtonClose(object sender, RoutedEventArgs e)
         {
             Close();
         }
-
-        //private void ShowPage1(object sender, RoutedEventArgs e)
-        //{
-        //    RootFrame.Navigate(new Pages.Page1());
-        //}
-
-        //private void ShowPage2(object sender, RoutedEventArgs e)
-        //{
-        //    RootFrame.Navigate(new Pages.Page2());
-        //}
-
     }
 }

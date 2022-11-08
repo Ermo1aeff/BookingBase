@@ -12,118 +12,15 @@
         MinHeight="450"
         Icon="/BookingIco.ico"
         Style="{StaticResource WindowStyle}"
-        >
+        Background="Gray">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="28"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.ColumnSpan="2"
-                Background="#2d2d30"
-                MouseLeftButtonDown="Border_MouseLeftButtonDown">
-            
-            <Grid HorizontalAlignment="Stretch">
-                <Label Content="Бронирование"
-                       Foreground="White"/>
 
-                <StackPanel HorizontalAlignment="Right"
-                            Orientation="Horizontal">
-
-                    <Button x:Name="Minimize"
-                            Click="ButtonMinimize"
-                            Style="{StaticResource TitlebarButtonTheme}">
-
-                        <Path Data="M0,0 L10,0"
-                              Width="10" Height="1" 
-                              VerticalAlignment="Center" 
-                              HorizontalAlignment="Center"
-                              Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}, Mode=FindAncestor}}"
-                              StrokeThickness="1"/>
-
-                    </Button>
-
-                    <Button x:Name="Maximize"
-                            Click="ButtonMaximize"
-                            Style="{StaticResource TitlebarButtonTheme}">
-
-                        <Path Data="M0,0 L10,0 L10,10 L0,10 Z"
-                              Width="10" Height="10"
-                              VerticalAlignment="Center"
-                              HorizontalAlignment="Center"
-                              Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}, Mode=FindAncestor}}" 
-                              StrokeThickness="2"/>
-
-                    </Button>
-
-                    <Button x:Name="Close"
-                            Click="ButtonClose"
-                            Style="{StaticResource ExitTitlebarButtonTheme}">
-
-                        <Path Data="M0,10 L10,0 M10,10 L0,0" 
-                              Width="10" Height="10"
-                              VerticalAlignment="Center" 
-                              HorizontalAlignment="Center"
-                              Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}, Mode=FindAncestor}}" 
-                              StrokeThickness="1"/>
-
-                    </Button>
-
-                    <!--<Button Style="{StaticResource TitlebarButtonTheme}"
-                            Content="_"
-                            Click="ButtonMinimize"/>
-
-                    <Button Style="{StaticResource TitlebarButtonTheme}"
-                            Content="☐"
-                            Click="ButtonMaximize"
-                            FontSize="20"/>
-
-                    <Button Style="{StaticResource TitlebarButtonTheme}"
-                            Content="🞨"
-                            Click="ButtonExit"
-                            FontSize="26" IsCancel="True"
-                            />-->
-                    
-
-                </StackPanel>
-            </Grid> 
-        </Border>
-        
-        <Border Grid.Row="2"
-                Grid.ColumnSpan="2"
-                Background="DarkGray">
-            
-        </Border>
-        
-    </Grid>
-    
-    
-        
-    <!--<Border Background="AntiqueWhite"
-            >
-    <Grid>
-        <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Background="#eab676">
-            <Button x:Name="Page1Button" Click="ShowPage1" Content="Страница 1"/>
-            <Button x:Name="Page2Button" Click="ShowPage2" Content="Страница 2"/>
-            <Frame x:Name="RootFrame" NavigationUIVisibility="Hidden" Height="379"/>
-        </StackPanel>
     </Grid>
 
-        <RadioButton Content="Home"
-                     VerticalAlignment="Center"
-                     HorizontalAlignment="Center"
-                     Height="50"
-                     Foreground="Black"
-                     FontSize="20"
-                     Style="{StaticResource MenuButtonTheme}">
-            
-        </RadioButton>
-        
-    </Border>-->
 </Window>
