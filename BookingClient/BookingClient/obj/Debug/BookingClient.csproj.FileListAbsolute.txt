@@ -38,45 +38,6 @@ C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\Booki
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.CoreCompileInputs.cache
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Theme\MenuButtonTheme.baml
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\App.baml
-D:\4-ИС-2\Ермолаев Е А\BookingBase-main\BookingClient\BookingClient\bin\Debug\BookingClient.exe.config
-D:\4-ИС-2\Ермолаев Е А\BookingBase-main\BookingClient\BookingClient\bin\Debug\BookingClient.exe
-D:\4-ИС-2\Ермолаев Е А\BookingBase-main\BookingClient\BookingClient\bin\Debug\BookingClient.pdb
-D:\4-ИС-2\Ермолаев Е А\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient.csprojAssemblyReference.cache
-D:\4-ИС-2\Ермолаев Е А\BookingBase-main\BookingClient\BookingClient\obj\Debug\Theme\MenuButtonTheme.baml
-D:\4-ИС-2\Ермолаев Е А\BookingBase-main\BookingClient\BookingClient\obj\Debug\MainWindow.g.cs
-D:\4-ИС-2\Ермолаев Е А\BookingBase-main\BookingClient\BookingClient\obj\Debug\Pages\Page1.g.cs
-D:\4-ИС-2\Ермолаев Е А\BookingBase-main\BookingClient\BookingClient\obj\Debug\Pages\Page2.g.cs
-D:\4-ИС-2\Ермолаев Е А\BookingBase-main\BookingClient\BookingClient\obj\Debug\App.g.cs
-D:\4-ИС-2\Ермолаев Е А\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient_MarkupCompile.cache
-D:\4-ИС-2\Ермолаев Е А\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient_MarkupCompile.lref
-D:\4-ИС-2\Ермолаев Е А\BookingBase-main\BookingClient\BookingClient\obj\Debug\App.baml
-D:\4-ИС-2\Ермолаев Е А\BookingBase-main\BookingClient\BookingClient\obj\Debug\MainWindow.baml
-D:\4-ИС-2\Ермолаев Е А\BookingBase-main\BookingClient\BookingClient\obj\Debug\Pages\Page1.baml
-D:\4-ИС-2\Ермолаев Е А\BookingBase-main\BookingClient\BookingClient\obj\Debug\Pages\Page2.baml
-D:\4-ИС-2\Ермолаев Е А\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient.g.resources
-D:\4-ИС-2\Ермолаев Е А\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient.Properties.Resources.resources
-D:\4-ИС-2\Ермолаев Е А\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.GenerateResource.cache
-D:\4-ИС-2\Ермолаев Е А\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.CoreCompileInputs.cache
-D:\4-ИС-2\Ермолаев Е А\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient.exe
-D:\4-ИС-2\Ермолаев Е А\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient.pdb
-D:\4-ИС-2\Ермолаев Е А\BookingBase\BookingClient\BookingClient\bin\Debug\BookingClient.exe.config
-D:\4-ИС-2\Ермолаев Е А\BookingBase\BookingClient\BookingClient\bin\Debug\BookingClient.exe
-D:\4-ИС-2\Ермолаев Е А\BookingBase\BookingClient\BookingClient\bin\Debug\BookingClient.pdb
-D:\4-ИС-2\Ермолаев Е А\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.csprojAssemblyReference.cache
-D:\4-ИС-2\Ермолаев Е А\BookingBase\BookingClient\BookingClient\obj\Debug\Theme\MenuButtonTheme.baml
-D:\4-ИС-2\Ермолаев Е А\BookingBase\BookingClient\BookingClient\obj\Debug\MainWindow.g.cs
-D:\4-ИС-2\Ермолаев Е А\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\Page1.g.cs
-D:\4-ИС-2\Ермолаев Е А\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\Page2.g.cs
-D:\4-ИС-2\Ермолаев Е А\BookingBase\BookingClient\BookingClient\obj\Debug\App.g.cs
-D:\4-ИС-2\Ермолаев Е А\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient_MarkupCompile.cache
-D:\4-ИС-2\Ермолаев Е А\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient_MarkupCompile.lref
-D:\4-ИС-2\Ермолаев Е А\BookingBase\BookingClient\BookingClient\obj\Debug\App.baml
-D:\4-ИС-2\Ермолаев Е А\BookingBase\BookingClient\BookingClient\obj\Debug\MainWindow.baml
-D:\4-ИС-2\Ермолаев Е А\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\Page1.baml
-D:\4-ИС-2\Ермолаев Е А\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\Page2.baml
-D:\4-ИС-2\Ермолаев Е А\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.g.resources
-D:\4-ИС-2\Ермолаев Е А\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.Properties.Resources.resources
-D:\4-ИС-2\Ермолаев Е А\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.GenerateResource.cache
-D:\4-ИС-2\Ермолаев Е А\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.CoreCompileInputs.cache
-D:\4-ИС-2\Ермолаев Е А\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.exe
-D:\4-ИС-2\Ермолаев Е А\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.pdb
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Theme\TitlebarButtonTheme.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Styles\CustomWindowStyle\WindowStyle.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Styles\CustomWindowStyle\WindowStyle.g.cs

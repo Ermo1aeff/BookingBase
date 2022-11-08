@@ -30,7 +30,26 @@ namespace BookingClient
             DragMove();
         }
 
-        private void ButtonExit(object sender, RoutedEventArgs e)
+        private void ButtonMinimize(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.WindowState = WindowState.Minimized;
+        }
+
+        private void ButtonMaximize(object sender, RoutedEventArgs e)
+        {
+            SizeToContent = SizeToContent.Width;
+            SizeToContent = SizeToContent.Height;
+            //Width = SystemParameters.MaximizedPrimaryScreenWidth;
+            //this.Height = SystemParameters.MaximizedPrimaryScreenHeight;
+            //this.Left = 0;
+            //this.Top = 0;
+            //this.WindowState = WindowState.Normal;
+
+            //Application.Current.MainWindow.MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
+            //Application.Current.MainWindow.WindowState = WindowState.Maximized;
+        }
+
+        private void ButtonClose(object sender, RoutedEventArgs e)
         {
             Close();
         }

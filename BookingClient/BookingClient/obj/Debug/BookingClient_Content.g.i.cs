@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("slpashscreen1.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("bookingico.ico")]
 
 
