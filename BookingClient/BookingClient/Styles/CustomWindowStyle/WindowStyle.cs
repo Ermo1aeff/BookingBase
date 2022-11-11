@@ -59,16 +59,17 @@ namespace BookingClient.Styles.CustomWindowStyle
                 var screen = System.Windows.Forms.Screen.FromHandle(handle);
                 if (screen.Primary)
                 {
-                    containerBorder.Padding = new Thickness(
-                        SystemParameters.WorkArea.Left + 7,
-                        SystemParameters.WorkArea.Top + 7,
-                        (SystemParameters.PrimaryScreenWidth - SystemParameters.WorkArea.Right) + 7,
-                        (SystemParameters.PrimaryScreenHeight - SystemParameters.WorkArea.Bottom) + 5);
+                    //containerBorder.Padding = new Thickness(
+                    //    SystemParameters.WorkArea.Left + 7,
+                    //    SystemParameters.WorkArea.Top + 7,
+                    //    SystemParameters.PrimaryScreenWidth - SystemParameters.WorkArea.Right + 7,
+                    //    SystemParameters.PrimaryScreenHeight - SystemParameters.WorkArea.Bottom - 28
+                    //    );
                 }
             }
             else
             {
-                containerBorder.Padding = new Thickness(7, 7, 7, 5);
+                containerBorder.Padding = new Thickness(0, 0, 0, 0);
             }
         }
 

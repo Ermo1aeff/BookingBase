@@ -11,6 +11,7 @@
         MinWidth="800"
         MinHeight="450"
         Icon="/BookingIco.ico"
+        Name="BookingClient"
         Style="{StaticResource WindowStyle}"
         Background="Gray">
 
@@ -19,7 +20,6 @@
             <ColumnDefinition Width="200"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-
 
     </Grid>
 
