@@ -26,30 +26,6 @@ namespace BookingClient
             InitializeComponent();
         }
 
-        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
-
-        private void ButtonMinimize(object sender, RoutedEventArgs e)
-        {
-            Application.Current.MainWindow.WindowState = WindowState.Minimized;
-        }
-
-        private void ButtonMaximize(object sender, RoutedEventArgs e)
-        {
-            SizeToContent = SizeToContent.Width;
-            SizeToContent = SizeToContent.Height;
-        }
-
-        private void ButtonClose(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void OnFadeComplete(object sender, EventArgs e)
-        {
-            Close();
-        }
+        
     }
 }

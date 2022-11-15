@@ -7,7 +7,6 @@ using System.Windows.Controls;
 using System.Windows.Shapes;
 using System.Windows.Interop;
 using System.Runtime.InteropServices;
-using System.Windows.Media;
 using System.Collections;
 
 namespace BookingClient.Styles.CustomWindowStyle
@@ -45,11 +44,8 @@ namespace BookingClient.Styles.CustomWindowStyle
         void WindowLoaded(object sender, RoutedEventArgs e)
         {
             ((Window)sender).StateChanged += WindowStateChanged;
-        }
 
-        void WindowStateChanged(object sender, EventArgs e)
-        {
-            var w = ((Window)sender);
+            var w = (Window)sender;
             var handle = w.GetWindowHandle();
             var containerBorder = (Border)w.Template.FindName("PART_Container", w);
 
@@ -59,17 +55,29 @@ namespace BookingClient.Styles.CustomWindowStyle
                 var screen = System.Windows.Forms.Screen.FromHandle(handle);
                 if (screen.Primary)
                 {
-                    //containerBorder.Padding = new Thickness(
-                    //    SystemParameters.WorkArea.Left + 7,
-                    //    SystemParameters.WorkArea.Top + 7,
-                    //    SystemParameters.PrimaryScreenWidth - SystemParameters.WorkArea.Right + 7,
-                    //    SystemParameters.PrimaryScreenHeight - SystemParameters.WorkArea.Bottom - 28
-                    //    );
+                    containerBorder.Padding = new Thickness(7);
+                }
+            }
+        }
+
+        void WindowStateChanged(object sender, EventArgs e)
+        {
+            var w = (Window)sender;
+            var handle = w.GetWindowHandle();
+            var containerBorder = (Border)w.Template.FindName("PART_Container", w);
+
+            if (w.WindowState == WindowState.Maximized)
+            {
+                // Make sure window doesn't overlap with the taskbar.
+                var screen = System.Windows.Forms.Screen.FromHandle(handle);
+                if (screen.Primary)
+                {
+                    containerBorder.Padding = new Thickness(7);
                 }
             }
             else
             {
-                containerBorder.Padding = new Thickness(0, 0, 0, 0);
+                containerBorder.Padding = new Thickness(0);
             }
         }
 

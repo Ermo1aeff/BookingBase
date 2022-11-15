@@ -12,12 +12,13 @@
         MinHeight="450"
         Icon="/BookingIco.ico"
         Name="BookingClient"
+        WindowState="Maximized"
         Style="{StaticResource WindowStyle}"
-        Background="Gray">
+        >
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="160"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
