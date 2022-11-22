@@ -65,3 +65,6 @@ D:\4-is-2\Ermolaev\BookingBase-main\BookingBase-main\BookingClient\BookingClient
 D:\4-is-2\Ermolaev\BookingBase-main\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.CoreCompileInputs.cache
 D:\4-is-2\Ermolaev\BookingBase-main\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient.exe
 D:\4-is-2\Ermolaev\BookingBase-main\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient.pdb
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\AuthorizationWindow.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\AuthorizationWindow.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Styles\ComponentsStyle\ComponentsStyle.baml

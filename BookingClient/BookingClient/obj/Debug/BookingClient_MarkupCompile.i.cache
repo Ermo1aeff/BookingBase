@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\App.xaml
-6926725544
+8570830915
 
-11-1894473874
+12339445004
 14-1290796308
-MainWindow.xaml;Pages\Page1.xaml;Pages\Page2.xaml;Styles\CustomWindowStyle\WindowStyle.xaml;Theme\MenuButtonTheme.xaml;Theme\TitlebarButtonTheme.xaml;
+AuthorizationWindow.xaml;MainWindow.xaml;Pages\Page1.xaml;Pages\Page2.xaml;Styles\ComponentsStyle\ComponentsStyle.xaml;Styles\CustomWindowStyle\WindowStyle.xaml;Theme\MenuButtonTheme.xaml;Theme\TitlebarButtonTheme.xaml;
 slpashscreen1.png
 True
 

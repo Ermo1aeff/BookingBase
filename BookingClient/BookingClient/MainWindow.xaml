@@ -15,6 +15,9 @@
         WindowState="Maximized"
         Style="{StaticResource WindowStyle}"
         >
+    <Window.Effect>
+        <DropShadowEffect />
+    </Window.Effect>
 
     <Grid>
         <Grid.ColumnDefinitions>

@@ -61,10 +61,7 @@
     </Style>
     
     <!--Стиль кнопки Close-->
-    <Style x:Key="WindowStyleTitleBarButtonClose" TargetType="{x:Type Button}">
-        <Setter Property="Focusable" Value="false" />
-        <Setter Property="Width" Value="46"/>
-        <Setter Property="Foreground" Value="{StaticResource ButtonForeground}" />
+    <Style x:Key="WindowStyleTitleBarButtonClose" TargetType="{x:Type Button}" BasedOn="{StaticResource WindowStyleTitleBarButton}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
