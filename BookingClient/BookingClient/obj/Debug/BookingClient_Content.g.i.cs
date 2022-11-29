@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("bookingico.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("styles/componentsstyle/cogs_result.svg")]
 
 

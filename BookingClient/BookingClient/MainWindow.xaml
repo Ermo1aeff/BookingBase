@@ -13,11 +13,7 @@
         Icon="/BookingIco.ico"
         Name="BookingClient"
         WindowState="Maximized"
-        Style="{StaticResource WindowStyle}"
-        >
-    <Window.Effect>
-        <DropShadowEffect />
-    </Window.Effect>
+        Style="{StaticResource WindowStyle}">
 
     <Grid>
         <Grid.ColumnDefinitions>
