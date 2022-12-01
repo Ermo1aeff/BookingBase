@@ -122,7 +122,7 @@
                                 x:Name="WindowBorder"
                                 Width="Auto"
                                 Height="Auto"
-                                Background="{StaticResource WindowBackgroud}"
+                                Background="{TemplateBinding Background}"
                                 BorderBrush="{StaticResource WindowBorder}"
                                 BorderThickness="1"
                                 >

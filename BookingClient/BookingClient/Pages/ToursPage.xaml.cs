@@ -9,32 +9,21 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BookingClient.Pages;
 
-namespace BookingClient
+namespace BookingClient.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Interaction logic for ToursPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ToursPage : Page
     {
-        public MainWindow()
+        public ToursPage()
         {
             InitializeComponent();
-        }
-
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void ToursButton_Click(object sender, RoutedEventArgs e)
-        {
-            RootFrame.Navigate(new ToursPage());
+            DataContext = this;
         }
     }
 }

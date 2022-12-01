@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -43,7 +44,70 @@ namespace BookingClient
 
         private void AutorizationButton_Click(object sender, RoutedEventArgs e)
         {
+            string message = "";
 
+            string password = PasswordBox.Password != "" ? PasswordBox.Password : PasswordTextBox.Text;
+
+            if (password.Length < 8)
+            {
+                message = "Пароль должен быть не менее 8 символов.";
+            }
+
+            Regex regex = new Regex(".*[A-Z].*");
+            if (!regex.IsMatch(password))
+            {
+                message = "Пароль должен содержать заглавные буквы латинского алфавита.";
+            }
+
+            regex = new Regex(".*[a-z].*");
+            if (!regex.IsMatch(password))
+            {
+                message = "Пароль должен содержать прописные буквы латинского алфавита.";
+            }
+
+            regex = new Regex(@".*\s.*");
+            if (regex.IsMatch(password))
+            {
+                message = "Пароль НЕ должен содержать пробелы!";
+            }
+
+            regex = new Regex(@"(.*\W.*)");
+            if (!regex.IsMatch(password))
+            {
+                message = "Пароль должен содержать специальные символы по типу: ? . \\ # ^ ( ) @.";
+            }
+
+            regex = new Regex(@"(.*[0-9].*)");
+            if (!regex.IsMatch(password))
+            {
+                message = "Пароль должен содержать цифры.";
+            }
+
+            string login = LoginTextBox.Text;
+
+            if (login.Length < 8)
+            {
+                message = "Логин должен быть не менее 8 символов.";
+            }
+
+            if (message == "")
+            {
+                //executors Executors = new executors();
+                //Executors.executor_name = ExecuterTextBox.Text;
+                //Executors.login = LoginTextBox.Text;
+                //Executors.password = password;
+                //Добавление пользователя в базу данных
+                //DataBase.executors.Add(Executors);
+                //Сохранение изменений
+                //DataBase.SaveChanges();
+                Window AutorizationWin = new MainWindow();
+                Close();
+                AutorizationWin.Show();
+            }
+            else
+            {
+                ErrorTextBox.Text = message;
+            }
         }
 
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
@@ -75,7 +139,7 @@ namespace BookingClient
             char[] a = { ',' };
             //расщепление массива по разделителю
             String[] ar = allowchar.Split(a);
-            String pwd = " ";
+            String pwd = "";
             string temp = " ";
             Random r = new Random();
             for (int i = 0; i < 6; i++)

@@ -6,14 +6,15 @@
         xmlns:local="clr-namespace:BookingClient"
         mc:Ignorable="d"
         Title="Bookimg Client"
-        Height="450"
-        Width="800"
+        Height="520"
+        Width="860"
         MinWidth="800"
         MinHeight="450"
         Icon="/BookingIco.ico"
         Name="BookingClient"
         WindowState="Maximized"
-        Style="{StaticResource WindowStyle}">
+        Style="{StaticResource WindowStyle}"
+        Background="White">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -21,6 +22,71 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
+        <StackPanel Background="Silver">
+            <Button
+                x:Name="ToursButton"
+                Style="{StaticResource MenuButton}"
+                Content="Туры"
+                Click="ToursButton_Click"
+                />
+            <Button
+                Style="{StaticResource MenuButton}"
+                Content="Услуги"
+                />
+            <Button
+                Style="{StaticResource MenuButton}"
+                Content="Страны"
+                />
+            <Button
+                Style="{StaticResource MenuButton}"
+                Content="Заказы"
+                />
+            <Button
+                Style="{StaticResource MenuButton}"
+                Content="Туристы"
+                />
+            <Button
+                Style="{StaticResource MenuButton}"
+                Content="Имена"
+                />
+            <Button
+                Style="{StaticResource MenuButton}"
+                Content="Фамилии"
+                />
+        </StackPanel>
+
+        <Grid Grid.Column="1">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="36"/>
+            </Grid.RowDefinitions>
+
+            <Frame x:Name="RootFrame" Grid.Row="0" NavigationUIVisibility="Hidden" />
+
+            <Border Grid.Row="1" Grid.ColumnSpan="2" Background="Silver"/>
+
+            <Button 
+                x:Name="CloseButton"
+                Style="{StaticResource MenuButton}"
+                Grid.Row="1" 
+                Content="Закрыть" 
+                HorizontalAlignment="Right" 
+                Width="100"
+                Click="CloseButton_Click"/>
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <Button
+                    Style="{StaticResource MenuButton}"
+                    Content="Назад" 
+                    Width="100"
+                    />
+                <Button
+                    Style="{StaticResource MenuButton}"
+                    Content="Вперёд" 
+                    Width="100"
+                    />
+            </StackPanel>
+        </Grid>
     </Grid>
 
 </Window>
