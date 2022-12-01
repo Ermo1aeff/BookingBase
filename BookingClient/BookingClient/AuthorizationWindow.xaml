@@ -6,13 +6,24 @@
         xmlns:local="clr-namespace:BookingClient"
         mc:Ignorable="d"
         Title="AuthorizationWindow" 
-        Height="287" 
-        Width="512"
+        Height="315" 
+        Width="540"
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
         WindowStartupLocation="CenterScreen" 
-        ResizeMode="CanMinimize">
+        ResizeMode="CanMinimize"
+        BorderThickness="14">
+    <Window.Effect>
+        <DropShadowEffect
+            Color="black"
+            Opacity="1.5"
+            BlurRadius="14"
+            ShadowDepth="2"
+            Direction="315"/>
+    </Window.Effect>
+
+    
 
     <Border CornerRadius="55"
             Background="#FFF"
@@ -48,13 +59,14 @@
                         x:Name="PasswordTextBox"
                         Style="{StaticResource BaseTextBox}"
                         Tag="Пароль"
+                        Visibility="Collapsed"
                         />
 
                     <PasswordBox
                         Style="{StaticResource BasePasswordBox}"
                         x:Name="PasswordBox"
                         FontSize="18"
-                        Visibility="Collapsed"
+                        Visibility="Visible"
                         Tag="Пароль"
                         PasswordChanged="PasswordBox_PasswordChanged"
                         />
