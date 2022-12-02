@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookingClient"
         mc:Ignorable="d"
-        Height="487" 
-        Width="512"
+        Height="520" 
+        Width="526"
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
         WindowStartupLocation="CenterScreen" 
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        BorderThickness="14">
     <Window.Effect>
         <DropShadowEffect
             Color="black"
@@ -139,7 +140,7 @@
                     Style="{StaticResource BaseTextBox}"
                     Tag="Введите текст выше"
                     Margin="0,0,0,14"
-                    x:Name="CapchaTextBoxInput" 
+                    x:Name="CapchaTextBoxInput"
                     TextChanged="CapchaTextBoxInput_TextChanged"
                     />
 

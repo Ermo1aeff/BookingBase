@@ -137,13 +137,11 @@
     <Resource Include="BookingIco.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="visible.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resourses\BookingIco.ico" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />
+    <Folder Include="Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

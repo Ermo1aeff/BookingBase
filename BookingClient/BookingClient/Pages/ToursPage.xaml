@@ -16,22 +16,22 @@
 
         <DockPanel>
             <Button
-                Style="{StaticResource MenuButton}"
+                Style="{StaticResource AddButton}"
                 Content="Add"
                 Width="60"
                 />
             <Button
-                Style="{StaticResource MenuButton}"
+                Style="{StaticResource CopyButton}"
                 Content="Copy"
                 Width="60"
                 />
             <Button
-                Style="{StaticResource MenuButton}"
+                Style="{StaticResource EditButton}"
                 Content="Chge"
                 Width="60"
                 />
             <Button
-                Style="{StaticResource MenuButton}"
+                Style="{StaticResource DeleteButton}"
                 Content="Delt"
                 Width="60"
                 />

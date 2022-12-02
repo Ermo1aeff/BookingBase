@@ -68,22 +68,21 @@
 
             <Button 
                 x:Name="CloseButton"
-                Style="{StaticResource MenuButton}"
+                Style="{StaticResource ClosePageButton}"
                 Grid.Row="1" 
                 Content="Закрыть" 
                 HorizontalAlignment="Right" 
-                Width="100"
+                Width="60"
                 Click="CloseButton_Click"/>
             <StackPanel Grid.Row="1" Orientation="Horizontal">
                 <Button
-                    Style="{StaticResource MenuButton}"
-                    Content="Назад" 
-                    Width="100"
-                    />
+                    Style="{StaticResource LeftArrowButton}"
+                    Width="60"
+                    >
+                </Button>
                 <Button
-                    Style="{StaticResource MenuButton}"
-                    Content="Вперёд" 
-                    Width="100"
+                    Style="{StaticResource RightArrowButton}"
+                    Width="60"
                     />
             </StackPanel>
         </Grid>
