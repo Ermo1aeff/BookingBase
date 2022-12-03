@@ -1,0 +1,371 @@
+﻿<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="ButtonBackground" Color="#ddd"/>
+    <!--<Image x:Key="resourceImage" Source="visible.png"/>-->
+
+    <Style x:Key="BaseButton" TargetType="{x:Type Button}">
+        <Setter Property="FontFamily" Value="Segoe UI Semilight"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Background" Value="{StaticResource ButtonBackground}"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid
+                        TextOptions.TextRenderingMode="ClearType"
+                        TextOptions.TextFormattingMode="Display">
+
+                        <Border
+                            x:Name="PART_DefaultButton"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding Border.CornerRadius}">
+
+                            <ContentPresenter 
+                                x:Name="contentPresenter" 
+                                ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                Content="{TemplateBinding Content}" 
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Margin="{TemplateBinding Padding}" 
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#f4f4f4"/>
+                            <Setter Property="Foreground" Value="#838383"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="Button" x:Key="RegistrationButton" BasedOn="{StaticResource BaseButton}">
+        <Setter Property="Border.CornerRadius" Value="0,0,0,12" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="LightSkyBlue"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="DeepSkyBlue"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="Button" x:Key="CloseButton" BasedOn="{StaticResource BaseButton}">
+        <Setter Property="Border.CornerRadius" Value="0,0,12,0" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="LightPink"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="#ff8597"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="Button" x:Key="AuthorizationButton" BasedOn="{StaticResource BaseButton}">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="LightGreen"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="#68ee68"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="Button" x:Key="MainRegistrationButton" BasedOn="{StaticResource BaseButton}">
+        <Setter Property="Height" Value="36"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Binding="{Binding ElementName=FirstNameTextBoxsdsd, Path=Text}" Value=""/>
+                </MultiTrigger.Conditions>
+                <Setter Property="IsEnabled" Value="True"/>
+            </MultiTrigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="LightGreen"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="#68ee68"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="Button" x:Key="MenuButton" BasedOn="{StaticResource BaseButton}">
+        <Setter Property="Height" Value="36"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Silver"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="Gray"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="BaseToggleButton" TargetType="ToggleButton">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border
+                        Background="Transparent">
+                        <Path
+                            x:Name="PATR_PathEye"
+                            Height="20" 
+                            Width="20"
+                            Fill="Gray"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="PATR_PathEye" Property="Data" Value="{DynamicResource PathEyeOpen}"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter TargetName="PATR_PathEye" Property="Data" Value="{DynamicResource PathEyeClose}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PATR_PathEye" Property="Fill" Value="Black"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BasePath" TargetType="Path">
+        <Setter Property="Data" Value="{StaticResource PathAdd}"/>
+    </Style>
+
+    <!--Временное решение, попытаться сделать базовый стиль и для него наследников-->
+    <Style x:Key="ReplayToggleButton" TargetType="ToggleButton">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border
+                        Background="Transparent">
+                        <Path
+                            x:Name="PATR_PathEye"
+                            Height="25" 
+                            Width="25"
+                            Fill="Gray"
+                            Data="{DynamicResource PathReplay}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PATR_PathEye" Property="Fill" Value="Black"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Временное решение, попытаться сделать базовый стиль и для него наследников-->
+    <Style x:Key="BaseImageButton" TargetType="Button">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        Background="Transparent">
+                        <Path
+                            x:Name="PATR_PathEye"
+                            Height="30" 
+                            Width="30"
+                            Fill="Black"
+                            Data="{DynamicResource PathArrowLeft}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PATR_PathEye" Property="Fill" Value="Gray"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Временное решение, попытаться сделать базовый стиль и для него наследников-->
+    <Style x:Key="LeftArrowButton" TargetType="Button">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        Background="Transparent">
+                        <Path
+                            x:Name="PATR_PathEye"
+                            Height="30" 
+                            Width="30"
+                            Fill="Black"
+                            Data="{DynamicResource PathArrowLeft}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PATR_PathEye" Property="Fill" Value="Gray"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Временное решение, попытаться сделать базовый стиль и для него наследников-->
+    <Style x:Key="RightArrowButton" TargetType="Button">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        Background="Transparent">
+                        <Path
+                            x:Name="PATR_PathEye"
+                            Height="30" 
+                            Width="30"
+                            Fill="{TemplateBinding Foreground}"
+                            Data="{DynamicResource PathArrowRight}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PATR_PathEye" Property="Fill" Value="Gray"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Временное решение, попытаться сделать базовый стиль и для него наследников-->
+    <Style x:Key="ClosePageButton" TargetType="Button">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        Background="Transparent">
+                        <Path
+                            x:Name="PATR_PathEye"
+                            Height="30" 
+                            Width="30"
+                            Fill="{TemplateBinding Foreground}"
+                            Data="{DynamicResource PathClosePage}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PATR_PathEye" Property="Fill" Value="Gray"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Временное решение, попытаться сделать базовый стиль и для него наследников-->
+    <Style x:Key="AddButton" TargetType="Button">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        Background="#FFF">
+                        <Path
+                            x:Name="PATR_PathEye"
+                            Height="30" 
+                            Width="30"
+                            Fill="{TemplateBinding Foreground}"
+                            Data="{DynamicResource PathAdd}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PATR_PathEye" Property="Fill" Value="Gray"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Временное решение, попытаться сделать базовый стиль и для него наследников-->
+    <Style x:Key="CopyButton" TargetType="Button">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        Background="#FFF">
+                        <Path
+                            x:Name="PATR_PathEye"
+                            Height="30" 
+                            Width="30"
+                            Fill="{TemplateBinding Foreground}"
+                            Data="{DynamicResource PathCopy}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PATR_PathEye" Property="Fill" Value="Gray"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Временное решение, попытаться сделать базовый стиль и для него наследников-->
+    <Style x:Key="EditButton" TargetType="Button">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        Background="#FFF">
+                        <Path
+                            x:Name="PATR_PathEye"
+                            Height="30" 
+                            Width="30"
+                            Fill="{TemplateBinding Foreground}"
+                            Data="{DynamicResource PathEdit}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PATR_PathEye" Property="Fill" Value="Gray"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Временное решение, попытаться сделать базовый стиль и для него наследников-->
+    <Style x:Key="DeleteButton" TargetType="Button">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        Background="#FFF">
+                        <Path
+                            x:Name="PATR_PathEye"
+                            Height="30" 
+                            Width="30"
+                            Fill="{TemplateBinding Foreground}"
+                            Data="{DynamicResource PathDelete}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PATR_PathEye" Property="Fill" Value="Gray"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

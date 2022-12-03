@@ -8,8 +8,10 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/CustomWindowStyle/WindowStyle.xaml"/>
-                <ResourceDictionary Source="Styles/ComponentsStyle/ComponentsStyle.xaml"/>
+                <ResourceDictionary Source="Resources/CustomWindowStyle/WindowStyle.xaml"/>
+                <ResourceDictionary Source="Resources/ComponentsStyle/BaseComponentsStyles.xaml"/>
+                <ResourceDictionary Source="Resources/ComponentsStyle/ComponentsStyle.xaml"/>
+                <ResourceDictionary Source="Resources/ComponentsStyle/Geometries.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

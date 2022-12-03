@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookingClient"
         mc:Ignorable="d"
-        Height="520" 
+        Height="500" 
         Width="526"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -38,8 +38,9 @@
             <StackPanel VerticalAlignment="Top" Margin="100, 0" Grid.Row="1">
 
                 <Label 
+                    x:Name="FirstNameTextBox"
                     Content="Регистрация" 
-                    Margin="0, 20, 0, 10"
+                    Margin="0, 16, 0, 10"
                     FontSize="36" 
                     HorizontalContentAlignment="Center" 
                     VerticalAlignment="Center" 
@@ -47,7 +48,7 @@
                     FontFamily="Segoe UI Semilight"
                     />   
 
-                <TextBox
+                <!--<TextBox
                     Style="{StaticResource BaseTextBox}"
                     Tag="Фамилия" 
                     Margin="0,0,0,14" 
@@ -59,7 +60,7 @@
                     Tag="Имя" 
                     Margin="0,0,0,14"
                     Height="30"
-                    />
+                    />-->
                 
                 <TextBox 
                     x:Name="LoginTextBox"
@@ -70,6 +71,7 @@
                     />
 
                 <Grid 
+                    Margin="0,0,0,14" 
                     Height="30">
 
                     <TextBox 
@@ -91,6 +93,33 @@
                         Style="{StaticResource BaseToggleButton}"
                         Click="PasswordCheckBox_Click"
                         x:Name="PasswordCheckBox"
+                        Width="30"
+                        HorizontalAlignment="Right"/>
+
+                </Grid>
+                
+                <Grid 
+                    Height="30">
+
+                    <TextBox 
+                        x:Name="ConfirmPasswordTextBox"
+                        Style="{StaticResource BaseTextBox}"
+                        Tag="Подтвердите пароль"
+                        />
+
+                    <PasswordBox
+                        Style="{StaticResource BasePasswordBox}"
+                        x:Name="ConfirmPasswordBox"
+                        FontSize="18"
+                        Visibility="Collapsed"
+                        Tag="Подтвердите пароль"
+                        PasswordChanged="ConfirmPasswordBox_PasswordChanged"
+                        />
+
+                    <CheckBox
+                        Style="{StaticResource BaseToggleButton}"
+                        x:Name="ConfirmPasswordCheckBox"
+                        Click="ConfirmPasswordCheckBox_Click"
                         Width="30"
                         HorizontalAlignment="Right"/>
 
@@ -137,22 +166,23 @@
                 </Grid>
 
                 <TextBox
+                    x:Name="CapchaTextBoxInput"
                     Style="{StaticResource BaseTextBox}"
                     Tag="Введите текст выше"
                     Margin="0,0,0,14"
-                    x:Name="CapchaTextBoxInput"
+                    Height="30"
                     TextChanged="CapchaTextBoxInput_TextChanged"
                     />
 
                 <Button 
                     Height="30"
-                    Style="{StaticResource CapchaButton}"
+                    Style="{StaticResource AuthorizationButton}"
                     x:Name="AutorizationButton"
                     Content="Зарегистрироваться"
                     Click="AutorizationButton_Click"
                     Grid.Column="0"
                     Margin="0,0,0,14"
-                    IsEnabled="False"
+                    IsEnabled="False" IsDefault="True"
                     />
 
                 <Grid Height="30">
@@ -175,7 +205,7 @@
                         Content="Закрыть"
                         Click="CloseButton_Click"
                         Grid.Column="1"
-                        Margin="7,0,0,0"/>
+                        Margin="7,0,0,0" IsCancel="True"/>
                     
                 </Grid>
             </StackPanel>

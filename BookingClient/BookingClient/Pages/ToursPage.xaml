@@ -41,12 +41,14 @@
 
             <TextBox
                 Style="{StaticResource BaseTextBox}"
-                
                 Tag="Поиск"
+                BorderThickness="0"
                 />
         </DockPanel>
         
         <DataGrid
-            Grid.Row="1"/>
+            Grid.Row="1"
+            BorderThickness="0,0,0,0"
+            BorderBrush="Black"/>
     </Grid>
 </Page>

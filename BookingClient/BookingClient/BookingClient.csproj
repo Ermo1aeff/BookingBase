@@ -68,7 +68,7 @@
     <Compile Include="RegistrationWindow.xaml.cs">
       <DependentUpon>RegistrationWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Styles\CustomWindowStyle\WindowStyle.cs" />
+    <Compile Include="Resources\CustomWindowStyle\WindowStyle.cs" />
     <Page Include="AuthorizationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -95,11 +95,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Styles\ComponentsStyle\ComponentsStyle.xaml">
+    <Page Include="Resources\ComponentsStyle\BaseComponentsStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Styles\CustomWindowStyle\WindowStyle.xaml">
+    <Page Include="Resources\ComponentsStyle\ComponentsStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\CustomWindowStyle\WindowStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ComponentsStyle\Geometries.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -137,10 +145,9 @@
     <Resource Include="BookingIco.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resourses\BookingIco.ico" />
+    <Resource Include="Resources\BookingIco.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controls\" />
     <Folder Include="Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -46,48 +46,49 @@ namespace BookingClient
         {
             string message = "";
 
+            string login = LoginTextBox.Text;
+
+            if (login.Length < 6)
+            {
+                message = "Логин должен быть не менее 6 символов.";
+            }
+
             string password = PasswordBox.Password != "" ? PasswordBox.Password : PasswordTextBox.Text;
 
-            if (password.Length < 8)
+            if (password.Length < 8 && message == "")
             {
                 message = "Пароль должен быть не менее 8 символов.";
             }
 
-            Regex regex = new Regex(".*[A-Z].*");
-            if (!regex.IsMatch(password))
+            Regex regex = new Regex(@".*\s.*");
+
+            if (regex.IsMatch(password) && message == "")
             {
-                message = "Пароль должен содержать заглавные буквы латинского алфавита.";
+                message = "Пароль НЕ должен содержать пробелов!";
+            }
+
+            regex = new Regex(".*[A-Z].*");
+            if (!regex.IsMatch(password) && message == "")
+            {
+                message = "Пароль должен содержать хотябы одну заглавную и прописную буквы латинского алфавита.";
             }
 
             regex = new Regex(".*[a-z].*");
-            if (!regex.IsMatch(password))
+            if (!regex.IsMatch(password) && message == "")
             {
-                message = "Пароль должен содержать прописные буквы латинского алфавита.";
-            }
-
-            regex = new Regex(@".*\s.*");
-            if (regex.IsMatch(password))
-            {
-                message = "Пароль НЕ должен содержать пробелы!";
-            }
-
-            regex = new Regex(@"(.*\W.*)");
-            if (!regex.IsMatch(password))
-            {
-                message = "Пароль должен содержать специальные символы по типу: ? . \\ # ^ ( ) @.";
+                message = "Пароль должен содержать хотябы одну заглавную и прописную буквы латинского алфавита.";
             }
 
             regex = new Regex(@"(.*[0-9].*)");
-            if (!regex.IsMatch(password))
+            if (!regex.IsMatch(password) && message == "")
             {
                 message = "Пароль должен содержать цифры.";
             }
 
-            string login = LoginTextBox.Text;
-
-            if (login.Length < 8)
+            regex = new Regex(@"(.*\W.*)");
+            if (!regex.IsMatch(password) && message == "")
             {
-                message = "Логин должен быть не менее 8 символов.";
+                message = "Пароль должен содержать хотябы один специальный символ по типу: ? . # * ^ - \\ # ^ ( ) @.";
             }
 
             if (message == "")
@@ -110,6 +111,8 @@ namespace BookingClient
             }
         }
 
+
+        //PasswordBox
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
             PasswordBox.Tag = PasswordBox.Password == "" ? "Пароль" : "";
@@ -127,7 +130,23 @@ namespace BookingClient
             PasswordTextBox.Visibility = Visibility;
         }
 
+        //RepeatPasswordBox
+        private void ConfirmPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            ConfirmPasswordBox.Tag = ConfirmPasswordBox.Password == "" ? "Подтвердите пароль" : "";
+        }
 
+        private void ConfirmPasswordCheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            string Password = ConfirmPasswordBox.Password;
+            Visibility Visibility = ConfirmPasswordBox.Visibility;
+            //Переброска информации из TextBox'а в PasswordBox
+            ConfirmPasswordBox.Password = ConfirmPasswordTextBox.Text;
+            ConfirmPasswordBox.Visibility = ConfirmPasswordTextBox.Visibility;
+            // Возврат информации из временных буферов в TextBox
+            ConfirmPasswordTextBox.Text = Password;
+            ConfirmPasswordTextBox.Visibility = Visibility;
+        }
 
         private void CapchaCheckBox_Click(object sender, RoutedEventArgs e)
         {
@@ -159,5 +178,7 @@ namespace BookingClient
         {
             AutorizationButton.IsEnabled = CapchaTextBox.Text == CapchaTextBoxInput.Text;
         }
+
+
     }
 }
