@@ -37,7 +37,11 @@
                 />
 
             <ComboBox
-                Width="180"/>
+                Width="180">
+                <ComboBoxItem Name="item1">item1</ComboBoxItem>
+                <ComboBoxItem Name="item2">item2</ComboBoxItem>
+                <ComboBoxItem Name="item3">item3</ComboBoxItem>
+            </ComboBox>
 
             <TextBox
                 Style="{StaticResource BaseTextBox}"

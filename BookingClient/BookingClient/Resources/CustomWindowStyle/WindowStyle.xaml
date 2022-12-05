@@ -93,16 +93,16 @@
         <Setter Property="WindowStyle" Value="SingleBorderWindow" />
         <!--<Setter Property="Background" Value="Transparent" />-->
         <Setter Property="ResizeMode" Value="CanResize" />
-        
+
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
                 <WindowChrome
                     NonClientFrameEdges="None"
-                    GlassFrameThickness="0"
-                    ResizeBorderThickness="7"
+                    ResizeBorderThickness="5, 7, 5, 5"
                     CaptionHeight="28"
-                    CornerRadius="0"
                     UseAeroCaptionButtons="False"
+                    GlassFrameThickness="1, 1, 1, 1"
+                    CornerRadius="0"
                 />
             </Setter.Value>
         </Setter>
@@ -124,7 +124,7 @@
                                 Height="Auto"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{StaticResource WindowBorder}"
-                                BorderThickness="1"
+                                BorderThickness="0"
                                 >
                                 <DockPanel
                                     HorizontalAlignment="Stretch"
@@ -147,7 +147,7 @@
                                                 <ColumnDefinition />
                                                 <ColumnDefinition />
                                             </Grid.ColumnDefinitions>
-                                            
+
                                             <Image
                                                 x:Name="Icon"
                                                 Grid.Column="0"

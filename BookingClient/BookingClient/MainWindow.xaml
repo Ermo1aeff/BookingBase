@@ -12,9 +12,18 @@
         MinHeight="450"
         Icon="/BookingIco.ico"
         Name="BookingClient"
-        WindowState="Maximized"
         Style="{StaticResource WindowStyle}"
-        Background="White">
+        Background="LightGray">
+    <!--<Window.Effect>
+        <DropShadowEffect
+            Color="Red"
+            Opacity="0.5"
+            BlurRadius="7"
+            ShadowDepth="15"
+            Direction="315"/>
+    </Window.Effect>-->
+
+
 
     <Grid>
         <Grid.ColumnDefinitions>

@@ -51,7 +51,6 @@ namespace BookingClient.Styles.CustomWindowStyle
 
             if (w.WindowState == WindowState.Maximized)
             {
-                // Make sure window doesn't overlap with the taskbar.
                 //var screen = System.Windows.Forms.Screen.FromHandle(handle);
                 //if (screen.Primary)
                 //{
@@ -70,12 +69,6 @@ namespace BookingClient.Styles.CustomWindowStyle
 
             if (w.WindowState == WindowState.Maximized)
             {
-                // Make sure window doesn't overlap with the taskbar.
-                //var screen = System.Windows.Forms.Screen.FromHandle(handle);
-                //if (screen.Primary)
-                //{
-                //    containerBorder.Padding = new Thickness(7);
-                //}
                 containerBorder.Padding = new Thickness(7);
             }
             else
