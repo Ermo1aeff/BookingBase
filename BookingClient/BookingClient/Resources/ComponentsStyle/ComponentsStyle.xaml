@@ -271,6 +271,7 @@
     <!--Временное решение, попытаться сделать базовый стиль и для него наследников-->
     <Style x:Key="AddButton" TargetType="Button">
         <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Width" Value="60"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -296,6 +297,7 @@
     <!--Временное решение, попытаться сделать базовый стиль и для него наследников-->
     <Style x:Key="CopyButton" TargetType="Button">
         <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Width" Value="60"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -321,6 +323,7 @@
     <!--Временное решение, попытаться сделать базовый стиль и для него наследников-->
     <Style x:Key="EditButton" TargetType="Button">
         <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Width" Value="60"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -346,6 +349,7 @@
     <!--Временное решение, попытаться сделать базовый стиль и для него наследников-->
     <Style x:Key="DeleteButton" TargetType="Button">
         <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Width" Value="60"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">

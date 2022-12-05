@@ -82,16 +82,20 @@
                 Content="Закрыть" 
                 HorizontalAlignment="Right" 
                 Width="60"
-                Click="CloseButton_Click"/>
+                Click="CloseButton_Click"
+                ToolTip="Закрыть страницу"
+                />
             <StackPanel Grid.Row="1" Orientation="Horizontal">
                 <Button
                     Style="{StaticResource LeftArrowButton}"
                     Width="60"
+                    ToolTip="Назад"
                     >
                 </Button>
                 <Button
                     Style="{StaticResource RightArrowButton}"
                     Width="60"
+                    ToolTip="Далее"
                     />
             </StackPanel>
         </Grid>

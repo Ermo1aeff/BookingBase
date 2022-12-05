@@ -5,54 +5,176 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BookingClient.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="500" d:DesignWidth="1000"
+      Background="White"
       Title="ToursPage">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="36"/>
-            <RowDefinition />
-        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="250" MaxWidth="250"/>
+        </Grid.ColumnDefinitions>
 
-        <DockPanel>
-            <Button
-                Style="{StaticResource AddButton}"
-                Content="Add"
-                Width="60"
-                />
-            <Button
-                Style="{StaticResource CopyButton}"
-                Content="Copy"
-                Width="60"
-                />
-            <Button
-                Style="{StaticResource EditButton}"
-                Content="Chge"
-                Width="60"
-                />
-            <Button
-                Style="{StaticResource DeleteButton}"
-                Content="Delt"
-                Width="60"
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="36"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <DockPanel>
+                <Button
+                    Style="{StaticResource AddButton}"
+                    ToolTip="Добавить"
+                    />
+                <Button
+                    Style="{StaticResource CopyButton}" 
+                    ToolTip="Копировать"
+                    />
+                <Button
+                    Style="{StaticResource EditButton}"
+                    ToolTip="Редактировать"
+                    />
+                <Button
+                    Style="{StaticResource DeleteButton}"
+                    ToolTip="Удалить"
+                    />
+
+                <ComboBox
+                    Width="180">
+                    <ComboBoxItem Name="item1">item1</ComboBoxItem>
+                    <ComboBoxItem Name="item2">item2</ComboBoxItem>
+                    <ComboBoxItem Name="item3">item3</ComboBoxItem>
+                </ComboBox>
+
+                <TextBox
+                    Style="{StaticResource BaseTextBox}"
+                    Tag="Поиск"
+                    />
+            </DockPanel>
+
+            <DataGrid
+                Grid.Row="1"
+                AutoGenerateColumns="False"
+                CanUserAddRows="False"
+                BorderThickness="0,0,0,0"
+                >
+                <DataGrid.Resources>
+                    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="White" />
+                        <Setter Property="Height" Value="25" />
+                        <Setter Property="FontSize" Value="15" />
+                        <Setter Property="Foreground" Value="Black" />
+                    </Style>
+                    <Style TargetType="ScrollBar">
+                        <Setter Property="Background" Value="Wheat" />
+                    </Style>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Рег. номер" Binding="{Binding Path=reg_plates}" Width="10*"/>
+                    <DataGridTextColumn Header="Производитель" Binding="{Binding Path=car.model_car.make_car.make_name}" Width="10*"/>
+                    <DataGridTextColumn Header="Модель" Binding="{Binding Path=car.model_car.model_name}" Width="10*"/>
+                    <DataGridTextColumn Header="Год выпуска" Binding="{Binding Path=car.year_issue}" Width="10*"/>
+                    <DataGridTextColumn Header="Цена за час" Binding="{Binding Path=car.price}" Width="10*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <GridSplitter 
+            x:Name="DialogGridSplitter" 
+            Grid.Column="1" 
+            Grid.Row="2"
+            HorizontalAlignment="Stretch" 
+            Width="3" 
+            Background="Transparent"
+            />
+
+        <StackPanel Orientation="Vertical" Grid.Column="2">
+            <Label 
+                Margin="0,16"
+                FontSize="24"
+                x:Name="RecordTitle" 
+                Content="Добавление"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
                 />
 
-            <ComboBox
-                Width="180">
-                <ComboBoxItem Name="item1">item1</ComboBoxItem>
-                <ComboBoxItem Name="item2">item2</ComboBoxItem>
-                <ComboBoxItem Name="item3">item3</ComboBoxItem>
-            </ComboBox>
+            <StackPanel 
+                Grid.Row="1" 
+                Grid.Column="2" 
+                Orientation="Vertical" 
+                HorizontalAlignment="Center"
+                >
 
-            <TextBox
-                Style="{StaticResource BaseTextBox}"
-                Tag="Поиск"
-                BorderThickness="0"
-                />
-        </DockPanel>
-        
-        <DataGrid
-            Grid.Row="1"
-            BorderThickness="0,0,0,0"
-            BorderBrush="Black"/>
+                <Label Content="Название тура"/>
+                <ComboBox 
+                    x:Name="CarNumComboBoxMake" 
+                    Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.make_name}"
+                    />
+
+                <Label Content="Описание тура"/>
+                <ComboBox 
+                    x:Name="CarNumComboBoxModel" 
+                    Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.model_name}"
+                    />
+
+                <Label Content="Начальный город"/>
+                <TextBox 
+                    Style="{StaticResource BaseTextBox}"
+                    x:Name="CarNumTextRegPlates" 
+                    Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.reg_plates}"
+                    />
+
+                <Label Content="Конечный город"/>
+                <TextBox 
+                    Style="{StaticResource BaseTextBox}"
+                    x:Name="CarNumTextYearIssue" 
+                    Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.year_issue}"
+                    />
+
+                <Label Content="Цена"/>
+                <TextBox 
+                    Style="{StaticResource BaseTextBox}"
+                    x:Name="ывыв" 
+                    Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.price}"
+                    />
+
+                <Label Content="Количество дней"/>
+                <TextBox 
+                    Style="{StaticResource BaseTextBox}"
+                    x:Name="ывыаыа" 
+                    Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.price}"
+                    />
+
+                <Label Content="Размер группы"/>
+                <TextBox 
+                    Style="{StaticResource BaseTextBox}"
+                    x:Name="ваыаы" 
+                    Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.price}"
+                    />
+
+                <StackPanel 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Center" 
+                    Margin="0,15,0,0"
+                    >
+                    <Button 
+                        Style="{StaticResource BaseButton}"
+                        x:Name="CopyAddCommit" 
+                        Content="Добавить"
+                        Margin="0,0,3,0" 
+                        Width="100"
+                        />
+                    <Button 
+                        Style="{StaticResource BaseButton}"
+                        x:Name="CopyAddRollback" 
+                        Content="Отменить"
+                        Margin="3,0,0,0"
+                        Width="100"
+                        />
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
     </Grid>
 </Page>
