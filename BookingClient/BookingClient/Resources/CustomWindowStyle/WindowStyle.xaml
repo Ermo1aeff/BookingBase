@@ -97,12 +97,12 @@
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
                 <WindowChrome
-                    NonClientFrameEdges="Left,Bottom,Right"
+                    NonClientFrameEdges="None"
                     ResizeBorderThickness="5, 7, 5, 5"
                     CaptionHeight="28"
                     UseAeroCaptionButtons="False"
-                    GlassFrameThickness="0,0,0 1"
-                    CornerRadius="0" FrameworkElement.FlowDirection="RightToLeft"
+                    GlassFrameThickness="1,1,1 1"
+                    CornerRadius="0"
                 />
             </Setter.Value>
         </Setter>

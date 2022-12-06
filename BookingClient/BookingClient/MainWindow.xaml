@@ -12,7 +12,6 @@
         MinHeight="450"
         Icon="/BookingIco.ico"
         Name="BookingClient"
-        Style="{StaticResource WindowStyle}"
         Background="LightGray">
     <!--<Window.Effect>
         <DropShadowEffect

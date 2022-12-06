@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("styles/componentsstyle/cogs_result.svg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/model1.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("models/model1.tt")]
 
 

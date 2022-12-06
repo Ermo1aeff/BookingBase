@@ -13,7 +13,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="250" MaxWidth="250"/>
+            <ColumnDefinition Width="230" MaxWidth="250" x:Name="RecordChangeBlock"/>
         </Grid.ColumnDefinitions>
 
         <Grid>
@@ -24,20 +24,28 @@
 
             <DockPanel>
                 <Button
+                    x:Name="AddRecordButton"
                     Style="{StaticResource AddButton}"
                     ToolTip="Добавить"
+                    Click="AddRecordButton_Click"
                     />
                 <Button
+                    x:Name="CopyRecordButton"
                     Style="{StaticResource CopyButton}" 
                     ToolTip="Копировать"
+                    Click="CotyRecordButton_Click"
                     />
                 <Button
+                    x:Name="EditRecordButton"
                     Style="{StaticResource EditButton}"
                     ToolTip="Редактировать"
+                    Click="EditRecordButton_Click"
                     />
                 <Button
+                    x:Name="DeleteRecordButton"
                     Style="{StaticResource DeleteButton}"
                     ToolTip="Удалить"
+                    Click="DeleteRecordButton_Click"
                     />
 
                 <ComboBox
@@ -54,6 +62,7 @@
             </DockPanel>
 
             <DataGrid
+                x:Name="RecordsDataGrid"
                 Grid.Row="1"
                 AutoGenerateColumns="False"
                 CanUserAddRows="False"
@@ -71,11 +80,13 @@
                     </Style>
                 </DataGrid.Resources>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Рег. номер" Binding="{Binding Path=reg_plates}" Width="10*"/>
-                    <DataGridTextColumn Header="Производитель" Binding="{Binding Path=car.model_car.make_car.make_name}" Width="10*"/>
-                    <DataGridTextColumn Header="Модель" Binding="{Binding Path=car.model_car.model_name}" Width="10*"/>
-                    <DataGridTextColumn Header="Год выпуска" Binding="{Binding Path=car.year_issue}" Width="10*"/>
-                    <DataGridTextColumn Header="Цена за час" Binding="{Binding Path=car.price}" Width="10*"/>
+                    <DataGridTextColumn Header="Назнвание тура" Binding="{Binding tour_name}" Width="10*"/>
+                    <DataGridTextColumn Header="Описание тура" Binding="{Binding cities.tour_description}" Width="10*"/>
+                    <DataGridTextColumn Header="Начальный город" Binding="{Binding cities.city_name}" Width="10*"/>
+                    <DataGridTextColumn Header="Конечный город" Binding="{Binding cities.city_name}" Width="10*"/>
+                    <DataGridTextColumn Header="Цена" Binding="{Binding price}" Width="10*"/>
+                    <DataGridTextColumn Header="Кол-во дней" Binding="{Binding day_count}" Width="10*"/>
+                    <DataGridTextColumn Header="Размер группы" Binding="{Binding max_group_size}" Width="10*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
@@ -89,92 +100,102 @@
             Background="Transparent"
             />
 
-        <StackPanel Orientation="Vertical" Grid.Column="2">
+
+        <Grid Grid.Column="2" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+
             <Label 
-                Margin="0,16"
                 FontSize="24"
-                x:Name="RecordTitle" 
+                x:Name="RecordChangeTitle" 
                 Content="Добавление"
-                VerticalAlignment="Top"
+                VerticalAlignment="Center"
                 HorizontalAlignment="Center"
                 />
 
-            <StackPanel 
-                Grid.Row="1" 
-                Grid.Column="2" 
-                Orientation="Vertical" 
-                HorizontalAlignment="Center"
-                >
+            <ScrollViewer Grid.Row="1">
+                <StackPanel  
+                    Width="180"
+                    Orientation="Vertical" 
+                    HorizontalAlignment="Center"
+                    >
 
-                <Label Content="Название тура"/>
-                <ComboBox 
-                    x:Name="CarNumComboBoxMake" 
-                    Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.make_name}"
-                    />
+                    <Label Content="Название тура"/>
+                    <ComboBox 
+                        x:Name="CarNumComboBoxMake" 
+                        Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.make_name}"
+                        />
 
-                <Label Content="Описание тура"/>
-                <ComboBox 
-                    x:Name="CarNumComboBoxModel" 
-                    Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.model_name}"
-                    />
+                    <Label Content="Описание тура"/>
+                    <ComboBox 
+                        x:Name="CarNumComboBoxModel" 
+                        Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.model_name}"
+                        />  
 
-                <Label Content="Начальный город"/>
-                <TextBox 
-                    Style="{StaticResource BaseTextBox}"
-                    x:Name="CarNumTextRegPlates" 
-                    Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.reg_plates}"
-                    />
+                    <Label Content="Начальный город"/>
+                    <TextBox 
+                        Style="{StaticResource BaseTextBox}"
+                        x:Name="CarNumTextRegPlates" 
+                        Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.reg_plates}"
+                        />
 
-                <Label Content="Конечный город"/>
-                <TextBox 
+                    <Label Content="Конечный город"/>
+                    <TextBox 
                     Style="{StaticResource BaseTextBox}"
                     x:Name="CarNumTextYearIssue" 
                     Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.year_issue}"
                     />
 
-                <Label Content="Цена"/>
-                <TextBox 
-                    Style="{StaticResource BaseTextBox}"
-                    x:Name="ывыв" 
-                    Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.price}"
-                    />
-
-                <Label Content="Количество дней"/>
-                <TextBox 
-                    Style="{StaticResource BaseTextBox}"
-                    x:Name="ывыаыа" 
-                    Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.price}"
-                    />
-
-                <Label Content="Размер группы"/>
-                <TextBox 
-                    Style="{StaticResource BaseTextBox}"
-                    x:Name="ваыаы" 
-                    Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.price}"
-                    />
-
-                <StackPanel 
-                    Orientation="Horizontal" 
-                    HorizontalAlignment="Center" 
-                    Margin="0,15,0,0"
-                    >
-                    <Button 
-                        Style="{StaticResource BaseButton}"
-                        x:Name="CopyAddCommit" 
-                        Content="Добавить"
-                        Margin="0,0,3,0" 
-                        Width="100"
+                    <Label Content="Цена"/>
+                    <TextBox 
+                        Style="{StaticResource BaseTextBox}"
+                        x:Name="ывыв" 
+                        Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.price}"
                         />
-                    <Button 
-                        Style="{StaticResource BaseButton}"
-                        x:Name="CopyAddRollback" 
-                        Content="Отменить"
-                        Margin="3,0,0,0"
-                        Width="100"
+
+                    <Label Content="Количество дней"/>
+                    <TextBox 
+                        Style="{StaticResource BaseTextBox}"
+                        x:Name="ывыаыа" 
+                        Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.price}"
+                        />
+
+                    <Label Content="Размер группы"/>
+                    <TextBox 
+                        Style="{StaticResource BaseTextBox}"
+                        x:Name="ваыаы" 
+                        Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.price}"
                         />
                 </StackPanel>
+            </ScrollViewer>
+            
+            <StackPanel 
+                Grid.Row="2" 
+                Orientation="Horizontal" 
+                HorizontalAlignment="Center"
+                Height="30"
+                >
+                <Button 
+                    Style="{StaticResource BaseButton}"
+                    x:Name="CommitChangeRecordsButton" 
+                    Content="Добавить"
+                    Margin="0,0,3,0" 
+                    Width="100"
+                    Click="CommitChangeRecordsButton_Click"
+                    />
+                <Button 
+                    x:Name="RollbackChangeRecordsButton"
+                    Style="{StaticResource BaseButton}"
+                    Content="Отменить"
+                    Margin="3,0,0,0"
+                    Width="100"
+                    Click="RollbackChangeRecordsButton_Click"
+                    />
             </StackPanel>
-        </StackPanel>
+        </Grid>
 
     </Grid>
 </Page>

@@ -147,3 +147,10 @@ D:\4IS2\Ermolaev\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingC
 D:\4IS2\Ermolaev\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.CoreCompileInputs.cache
 D:\4IS2\Ermolaev\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient.exe
 D:\4IS2\Ermolaev\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient.pdb
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\bin\Debug\EntityFramework.dll
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\bin\Debug\EntityFramework.xml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient_Content.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.CopyComplete

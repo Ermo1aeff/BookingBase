@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\4IS2\Ermolaev\BookingBase-main\BookingClient\BookingClient\obj\Debug\
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\
 BookingClient
 none
 false
 DEBUG;TRACE
-D:\4IS2\Ermolaev\BookingBase-main\BookingClient\BookingClient\App.xaml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\App.xaml
 8474244612
-
-121192052157
-14-1290796308
+21628168987
+311967352463
+191600433148
 AuthorizationWindow.xaml;MainWindow.xaml;Pages\ToursPage.xaml;RegistrationWindow.xaml;Resources\ComponentsStyle\BaseComponentsStyles.xaml;Resources\ComponentsStyle\ComponentsStyle.xaml;Resources\CustomWindowStyle\WindowStyle.xaml;Resources\ComponentsStyle\Geometries.xaml;
 slpashscreen1.png
 True
