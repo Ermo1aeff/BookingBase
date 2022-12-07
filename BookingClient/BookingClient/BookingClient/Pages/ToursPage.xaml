@@ -1,0 +1,201 @@
+﻿<Page x:Class="BookingClient.Pages.ToursPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BookingClient.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="1000"
+      Background="White"
+      Title="ToursPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="230" MaxWidth="250" x:Name="RecordChangeBlock"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="36"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <DockPanel>
+                <Button
+                    x:Name="AddRecordButton"
+                    Style="{StaticResource AddButton}"
+                    ToolTip="Добавить"
+                    Click="AddRecordButton_Click"
+                    />
+                <Button
+                    x:Name="CopyRecordButton"
+                    Style="{StaticResource CopyButton}" 
+                    ToolTip="Копировать"
+                    Click="CotyRecordButton_Click"
+                    />
+                <Button
+                    x:Name="EditRecordButton"
+                    Style="{StaticResource EditButton}"
+                    ToolTip="Редактировать"
+                    Click="EditRecordButton_Click"
+                    />
+                <Button
+                    x:Name="DeleteRecordButton"
+                    Style="{StaticResource DeleteButton}"
+                    ToolTip="Удалить"
+                    Click="DeleteRecordButton_Click"
+                    />
+
+                <ComboBox
+                    Width="180">
+                    <ComboBoxItem Name="item1">item1</ComboBoxItem>
+                    <ComboBoxItem Name="item2">item2</ComboBoxItem>
+                    <ComboBoxItem Name="item3">item3</ComboBoxItem>
+                </ComboBox>
+
+                <TextBox
+                    Style="{StaticResource BaseTextBox}"
+                    Tag="Поиск"
+                    />
+            </DockPanel>
+
+            <DataGrid
+                x:Name="RecordsDataGrid"
+                Grid.Row="1"
+                AutoGenerateColumns="False"
+                CanUserAddRows="False"
+                BorderThickness="0,0,0,0"
+                >
+                <DataGrid.Resources>
+                    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="White" />
+                        <Setter Property="Height" Value="25" />
+                        <Setter Property="FontSize" Value="15" />
+                        <Setter Property="Foreground" Value="Black" />
+                    </Style>
+                    <Style TargetType="ScrollBar">
+                        <Setter Property="Background" Value="Wheat" />
+                    </Style>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Назнвание тура" Binding="{Binding tour_name}" Width="10*"/>
+                    <DataGridTextColumn Header="Описание тура" Binding="{Binding cities.tour_description}" Width="10*"/>
+                    <DataGridTextColumn Header="Начальный город" Binding="{Binding cities.city_name}" Width="10*"/>
+                    <DataGridTextColumn Header="Конечный город" Binding="{Binding cities.city_name}" Width="10*"/>
+                    <DataGridTextColumn Header="Цена" Binding="{Binding price}" Width="10*"/>
+                    <DataGridTextColumn Header="Кол-во дней" Binding="{Binding day_count}" Width="10*"/>
+                    <DataGridTextColumn Header="Размер группы" Binding="{Binding max_group_size}" Width="10*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <GridSplitter 
+            x:Name="DialogGridSplitter" 
+            Grid.Column="1" 
+            Grid.Row="2"
+            HorizontalAlignment="Stretch" 
+            Width="3" 
+            Background="Transparent"
+            />
+
+
+        <Grid Grid.Column="2" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+
+            <Label 
+                FontSize="24"
+                x:Name="RecordChangeTitle" 
+                Content="Добавление"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                />
+
+            <ScrollViewer Grid.Row="1">
+                <StackPanel  
+                    Width="180"
+                    Orientation="Vertical" 
+                    HorizontalAlignment="Center"
+                    >
+
+                    <Label Content="Название тура"/>
+                    <ComboBox 
+                        x:Name="CarNumComboBoxMake" 
+                        Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.make_name}"
+                        />
+
+                    <Label Content="Описание тура"/>
+                    <ComboBox 
+                        x:Name="CarNumComboBoxModel" 
+                        Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.model_name}"
+                        />  
+
+                    <Label Content="Начальный город"/>
+                    <TextBox 
+                        Style="{StaticResource BaseTextBox}"
+                        x:Name="CarNumTextRegPlates" 
+                        Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.reg_plates}"
+                        />
+
+                    <Label Content="Конечный город"/>
+                    <TextBox 
+                    Style="{StaticResource BaseTextBox}"
+                    x:Name="CarNumTextYearIssue" 
+                    Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.year_issue}"
+                    />
+
+                    <Label Content="Цена"/>
+                    <TextBox 
+                        Style="{StaticResource BaseTextBox}"
+                        x:Name="ывыв" 
+                        Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.price}"
+                        />
+
+                    <Label Content="Количество дней"/>
+                    <TextBox 
+                        Style="{StaticResource BaseTextBox}"
+                        x:Name="ывыаыа" 
+                        Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.price}"
+                        />
+
+                    <Label Content="Размер группы"/>
+                    <TextBox 
+                        Style="{StaticResource BaseTextBox}"
+                        x:Name="ваыаы" 
+                        Text="{Binding ElementName=RegPlatesDataGrid, Path=SelectedItem.price}"
+                        />
+                </StackPanel>
+            </ScrollViewer>
+            
+            <StackPanel 
+                Grid.Row="2" 
+                Orientation="Horizontal" 
+                HorizontalAlignment="Center"
+                Height="30"
+                >
+                <Button 
+                    Style="{StaticResource BaseButton}"
+                    x:Name="CommitChangeRecordsButton" 
+                    Content="Добавить"
+                    Margin="0,0,3,0" 
+                    Width="100"
+                    Click="CommitChangeRecordsButton_Click"
+                    />
+                <Button 
+                    x:Name="RollbackChangeRecordsButton"
+                    Style="{StaticResource BaseButton}"
+                    Content="Отменить"
+                    Margin="3,0,0,0"
+                    Width="100"
+                    Click="RollbackChangeRecordsButton_Click"
+                    />
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</Page>

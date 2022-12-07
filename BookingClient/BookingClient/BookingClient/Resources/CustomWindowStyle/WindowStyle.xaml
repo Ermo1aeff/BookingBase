@@ -1,0 +1,270 @@
+﻿<ResourceDictionary 
+    x:Class="BookingClient.Styles.CustomWindowStyle.WindowStyle"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    >
+
+    <!--Тайтл и пользовательская часть-->
+    <SolidColorBrush x:Key="TitleBarBackground" Color="#2d2d30" />
+    <SolidColorBrush x:Key="TitleBarBackgroundInactive" Color="#424246" />
+    <SolidColorBrush x:Key="WindowBackgroud" Color="#a9a9a9" />
+    <SolidColorBrush x:Key="TitleLable" Color="#f1f1f1" />
+
+    <!--Границы окна-->
+    <SolidColorBrush x:Key="WindowBorder" Color="#2d2d30" />
+    <SolidColorBrush x:Key="WindowBorderInactive" Color="#424246" />
+
+    <!--Кнопки Minimize и Mazimize-->
+    <SolidColorBrush x:Key="ButtonBackgroud" Color="Transparent" />
+    <SolidColorBrush x:Key="ButtonForeground" Color="#6f6f6f" />
+    <SolidColorBrush x:Key="ButtonBackgroudMouseOver" Color="#3f3f41" />
+    <SolidColorBrush x:Key="ButtonForegroundMouseOver" Color="#f1f1f1" />
+    <SolidColorBrush x:Key="ButtonBackgroudPressed" Color="#6f6f6f" />
+    <SolidColorBrush x:Key="ButtonForegroundPressed" Color="#fff" />
+
+    <!--Кнопка Close-->
+    <SolidColorBrush x:Key="ButtonCloseBackgroudMouseOver" Color="#e81123" />
+    <SolidColorBrush x:Key="ButtonCloseForegroundMouseOver" Color="#f1f1f1" />
+    <SolidColorBrush x:Key="ButtonCloseBackgroudPressed" Color="#e81123" />
+    <SolidColorBrush x:Key="ButtonCloseForegroundPressed" Color="#FFF" />
+
+    <!--Стиль кнопок Minimize и Mazimize-->
+    <Style x:Key="WindowStyleTitleBarButton" TargetType="{x:Type Button}">
+        <Setter Property="Focusable" Value="false" />
+        <Setter Property="Width" Value="46"/>
+        <Setter Property="Foreground" Value="{StaticResource ButtonForeground}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Border
+                            x:Name="ButtonBorder"
+                            Background="{StaticResource ButtonBackgroud}"
+                            />
+                        <ContentPresenter />
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource ButtonBackgroudMouseOver}" />
+                            <Setter Property="Foreground" Value="{StaticResource ButtonForegroundMouseOver}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource ButtonBackgroudPressed}"/>
+                            <Setter TargetName="ButtonBorder" Property="Opacity" Value="0.7" />
+                            <Setter Property="Foreground" Value="{StaticResource ButtonForegroundPressed}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--Стиль кнопки Close-->
+    <Style x:Key="WindowStyleTitleBarButtonClose" TargetType="{x:Type Button}" BasedOn="{StaticResource WindowStyleTitleBarButton}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Border
+                            x:Name="ButtonBorder"
+                            Background="{StaticResource ButtonBackgroud}"
+                            />
+                        <ContentPresenter />
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource ButtonCloseBackgroudMouseOver}" />
+                            <Setter TargetName="ButtonBorder" Property="Opacity" Value="0.7" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="#e81123"/>
+                            <Setter Property="Foreground" Value="#fff"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Стиль окна-->
+    <Style x:Key="WindowStyle" TargetType="{x:Type Window}">
+        <Setter Property="WindowStyle" Value="SingleBorderWindow" />
+        <!--<Setter Property="Background" Value="Transparent" />-->
+        <Setter Property="ResizeMode" Value="CanResize" />
+
+        <Setter Property="WindowChrome.WindowChrome">
+            <Setter.Value>
+                <WindowChrome
+                    NonClientFrameEdges="None"
+                    ResizeBorderThickness="5, 7, 5, 5"
+                    CaptionHeight="28"
+                    UseAeroCaptionButtons="False"
+                    GlassFrameThickness="1,1,1 1"
+                    CornerRadius="0"
+                />
+            </Setter.Value>
+        </Setter>
+        
+        <EventSetter Event="Loaded" Handler="WindowLoaded" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Window}">
+                    <Border
+                        x:Name="PART_Container"
+                        >
+                        <Grid
+                            TextOptions.TextRenderingMode="ClearType"
+                            TextOptions.TextFormattingMode="Display"
+                            >
+                            <Border
+                                x:Name="WindowBorder"
+                                Width="Auto"
+                                Height="Auto"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{StaticResource WindowBorder}"
+                                BorderThickness="0"
+                                >
+                                <DockPanel
+                                    HorizontalAlignment="Stretch"
+                                    Background="Transparent"
+                                    VerticalAlignment="Stretch"
+                                    >
+                                    <Border
+                                        x:Name="TitleBorder"
+                                        DockPanel.Dock="Top"
+                                        Background="{StaticResource TitleBarBackground}"
+                                        >
+                                        <Grid>
+
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="28"/>
+                                            </Grid.RowDefinitions>
+                                            
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="28"/>
+                                                <ColumnDefinition />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Image
+                                                x:Name="Icon"
+                                                Grid.Column="0"
+                                                Source="{Binding Path=Icon, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" 
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Width="20"
+                                                Height="20"
+                                                MouseUp="IconMouseUp"
+                                                MouseLeftButtonDown="IconMouseLeftButtonDown"
+                                                WindowChrome.IsHitTestVisibleInChrome="True"
+                                                />
+                                            
+                                            <TextBlock
+                                                x:Name="Caption"
+                                                Grid.Column="1"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                Margin="4,0,0,0"
+                                                FontFamily="Segoe UI"
+                                                FontSize="12"
+                                                Foreground="{StaticResource TitleLable}"
+                                                Text="{Binding Path=Title, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                                />
+
+                                            <StackPanel 
+                                                HorizontalAlignment="Right"
+                                                Orientation="Horizontal"
+                                                Grid.Column="2">
+                                                <Button
+                                                    x:Name="MinButton"
+                                                    Style="{StaticResource WindowStyleTitleBarButton}"
+                                                    Click="MinButtonClick"
+                                                    WindowChrome.IsHitTestVisibleInChrome="True"
+                                                    >
+                                                    <Path 
+                                                        Height="10" Width="10"
+                                                        Stroke="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"
+                                                        VerticalAlignment="Center"
+                                                        HorizontalAlignment="Center"
+                                                        StrokeThickness="1"
+                                                        Stretch="None"
+                                                        RenderOptions.EdgeMode="Aliased"
+                                                        Data="M0,5 L10,5"
+                                                        />
+                                                </Button>
+
+                                                <Button
+                                                    x:Name="MaxButton" 
+                                                    Style="{StaticResource WindowStyleTitleBarButton}"
+                                                    Click="MaxButtonClick"
+                                                    WindowChrome.IsHitTestVisibleInChrome="True"
+                                                    >
+                                                    <Path 
+                                                        Height="10" Width="10"
+                                                        x:Name="PART_MaxButton_Path"
+                                                        Stroke="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"
+                                                        StrokeThickness="1"
+                                                        Stretch="None"
+                                                        RenderOptions.EdgeMode="Aliased"
+                                                        Data="M1,1 L10,1 L10,10 L1,10 Z"
+                                                        />
+                                                </Button>
+
+                                                <Button
+                                                    x:Name="CloseButton"
+                                                    Style="{StaticResource WindowStyleTitleBarButtonClose}"
+                                                    Click="CloseButtonClick"
+                                                    WindowChrome.IsHitTestVisibleInChrome="True"
+                                                    >
+                                                    <Path 
+                                                        Height="10" Width="10"
+                                                        Stroke="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"
+                                                        StrokeThickness="1"
+                                                        Stretch="None"
+                                                        Data="M0,10 L10,0 M10,10 L0,0"
+                                                        />
+                                                </Button>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+                                    <ContentPresenter />
+                                </DockPanel>
+                            </Border>
+                        </Grid>
+                    </Border>
+                    
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="WindowState" Value="Maximized">
+                            <Setter TargetName="PART_MaxButton_Path" Property="Data" Value="M1,10 8,10 8,3, 1,3 1,10.5 M3,3 3,1 10,1, 10,8, 8,8" />
+                        </Trigger>
+                        
+                        <Trigger Property="WindowState" Value="Normal">
+                            <Setter 
+                                TargetName="PART_Container" 
+                                Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect
+                                        Color="black"
+                                        Opacity="0.5"
+                                        BlurRadius="7"
+                                        ShadowDepth="2"
+                                        Direction="315"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+
+                        <Trigger Property="IsActive" Value="False">
+                            <Setter TargetName="WindowBorder" Property="BorderBrush" Value="{StaticResource WindowBorderInactive}" />
+                            <Setter TargetName="TitleBorder" Property="Background" Value="{StaticResource TitleBarBackgroundInactive}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                    
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+</ResourceDictionary>
