@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Booking_BaseModelStoreContainer" CdmEntityContainer="Booking_BaseEntities1">
+    <EntitySetMapping Name="accounts">
+      <EntityTypeMapping TypeName="Booking_BaseModel.accounts">
+        <MappingFragment StoreEntitySet="accounts">
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+          <ScalarProperty Name="account_login" ColumnName="account_login" />
+          <ScalarProperty Name="account_password" ColumnName="account_password" />
+          <ScalarProperty Name="first_name_id" ColumnName="first_name_id" />
+          <ScalarProperty Name="last_name_id" ColumnName="last_name_id" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cities">
+      <EntityTypeMapping TypeName="Booking_BaseModel.cities">
+        <MappingFragment StoreEntitySet="cities">
+          <ScalarProperty Name="city_id" ColumnName="city_id" />
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+          <ScalarProperty Name="city_name" ColumnName="city_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="countries">
+      <EntityTypeMapping TypeName="Booking_BaseModel.countries">
+        <MappingFragment StoreEntitySet="countries">
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+          <ScalarProperty Name="country_name" ColumnName="country_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="departure_rooms">
+      <EntityTypeMapping TypeName="Booking_BaseModel.departure_rooms">
+        <MappingFragment StoreEntitySet="departure_rooms">
+          <ScalarProperty Name="departure_room_id" ColumnName="departure_room_id" />
+          <ScalarProperty Name="room_id" ColumnName="room_id" />
+          <ScalarProperty Name="departure_id" ColumnName="departure_id" />
+          <ScalarProperty Name="room_count" ColumnName="room_count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="departures">
+      <EntityTypeMapping TypeName="Booking_BaseModel.departures">
+        <MappingFragment StoreEntitySet="departures">
+          <ScalarProperty Name="departure_id" ColumnName="departure_id" />
+          <ScalarProperty Name="tour_id" ColumnName="tour_id" />
+          <ScalarProperty Name="date_begin" ColumnName="date_begin" />
+          <ScalarProperty Name="group_size" ColumnName="group_size" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="first_names">
+      <EntityTypeMapping TypeName="Booking_BaseModel.first_names">
+        <MappingFragment StoreEntitySet="first_names">
+          <ScalarProperty Name="first_name_id" ColumnName="first_name_id" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="included">
+      <EntityTypeMapping TypeName="Booking_BaseModel.included">
+        <MappingFragment StoreEntitySet="included">
+          <ScalarProperty Name="included1" ColumnName="included" />
+          <ScalarProperty Name="tour_id" ColumnName="tour_id" />
+          <ScalarProperty Name="inclusion_id" ColumnName="inclusion_id" />
+          <ScalarProperty Name="included_choice" ColumnName="included_choice" />
+          <ScalarProperty Name="included_description" ColumnName="included_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inclusions">
+      <EntityTypeMapping TypeName="Booking_BaseModel.inclusions">
+        <MappingFragment StoreEntitySet="inclusions">
+          <ScalarProperty Name="inclusion_id" ColumnName="inclusion_id" />
+          <ScalarProperty Name="inclusion_name" ColumnName="inclusion_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="itirerary">
+      <EntityTypeMapping TypeName="Booking_BaseModel.itirerary">
+        <MappingFragment StoreEntitySet="itirerary">
+          <ScalarProperty Name="itinerary" ColumnName="itinerary" />
+          <ScalarProperty Name="tour_id" ColumnName="tour_id" />
+          <ScalarProperty Name="day_num" ColumnName="day_num" />
+          <ScalarProperty Name="itinerary_name" ColumnName="itinerary_name" />
+          <ScalarProperty Name="itirarary_description" ColumnName="itirarary_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="last_names">
+      <EntityTypeMapping TypeName="Booking_BaseModel.last_names">
+        <MappingFragment StoreEntitySet="last_names">
+          <ScalarProperty Name="last_name_id" ColumnName="last_name_id" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order_rooms">
+      <EntityTypeMapping TypeName="Booking_BaseModel.order_rooms">
+        <MappingFragment StoreEntitySet="order_rooms">
+          <ScalarProperty Name="order_rooms1" ColumnName="order_rooms" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="room_id" ColumnName="room_id" />
+          <ScalarProperty Name="room_count" ColumnName="room_count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orders">
+      <EntityTypeMapping TypeName="Booking_BaseModel.orders">
+        <MappingFragment StoreEntitySet="orders">
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="departures_id" ColumnName="departures_id" />
+          <ScalarProperty Name="contact_phone" ColumnName="contact_phone" />
+          <ScalarProperty Name="person_count" ColumnName="person_count" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="persons">
+      <EntityTypeMapping TypeName="Booking_BaseModel.persons">
+        <MappingFragment StoreEntitySet="persons">
+          <ScalarProperty Name="person_id" ColumnName="person_id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="first_name_id" ColumnName="first_name_id" />
+          <ScalarProperty Name="last_name_id" ColumnName="last_name_id" />
+          <ScalarProperty Name="city_id" ColumnName="city_id" />
+          <ScalarProperty Name="passport" ColumnName="passport" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="programs">
+      <EntityTypeMapping TypeName="Booking_BaseModel.programs">
+        <MappingFragment StoreEntitySet="programs">
+          <ScalarProperty Name="program_id" ColumnName="program_id" />
+          <ScalarProperty Name="program_name" ColumnName="program_name" />
+          <ScalarProperty Name="program_event" ColumnName="program_event" />
+          <ScalarProperty Name="duration_begin" ColumnName="duration_begin" />
+          <ScalarProperty Name="duration_end" ColumnName="duration_end" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="room_types">
+      <EntityTypeMapping TypeName="Booking_BaseModel.room_types">
+        <MappingFragment StoreEntitySet="room_types">
+          <ScalarProperty Name="room_type_id" ColumnName="room_type_id" />
+          <ScalarProperty Name="room_name" ColumnName="room_name" />
+          <ScalarProperty Name="beds_count" ColumnName="beds_count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rooms">
+      <EntityTypeMapping TypeName="Booking_BaseModel.rooms">
+        <MappingFragment StoreEntitySet="rooms">
+          <ScalarProperty Name="room_id" ColumnName="room_id" />
+          <ScalarProperty Name="room_type_id" ColumnName="room_type_id" />
+          <ScalarProperty Name="tour_id" ColumnName="tour_id" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tours">
+      <EntityTypeMapping TypeName="Booking_BaseModel.tours">
+        <MappingFragment StoreEntitySet="tours">
+          <ScalarProperty Name="tour_description" ColumnName="tour_description" />
+          <ScalarProperty Name="tour_id" ColumnName="tour_id" />
+          <ScalarProperty Name="tour_name" ColumnName="tour_name" />
+          <ScalarProperty Name="city_begin_id" ColumnName="city_begin_id" />
+          <ScalarProperty Name="city_end_id" ColumnName="city_end_id" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="day_count" ColumnName="day_count" />
+          <ScalarProperty Name="max_group_size" ColumnName="max_group_size" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
