@@ -56,7 +56,7 @@ namespace BookingClient.Styles.CustomWindowStyle
                 //{
                 //    containerBorder.Padding = new Thickness(7);
                 //}
-                containerBorder.Padding = new Thickness(7);
+                containerBorder.Padding = new Thickness(8);
 
             }
         }
@@ -69,7 +69,7 @@ namespace BookingClient.Styles.CustomWindowStyle
 
             if (w.WindowState == WindowState.Maximized)
             {
-                containerBorder.Padding = new Thickness(7);
+                containerBorder.Padding = new Thickness(8);
             }
             else
             {

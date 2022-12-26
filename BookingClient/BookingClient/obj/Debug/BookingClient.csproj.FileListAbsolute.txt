@@ -226,3 +226,25 @@ C:\Users\1\Desktop\BookingBase-main\BookingClient\BookingClient\obj\Debug\Bookin
 C:\Users\1\Desktop\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.CopyComplete
 C:\Users\1\Desktop\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient.exe
 C:\Users\1\Desktop\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient.pdb
+D:\4is2\Ermolaev\BookingBase-main\BookingClient\BookingClient\bin\Debug\EntityFramework.dll
+D:\4is2\Ermolaev\BookingBase-main\BookingClient\BookingClient\bin\Debug\EntityFramework.SqlServer.dll
+D:\4is2\Ermolaev\BookingBase-main\BookingClient\BookingClient\bin\Debug\EntityFramework.xml
+D:\4is2\Ermolaev\BookingBase-main\BookingClient\BookingClient\bin\Debug\EntityFramework.SqlServer.xml
+D:\4is2\Ermolaev\BookingBase-main\BookingClient\BookingClient\bin\Debug\ru\EntityFramework.resources.dll
+D:\4is2\Ermolaev\BookingBase-main\BookingClient\BookingClient\obj\Debug\Pages\DeparturesPage.g.cs
+D:\4is2\Ermolaev\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient_Content.g.cs
+D:\4is2\Ermolaev\BookingBase-main\BookingClient\BookingClient\obj\Debug\Pages\DeparturesPage.baml
+D:\4is2\Ermolaev\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.CopyComplete
+D:\4is2\Ermolaev\BookingBase-main\BookingClient\BookingClient\obj\Debug\Pages\OrdersPage.g.cs
+D:\4is2\Ermolaev\BookingBase-main\BookingClient\BookingClient\obj\Debug\Pages\OrdersPage.baml
+C:\Users\1\Desktop\BookingBase-main\BookingClient\BookingClient\obj\Debug\Pages\OrdersPage.g.cs
+C:\Users\1\Desktop\BookingBase-main\BookingClient\BookingClient\obj\Debug\Pages\OrdersPage.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DeparturesPage.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\OrdersPage.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DeparturesPage.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\OrdersPage.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\ComponentsStyle\ComponentsStyle.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\CreateOrdersPage.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\CreateOrdersPage.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\ImagesPage.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\ImagesPage.baml

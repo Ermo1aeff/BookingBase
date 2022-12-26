@@ -17,11 +17,8 @@ namespace BookingClient.Models
         public int account_id { get; set; }
         public string account_login { get; set; }
         public string account_password { get; set; }
-        public Nullable<int> first_name_id { get; set; }
-        public Nullable<int> last_name_id { get; set; }
+        public string first_name { get; set; }
+        public string last_name { get; set; }
         public Nullable<int> status { get; set; }
-    
-        public virtual first_names first_names { get; set; }
-        public virtual last_names last_names { get; set; }
     }
 }

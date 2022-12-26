@@ -21,8 +21,6 @@ namespace BookingClient.Pages
     /// </summary>
     public partial class ToursPage : Page
     {
-        public tours tours { get; set; }
-
         //описание вспомогательных переменных
         private int DlgMode = -1;
         private string buf1;
@@ -43,10 +41,11 @@ namespace BookingClient.Pages
             EndCityTextBox.ItemsSource = SourceCore.entities.cities.ToList();
         }
 
-        public void CarNumDlgLoad(bool b)
+        public void DlgLoad(bool b)
         {
             if (b == true)
             {
+                RecordChangeBlock.MinWidth = 230;
                 RecordChangeBlock.Width = new GridLength(230);
                 //Включаем кнопки
                 RecordsDataGrid.IsHitTestVisible = false;
@@ -54,9 +53,11 @@ namespace BookingClient.Pages
                 CopyRecordButton.IsEnabled = false;
                 EditRecordButton.IsEnabled = false;
                 DeleteRecordButton.IsEnabled = false;
+                DialogGridSplitter.Visibility = Visibility.Visible;
             }
             else
             {
+                RecordChangeBlock.MinWidth = 0;
                 RecordChangeBlock.Width = new GridLength(0);
                 //Выключаем кнопки
                 RecordsDataGrid.IsHitTestVisible = true;
@@ -64,19 +65,20 @@ namespace BookingClient.Pages
                 CopyRecordButton.IsEnabled = true;
                 EditRecordButton.IsEnabled = true;
                 DeleteRecordButton.IsEnabled = true;
+                DialogGridSplitter.Visibility = Visibility.Collapsed;
                 DlgMode = -1;
             }
         }
 
         private void AddRecordButton_Click(object sender, RoutedEventArgs e)
         {
-            CarNumDlgLoad(true);
+            DlgLoad(true);
             DlgMode = 0;
             RecordsDataGrid.SelectedItem = null;
             RecordChangeTitle.Content = "Добавление";
             TourNameTextBox.Text = "";
             TourDescriptionTextBox.Text = "";
-            EndCityTextBox.Text = "";
+            //EndCityTextBox.Text = "";
             PriceTextBox.Text = "";
             DayCountTextBox.Text = "";
             MaxGroupSizeTextBox.Text = "";
@@ -86,27 +88,27 @@ namespace BookingClient.Pages
         {
             if (RecordsDataGrid.SelectedItem != null)
             {
-                CarNumDlgLoad(true);
+                DlgLoad(true);
                 DlgMode = 0;
                 RecordChangeTitle.Content = "Копирование";
 
                 //использование буферных переменных для «отрыва» от данных выбранной строки (чтобы не сработал Binding)
                 buf1 = TourNameTextBox.Text;
                 buf2 = TourDescriptionTextBox.Text;
-                buf4 = EndCityTextBox.Text;
-                buf5 = PriceTextBox.Text;
-                buf6 = DayCountTextBox.Text;
-                buf7 = MaxGroupSizeTextBox.Text;
+                //buf3 = EndCityTextBox.Text;
+                buf4 = PriceTextBox.Text;
+                buf5 = DayCountTextBox.Text;
+                buf6 = MaxGroupSizeTextBox.Text;
 
                 //убрать фокус с выделенной строки
                 RecordsDataGrid.SelectedItem = null;
 
                 TourNameTextBox.Text = buf1;
                 TourDescriptionTextBox.Text = buf2;
-                EndCityTextBox.Text = buf4;
-                PriceTextBox.Text = buf5;
-                DayCountTextBox.Text = buf6;
-                MaxGroupSizeTextBox.Text = buf7;
+                //EndCityTextBox.Text = buf3;
+                PriceTextBox.Text = buf4;
+                DayCountTextBox.Text = buf5;
+                MaxGroupSizeTextBox.Text = buf6;
             }
             else
             {
@@ -118,7 +120,7 @@ namespace BookingClient.Pages
         {
             if (RecordsDataGrid.SelectedItem != null)
             {
-                CarNumDlgLoad(true);
+                DlgLoad(true);
                 RecordChangeTitle.Content = "Редактирование";
             }
             else
@@ -145,7 +147,7 @@ namespace BookingClient.Pages
                 NewTour.tour_name = TourNameTextBox.Text;
                 NewTour.tour_description = TourDescriptionTextBox.Text;
                 NewTour.cities = (cities)BeginCityComboBox.SelectedItem;
-                NewTour.price = Convert.ToDecimal(PriceTextBox.Text);
+                //NewTour.price = Convert.ToDecimal(PriceTextBox.Text);
                 NewTour.day_count = Convert.ToInt32(DayCountTextBox.Text);
                 NewTour.max_group_size = Convert.ToInt32(MaxGroupSizeTextBox.Text);
                 SourceCore.entities.tours.Add(NewTour);
@@ -153,19 +155,18 @@ namespace BookingClient.Pages
             SourceCore.entities.SaveChanges();
 
             RecordsDataGrid.ItemsSource = SourceCore.entities.tours.ToList();
-            CarNumDlgLoad(false);
-
+            DlgLoad(false);
         }
 
         private void RollbackChangeRecordsButton_Click(object sender, RoutedEventArgs e)
         {
-            CarNumDlgLoad(false);
+            DlgLoad(false);
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             List<String> Columns = new List<string>();
-            for (int I = 0; I < 6; I++)
+            for (int I = 0; I < 5; I++)
             {
                 Columns.Add(RecordsDataGrid.Columns[I].Header.ToString());
             }
@@ -200,9 +201,15 @@ namespace BookingClient.Pages
                     RecordsDataGrid.ItemsSource = SourceCore.entities.tours.Where(filtercase => filtercase.tour_description.Contains(textbox)).ToList();
                     break;
                 case 2:
-                    RecordsDataGrid.ItemsSource = SourceCore.entities.tours.Where(filtercase => filtercase.price.ToString().Contains(textbox)).ToList();
+                    RecordsDataGrid.ItemsSource = SourceCore.entities.tours.Where(filtercase => filtercase.cities.city_name.ToString().Contains(textbox)).ToList();
                     break;
                 case 3:
+                    RecordsDataGrid.ItemsSource = SourceCore.entities.tours.Where(filtercase => filtercase.price.ToString().Contains(textbox)).ToList();
+                    break;
+                case 4:
+                    RecordsDataGrid.ItemsSource = SourceCore.entities.tours.Where(filtercase => filtercase.day_count.ToString().Contains(textbox)).ToList();
+                    break;
+                case 5:
                     RecordsDataGrid.ItemsSource = SourceCore.entities.tours.Where(filtercase => filtercase.max_group_size.ToString().Contains(textbox)).ToList();
                     break;
             }

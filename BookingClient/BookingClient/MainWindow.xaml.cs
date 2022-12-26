@@ -131,7 +131,78 @@ namespace BookingClient
             ShowPage(typeof(DeparturesPage));
         }
 
+        private void OrdersButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShowPage(typeof(OrdersPage));
+        }
 
+        private void BookingClient_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            //MainGrid.Width =  (1600 - 800) / (100 - 200) * MainGrid.Width - 100; 
+        }
 
+        private void OrderToursButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShowPage(typeof(CreateOrdersPage));
+        }
+
+        private void InteraryButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CitiesButton_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void CountriesButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ToursButoon_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void NamesButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void FirstNamesButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LastNamesButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void InclusionsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void IncludedButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OrderRoomsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RoomsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ImagesButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShowPage(typeof(ImagesPage));
+        }
     }
 }

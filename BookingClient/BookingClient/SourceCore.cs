@@ -9,6 +9,6 @@ namespace BookingClient
 {
     class SourceCore
     {
-        public static Booking_BaseEntities1 entities = new Booking_BaseEntities1();
+        public static Booking_BaseEntities2 entities = new Booking_BaseEntities2();
     }
 }

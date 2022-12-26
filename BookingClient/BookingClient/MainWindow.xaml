@@ -6,23 +6,54 @@
         xmlns:local="clr-namespace:BookingClient"
         mc:Ignorable="d"
         Title="Bookimg Client"
-        Height="520"
+        Height="620"
         Width="860"
         MinWidth="800"
         MinHeight="450"
-        Icon="/BookingIco.ico"
+        Icon="Resources/Images/BookingIco.ico"
         Name="BookingClient"
-        Background="LightGray"
+        Background="White"
         WindowState="Maximized"
-        Style="{StaticResource WindowStyle}">
+        Style="{StaticResource WindowStyle}"
+        SizeChanged="BookingClient_SizeChanged">
 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="160"/>
-            <ColumnDefinition/>
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <StackPanel Background="Silver">
+            <Button
+                x:Name="OrderToursButton"
+                Style="{StaticResource MenuButton}"
+                Content="Оформить заказ"
+                Click="OrderToursButton_Click"
+                />
+            <Button
+                x:Name="OrdersButton"
+                Style="{StaticResource MenuButton}"
+                Content="Заказы"
+                Click="OrdersButton_Click"
+                />
+            <Button 
+                x:Name="DeparturesButton"
+                Style="{StaticResource MenuButton}"
+                Content="Рассписание туров" 
+                Click="DeparturesButton_Click" 
+                />
+            <Button
+                x:Name="OrderRoomsButton"
+                Style="{StaticResource MenuButton}"
+                Content="Номера заказов"
+                Click="OrderRoomsButton_Click"
+                />
+            <Button
+                x:Name="ToursButoon"
+                Style="{StaticResource MenuButton}"
+                Content="Туристы"
+                Click="ToursButoon_Click"
+                />
             <Button
                 x:Name="ToursButton"
                 Style="{StaticResource MenuButton}"
@@ -30,40 +61,71 @@
                 Click="ToursButton_Click"
                 />
             <Button
-                x:Name="DeparturesButton"
+                x:Name="IncludedButton"
                 Style="{StaticResource MenuButton}"
                 Content="Услуги"
-                Click="DeparturesButton_Click"
+                Click="IncludedButton_Click"
                 />
             <Button
+                x:Name="InteraryButton"
+                Style="{StaticResource MenuButton}"
+                Content="Маршруты"
+                Click="InteraryButton_Click"
+                />
+            <Button
+                x:Name="RoomsButton"
+                Style="{StaticResource MenuButton}"
+                Content="Номера туров"
+                Click="RoomsButton_Click"
+                />
+            <Button
+                x:Name="InclusionsButton"
+                Style="{StaticResource MenuButton}"
+                Content="Список услуг"
+                Click="InclusionsButton_Click"
+                />
+            <Button
+                x:Name="ImagesButton"
+                Style="{StaticResource MenuButton}"
+                Content="Изображения"
+                Click="ImagesButton_Click"
+                />
+            <Button
+                x:Name="CountriesButton"
                 Style="{StaticResource MenuButton}"
                 Content="Страны"
+                Click="CountriesButton_Click"
                 />
             <Button
+                x:Name="CitiesButton"
                 Style="{StaticResource MenuButton}"
-                Content="Заказы"
+                Content="Города"
+                Click="CitiesButton_Click_1"
                 />
-            <Button
-                Style="{StaticResource MenuButton}"
-                Content="Туристы"
-                />
-            <Button
-                Style="{StaticResource MenuButton}"
-                Content="Имена"
-                />
-            <Button
-                Style="{StaticResource MenuButton}"
-                Content="Фамилии"
-                />
+
         </StackPanel>
 
         <Grid Grid.Column="1">
-            
+
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition Height="36"/>
             </Grid.RowDefinitions>
 
+            <Grid Grid.Row="0" x:Name="MainGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100*"/>
+                    <RowDefinition Height="200*" x:Name="GridRow"/>
+                    <RowDefinition Height="100*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="200*"/>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
+                <Image x:Name="MainImage" RenderOptions.BitmapScalingMode="HighQuality" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Source="Resources/Images/Tour booking Serviсe.png"/>
+            </Grid>
+            
             <Frame x:Name="RootFrame" Grid.Row="0" NavigationUIVisibility="Hidden" LoadCompleted="RootFrame_LoadCompleted"/>
 
             <Border Grid.Row="1" Grid.ColumnSpan="2" Background="Silver"/>
@@ -74,27 +136,28 @@
                 Grid.Row="1" 
                 Content="Закрыть" 
                 HorizontalAlignment="Right" 
-                Width="60"
                 Click="CloseButton_Click"
                 ToolTip="Закрыть страницу"
+                IsEnabled="False"
                 />
             <StackPanel Grid.Row="1" Orientation="Horizontal">
                 <Button
                     x:Name="PreviousButton"
                     Style="{StaticResource LeftArrowButton}"
-                    Width="60"
                     ToolTip="Назад"
                     Click="PreviousButton_Click"
-                    >
-                </Button>
+                    IsEnabled="False"
+                    />
                 <Button
                     x:Name="NextButton"
                     Style="{StaticResource RightArrowButton}"
-                    Width="60"
                     ToolTip="Далее"
                     Click="NextButton_Click"
+                    IsEnabled="False"
                     />
             </StackPanel>
+
+
         </Grid>
     </Grid>
 

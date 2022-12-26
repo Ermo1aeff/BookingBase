@@ -18,28 +18,35 @@ namespace BookingClient.Models
         public tours()
         {
             this.departures = new HashSet<departures>();
+            this.images = new HashSet<images>();
             this.included = new HashSet<included>();
             this.itirerary = new HashSet<itirerary>();
             this.rooms = new HashSet<rooms>();
+            this.tour_countries = new HashSet<tour_countries>();
         }
     
         public int tour_id { get; set; }
         public string tour_name { get; set; }
+        public string tour_description { get; set; }
         public Nullable<int> city_begin_id { get; set; }
         public Nullable<int> city_end_id { get; set; }
         public Nullable<decimal> price { get; set; }
         public Nullable<int> day_count { get; set; }
         public Nullable<int> max_group_size { get; set; }
-        public string tour_description { get; set; }
     
         public virtual cities cities { get; set; }
+        public virtual cities cities1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<departures> departures { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<images> images { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<included> included { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<itirerary> itirerary { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<rooms> rooms { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tour_countries> tour_countries { get; set; }
     }
 }

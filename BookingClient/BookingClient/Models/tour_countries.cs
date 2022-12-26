@@ -12,12 +12,13 @@ namespace BookingClient.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class programs
+    public partial class tour_countries
     {
-        public int program_id { get; set; }
-        public string program_name { get; set; }
-        public string program_event { get; set; }
-        public Nullable<System.DateTime> duration_begin { get; set; }
-        public Nullable<System.DateTime> duration_end { get; set; }
+        public int tour_country_id { get; set; }
+        public Nullable<int> tour_id { get; set; }
+        public Nullable<int> country_id { get; set; }
+    
+        public virtual countries countries { get; set; }
+        public virtual tours tours { get; set; }
     }
 }

@@ -18,6 +18,7 @@ namespace BookingClient.Models
         public countries()
         {
             this.cities = new HashSet<cities>();
+            this.tour_countries = new HashSet<tour_countries>();
         }
     
         public int country_id { get; set; }
@@ -25,5 +26,7 @@ namespace BookingClient.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cities> cities { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tour_countries> tour_countries { get; set; }
     }
 }

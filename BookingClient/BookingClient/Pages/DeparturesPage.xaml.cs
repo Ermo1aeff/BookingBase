@@ -24,5 +24,20 @@ namespace BookingClient.Pages
         {
             InitializeComponent();
         }
+
+        private void AddRecordButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CopyRecordButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditRecordButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

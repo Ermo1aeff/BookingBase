@@ -31,7 +31,7 @@
     <!--Стиль кнопок Minimize и Mazimize-->
     <Style x:Key="WindowStyleTitleBarButton" TargetType="{x:Type Button}">
         <Setter Property="Focusable" Value="false" />
-        <Setter Property="Width" Value="46"/>
+        <Setter Property="Width" Value="28"/>
         <Setter Property="Foreground" Value="{StaticResource ButtonForeground}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -139,16 +139,16 @@
                                         <Grid>
 
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="28"/>
+                                                <RowDefinition Height="20"/>
                                             </Grid.RowDefinitions>
                                             
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="28"/>
-                                                <ColumnDefinition />
+                                                <!--<ColumnDefinition Width="28"/>-->
+                                                <!--<ColumnDefinition />-->
                                                 <ColumnDefinition />
                                             </Grid.ColumnDefinitions>
 
-                                            <Image
+                                            <!--<Image
                                                 x:Name="Icon"
                                                 Grid.Column="0"
                                                 Source="{Binding Path=Icon, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" 
@@ -159,7 +159,7 @@
                                                 MouseUp="IconMouseUp"
                                                 MouseLeftButtonDown="IconMouseLeftButtonDown"
                                                 WindowChrome.IsHitTestVisibleInChrome="True"
-                                                />
+                                                />-->
                                             
                                             <TextBlock
                                                 x:Name="Caption"

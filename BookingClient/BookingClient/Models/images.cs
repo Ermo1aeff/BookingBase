@@ -12,14 +12,12 @@ namespace BookingClient.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class departure_rooms
+    public partial class images
     {
-        public int departure_room_id { get; set; }
-        public Nullable<int> room_id { get; set; }
-        public Nullable<int> departure_id { get; set; }
-        public Nullable<int> room_count { get; set; }
+        public int image_id { get; set; }
+        public Nullable<int> tour_id { get; set; }
+        public byte[] img { get; set; }
     
-        public virtual departures departures { get; set; }
-        public virtual rooms rooms { get; set; }
+        public virtual tours tours { get; set; }
     }
 }

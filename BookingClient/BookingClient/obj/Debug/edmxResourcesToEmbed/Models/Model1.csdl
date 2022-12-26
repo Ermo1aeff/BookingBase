@@ -7,11 +7,9 @@
     <Property Name="account_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="account_login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="account_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="first_name_id" Type="Int32" />
-    <Property Name="last_name_id" Type="Int32" />
+    <Property Name="first_name" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+    <Property Name="last_name" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
     <Property Name="status" Type="Int32" />
-    <NavigationProperty Name="first_names" Relationship="Self.FK_accounts_first_names" FromRole="accounts" ToRole="first_names" />
-    <NavigationProperty Name="last_names" Relationship="Self.FK_accounts_last_names" FromRole="accounts" ToRole="last_names" />
   </EntityType>
   <EntityType Name="cities">
     <Key>
@@ -23,6 +21,7 @@
     <NavigationProperty Name="countries" Relationship="Self.FK_cities_countries" FromRole="cities" ToRole="countries" />
     <NavigationProperty Name="persons" Relationship="Self.FK_persons_cities" FromRole="cities" ToRole="persons" />
     <NavigationProperty Name="tours" Relationship="Self.FK_tours_cities" FromRole="cities" ToRole="tours" />
+    <NavigationProperty Name="tours1" Relationship="Self.FK_tours_cities1" FromRole="cities" ToRole="tours" />
   </EntityType>
   <EntityType Name="countries">
     <Key>
@@ -31,17 +30,7 @@
     <Property Name="country_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="country_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="cities" Relationship="Self.FK_cities_countries" FromRole="countries" ToRole="cities" />
-  </EntityType>
-  <EntityType Name="departure_rooms">
-    <Key>
-      <PropertyRef Name="departure_room_id" />
-    </Key>
-    <Property Name="departure_room_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="room_id" Type="Int32" />
-    <Property Name="departure_id" Type="Int32" />
-    <Property Name="room_count" Type="Int32" />
-    <NavigationProperty Name="departures" Relationship="Self.FK_departure_rooms_departures" FromRole="departure_rooms" ToRole="departures" />
-    <NavigationProperty Name="rooms" Relationship="Self.FK_departure_rooms_rooms" FromRole="departure_rooms" ToRole="rooms" />
+    <NavigationProperty Name="tour_countries" Relationship="Self.FK_tour_countries_countries" FromRole="countries" ToRole="tour_countries" />
   </EntityType>
   <EntityType Name="departures">
     <Key>
@@ -50,8 +39,6 @@
     <Property Name="departure_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="tour_id" Type="Int32" />
     <Property Name="date_begin" Type="DateTime" Precision="0" />
-    <Property Name="group_size" Type="Int32" />
-    <NavigationProperty Name="departure_rooms" Relationship="Self.FK_departure_rooms_departures" FromRole="departures" ToRole="departure_rooms" />
     <NavigationProperty Name="tours" Relationship="Self.FK_departures_tours" FromRole="departures" ToRole="tours" />
     <NavigationProperty Name="orders" Relationship="Self.FK_orders_departures" FromRole="departures" ToRole="orders" />
   </EntityType>
@@ -59,10 +46,17 @@
     <Key>
       <PropertyRef Name="first_name_id" />
     </Key>
-    <Property Name="first_name_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="first_name_id" Type="String" MaxLength="25" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="accounts" Relationship="Self.FK_accounts_first_names" FromRole="first_names" ToRole="accounts" />
-    <NavigationProperty Name="persons" Relationship="Self.FK_persons_first_names" FromRole="first_names" ToRole="persons" />
+  </EntityType>
+  <EntityType Name="images">
+    <Key>
+      <PropertyRef Name="image_id" />
+    </Key>
+    <Property Name="image_id" Type="Int32" Nullable="false" />
+    <Property Name="tour_id" Type="Int32" />
+    <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="tours" Relationship="Self.FK_images_tours" FromRole="images" ToRole="tours" />
   </EntityType>
   <EntityType Name="included">
     <Key>
@@ -72,7 +66,7 @@
     <Property Name="tour_id" Type="Int32" />
     <Property Name="inclusion_id" Type="Int32" />
     <Property Name="included_choice" Type="Int32" />
-    <Property Name="included_description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="included_description" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="inclusions" Relationship="Self.FK_included_inclusions" FromRole="included" ToRole="inclusions" />
     <NavigationProperty Name="tours" Relationship="Self.FK_included_tours" FromRole="included" ToRole="tours" />
   </EntityType>
@@ -91,7 +85,7 @@
     <Property Name="itinerary" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="tour_id" Type="Int32" />
     <Property Name="day_num" Type="Int32" />
-    <Property Name="itinerary_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="itinerary_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="itirarary_description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="tours" Relationship="Self.FK_itirerary_tours" FromRole="itirerary" ToRole="tours" />
   </EntityType>
@@ -99,16 +93,14 @@
     <Key>
       <PropertyRef Name="last_name_id" />
     </Key>
-    <Property Name="last_name_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="last_name_id" Type="String" MaxLength="25" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="accounts" Relationship="Self.FK_accounts_last_names" FromRole="last_names" ToRole="accounts" />
-    <NavigationProperty Name="persons" Relationship="Self.FK_persons_last_names" FromRole="last_names" ToRole="persons" />
   </EntityType>
   <EntityType Name="order_rooms">
     <Key>
-      <PropertyRef Name="order_rooms1" />
+      <PropertyRef Name="order_room_id" />
     </Key>
-    <Property Name="order_rooms1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="order_room_id" Type="Int32" Nullable="false" />
     <Property Name="order_id" Type="Int32" />
     <Property Name="room_id" Type="Int32" />
     <Property Name="room_count" Type="Int32" />
@@ -134,47 +126,35 @@
     </Key>
     <Property Name="person_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="order_id" Type="Int32" />
-    <Property Name="first_name_id" Type="Int32" />
-    <Property Name="last_name_id" Type="Int32" />
+    <Property Name="first_name" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+    <Property Name="last_name" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
     <Property Name="city_id" Type="Int32" />
     <Property Name="passport" Type="Int64" />
     <Property Name="birthday" Type="DateTime" Precision="0" />
     <NavigationProperty Name="cities" Relationship="Self.FK_persons_cities" FromRole="persons" ToRole="cities" />
-    <NavigationProperty Name="first_names" Relationship="Self.FK_persons_first_names" FromRole="persons" ToRole="first_names" />
-    <NavigationProperty Name="last_names" Relationship="Self.FK_persons_last_names" FromRole="persons" ToRole="last_names" />
     <NavigationProperty Name="orders" Relationship="Self.FK_persons_orders" FromRole="persons" ToRole="orders" />
-  </EntityType>
-  <EntityType Name="programs">
-    <Key>
-      <PropertyRef Name="program_id" />
-    </Key>
-    <Property Name="program_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="program_name" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
-    <Property Name="program_event" Type="String" MaxLength="200" FixedLength="true" Unicode="false" />
-    <Property Name="duration_begin" Type="DateTime" Precision="3" />
-    <Property Name="duration_end" Type="DateTime" Precision="3" />
-  </EntityType>
-  <EntityType Name="room_types">
-    <Key>
-      <PropertyRef Name="room_type_id" />
-    </Key>
-    <Property Name="room_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="room_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="beds_count" Type="Int32" />
-    <NavigationProperty Name="rooms" Relationship="Self.FK_rooms_room_types" FromRole="room_types" ToRole="rooms" />
   </EntityType>
   <EntityType Name="rooms">
     <Key>
       <PropertyRef Name="room_id" />
     </Key>
     <Property Name="room_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="room_type_id" Type="Int32" />
+    <Property Name="room_name" Type="String" MaxLength="500" FixedLength="true" Unicode="false" />
     <Property Name="tour_id" Type="Int32" />
+    <Property Name="beds_count" Type="Int32" />
     <Property Name="price" Type="Decimal" Precision="18" Scale="2" />
-    <NavigationProperty Name="departure_rooms" Relationship="Self.FK_departure_rooms_rooms" FromRole="rooms" ToRole="departure_rooms" />
     <NavigationProperty Name="order_rooms" Relationship="Self.FK_order_rooms_rooms" FromRole="rooms" ToRole="order_rooms" />
-    <NavigationProperty Name="room_types" Relationship="Self.FK_rooms_room_types" FromRole="rooms" ToRole="room_types" />
     <NavigationProperty Name="tours" Relationship="Self.FK_rooms_tours" FromRole="rooms" ToRole="tours" />
+  </EntityType>
+  <EntityType Name="tour_countries">
+    <Key>
+      <PropertyRef Name="tour_country_id" />
+    </Key>
+    <Property Name="tour_country_id" Type="Int32" Nullable="false" />
+    <Property Name="tour_id" Type="Int32" />
+    <Property Name="country_id" Type="Int32" />
+    <NavigationProperty Name="countries" Relationship="Self.FK_tour_countries_countries" FromRole="tour_countries" ToRole="countries" />
+    <NavigationProperty Name="tours" Relationship="Self.FK_tour_countries_tours" FromRole="tour_countries" ToRole="tours" />
   </EntityType>
   <EntityType Name="tours">
     <Key>
@@ -182,42 +162,21 @@
     </Key>
     <Property Name="tour_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="tour_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="tour_description" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
     <Property Name="city_begin_id" Type="Int32" />
     <Property Name="city_end_id" Type="Int32" />
     <Property Name="price" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="day_count" Type="Int32" />
     <Property Name="max_group_size" Type="Int32" />
     <NavigationProperty Name="cities" Relationship="Self.FK_tours_cities" FromRole="tours" ToRole="cities" />
+    <NavigationProperty Name="cities1" Relationship="Self.FK_tours_cities1" FromRole="tours" ToRole="cities" />
     <NavigationProperty Name="departures" Relationship="Self.FK_departures_tours" FromRole="tours" ToRole="departures" />
+    <NavigationProperty Name="images" Relationship="Self.FK_images_tours" FromRole="tours" ToRole="images" />
     <NavigationProperty Name="included" Relationship="Self.FK_included_tours" FromRole="tours" ToRole="included" />
     <NavigationProperty Name="itirerary" Relationship="Self.FK_itirerary_tours" FromRole="tours" ToRole="itirerary" />
     <NavigationProperty Name="rooms" Relationship="Self.FK_rooms_tours" FromRole="tours" ToRole="rooms" />
-    <Property Name="tour_description" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tour_countries" Relationship="Self.FK_tour_countries_tours" FromRole="tours" ToRole="tour_countries" />
   </EntityType>
-  <Association Name="FK_accounts_first_names">
-    <End Role="first_names" Type="Self.first_names" Multiplicity="0..1" />
-    <End Role="accounts" Type="Self.accounts" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="first_names">
-        <PropertyRef Name="first_name_id" />
-      </Principal>
-      <Dependent Role="accounts">
-        <PropertyRef Name="first_name_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_accounts_last_names">
-    <End Role="last_names" Type="Self.last_names" Multiplicity="0..1" />
-    <End Role="accounts" Type="Self.accounts" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="last_names">
-        <PropertyRef Name="last_name_id" />
-      </Principal>
-      <Dependent Role="accounts">
-        <PropertyRef Name="last_name_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_cities_countries">
     <End Role="countries" Type="Self.countries" Multiplicity="0..1" />
     <End Role="cities" Type="Self.cities" Multiplicity="*" />
@@ -254,27 +213,27 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_departure_rooms_departures">
-    <End Role="departures" Type="Self.departures" Multiplicity="0..1" />
-    <End Role="departure_rooms" Type="Self.departure_rooms" Multiplicity="*" />
+  <Association Name="FK_tours_cities1">
+    <End Role="cities" Type="Self.cities" Multiplicity="0..1" />
+    <End Role="tours" Type="Self.tours" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="departures">
-        <PropertyRef Name="departure_id" />
+      <Principal Role="cities">
+        <PropertyRef Name="city_id" />
       </Principal>
-      <Dependent Role="departure_rooms">
-        <PropertyRef Name="departure_id" />
+      <Dependent Role="tours">
+        <PropertyRef Name="city_end_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_departure_rooms_rooms">
-    <End Role="rooms" Type="Self.rooms" Multiplicity="0..1" />
-    <End Role="departure_rooms" Type="Self.departure_rooms" Multiplicity="*" />
+  <Association Name="FK_tour_countries_countries">
+    <End Role="countries" Type="Self.countries" Multiplicity="0..1" />
+    <End Role="tour_countries" Type="Self.tour_countries" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="rooms">
-        <PropertyRef Name="room_id" />
+      <Principal Role="countries">
+        <PropertyRef Name="country_id" />
       </Principal>
-      <Dependent Role="departure_rooms">
-        <PropertyRef Name="room_id" />
+      <Dependent Role="tour_countries">
+        <PropertyRef Name="country_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -302,15 +261,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_persons_first_names">
-    <End Role="first_names" Type="Self.first_names" Multiplicity="0..1" />
-    <End Role="persons" Type="Self.persons" Multiplicity="*" />
+  <Association Name="FK_images_tours">
+    <End Role="tours" Type="Self.tours" Multiplicity="0..1" />
+    <End Role="images" Type="Self.images" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="first_names">
-        <PropertyRef Name="first_name_id" />
+      <Principal Role="tours">
+        <PropertyRef Name="tour_id" />
       </Principal>
-      <Dependent Role="persons">
-        <PropertyRef Name="first_name_id" />
+      <Dependent Role="images">
+        <PropertyRef Name="tour_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -350,18 +309,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_persons_last_names">
-    <End Role="last_names" Type="Self.last_names" Multiplicity="0..1" />
-    <End Role="persons" Type="Self.persons" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="last_names">
-        <PropertyRef Name="last_name_id" />
-      </Principal>
-      <Dependent Role="persons">
-        <PropertyRef Name="last_name_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_order_rooms_orders">
     <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
     <End Role="order_rooms" Type="Self.order_rooms" Multiplicity="*" />
@@ -398,18 +345,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_rooms_room_types">
-    <End Role="room_types" Type="Self.room_types" Multiplicity="0..1" />
-    <End Role="rooms" Type="Self.rooms" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="room_types">
-        <PropertyRef Name="room_type_id" />
-      </Principal>
-      <Dependent Role="rooms">
-        <PropertyRef Name="room_type_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_rooms_tours">
     <End Role="tours" Type="Self.tours" Multiplicity="0..1" />
     <End Role="rooms" Type="Self.rooms" Multiplicity="*" />
@@ -422,13 +357,25 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="Booking_BaseEntities1" annotation:LazyLoadingEnabled="true">
+  <Association Name="FK_tour_countries_tours">
+    <End Role="tours" Type="Self.tours" Multiplicity="0..1" />
+    <End Role="tour_countries" Type="Self.tour_countries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tours">
+        <PropertyRef Name="tour_id" />
+      </Principal>
+      <Dependent Role="tour_countries">
+        <PropertyRef Name="tour_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Booking_BaseEntities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="accounts" EntityType="Self.accounts" />
     <EntitySet Name="cities" EntityType="Self.cities" />
     <EntitySet Name="countries" EntityType="Self.countries" />
-    <EntitySet Name="departure_rooms" EntityType="Self.departure_rooms" />
     <EntitySet Name="departures" EntityType="Self.departures" />
     <EntitySet Name="first_names" EntityType="Self.first_names" />
+    <EntitySet Name="images" EntityType="Self.images" />
     <EntitySet Name="included" EntityType="Self.included" />
     <EntitySet Name="inclusions" EntityType="Self.inclusions" />
     <EntitySet Name="itirerary" EntityType="Self.itirerary" />
@@ -436,18 +383,9 @@
     <EntitySet Name="order_rooms" EntityType="Self.order_rooms" />
     <EntitySet Name="orders" EntityType="Self.orders" />
     <EntitySet Name="persons" EntityType="Self.persons" />
-    <EntitySet Name="programs" EntityType="Self.programs" />
-    <EntitySet Name="room_types" EntityType="Self.room_types" />
     <EntitySet Name="rooms" EntityType="Self.rooms" />
+    <EntitySet Name="tour_countries" EntityType="Self.tour_countries" />
     <EntitySet Name="tours" EntityType="Self.tours" />
-    <AssociationSet Name="FK_accounts_first_names" Association="Self.FK_accounts_first_names">
-      <End Role="first_names" EntitySet="first_names" />
-      <End Role="accounts" EntitySet="accounts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_accounts_last_names" Association="Self.FK_accounts_last_names">
-      <End Role="last_names" EntitySet="last_names" />
-      <End Role="accounts" EntitySet="accounts" />
-    </AssociationSet>
     <AssociationSet Name="FK_cities_countries" Association="Self.FK_cities_countries">
       <End Role="countries" EntitySet="countries" />
       <End Role="cities" EntitySet="cities" />
@@ -460,13 +398,13 @@
       <End Role="cities" EntitySet="cities" />
       <End Role="tours" EntitySet="tours" />
     </AssociationSet>
-    <AssociationSet Name="FK_departure_rooms_departures" Association="Self.FK_departure_rooms_departures">
-      <End Role="departures" EntitySet="departures" />
-      <End Role="departure_rooms" EntitySet="departure_rooms" />
+    <AssociationSet Name="FK_tours_cities1" Association="Self.FK_tours_cities1">
+      <End Role="cities" EntitySet="cities" />
+      <End Role="tours" EntitySet="tours" />
     </AssociationSet>
-    <AssociationSet Name="FK_departure_rooms_rooms" Association="Self.FK_departure_rooms_rooms">
-      <End Role="rooms" EntitySet="rooms" />
-      <End Role="departure_rooms" EntitySet="departure_rooms" />
+    <AssociationSet Name="FK_tour_countries_countries" Association="Self.FK_tour_countries_countries">
+      <End Role="countries" EntitySet="countries" />
+      <End Role="tour_countries" EntitySet="tour_countries" />
     </AssociationSet>
     <AssociationSet Name="FK_departures_tours" Association="Self.FK_departures_tours">
       <End Role="tours" EntitySet="tours" />
@@ -476,9 +414,9 @@
       <End Role="departures" EntitySet="departures" />
       <End Role="orders" EntitySet="orders" />
     </AssociationSet>
-    <AssociationSet Name="FK_persons_first_names" Association="Self.FK_persons_first_names">
-      <End Role="first_names" EntitySet="first_names" />
-      <End Role="persons" EntitySet="persons" />
+    <AssociationSet Name="FK_images_tours" Association="Self.FK_images_tours">
+      <End Role="tours" EntitySet="tours" />
+      <End Role="images" EntitySet="images" />
     </AssociationSet>
     <AssociationSet Name="FK_included_inclusions" Association="Self.FK_included_inclusions">
       <End Role="inclusions" EntitySet="inclusions" />
@@ -492,10 +430,6 @@
       <End Role="tours" EntitySet="tours" />
       <End Role="itirerary" EntitySet="itirerary" />
     </AssociationSet>
-    <AssociationSet Name="FK_persons_last_names" Association="Self.FK_persons_last_names">
-      <End Role="last_names" EntitySet="last_names" />
-      <End Role="persons" EntitySet="persons" />
-    </AssociationSet>
     <AssociationSet Name="FK_order_rooms_orders" Association="Self.FK_order_rooms_orders">
       <End Role="orders" EntitySet="orders" />
       <End Role="order_rooms" EntitySet="order_rooms" />
@@ -508,13 +442,13 @@
       <End Role="orders" EntitySet="orders" />
       <End Role="persons" EntitySet="persons" />
     </AssociationSet>
-    <AssociationSet Name="FK_rooms_room_types" Association="Self.FK_rooms_room_types">
-      <End Role="room_types" EntitySet="room_types" />
-      <End Role="rooms" EntitySet="rooms" />
-    </AssociationSet>
     <AssociationSet Name="FK_rooms_tours" Association="Self.FK_rooms_tours">
       <End Role="tours" EntitySet="tours" />
       <End Role="rooms" EntitySet="rooms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tour_countries_tours" Association="Self.FK_tour_countries_tours">
+      <End Role="tours" EntitySet="tours" />
+      <End Role="tour_countries" EntitySet="tour_countries" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

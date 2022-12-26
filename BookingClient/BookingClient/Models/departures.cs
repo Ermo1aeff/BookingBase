@@ -17,17 +17,13 @@ namespace BookingClient.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public departures()
         {
-            this.departure_rooms = new HashSet<departure_rooms>();
             this.orders = new HashSet<orders>();
         }
     
         public int departure_id { get; set; }
         public Nullable<int> tour_id { get; set; }
         public Nullable<System.DateTime> date_begin { get; set; }
-        public Nullable<int> group_size { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<departure_rooms> departure_rooms { get; set; }
         public virtual tours tours { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<orders> orders { get; set; }

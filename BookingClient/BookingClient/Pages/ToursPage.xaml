@@ -14,13 +14,15 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="230" MaxWidth="250" x:Name="RecordChangeBlock"/>
+            <ColumnDefinition Width="230" MinWidth="230" MaxWidth="500" x:Name="RecordChangeBlock"/>
         </Grid.ColumnDefinitions>
 
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="36"/>
                 <RowDefinition />
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="180"/>
             </Grid.RowDefinitions>
 
             <DockPanel>
@@ -29,36 +31,41 @@
                     Style="{StaticResource AddButton}"
                     ToolTip="Добавить"
                     Click="AddRecordButton_Click"
+                    IsEnabled="False"
                     />
                 <Button
                     x:Name="CopyRecordButton"
                     Style="{StaticResource CopyButton}" 
                     ToolTip="Копировать"
                     Click="CopyRecordButton_Click"
+                    IsEnabled="False"
                     />
                 <Button
                     x:Name="EditRecordButton"
                     Style="{StaticResource EditButton}"
                     ToolTip="Редактировать"
                     Click="EditRecordButton_Click"
+                    IsEnabled="False"
                     />
                 <Button
                     x:Name="DeleteRecordButton"
                     Style="{StaticResource DeleteButton}"
                     ToolTip="Удалить"
                     Click="DeleteRecordButton_Click"
+                    IsEnabled="False"
                     />
-
                 <ComboBox
                     x:Name="FilterComboBox"
                     Width="180"
-                    SelectionChanged="FilterComboBox_SelectionChanged"/>
-
+                    IsEditable="True"
+                    SelectionChanged="FilterComboBox_SelectionChanged"
+                    />
                 <TextBox
                     x:Name="FilterTextBox"
                     Style="{StaticResource BaseTextBox}"
                     Tag="Поиск"
-                    TextChanged="FilterTextBox_TextChanged"/>
+                    TextChanged="FilterTextBox_TextChanged"
+                    />
             </DockPanel>
 
             <DataGrid
@@ -67,48 +74,107 @@
                 AutoGenerateColumns="False"
                 CanUserAddRows="False"
                 >
-                <DataGrid.Resources>
-                    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
-                        <Setter Property="Background" Value="White" />
-                        <Setter Property="Height" Value="25" />
-                        <Setter Property="FontSize" Value="15" />
-                        <Setter Property="Foreground" Value="Black" />
-                    </Style>
-                    <Style BasedOn="{StaticResource {x:Type DataGridCell}}" TargetType="{x:Type DataGridCell}">
-                        <Setter Property="Background" Value="White" />
-                        <Setter Property="Height" Value="25" />
-                        <Setter Property="FontSize" Value="15" />
-                    </Style>
-                    <Style TargetType="ScrollBar">
-                        <Setter Property="Background" Value="Wheat" />
-                    </Style>
-                </DataGrid.Resources>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Назнвание тура" Binding="{Binding tour_name}" Width="10*"/>
-                    <DataGridTextColumn Header="Описание тура" Binding="{Binding tour_description}" Width="20*"/>
+                    <DataGridTextColumn Header="Тур" Binding="{Binding tour_name}" Width="10*"/>
                     <DataGridTextColumn Header="Начальный город" Binding="{Binding cities.city_name}" Width="5*"/>
-                    <!--<DataGridTextColumn Header="Конечный город" Binding="{Binding cities.city_name}" Width="5*"/>-->
+                    <DataGridTextColumn Header="Конечный город" Binding="{Binding cities1.city_name}" Width="5*"/>
                     <DataGridTextColumn Header="Цена" Binding="{Binding price}" Width="3*"/>
-                    <DataGridTextColumn Header="Кол-во дней" Binding="{Binding day_count}" Width="3*"/>
+                    <DataGridTextColumn Header="Дни" Binding="{Binding day_count}" Width="3*"/>
                     <DataGridTextColumn Header="Размер группы" Binding="{Binding max_group_size}" Width="3*"/>
                 </DataGrid.Columns>
             </DataGrid>
+
+            <GridSplitter 
+                x:Name="GridSplitter" 
+                Grid.Row="2"
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Stretch"
+                Height="3"
+                Background="Silver"
+                />
+
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Row="0"
+                        Content="Описание тура"/>
+
+                    <TextBox
+                        Grid.Row="1"
+                        x:Name="TourDescriptionTextBox" 
+                        TextWrapping="Wrap"
+                        VerticalScrollBarVisibility="Auto"
+                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.tour_description}"
+                        BorderThickness="0"
+                        FontSize="16"
+
+                        />
+                </Grid>
+
+                <GridSplitter 
+                    x:Name="ImageGridSplitter" 
+                    Grid.Column="1" 
+                    HorizontalAlignment="Stretch" 
+                    Width="3"
+                    Background="Silver"
+                    />
+
+                <Grid 
+                    Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button 
+                        Grid.Column="0"
+                        Width="50"
+                        Content="◄"
+                        FontSize="30"
+                        
+                        />
+                    <Image
+                        Grid.Column="1"
+                        Name="image" 
+                        RenderOptions.BitmapScalingMode="HighQuality"
+                        Source="102228_63007bf190f35.jpg"
+                        />
+                    <Button 
+                        Grid.Column="2"
+                        Width="50"
+                        FontSize="30"
+                        Content="►" 
+                        />
+                </Grid>
+
+            </Grid>
         </Grid>
 
         <GridSplitter 
             x:Name="DialogGridSplitter" 
             Grid.Column="1" 
-            Grid.Row="2"
             HorizontalAlignment="Stretch" 
-            Width="3" 
-            Background="Transparent"
+            Width="3"
+            Background="Silver"
             />
+
 
 
         <Grid Grid.Column="2" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"/>
-                <RowDefinition/>
+                <RowDefinition Height="41*" />
+                <RowDefinition Height="319*"/>
                 <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
 
@@ -117,14 +183,13 @@
                 x:Name="RecordChangeTitle" 
                 Content="None"
                 VerticalAlignment="Center"
-                HorizontalAlignment="Center"
+                HorizontalAlignment="Center" Margin="81,19"
                 />
 
-            <ScrollViewer Grid.Row="1">
-                <StackPanel  
-                    Width="180"
-                    Orientation="Vertical" 
-                    HorizontalAlignment="Center"
+            <ScrollViewer Grid.Row="1" Grid.RowSpan="3">
+                <StackPanel 
+                    Margin="10,0,10,0"
+                    Orientation="Vertical"
                     >
                     <Label Content="Название тура"/>
                     <TextBox 
@@ -133,26 +198,18 @@
                         Text="{Binding Mode=OneWay, ElementName=RecordsDataGrid, Path=SelectedItem.tour_name}"
                         />
 
-                    <Label Content="Описание тура"/>
-                    <TextBox 
-                        Style="{StaticResource BaseTextBox}"
-                        x:Name="TourDescriptionTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.tour_description}"
-                        />
-
                     <Label Content="Начальный город"/>
                     <ComboBox 
                         x:Name="BeginCityComboBox" 
                         DisplayMemberPath="city_name"
-                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.cities.city_name}"
-
-                        />
+                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.cities}"
+                        IsEditable="True"/>
 
                     <Label Content="Конечный город"/>
                     <ComboBox 
                         x:Name="EndCityTextBox" 
                         DisplayMemberPath="city_name"
-                        Text="{Binding SelectedItem.cities.city_name, ElementName=RecordsDataGrid}"
+                        Text="{Binding SelectedItem.cities1.city_name, ElementName=RecordsDataGrid}"
                         />
 
                     <Label Content="Цена"/>
@@ -177,30 +234,36 @@
                         />
                 </StackPanel>
             </ScrollViewer>
-            
-            <StackPanel 
-                Grid.Row="2" 
-                Orientation="Horizontal" 
-                HorizontalAlignment="Center"
+
+
+            <Grid 
+                Grid.Row="3" 
                 Height="30"
+                Margin="10,15"
                 >
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
                 <Button 
                     Style="{StaticResource BaseButton}"
                     x:Name="CommitChangeRecordsButton" 
+                    Grid.Column="0"
                     Content="Принять"
-                    Margin="0,0,3,0" 
-                    Width="100"
+                    Margin="0,0,5,0" 
                     Click="CommitChangeRecordsButton_Click"
                     />
                 <Button 
                     x:Name="RollbackChangeRecordsButton"
                     Style="{StaticResource BaseButton}"
+                    Grid.Column="1"
                     Content="Отменить"
-                    Margin="3,0,0,0"
-                    Width="100"
+                    Margin="5,0,0,0"
                     Click="RollbackChangeRecordsButton_Click"
                     />
-            </StackPanel>
+            </Grid>
         </Grid>
 
     </Grid>

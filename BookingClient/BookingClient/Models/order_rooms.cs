@@ -14,7 +14,7 @@ namespace BookingClient.Models
     
     public partial class order_rooms
     {
-        public int order_rooms1 { get; set; }
+        public int order_room_id { get; set; }
         public Nullable<int> order_id { get; set; }
         public Nullable<int> room_id { get; set; }
         public Nullable<int> room_count { get; set; }

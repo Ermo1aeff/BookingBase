@@ -45,6 +45,7 @@
                 FontFamily="Segoe UI Semilight"/>
 
             <StackPanel VerticalAlignment="Top" Margin="100, 0" Grid.Row="1">
+                
                 <TextBox
                     x:Name="LoginTextBox"
                     Style="{StaticResource BaseTextBox}"
@@ -73,11 +74,11 @@
                         />
 
                     <CheckBox
-                        Style="{StaticResource BaseToggleButton}"
+                        Style="{StaticResource EyeToggleButton}"
                         Click="PasswordCheckBox_Click"
                         x:Name="PasswordCheckBox"
-                        Width="30"
-                        HorizontalAlignment="Right"/>
+                        HorizontalAlignment="Right"
+                        Width="30"/>
 
                 </Grid>
 
@@ -114,6 +115,7 @@
                         IsCancel="True"/>
 
                 </Grid>
+                
             </StackPanel>
         </Grid>
         
