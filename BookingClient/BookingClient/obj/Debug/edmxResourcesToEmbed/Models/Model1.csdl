@@ -1,16 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="Booking_BaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="accounts">
-    <Key>
-      <PropertyRef Name="account_id" />
-    </Key>
-    <Property Name="account_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="account_login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="account_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="first_name" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
-    <Property Name="last_name" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
-    <Property Name="status" Type="Int32" />
-  </EntityType>
   <EntityType Name="cities">
     <Key>
       <PropertyRef Name="city_id" />
@@ -128,10 +117,8 @@
     <Property Name="order_id" Type="Int32" />
     <Property Name="first_name" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
     <Property Name="last_name" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
-    <Property Name="city_id" Type="Int32" />
     <Property Name="passport" Type="Int64" />
     <Property Name="birthday" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="cities" Relationship="Self.FK_persons_cities" FromRole="persons" ToRole="cities" />
     <NavigationProperty Name="orders" Relationship="Self.FK_persons_orders" FromRole="persons" ToRole="orders" />
   </EntityType>
   <EntityType Name="rooms">
@@ -370,7 +357,6 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="Booking_BaseEntities2" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="accounts" EntityType="Self.accounts" />
     <EntitySet Name="cities" EntityType="Self.cities" />
     <EntitySet Name="countries" EntityType="Self.countries" />
     <EntitySet Name="departures" EntityType="Self.departures" />
@@ -450,5 +436,17 @@
       <End Role="tours" EntitySet="tours" />
       <End Role="tour_countries" EntitySet="tour_countries" />
     </AssociationSet>
+    <EntitySet Name="accounts" EntityType="Booking_BaseModel.accounts" />
   </EntityContainer>
+  <EntityType Name="accounts">
+    <Key>
+      <PropertyRef Name="account_id" />
+    </Key>
+    <Property Name="account_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="account_login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="account_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="Int32" />
+  </EntityType>
 </Schema>

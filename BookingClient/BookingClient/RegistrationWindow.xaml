@@ -5,14 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookingClient"
         mc:Ignorable="d"
-        Height="500" 
+        Height="600" 
         Width="526"
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
         WindowStartupLocation="CenterScreen" 
         ResizeMode="NoResize"
-        BorderThickness="14">
+        BorderThickness="14"
+        >
     <Window.Effect>
         <DropShadowEffect
             Color="black"
@@ -22,23 +23,19 @@
             Direction="315"/>
     </Window.Effect>
 
-
     <Border CornerRadius="55"
             Background="#FFF"
             MouseLeftButtonDown="Border_MouseLeftButtonDown"
-            x:Name="Border">
+            x:Name="Border"
+            >
 
-        <Grid>
+        <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition />
             </Grid.RowDefinitions>
-            
-            
 
-            <StackPanel VerticalAlignment="Top" Margin="100, 0" Grid.Row="1">
-
+            <StackPanel VerticalAlignment="Top" Margin="100, 0" Grid.Row="1" >
                 <Label 
-                    x:Name="FirstNameTextBox"
                     Content="Регистрация" 
                     Margin="0, 16, 0, 10"
                     FontSize="36" 
@@ -48,7 +45,8 @@
                     FontFamily="Segoe UI Semilight"
                     />   
 
-                <!--<TextBox
+                <TextBox
+                    x:Name="LastNameTextBox"
                     Style="{StaticResource BaseTextBox}"
                     Tag="Фамилия" 
                     Margin="0,0,0,14" 
@@ -56,11 +54,12 @@
                     />
                 
                 <TextBox 
+                    x:Name="FirstNameTextBox"
                     Style="{StaticResource BaseTextBox}"
                     Tag="Имя" 
                     Margin="0,0,0,14"
                     Height="30"
-                    />-->
+                    />
                 
                 <TextBox 
                     x:Name="LoginTextBox"
@@ -126,7 +125,7 @@
                 </Grid>
 
                 <TextBox 
-                    x:Name="ErrorTextBox"
+                    x:Name="MessageTextBox"
                     Margin="0,2"
                     Foreground="Red"
                     Style="{StaticResource BaseTextBox}"
@@ -185,7 +184,7 @@
                     IsEnabled="False" IsDefault="True"
                     />
 
-                <Grid Height="30">
+                <Grid Height="30" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition />
@@ -198,7 +197,7 @@
                         Click="RegistrationButton_Click"
                         Grid.Column="0"
                         Margin="0,0,7,0"/>
-                    
+
                     <Button 
                         Style="{StaticResource CloseButton}"
                         x:Name="CloseButton"
@@ -206,7 +205,7 @@
                         Click="CloseButton_Click"
                         Grid.Column="1"
                         Margin="7,0,0,0" IsCancel="True"/>
-                    
+
                 </Grid>
             </StackPanel>
 

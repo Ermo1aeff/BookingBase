@@ -51,7 +51,8 @@
                     Style="{StaticResource BaseTextBox}"
                     Tag="Логин"
                     Margin="0,0,0,14" 
-                    Height="30"/>
+                    Height="30"
+                    Text="admin"/>
 
                 <Grid 
                     Height="30"
@@ -71,7 +72,7 @@
                         Visibility="Visible"
                         Tag="Пароль"
                         PasswordChanged="PasswordBox_PasswordChanged"
-                        />
+                        Password="admin"/>
 
                     <CheckBox
                         Style="{StaticResource EyeToggleButton}"

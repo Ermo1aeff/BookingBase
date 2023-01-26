@@ -7,8 +7,8 @@
     <Property Name="account_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="account_login" Type="varchar" MaxLength="50" />
     <Property Name="account_password" Type="varchar" MaxLength="50" />
-    <Property Name="first_name" Type="char" MaxLength="25" />
-    <Property Name="last_name" Type="char" MaxLength="25" />
+    <Property Name="first_name" Type="varchar" MaxLength="50" />
+    <Property Name="last_name" Type="varchar" MaxLength="50" />
     <Property Name="status" Type="int" />
   </EntityType>
   <EntityType Name="cities">

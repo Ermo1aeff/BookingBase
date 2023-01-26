@@ -24,12 +24,6 @@ namespace BookingClient.Pages
         private int DlgMode = -1;
         private string buf1;
         private string buf2;
-        private string buf3;
-        private string buf4;
-        private string buf5;
-        private string buf6;
-        private string buf7;
-        private string buf8;
         private int OrderID;
         public CreateOrdersPage()
         {
@@ -39,7 +33,6 @@ namespace BookingClient.Pages
             //PersonsDataGrid.ItemsSource = SourceCore.entities.persons.ToList();
             //FirstNameComboBox.ItemsSource = SourceCore.entities.first_names.ToList();
             //LastNameComboBox.ItemsSource = SourceCore.entities.last_names.ToList();
-            CityComboBox.ItemsSource = SourceCore.entities.cities.ToList();
             CreateOrderGrid.Visibility = Visibility.Visible;
             PersonChangeGrid.Visibility = Visibility.Collapsed;
         }
@@ -146,7 +139,6 @@ namespace BookingClient.Pages
         {
             var NewPersons = new persons();
             NewPersons.order_id = OrderID;
-            NewPersons.cities = (cities)CityComboBox.SelectedItem;
             NewPersons.passport = Convert.ToInt64(PassportTextBox.Text);
             NewPersons.birthday = Convert.ToDateTime(BirthdayTextBox.Text);
             SourceCore.entities.persons.Add(NewPersons);

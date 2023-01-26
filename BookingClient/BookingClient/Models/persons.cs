@@ -18,11 +18,10 @@ namespace BookingClient.Models
         public Nullable<int> order_id { get; set; }
         public string first_name { get; set; }
         public string last_name { get; set; }
-        public Nullable<int> city_id { get; set; }
         public Nullable<long> passport { get; set; }
         public Nullable<System.DateTime> birthday { get; set; }
+        public Nullable<long> phone { get; set; }
     
-        public virtual cities cities { get; set; }
         public virtual orders orders { get; set; }
     }
 }

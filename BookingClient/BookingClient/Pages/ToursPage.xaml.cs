@@ -28,9 +28,6 @@ namespace BookingClient.Pages
         private string buf3;
         private string buf4;
         private string buf5;
-        private string buf6;
-        private string buf7;
-        private string buf8;
 
         public ToursPage()
         {
@@ -95,20 +92,18 @@ namespace BookingClient.Pages
                 //использование буферных переменных для «отрыва» от данных выбранной строки (чтобы не сработал Binding)
                 buf1 = TourNameTextBox.Text;
                 buf2 = TourDescriptionTextBox.Text;
-                //buf3 = EndCityTextBox.Text;
-                buf4 = PriceTextBox.Text;
-                buf5 = DayCountTextBox.Text;
-                buf6 = MaxGroupSizeTextBox.Text;
+                buf3 = PriceTextBox.Text;
+                buf4 = DayCountTextBox.Text;
+                buf5 = MaxGroupSizeTextBox.Text;
 
                 //убрать фокус с выделенной строки
                 RecordsDataGrid.SelectedItem = null;
 
                 TourNameTextBox.Text = buf1;
                 TourDescriptionTextBox.Text = buf2;
-                //EndCityTextBox.Text = buf3;
-                PriceTextBox.Text = buf4;
-                DayCountTextBox.Text = buf5;
-                MaxGroupSizeTextBox.Text = buf6;
+                PriceTextBox.Text = buf3;
+                DayCountTextBox.Text = buf4;
+                MaxGroupSizeTextBox.Text = buf5;
             }
             else
             {
@@ -165,8 +160,9 @@ namespace BookingClient.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            List<String> Columns = new List<string>();
-            for (int I = 0; I < 5; I++)
+            List<string> Columns = new List<string>();
+            int DataGridItemsCount = RecordsDataGrid.Columns.Count;
+            for (int I = 0; I < DataGridItemsCount; I++)
             {
                 Columns.Add(RecordsDataGrid.Columns[I].Header.ToString());
             }

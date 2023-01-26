@@ -45,76 +45,81 @@ namespace BookingClient
 
         private void AutorizationButton_Click(object sender, RoutedEventArgs e)
         {
+            Regex regex;
             string message = "";
 
+            string lastName = LastNameTextBox.Text;
+            string firstName = FirstNameTextBox.Text;
             string login = LoginTextBox.Text;
-
-            if (login.Length < 6)
-            {
-                message = "Логин должен быть не менее 6 символов.";
-            }
-
             string password = PasswordBox.Password != "" ? PasswordBox.Password : PasswordTextBox.Text;
-
             string confirmPssword = ConfirmPasswordBox.Password != "" ? ConfirmPasswordBox.Password : ConfirmPasswordTextBox.Text;
 
-            if (password.Length < 8 && message == "")
-            {
-                message = "Пароль должен быть не менее 8 символов.";
-            }
+            if (lastName == "" && message == "")
+                message = "Введите фамилию";
 
-            Regex regex = new Regex(@".*\s.*");
+            regex = new Regex(@".*\s.*");
+
+            if (regex.IsMatch(lastName) && message == "")
+                message = "Фамилия НЕ должна содержать пробелов!";
+
+            if (firstName == "")
+                message = "Введите имя";
+
+            if (regex.IsMatch(firstName) && message == "")
+                message = "Имя НЕ должно содержать пробелов!";
+
+            if (login.Length < 6)
+                message = "Логин должен быть не менее 6 символов";
+
+            regex = new Regex(@".*\s.*");
+            if (regex.IsMatch(login) && message == "")
+                message = "Логин НЕ должен содержать пробелов!";
+
+            if (password.Length < 8 && message == "")
+                message = "Пароль должен быть не менее 8 символов";
 
             if (regex.IsMatch(password) && message == "")
-            {
                 message = "Пароль НЕ должен содержать пробелов!";
-            }
 
             regex = new Regex(".*[A-Z].*");
             if (!regex.IsMatch(password) && message == "")
-            {
-                message = "Пароль должен содержать хотябы одну заглавную и прописную буквы латинского алфавита.";
-            }
+                message = "Пароль должен содержать хотябы одну заглавную и прописную буквы латинского алфавита";
 
             regex = new Regex(".*[a-z].*");
             if (!regex.IsMatch(password) && message == "")
-            {
-                message = "Пароль должен содержать хотябы одну заглавную и прописную буквы латинского алфавита.";
-            }
+                message = "Пароль должен содержать хотябы одну заглавную и прописную буквы латинского алфавита";
 
             regex = new Regex(@"(.*[0-9].*)");
             if (!regex.IsMatch(password) && message == "")
-            {
-                message = "Пароль должен содержать цифры.";
-            }
+                message = "Пароль должен содержать цифры";
 
             regex = new Regex(@"(.*\W.*)");
             if (!regex.IsMatch(password) && message == "")
-            {
-                message = "Пароль должен содержать хотябы один специальный символ по типу: ? . # * ^ - \\ # ^ ( ) @.";
-            }
+                message = "Пароль должен содержать хотябы один специальный символ по типу: ? . # * ^ - \\ # ^ ( ) @";
+
+            if (confirmPssword == "" && message == "")
+                message = "Подтвердите пароль";
 
             if (password != confirmPssword && message == "")
-            {
                 message = "Пароль подтверждён неправильно!";
-            }
+
+            if (SourceCore.entities.accounts.SingleOrDefault(U => U.account_login == LoginTextBox.Text) != null && message == "")
+                message = "Логин уже используется";
 
             if (message == "")
             {
                 accounts Accounts = new accounts();
-                Accounts.account_login = LoginTextBox.Text;
-                Accounts.account_password = ConfirmPasswordBox.Visibility == Visibility.Collapsed ? ConfirmPasswordTextBox.Text : ConfirmPasswordBox.Password;
+                Accounts.last_name = lastName;
+                Accounts.first_name = firstName;
+                Accounts.account_login = login;
+                //Accounts.account_password = ConfirmPasswordBox.Visibility == Visibility.Collapsed ? ConfirmPasswordTextBox.Text : ConfirmPasswordBox.Password;
+                Accounts.account_password = password;
                 SourceCore.entities.accounts.Add(Accounts);
                 SourceCore.entities.SaveChanges();
-
-                Window AutorizationWin = new MainWindow();
-                Close();
-                AutorizationWin.Show();
+                MessageTextBox.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("LightGreen");
+                message = "Вы успешно зарегистрировались!";
             }
-            else
-            {
-                ErrorTextBox.Text = message;
-            }
+            MessageTextBox.Text = message;
         }
 
 
@@ -184,7 +189,6 @@ namespace BookingClient
         {
             AutorizationButton.IsEnabled = CapchaTextBox.Text == CapchaTextBoxInput.Text;
         }
-
 
     }
 }

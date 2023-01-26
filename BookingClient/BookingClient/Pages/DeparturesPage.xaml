@@ -7,10 +7,166 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DeparturesPage"
-      Background="White">
+      Background="White"
+      Loaded="Page_Loaded">
 
     <Grid>
-       
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="230" MinWidth="230" MaxWidth="500" x:Name="RecordChangeBlock"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="36"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <DockPanel>
+                <Button
+                    x:Name="AddRecordButton"
+                    Style="{StaticResource AddButton}"
+                    Click="AddRecordButton_Click"
+                    />
+                <Button
+                    x:Name="CopyRecordButton"
+                    Style="{StaticResource CopyButton}" 
+                    Click="CopyRecordButton_Click"
+                    />
+                <Button
+                    x:Name="EditRecordButton"
+                    Style="{StaticResource EditButton}"
+                    Click="EditRecordButton_Click"
+                    />
+                <Button
+                    x:Name="DeleteRecordButton"
+                    Style="{StaticResource DeleteButton}"
+                    Click="DeleteRecordButton_Click"
+                    />
+                <ComboBox
+                    x:Name="FilterComboBox"
+                    Width="180"
+                    IsEditable="True"
+                    SelectionChanged="FilterComboBox_SelectionChanged"
+                    />
+                <TextBox
+                    x:Name="FilterTextBox"
+                    Style="{StaticResource BaseTextBox}"
+                    Tag="Поиск"
+                    TextChanged="FilterTextBox_TextChanged"
+                    />
+            </DockPanel>
+
+            <DataGrid
+                x:Name="RecordsDataGrid"
+                Grid.Row="1"
+                AutoGenerateColumns="False"
+                CanUserAddRows="False"
+                >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Тур" Binding="{Binding tours.tour_name}" Width="5*"/>
+                    <DataGridTextColumn Header="Дата отправления" Binding="{Binding date_begin, StringFormat=dd.MM.yyyy}" Width="5*"/>
+                    <!--<DataGridTemplateColumn>
+                        <DataGridTemplateColumn.Header>
+                            Дата отправления
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label 
+                                    ContentStringFormat="dd.MM.yyyy"
+                                    Content="{Binding date_begin}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>-->
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <GridSplitter 
+            x:Name="DialogGridSplitter" 
+            Grid.Column="1" 
+            HorizontalAlignment="Stretch" 
+            Width="3"
+            Background="Silver"
+            />
+
+        <Grid Grid.Column="2" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition />
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+
+            <Label 
+                FontSize="24"
+                x:Name="RecordChangeTitle" 
+                Content="None"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                />
+
+            <ScrollViewer Grid.Row="1">
+                <StackPanel 
+                    Margin="10,0,10,0"
+                    Orientation="Vertical"
+                    >
+
+                    <Label Content="Название тура"/>
+                    <ComboBox 
+                        x:Name="TourNameComboBox" 
+                        DisplayMemberPath="tour_name"
+                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.tours}"
+                        IsEditable="True"/>
+
+                    <Label Content="Дата отправления"/>
+                    <!--<TextBox 
+                        Style="{StaticResource BaseTextBox}"
+                        x:Name="DateBeginTextBox"
+                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.date_begin, StringFormat=dd.MM.yyyy}"
+                        />-->
+
+                    <DatePicker 
+                        x:Name="DateBeginDatePicker"  
+                        FontSize="18"
+                        SelectedDateFormat="Short"
+                        BorderThickness="1"
+                        Padding="0"
+                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.date_begin, StringFormat=dd.MM.yyyy}"
+                        />
+                </StackPanel>
+            </ScrollViewer>
+
+
+            <Grid 
+                Grid.Row="3" 
+                Height="30"
+                Margin="10,15"
+                >
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button 
+                    Style="{StaticResource RecordCommitButton}"
+                    x:Name="CommitChangeRecordsButton" 
+                    Grid.Column="0"
+                    Content="Принять"
+                    Margin="0,0,5,0" 
+                    Click="CommitChangeRecordsButton_Click"
+                    />
+                <Button 
+                    x:Name="RollbackChangeRecordsButton"
+                    Style="{StaticResource RecordCancelButton}"
+                    Grid.Column="1"
+                    Content="Отменить"
+                    Margin="5,0,0,0"
+                    Click="RollbackChangeRecordsButton_Click"
+                    />
+            </Grid>
+        </Grid>
 
     </Grid>
 </Page>

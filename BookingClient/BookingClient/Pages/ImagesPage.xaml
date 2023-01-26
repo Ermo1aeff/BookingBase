@@ -62,31 +62,36 @@
 
 
             <GridSplitter 
-                    x:Name="GridSplitter" 
-                    Grid.Row="2"
-                    VerticalAlignment="Center" 
-                    HorizontalAlignment="Stretch"
-                    Height="3"
-                    Background="Silver"
-                    />
+                x:Name="GridSplitter" 
+                Grid.Row="2"
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Stretch"
+                Height="3"
+                Background="Silver"
+                />
 
-            <Grid Grid.Row="3">
-                
-                <ListBox  
-                    x:Name="imgList"
-                    ItemsSource="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.tours}"
-                    ItemTemplate="{StaticResource listTemplate}"
-                    ScrollViewer.HorizontalScrollBarVisibility="Visible"
-                    ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                    SelectionChanged="imgList_SelectionChanged"
-                    Height="140">
-                    <ListBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel />
-                        </ItemsPanelTemplate>
-                    </ListBox.ItemsPanel>
-                </ListBox>
-            </Grid>
+            <ListBox  
+                Grid.Row="3"
+                x:Name="imgList"
+                ItemsSource="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.tours}"
+                ItemTemplate="{StaticResource listTemplate}"
+                ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                SelectionChanged="imgList_SelectionChanged"
+                Height="140">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+
+            <!--<GridSplitter 
+                Grid.RowSpan="4"
+                HorizontalAlignment="Right" 
+                Width="10"
+                Background="Transparent"
+                />-->
         </Grid>
 
         <GridSplitter 
@@ -94,7 +99,7 @@
             Grid.Column="1" 
             HorizontalAlignment="Stretch" 
             Width="3"
-            Background="Silver"
+            Background="Transparent"
             />
 
         <Grid Grid.Column="2">
@@ -127,8 +132,8 @@
                 >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Тур" Binding="{Binding tour_name}" Width="12*"/>
-                    <DataGridTextColumn Header="Начальный город" Binding="{Binding cities.city_name}" Width="5*"/>
-                    <DataGridTextColumn Header="Конечный город" Binding="{Binding cities.city_name}" Width="5*"/>
+                    <DataGridTextColumn Header="Нач. город" Binding="{Binding cities.city_name}" Width="5*"/>
+                    <DataGridTextColumn Header="Кон. город" Binding="{Binding cities.city_name}" Width="5*"/>
                     <DataGridTextColumn Header="Цена" Binding="{Binding price}" Width="3*"/>
                     <DataGridTextColumn Header="Дни" Binding="{Binding day_count}" Width="2*"/>
                     <DataGridTextColumn Header="Размер группы" Binding="{Binding max_group_size}" Width="3*"/>

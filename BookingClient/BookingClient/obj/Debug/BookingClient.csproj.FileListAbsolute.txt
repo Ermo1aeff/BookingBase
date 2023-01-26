@@ -248,3 +248,11 @@ C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\Booki
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\CreateOrdersPage.baml
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\ImagesPage.g.cs
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\ImagesPage.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\CitiesPage.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\CountriesPage.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\CitiesPage.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\CountriesPage.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\OrderRoomsPage.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\OrderRoomsPage.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\PersonsPage.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\PersonsPage.baml

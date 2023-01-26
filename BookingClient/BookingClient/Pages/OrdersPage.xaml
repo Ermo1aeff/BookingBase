@@ -21,33 +21,28 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="36"/>
                 <RowDefinition />
-                <RowDefinition />
             </Grid.RowDefinitions>
 
             <DockPanel>
                 <Button
                     x:Name="AddRecordButton"
                     Style="{StaticResource AddButton}"
-                    ToolTip="Добавить"
                     Click="AddRecordButton_Click"
                     />
                 <Button
                     RenderOptions.BitmapScalingMode="HighQuality"
                     x:Name="CopyRecordButton"
                     Style="{StaticResource CopyButton}" 
-                    ToolTip="Копировать"
                     Click="CopyRecordButton_Click"
                     />
                 <Button
                     x:Name="EditRecordButton"
                     Style="{StaticResource EditButton}"
-                    ToolTip="Редактировать"
                     Click="EditRecordButton_Click"
                     />
                 <Button
                     x:Name="DeleteRecordButton"
                     Style="{StaticResource DeleteButton}"
-                    ToolTip="Удалить"
                     Click="DeleteRecordButton_Click"
                     />
 
@@ -72,29 +67,13 @@
                 AutoGenerateColumns="False"
                 CanUserAddRows="False"
                 >
-                <DataGrid.Resources>
-
-                </DataGrid.Resources>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Контактный номер" Binding="{Binding contact_phone}" Width="5*"/>
-                    <DataGridTextColumn Header="Кол-во туристов" Binding="{Binding person_count}" Width="5*"/>
+                    <DataGridTextColumn Header="Номер заказа" Binding="{Binding order_id, StringFormat={}№{0}}" Width="100"/>
+                    <DataGridTextColumn Header="Конт. номер" Binding="{Binding contact_phone}" Width="100"/>
+                    <DataGridTextColumn Header="Туристы" Binding="{Binding person_count}" Width="80"/>
                     <DataGridTextColumn Header="Тур" Binding="{Binding departures.tours.tour_name}" Width="10*"/>
-                    <DataGridTextColumn Header="Начало тура" Binding="{Binding departures.date_begin}" Width="5*"/>
-                    <DataGridTextColumn Header="Цена" Binding="{Binding price}" Width="5*"/>
-                </DataGrid.Columns>
-            </DataGrid>
-
-            <DataGrid
-                x:Name="DeparturesDataGrid"
-                Grid.Row="2"
-                AutoGenerateColumns="False"
-                CanUserAddRows="False"
-                ItemsSource="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.departures}"
-                >
-
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding tour_id}" Width="5*"/>
-                    <DataGridTextColumn Header="Дата" Binding="{Binding date_begin}" Width="5*"/>
+                    <DataGridTextColumn Header="Дата" Binding="{Binding departures.date_begin, StringFormat=dd.MM.yyyy}" Width="80"/>
+                    <DataGridTextColumn Header="Цена" Binding="{Binding price}" Width="80"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
@@ -128,16 +107,14 @@
                     Margin="10,0,10,0"
                     Orientation="Vertical"
                     >
-                    <Label Content="Контактный номер"
-                           FontSize="18"
-                           FontFamily="Segoe UI Semilight"/>
+                    <Label Content="Контактный номер"/>
                     <TextBox
                         Style="{StaticResource BaseTextBox}"
                         x:Name="ContactPhoneTextBox" 
-                        Text="{Binding Mode=OneWay, ElementName=RecordsDataGrid, Path=SelectedItem.contact_phone}"
+                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.contact_phone}"
                         />
 
-                    <Label Content="Количество туристов"
+                    <!--<Label Content="Количество туристов"
                            FontSize="18"
                            FontFamily="Segoe UI Semilight"/>
                     <TextBox
@@ -145,29 +122,25 @@
                         FontSize="18"
                         x:Name="PersonCountTextBox" 
                         Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.person_count}"
-                        />
+                        />-->
 
-                    <Label Content="Тур"
-                           FontSize="18"
-                           FontFamily="Segoe UI Semilight"/>
+                    <Label Content="Тур"/>
                     <ComboBox
                         x:Name="TourComboBox" 
                         DisplayMemberPath="tour_name"
-                        SelectedItem="{Binding ElementName=DateTourComboBox, Path=SelectedItem.tours}"
+                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.departures.tours}"
                         />
 
-                    <Label Content="Дата"
-                           FontSize="18"
-                           FontFamily="Segoe UI Semilight"/>
+                    <Label Content="Дата"/>
                     <ComboBox
                         x:Name="DateTourComboBox" 
                         DisplayMemberPath="date_begin"
+                        ItemStringFormat="dd.MM.yyyy"
                         SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.departures}"
+                        ItemsSource="{Binding ElementName=TourComboBox, Path=SelectedItem.departures}"
                         />
 
-                    <Label Content="Цена за место"
-                           FontSize="18"
-                           FontFamily="Segoe UI Semilight"/>
+                    <Label Content="Цена за место"/>
                     <TextBox
                         Style="{StaticResource BaseTextBox}"
                         x:Name="PriceTextBox" 
@@ -188,7 +161,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Button 
-                    Style="{StaticResource BaseButton}"
+                    Style="{StaticResource RecordCommitButton}"
                     x:Name="CommitChangeRecordsButton" 
                     Grid.Column="0"
                     Content="Принять"
@@ -198,7 +171,7 @@
 
                 <Button
                     x:Name="RollbackChangeRecordsButton"
-                    Style="{StaticResource BaseButton}"
+                    Style="{StaticResource RecordCancelButton}"
                     Grid.Column="1"
                     Content="Отменить"
                     Margin="5,0,0,0"

@@ -14,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BookingClient.Models;
+using BookingClient.Resources;
+using BookingClient.Styles.CustomWindowStyle;
 
 namespace BookingClient
 {
@@ -46,14 +48,15 @@ namespace BookingClient
 
         private void AutorizationButton_Click(object sender, RoutedEventArgs e)
         {
-            //string password = PasswordPasswordBox.Visibility == Visibility.Collapsed ? PasswordTextBox.Text : PasswordPasswordBox.Password;
-            //accounts Accounts = SourceCore.entities.accounts.SingleOrDefault(U => U.account_login == LoginTextBox.Text && U.account_password == password);
-            //if (Accounts != null)
-            //{
+            string password = PasswordPasswordBox.Visibility == Visibility.Collapsed ? PasswordTextBox.Text : PasswordPasswordBox.Password;
+            accounts Accounts = SourceCore.entities.accounts.SingleOrDefault(U => U.account_login == LoginTextBox.Text && U.account_password == password);
+            if (Accounts != null)
+            {
                 MainWindow MainWin = new MainWindow();
+                MainWin.accountName = Accounts.account_id.ToString();
                 Close();
                 MainWin.Show();
-            //}
+            }
         }
 
         private void PasswordCheckBox_Click(object sender, RoutedEventArgs e)

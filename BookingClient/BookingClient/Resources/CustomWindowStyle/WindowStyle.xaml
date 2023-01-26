@@ -1,5 +1,5 @@
 ﻿<ResourceDictionary 
-    x:Class="BookingClient.Styles.CustomWindowStyle.WindowStyle"
+    x:Class="BookingClient.Styles.CustomWindowStyle.CutosmWindowStyle"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     >
@@ -27,11 +27,14 @@
     <SolidColorBrush x:Key="ButtonCloseForegroundMouseOver" Color="#f1f1f1" />
     <SolidColorBrush x:Key="ButtonCloseBackgroudPressed" Color="#e81123" />
     <SolidColorBrush x:Key="ButtonCloseForegroundPressed" Color="#FFF" />
+    
+    <!--Поле пользователя-->
+    <SolidColorBrush x:Key="AccountButtonForeground" Color="White" />
 
     <!--Стиль кнопок Minimize и Mazimize-->
     <Style x:Key="WindowStyleTitleBarButton" TargetType="{x:Type Button}">
         <Setter Property="Focusable" Value="false" />
-        <Setter Property="Width" Value="28"/>
+        <Setter Property="Width" Value="46"/>
         <Setter Property="Foreground" Value="{StaticResource ButtonForeground}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -59,7 +62,44 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
+    <Style x:Key="WindowStyleTitleBarCaptoionButton" TargetType="{x:Type Button}" BasedOn="{StaticResource WindowStyleTitleBarButton}">
+        <Setter Property="Focusable" Value="false" />
+        <Setter Property="Width" Value="Auto"/>
+        <Setter Property="Foreground" Value="{StaticResource AccountButtonForeground}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Border
+                            x:Name="ButtonBorder"
+                            Background="{StaticResource ButtonBackgroud}"
+                            >
+                            <TextBlock
+                                Text="{TemplateBinding Content}"
+                                Padding="14, 0"
+                                VerticalAlignment="Center"
+                                />
+                        </Border>
+                        <!--<ContentPresenter VerticalAlignment="Center"/>-->
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource ButtonBackgroudMouseOver}" />
+                            <Setter Property="Foreground" Value="{StaticResource ButtonForegroundMouseOver}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource ButtonBackgroudPressed}"/>
+                            <Setter TargetName="ButtonBorder" Property="Opacity" Value="0.7" />
+                            <Setter Property="Foreground" Value="{StaticResource ButtonForegroundPressed}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <!--Стиль кнопки Close-->
     <Style x:Key="WindowStyleTitleBarButtonClose" TargetType="{x:Type Button}" BasedOn="{StaticResource WindowStyleTitleBarButton}">
         <Setter Property="Template">
@@ -89,19 +129,17 @@
     </Style>
 
     <!--Стиль окна-->
-    <Style x:Key="WindowStyle" TargetType="{x:Type Window}">
+    <Style x:Key="WindowStyle" TargetType="{x:Type Window}" x:Name="WinStyle">
         <Setter Property="WindowStyle" Value="SingleBorderWindow" />
         <!--<Setter Property="Background" Value="Transparent" />-->
-        <Setter Property="ResizeMode" Value="CanResize" />
-
+        <!--<Setter Property="ResizeMode" Value="CanResize" />-->
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
                 <WindowChrome
-                    NonClientFrameEdges="None"
-                    ResizeBorderThickness="5, 7, 5, 5"
-                    CaptionHeight="28"
+                    ResizeBorderThickness="7, 7, 7, 7"
+                    CaptionHeight="30"
                     UseAeroCaptionButtons="False"
-                    GlassFrameThickness="1,1,1 1"
+                    GlassFrameThickness="0, 1, 0, 0"
                     CornerRadius="0"
                 />
             </Setter.Value>
@@ -114,6 +152,14 @@
                     <Border
                         x:Name="PART_Container"
                         >
+                        <Border.Effect>
+                            <DropShadowEffect
+                                Color="black"
+                                Opacity="0.5"
+                                BlurRadius="7"
+                                ShadowDepth="2"
+                                Direction="315"/>
+                        </Border.Effect>
                         <Grid
                             TextOptions.TextRenderingMode="ClearType"
                             TextOptions.TextFormattingMode="Display"
@@ -126,12 +172,13 @@
                                 BorderBrush="{StaticResource WindowBorder}"
                                 BorderThickness="0"
                                 >
+                                
                                 <DockPanel
                                     HorizontalAlignment="Stretch"
                                     Background="Transparent"
                                     VerticalAlignment="Stretch"
                                     >
-                                    <Border
+                                    <Border 
                                         x:Name="TitleBorder"
                                         DockPanel.Dock="Top"
                                         Background="{StaticResource TitleBarBackground}"
@@ -139,32 +186,59 @@
                                         <Grid>
 
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="30" x:Name="RowTitleBorder"/>
                                             </Grid.RowDefinitions>
                                             
                                             <Grid.ColumnDefinitions>
-                                                <!--<ColumnDefinition Width="28"/>-->
-                                                <!--<ColumnDefinition />-->
+                                                <ColumnDefinition Width="28"/>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition />
                                                 <ColumnDefinition />
                                             </Grid.ColumnDefinitions>
 
-                                            <!--<Image
+                                            <Image
                                                 x:Name="Icon"
                                                 Grid.Column="0"
                                                 Source="{Binding Path=Icon, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" 
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Center"
-                                                Width="20"
-                                                Height="20"
+                                                Width="23"
+                                                Height="23"
                                                 MouseUp="IconMouseUp"
+                                                RenderOptions.BitmapScalingMode="HighQuality"
                                                 MouseLeftButtonDown="IconMouseLeftButtonDown"
                                                 WindowChrome.IsHitTestVisibleInChrome="True"
-                                                />-->
+                                                />
                                             
-                                            <TextBlock
+                                            <!--<TextBlock
                                                 x:Name="Caption"
                                                 Grid.Column="1"
                                                 HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                Margin="4,0,0,0"
+                                                FontFamily="Segoe UI"
+                                                FontSize="12"
+                                                Foreground="{StaticResource TitleLable}"
+                                                Text="{Binding Path=Title, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                                />-->
+                                            <Menu Grid.Column="1" WindowChrome.IsHitTestVisibleInChrome="True" Foreground="Black" VerticalAlignment="Center" Background="White">
+                                                <MenuItem Header="Оформить заказ">
+                                                    <MenuItem Header="Оформить заказ" ></MenuItem>
+                                                    <MenuItem Header="Новый тур" >
+                                                        <MenuItem Header="WinForms"/>
+                                                        <MenuItem Header="WPF"/>
+                                                    </MenuItem>
+                                                    <!--<Separator />-->
+                                                    <MenuItem Header="Exit" ></MenuItem>
+                                                </MenuItem>
+                                                <MenuItem Header="Новый тур" ></MenuItem>
+                                                <MenuItem Header="Справочник" ></MenuItem>
+                                            </Menu>
+
+                                            <TextBlock
+                                                x:Name="Caption"
+                                                Grid.ColumnSpan="4"
+                                                HorizontalAlignment="Center"
                                                 VerticalAlignment="Center"
                                                 Margin="4,0,0,0"
                                                 FontFamily="Segoe UI"
@@ -176,7 +250,15 @@
                                             <StackPanel 
                                                 HorizontalAlignment="Right"
                                                 Orientation="Horizontal"
-                                                Grid.Column="2">
+                                                Grid.Column="3">
+                                                
+                                                <Button
+                                                    Style="{StaticResource WindowStyleTitleBarCaptoionButton}"
+                                                    x:Name="AccountCaptionButton"
+                                                    WindowChrome.IsHitTestVisibleInChrome="True"
+                                                    Click="AccountCaptionButtonClick"
+                                                    />
+                                                
                                                 <Button
                                                     x:Name="MinButton"
                                                     Style="{StaticResource WindowStyleTitleBarButton}"
@@ -226,6 +308,8 @@
                                                         Data="M0,10 L10,0 M10,10 L0,0"
                                                         />
                                                 </Button>
+
+                                                
                                             </StackPanel>
                                         </Grid>
                                     </Border>

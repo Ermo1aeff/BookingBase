@@ -13,7 +13,9 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Shell;
 using BookingClient.Pages;
+using BookingClient.Styles.CustomWindowStyle;
 
 namespace BookingClient
 {
@@ -22,6 +24,7 @@ namespace BookingClient
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string accountName { get; set; }
 
         private List<Page> ActivePages;
 
@@ -32,6 +35,10 @@ namespace BookingClient
             InitializeComponent();
             ActivePages = new List<Page>();
             CurrentPageIndex = -1;
+        }
+        private void BookingClient_Loaded(object sender, RoutedEventArgs e)
+        {
+            BookingClient.Tag = accountName;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -96,7 +103,6 @@ namespace BookingClient
         {
             CurrentPageIndex--;
             RootFrame.Navigate(ActivePages[CurrentPageIndex]);
-
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
@@ -121,9 +127,19 @@ namespace BookingClient
             SetControlsEnabled();
         }
 
+        private void BookingClient_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            //MainGrid.Width =  (1600 - 800) / (100 - 200) * MainGrid.Width - 100; 
+        }
+
         private void ToursButton_Click(object sender, RoutedEventArgs e)
         {
             ShowPage(typeof(ToursPage));
+        }
+
+        private void PersonsButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShowPage(typeof(PersonsPage));
         }
 
         private void DeparturesButton_Click(object sender, RoutedEventArgs e)
@@ -134,11 +150,6 @@ namespace BookingClient
         private void OrdersButton_Click(object sender, RoutedEventArgs e)
         {
             ShowPage(typeof(OrdersPage));
-        }
-
-        private void BookingClient_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            //MainGrid.Width =  (1600 - 800) / (100 - 200) * MainGrid.Width - 100; 
         }
 
         private void OrderToursButton_Click(object sender, RoutedEventArgs e)
@@ -153,31 +164,12 @@ namespace BookingClient
 
         private void CitiesButton_Click_1(object sender, RoutedEventArgs e)
         {
-
+            ShowPage(typeof(CitiesPage));
         }
+
         private void CountriesButton_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void ToursButoon_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void NamesButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void FirstNamesButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void LastNamesButton_Click(object sender, RoutedEventArgs e)
-        {
-
+            ShowPage(typeof(CountriesPage));
         }
 
         private void InclusionsButton_Click(object sender, RoutedEventArgs e)
@@ -192,7 +184,7 @@ namespace BookingClient
 
         private void OrderRoomsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ShowPage(typeof(OrderRoomsPage));
         }
 
         private void RoomsButton_Click(object sender, RoutedEventArgs e)
@@ -203,6 +195,18 @@ namespace BookingClient
         private void ImagesButton_Click(object sender, RoutedEventArgs e)
         {
             ShowPage(typeof(ImagesPage));
+        }
+
+        private void BookingClient_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Right && NextButton.IsEnabled)
+            {
+                NextButton_Click(null, null);
+            }
+            if (e.Key == Key.Left && PreviousButton.IsEnabled)
+            {
+                PreviousButton_Click(null, null);
+            }
         }
     }
 }

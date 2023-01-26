@@ -1,18 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="Хранилище Booking_BaseModelContainer" CdmEntityContainer="Booking_BaseEntities2">
-    <EntitySetMapping Name="accounts">
-      <EntityTypeMapping TypeName="Booking_BaseModel.accounts">
-        <MappingFragment StoreEntitySet="accounts">
-          <ScalarProperty Name="account_id" ColumnName="account_id" />
-          <ScalarProperty Name="account_login" ColumnName="account_login" />
-          <ScalarProperty Name="account_password" ColumnName="account_password" />
-          <ScalarProperty Name="first_name" ColumnName="first_name" />
-          <ScalarProperty Name="last_name" ColumnName="last_name" />
-          <ScalarProperty Name="status" ColumnName="status" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="cities">
       <EntityTypeMapping TypeName="Booking_BaseModel.cities">
         <MappingFragment StoreEntitySet="cities">
@@ -122,7 +110,6 @@
           <ScalarProperty Name="order_id" ColumnName="order_id" />
           <ScalarProperty Name="first_name" ColumnName="first_name" />
           <ScalarProperty Name="last_name" ColumnName="last_name" />
-          <ScalarProperty Name="city_id" ColumnName="city_id" />
           <ScalarProperty Name="passport" ColumnName="passport" />
           <ScalarProperty Name="birthday" ColumnName="birthday" />
         </MappingFragment>
@@ -159,6 +146,18 @@
           <ScalarProperty Name="price" ColumnName="price" />
           <ScalarProperty Name="day_count" ColumnName="day_count" />
           <ScalarProperty Name="max_group_size" ColumnName="max_group_size" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="accounts">
+      <EntityTypeMapping TypeName="Booking_BaseModel.accounts">
+        <MappingFragment StoreEntitySet="accounts">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="account_password" ColumnName="account_password" />
+          <ScalarProperty Name="account_login" ColumnName="account_login" />
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

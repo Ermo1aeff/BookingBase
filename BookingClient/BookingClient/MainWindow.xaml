@@ -6,16 +6,18 @@
         xmlns:local="clr-namespace:BookingClient"
         mc:Ignorable="d"
         Title="Bookimg Client"
-        Height="620"
+        Height="570"
         Width="860"
         MinWidth="800"
         MinHeight="450"
         Icon="Resources/Images/BookingIco.ico"
         Name="BookingClient"
         Background="White"
-        WindowState="Maximized"
         Style="{StaticResource WindowStyle}"
-        SizeChanged="BookingClient_SizeChanged">
+        SizeChanged="BookingClient_SizeChanged"
+        Loaded="BookingClient_Loaded"
+        WindowState="Maximized" KeyDown="BookingClient_KeyDown"
+        >
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -49,16 +51,15 @@
                 Click="OrderRoomsButton_Click"
                 />
             <Button
-                x:Name="ToursButoon"
-                Style="{StaticResource MenuButton}"
-                Content="Туристы"
-                Click="ToursButoon_Click"
-                />
-            <Button
                 x:Name="ToursButton"
                 Style="{StaticResource MenuButton}"
                 Content="Туры"
-                Click="ToursButton_Click"
+                Click="ToursButton_Click"/>
+            <Button
+                x:Name="PersonsButton"
+                Style="{StaticResource MenuButton}"
+                Content="Туристы"
+                Click="PersonsButton_Click"
                 />
             <Button
                 x:Name="IncludedButton"
@@ -105,14 +106,13 @@
 
         </StackPanel>
 
-        <Grid Grid.Column="1">
-
+        <Grid Grid.Column="1" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition Height="36"/>
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0" x:Name="MainGrid">
+            <Grid Grid.Row="0" x:Name="MainGrid" Grid.ColumnSpan="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100*"/>
                     <RowDefinition Height="200*" x:Name="GridRow"/>
@@ -125,38 +125,33 @@
                 </Grid.ColumnDefinitions>
                 <Image x:Name="MainImage" RenderOptions.BitmapScalingMode="HighQuality" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Source="Resources/Images/Tour booking Serviсe.png"/>
             </Grid>
-            
-            <Frame x:Name="RootFrame" Grid.Row="0" NavigationUIVisibility="Hidden" LoadCompleted="RootFrame_LoadCompleted"/>
+
+            <Frame x:Name="RootFrame" Grid.Row="0" NavigationUIVisibility="Hidden" LoadCompleted="RootFrame_LoadCompleted" Grid.ColumnSpan="2"/>
 
             <Border Grid.Row="1" Grid.ColumnSpan="2" Background="Silver"/>
 
             <Button 
                 x:Name="CloseButton"
                 Style="{StaticResource ClosePageButton}"
-                Grid.Row="1" 
-                Content="Закрыть" 
+                Grid.Row="1"
                 HorizontalAlignment="Right" 
                 Click="CloseButton_Click"
-                ToolTip="Закрыть страницу"
-                IsEnabled="False"
+                IsEnabled="False" 
                 />
-            <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Grid.ColumnSpan="2">
                 <Button
                     x:Name="PreviousButton"
                     Style="{StaticResource LeftArrowButton}"
-                    ToolTip="Назад"
                     Click="PreviousButton_Click"
                     IsEnabled="False"
                     />
                 <Button
                     x:Name="NextButton"
                     Style="{StaticResource RightArrowButton}"
-                    ToolTip="Далее"
                     Click="NextButton_Click"
                     IsEnabled="False"
                     />
             </StackPanel>
-
 
         </Grid>
     </Grid>

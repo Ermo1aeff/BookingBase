@@ -31,28 +31,24 @@
                     Style="{StaticResource AddButton}"
                     ToolTip="Добавить"
                     Click="AddRecordButton_Click"
-                    IsEnabled="False"
                     />
                 <Button
                     x:Name="CopyRecordButton"
                     Style="{StaticResource CopyButton}" 
                     ToolTip="Копировать"
                     Click="CopyRecordButton_Click"
-                    IsEnabled="False"
                     />
                 <Button
                     x:Name="EditRecordButton"
                     Style="{StaticResource EditButton}"
                     ToolTip="Редактировать"
                     Click="EditRecordButton_Click"
-                    IsEnabled="False"
                     />
                 <Button
                     x:Name="DeleteRecordButton"
                     Style="{StaticResource DeleteButton}"
                     ToolTip="Удалить"
                     Click="DeleteRecordButton_Click"
-                    IsEnabled="False"
                     />
                 <ComboBox
                     x:Name="FilterComboBox"
@@ -76,11 +72,11 @@
                 >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Тур" Binding="{Binding tour_name}" Width="10*"/>
-                    <DataGridTextColumn Header="Начальный город" Binding="{Binding cities.city_name}" Width="5*"/>
-                    <DataGridTextColumn Header="Конечный город" Binding="{Binding cities1.city_name}" Width="5*"/>
+                    <DataGridTextColumn Header="Нач. город" Binding="{Binding cities.city_name}" Width="5*"/>
+                    <DataGridTextColumn Header="Кон. город" Binding="{Binding cities1.city_name}" Width="5*"/>
                     <DataGridTextColumn Header="Цена" Binding="{Binding price}" Width="3*"/>
                     <DataGridTextColumn Header="Дни" Binding="{Binding day_count}" Width="3*"/>
-                    <DataGridTextColumn Header="Размер группы" Binding="{Binding max_group_size}" Width="3*"/>
+                    <DataGridTextColumn Header="Размер группы" Binding="{Binding max_group_size}" Width="70"/>
                 </DataGrid.Columns>
             </DataGrid>
 
@@ -147,7 +143,6 @@
                         Grid.Column="1"
                         Name="image" 
                         RenderOptions.BitmapScalingMode="HighQuality"
-                        Source="102228_63007bf190f35.jpg"
                         />
                     <Button 
                         Grid.Column="2"
@@ -173,8 +168,7 @@
         <Grid Grid.Column="2" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"/>
-                <RowDefinition Height="41*" />
-                <RowDefinition Height="319*"/>
+                <RowDefinition />
                 <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
 
@@ -183,10 +177,10 @@
                 x:Name="RecordChangeTitle" 
                 Content="None"
                 VerticalAlignment="Center"
-                HorizontalAlignment="Center" Margin="81,19"
+                HorizontalAlignment="Center"
                 />
 
-            <ScrollViewer Grid.Row="1" Grid.RowSpan="3">
+            <ScrollViewer Grid.Row="1">
                 <StackPanel 
                     Margin="10,0,10,0"
                     Orientation="Vertical"
@@ -209,7 +203,7 @@
                     <ComboBox 
                         x:Name="EndCityTextBox" 
                         DisplayMemberPath="city_name"
-                        Text="{Binding SelectedItem.cities1.city_name, ElementName=RecordsDataGrid}"
+                        SelectedItem="{Binding  ElementName=RecordsDataGrid,  Path=SelectedItem.cities1}"
                         />
 
                     <Label Content="Цена"/>
@@ -248,7 +242,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Button 
-                    Style="{StaticResource BaseButton}"
+                    Style="{StaticResource RecordCommitButton}"
                     x:Name="CommitChangeRecordsButton" 
                     Grid.Column="0"
                     Content="Принять"
@@ -257,7 +251,7 @@
                     />
                 <Button 
                     x:Name="RollbackChangeRecordsButton"
-                    Style="{StaticResource BaseButton}"
+                    Style="{StaticResource RecordCancelButton}"
                     Grid.Column="1"
                     Content="Отменить"
                     Margin="5,0,0,0"

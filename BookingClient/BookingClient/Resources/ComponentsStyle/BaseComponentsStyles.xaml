@@ -68,7 +68,11 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
+    <Style TargetType="Label">
+        <Setter Property="FontFamily" Value="Segoe UI Semilight"/>
+        <Setter Property="FontSize" Value="18"/>
+    </Style>
 
     <!--Control colors.-->
     <Color x:Key="WindowColor">#FFE8EDF9</Color>
@@ -150,7 +154,7 @@
         </LinearGradientBrush.GradientStops>
     </LinearGradientBrush>
 
-    <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
+    <!--<ControlTemplate x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -452,7 +456,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
+    </Style>-->
 
     <Style x:Key="BaseTextBox" TargetType="TextBox">
         <Setter Property="FontFamily" Value="Segoe UI Semilight"/>

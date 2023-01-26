@@ -4,25 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="50941b3bac574a21ae288ea237f9036e" Name="Diagram1" ZoomLevel="95">
+      <Diagram DiagramId="c0a9c0a3439a43ffa8428aa1bdca5d36" Name="Diagram1">
         <EntityTypeShape EntityType="Booking_BaseModel.accounts" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Booking_BaseModel.cities" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Booking_BaseModel.countries" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Booking_BaseModel.departures" Width="1.5" PointX="7.5" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Booking_BaseModel.cities" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Booking_BaseModel.countries" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Booking_BaseModel.departures" Width="1.5" PointX="7.5" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Booking_BaseModel.first_names" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Booking_BaseModel.images" Width="1.5" PointX="7.5" PointY="13.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Booking_BaseModel.included" Width="1.5" PointX="10.5" PointY="19.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Booking_BaseModel.inclusions" Width="1.5" PointX="8.25" PointY="25.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Booking_BaseModel.itirerary" Width="1.5" PointX="7.5" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="Booking_BaseModel.images" Width="1.5" PointX="7.5" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Booking_BaseModel.included" Width="1.5" PointX="12.5" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Booking_BaseModel.inclusions" Width="1.5" PointX="10.25" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="Booking_BaseModel.itirerary" Width="1.5" PointX="7.5" PointY="15.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Booking_BaseModel.last_names" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Booking_BaseModel.order_rooms" Width="1.5" PointX="12" PointY="16" IsExpanded="true" />
-        <EntityTypeShape EntityType="Booking_BaseModel.orders" Width="1.5" PointX="9.75" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="Booking_BaseModel.persons" Width="1.5" PointX="12" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Booking_BaseModel.rooms" Width="1.5" PointX="7.5" PointY="21.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Booking_BaseModel.tour_countries" Width="1.5" PointX="7.5" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Booking_BaseModel.tours" Width="1.5" PointX="5.25" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Booking_BaseModel.order_rooms" Width="1.5" PointX="12" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Booking_BaseModel.orders" Width="1.5" PointX="9.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Booking_BaseModel.persons" Width="1.5" PointX="12" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Booking_BaseModel.rooms" Width="1.5" PointX="7.5" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Booking_BaseModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Booking_BaseModel.tour_countries" Width="1.5" PointX="10.5" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Booking_BaseModel.tours" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
         <AssociationConnector Association="Booking_BaseModel.FK_cities_countries" ManuallyRouted="false" />
-        <AssociationConnector Association="Booking_BaseModel.FK_persons_cities" ManuallyRouted="false" />
         <AssociationConnector Association="Booking_BaseModel.FK_tours_cities" ManuallyRouted="false" />
         <AssociationConnector Association="Booking_BaseModel.FK_tours_cities1" ManuallyRouted="false" />
         <AssociationConnector Association="Booking_BaseModel.FK_tour_countries_countries" ManuallyRouted="false" />

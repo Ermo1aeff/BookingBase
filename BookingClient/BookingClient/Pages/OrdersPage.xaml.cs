@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,20 +28,21 @@ namespace BookingClient.Pages
         private string buf1;
         private string buf2;
         private string buf3;
+        private string buf4;
 
         public OrdersPage()
         {
             InitializeComponent();
             DataContext = this;
-            RecordsDataGrid.ItemsSource = SourceCore.entities.orders.ToList();
+            UpdateDataGrid(null);
             TourComboBox.ItemsSource = SourceCore.entities.tours.ToList();
-            DateTourComboBox.ItemsSource = SourceCore.entities.departures.ToList();
         }
 
-        public void CarNumDlgLoad(bool b)
+        public void DlgLoad(bool b)
         {
             if (b == true)
             {
+                RecordChangeBlock.MinWidth = 230;
                 RecordChangeBlock.Width = new GridLength(230);
                 //Включаем кнопки
                 RecordsDataGrid.IsHitTestVisible = false;
@@ -47,9 +50,11 @@ namespace BookingClient.Pages
                 CopyRecordButton.IsEnabled = false;
                 EditRecordButton.IsEnabled = false;
                 DeleteRecordButton.IsEnabled = false;
+                //RecordsDataGrid.SelectedItem = null;
             }
             else
             {
+                RecordChangeBlock.MinWidth = 0;
                 RecordChangeBlock.Width = new GridLength(0);
                 //Выключаем кнопки
                 RecordsDataGrid.IsHitTestVisible = true;
@@ -61,14 +66,25 @@ namespace BookingClient.Pages
             }
         }
 
+        public void UpdateDataGrid(orders SelectingItem)
+        {
+            if ((SelectingItem == null) && (RecordsDataGrid.ItemsSource != null))
+            {
+                SelectingItem = (orders)RecordsDataGrid.SelectedItem;
+            }
+            var DataGridRecords = new ObservableCollection<orders>(SourceCore.entities.orders.ToList());
+            RecordsDataGrid.ItemsSource = DataGridRecords;
+            RecordsDataGrid.SelectedItem = SelectingItem;
+        }
+
+
         private void AddRecordButton_Click(object sender, RoutedEventArgs e)
         {
-            CarNumDlgLoad(true);
+            DlgLoad(true);
             DlgMode = 0;
             RecordsDataGrid.SelectedItem = null;
             RecordChangeTitle.Content = "Добавление";
             ContactPhoneTextBox.Text = "";
-            PersonCountTextBox.Text = "";
             PriceTextBox.Text = "";
         }
 
@@ -76,21 +92,23 @@ namespace BookingClient.Pages
         {
             if (RecordsDataGrid.SelectedItem != null)
             {
-                CarNumDlgLoad(true);
+                DlgLoad(true);
                 DlgMode = 0;
                 RecordChangeTitle.Content = "Копирование";
 
                 //использование буферных переменных для «отрыва» от данных выбранной строки (чтобы не сработал Binding)
                 buf1 = ContactPhoneTextBox.Text;
-                buf2 = PersonCountTextBox.Text;
-                buf3 = PriceTextBox.Text;
+                buf2 = TourComboBox.Text;
+                buf3 = DateTourComboBox.Text;
+                buf4 = PriceTextBox.Text;
 
                 //убрать фокус с выделенной строки
                 RecordsDataGrid.SelectedItem = null;
 
                 ContactPhoneTextBox.Text = buf1;
-                PersonCountTextBox.Text = buf2;
-                PriceTextBox.Text = buf3;
+                TourComboBox.Text = buf2;
+                DateTourComboBox.Text = buf3;
+                PriceTextBox.Text = buf4;
             }
             else
             {
@@ -102,7 +120,7 @@ namespace BookingClient.Pages
         {
             if (RecordsDataGrid.SelectedItem != null)
             {
-                CarNumDlgLoad(true);
+                DlgLoad(true);
                 RecordChangeTitle.Content = "Редактирование";
             }
             else
@@ -115,50 +133,86 @@ namespace BookingClient.Pages
         {
             if (MessageBox.Show("Удалить запись?", "Внимание", MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.OK)
             {
-                SourceCore.entities.tours.Remove((tours)RecordsDataGrid.SelectedItem);
-                SourceCore.entities.SaveChanges();
-                RecordsDataGrid.ItemsSource = SourceCore.entities.tours.ToList();
+                try
+                {
+                    // Ссылка на удаляемую книгу
+                    var DeletingRecord = (orders)RecordsDataGrid.SelectedItem;
+                    // Определение ссылки, на которую должен перейти указатель после удаления
+                    if (RecordsDataGrid.SelectedIndex < RecordsDataGrid.Items.Count - 1)
+                    {
+                        RecordsDataGrid.SelectedIndex++;
+                    }
+                    else
+                    {
+                        if (RecordsDataGrid.SelectedIndex > 0)
+                        {
+                            RecordsDataGrid.SelectedIndex--;
+                        }
+                    }
+
+                    var SelectingRecord = (orders)RecordsDataGrid.SelectedItem;
+                    SourceCore.entities.orders.Remove(DeletingRecord);
+                    SourceCore.entities.SaveChanges();
+                    UpdateDataGrid(SelectingRecord);
+                }
+                catch
+                {
+
+                    MessageBox.Show("Невозможно удалить запись, так как она используется в других справочниках базы данных.",
+                    "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning, MessageBoxResult.None);
+                }
             }
         }
 
         private void CommitChangeRecordsButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Convert.ToString(RecordChangeTitle.Content) == "Добавление")
+            var NewRecord = new orders();
+            NewRecord.contact_phone = Convert.ToInt64(ContactPhoneTextBox.Text);
+            NewRecord.person_count = SourceCore.entities.persons.Count(U => U.order_id == 1);
+
+            // Пример SQL запроса (требуется полключение к БД)
+
+            //string connectionSring = @"Data Source=ERMOLAEV;Initial Catalog=Booking_Base;Integrated security=true";
+            //SqlConnection sqlConnection = new SqlConnection(connectionSring);
+            //sqlConnection.Open();
+            //string query = "select count(*) from persons where order_id = 1 group by order_id";
+            //SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+            //SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+            //int requestbody = 0;
+            //while (sqlDataReader.Read())
+            //{
+            //    requestbody = sqlDataReader.GetInt32(0);
+            //}
+
+            //NewOrders.person_count = requestbody;
+
+            NewRecord.person_count = 0;
+            NewRecord.departures = (departures)DateTourComboBox.SelectedItem;
+            if (DlgMode == 0)
             {
-                var NewOrders = new orders();
-                NewOrders.contact_phone = Convert.ToInt64(ContactPhoneTextBox.Text);
-                NewOrders.person_count = Convert.ToInt32(PersonCountTextBox.Text);
-                NewOrders.departures.tours = (tours)TourComboBox.SelectedItem;
-                NewOrders.departures = (departures)TourComboBox.SelectedItem;
-                NewOrders.price = Convert.ToDecimal(PriceTextBox.Text);
-                SourceCore.entities.orders.Add(NewOrders);
+                SourceCore.entities.orders.Add(NewRecord);
             }
             SourceCore.entities.SaveChanges();
 
-            RecordsDataGrid.ItemsSource = SourceCore.entities.tours.ToList();
-            CarNumDlgLoad(false);
-
+            UpdateDataGrid(NewRecord);
+            DlgLoad(false);
         }
 
         private void RollbackChangeRecordsButton_Click(object sender, RoutedEventArgs e)
         {
-            CarNumDlgLoad(false);
+            DlgLoad(false);
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             List<String> Columns = new List<string>();
-            for (int I = 0; I < 6; I++)
+            int DataGridItemsCount = RecordsDataGrid.Columns.Count;
+            for (int I = 0; I < DataGridItemsCount; I++)
             {
                 Columns.Add(RecordsDataGrid.Columns[I].Header.ToString());
             }
             FilterComboBox.ItemsSource = Columns;
             FilterComboBox.SelectedIndex = 0;
-            //foreach (DataGridColumn Column in RecordsDataGrid.Columns)
-            //{
-            //    Column.CanUserSort = false;
-            //}
-
         }
 
         private void FilterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -185,9 +239,11 @@ namespace BookingClient.Pages
                 case 2:
                     RecordsDataGrid.ItemsSource = SourceCore.entities.tours.Where(filtercase => filtercase.price.ToString().Contains(textbox)).ToList();
                     break;
-                //case 3:
-                //    RecordsDataGrid.ItemsSource = SourceCore.entities.tours.Where(filtercase => filtercase.max_group_size.ToString().Contains(textbox)).ToList();
-                //    break;
+                default:
+                    break;
+                    //case 3:
+                    //    RecordsDataGrid.ItemsSource = SourceCore.entities.tours.Where(filtercase => filtercase.max_group_size.ToString().Contains(textbox)).ToList();
+                    //    break;
             }
         }
     }

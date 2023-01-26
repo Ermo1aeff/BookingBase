@@ -73,8 +73,8 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Тур" Binding="{Binding tour_name}" Width="10*"/>
                     <!--<DataGridTextColumn Header="Описание" Binding="{Binding tour_description}" Width="20*"/>-->
-                    <DataGridTextColumn Header="Начальный город" Binding="{Binding cities.city_name}" Width="5*"/>
-                    <DataGridTextColumn Header="Конечный город" Binding="{Binding cities.city_name}" Width="5*"/>
+                    <DataGridTextColumn Header="Нач. город" Binding="{Binding cities.city_name}" Width="5*"/>
+                    <DataGridTextColumn Header="Кон. город" Binding="{Binding cities.city_name}" Width="5*"/>
                     <DataGridTextColumn Header="Цена" Binding="{Binding price}" Width="3*"/>
                     <DataGridTextColumn Header="Дни" Binding="{Binding day_count}" Width="3*"/>
                     <DataGridTextColumn Header="Размер группы" Binding="{Binding max_group_size}" Width="3*"/>
@@ -236,12 +236,12 @@
                         ItemsSource="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.departures}"
                         />-->
                     
-                    <Label Content="Город"/>
+                    <!--<Label Content="Город"/>
                     <ComboBox
                         x:Name="CityComboBox" 
                         DisplayMemberPath="city_name"
                         ItemsSource="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.departures}"
-                        />
+                        />-->
 
                     <Label Content="Паспорт"/>
                     <TextBox
