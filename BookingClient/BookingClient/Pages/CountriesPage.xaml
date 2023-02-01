@@ -51,13 +51,11 @@
                 <ComboBox
                     x:Name="FilterComboBox"
                     Width="180"
-                    IsEditable="True"
                     SelectionChanged="FilterComboBox_SelectionChanged"
                     />
                 <TextBox
+                    Style="{StaticResource SearchTextBox}"
                     x:Name="FilterTextBox"
-                    Style="{StaticResource BaseTextBox}"
-                    Tag="Поиск"
                     TextChanged="FilterTextBox_TextChanged"
                     />
             </DockPanel>
@@ -105,7 +103,6 @@
 
                     <Label Content="Название страны"/>
                     <TextBox 
-                        Style="{StaticResource BaseTextBox}"
                         x:Name="CountryNameTextBox" 
                         Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.country_name}"
                         />

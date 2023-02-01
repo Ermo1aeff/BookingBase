@@ -124,7 +124,6 @@
           <ScalarProperty Name="last_name" ColumnName="last_name" />
           <ScalarProperty Name="passport" ColumnName="passport" />
           <ScalarProperty Name="birthday" ColumnName="birthday" />
-          <ScalarProperty Name="phone" ColumnName="phone" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

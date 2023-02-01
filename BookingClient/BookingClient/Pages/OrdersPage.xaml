@@ -8,6 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="OrdersPage"
       Background="White"
+      Loaded="Page_Loaded"
       >
 
     <Grid>
@@ -49,13 +50,11 @@
                 <ComboBox
                     x:Name="FilterComboBox"
                     Width="180"
-                    IsEditable="True"
                     SelectionChanged="FilterComboBox_SelectionChanged"/>
 
                 <TextBox
+                    Style="{StaticResource SearchTextBox}"
                     x:Name="FilterTextBox"
-                    Style="{StaticResource BaseTextBox}"
-                    Tag="Поиск"
                     TextChanged="FilterTextBox_TextChanged"/>
             </DockPanel>
 
@@ -109,27 +108,16 @@
                     >
                     <Label Content="Контактный номер"/>
                     <TextBox
-                        Style="{StaticResource BaseTextBox}"
                         x:Name="ContactPhoneTextBox" 
                         Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.contact_phone}"
                         />
-
-                    <!--<Label Content="Количество туристов"
-                           FontSize="18"
-                           FontFamily="Segoe UI Semilight"/>
-                    <TextBox
-                        AcceptsReturn="True"
-                        FontSize="18"
-                        x:Name="PersonCountTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.person_count}"
-                        />-->
 
                     <Label Content="Тур"/>
                     <ComboBox
                         x:Name="TourComboBox" 
                         DisplayMemberPath="tour_name"
                         SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.departures.tours}"
-                        />
+                        IsEditable="True"/>
 
                     <Label Content="Дата"/>
                     <ComboBox
@@ -138,14 +126,7 @@
                         ItemStringFormat="dd.MM.yyyy"
                         SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.departures}"
                         ItemsSource="{Binding ElementName=TourComboBox, Path=SelectedItem.departures}"
-                        />
-
-                    <Label Content="Цена за место"/>
-                    <TextBox
-                        Style="{StaticResource BaseTextBox}"
-                        x:Name="PriceTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.price}"
-                        />
+                        IsEditable="True"/>
 
                 </StackPanel>
             </ScrollViewer>

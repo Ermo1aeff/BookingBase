@@ -164,6 +164,7 @@ namespace BookingClient.Pages
         private void CommitChangeRecordsButton_Click(object sender, RoutedEventArgs e)
         {
             var NewRecord = new persons();
+            NewRecord.orders = (orders)OrderIdComboBox.SelectedItem;
             NewRecord.last_name = LastNameTextBox.Text;
             NewRecord.first_name = FirstNameTextBox.Text;
             NewRecord.passport = Convert.ToInt64(PassportTextBox.Text);
@@ -172,15 +173,15 @@ namespace BookingClient.Pages
             if (DlgMode == 0)
             {
                 SourceCore.entities.persons.Add(NewRecord);
-            }
 
-            var orderId = NewRecord.order_id;
+            }
+            SourceCore.entities.SaveChanges();
+            int orderId = (int)NewRecord.order_id;
             var order = SourceCore.entities.orders.Where(U => U.order_id == orderId).FirstOrDefault();
 
             order.person_count = SourceCore.entities.persons.Count(U => U.order_id == orderId);
-            //NewRecord.person_count = SourceCore.entities.persons.Count(U => U.order_id == 1);
-            SourceCore.entities.SaveChanges();
 
+            SourceCore.entities.SaveChanges();
             UpdateDataGrid(NewRecord);
             DlgLoad(false);
         }
@@ -218,19 +219,22 @@ namespace BookingClient.Pages
             switch (FilterComboBox.SelectedIndex)
             {
                 case 0:
-                    RecordsDataGrid.ItemsSource = SourceCore.entities.tours.Where(filtercase => filtercase.tour_name.Contains(textbox)).ToList();
+                    RecordsDataGrid.ItemsSource = SourceCore.entities.persons.Where(filtercase => filtercase.orders.order_id.ToString().Contains(textbox)).ToList();
                     break;
                 case 1:
-                    RecordsDataGrid.ItemsSource = SourceCore.entities.tours.Where(filtercase => filtercase.tour_description.Contains(textbox)).ToList();
+                    RecordsDataGrid.ItemsSource = SourceCore.entities.persons.Where(filtercase => filtercase.last_name.Contains(textbox)).ToList();
                     break;
                 case 2:
-                    RecordsDataGrid.ItemsSource = SourceCore.entities.tours.Where(filtercase => filtercase.price.ToString().Contains(textbox)).ToList();
+                    RecordsDataGrid.ItemsSource = SourceCore.entities.persons.Where(filtercase => filtercase.first_name.Contains(textbox)).ToList();
+                    break;
+                case 3:
+                    RecordsDataGrid.ItemsSource = SourceCore.entities.persons.Where(filtercase => filtercase.passport.ToString().Contains(textbox)).ToList();
+                    break;
+                case 4:
+                    RecordsDataGrid.ItemsSource = SourceCore.entities.persons.Where(filtercase => filtercase.birthday.ToString().Contains(textbox)).ToList();
                     break;
                 default:
                     break;
-                    //case 3:
-                    //    RecordsDataGrid.ItemsSource = SourceCore.entities.tours.Where(filtercase => filtercase.max_group_size.ToString().Contains(textbox)).ToList();
-                    //    break;
             }
         }
     }

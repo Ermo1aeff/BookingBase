@@ -47,13 +47,11 @@
                 <ComboBox
                     x:Name="FilterComboBox"
                     Width="180"
-                    IsEditable="True"
                     SelectionChanged="FilterComboBox_SelectionChanged"
                     />
                 <TextBox
+                    Style="{StaticResource SearchTextBox}"
                     x:Name="FilterTextBox"
-                    Style="{StaticResource BaseTextBox}"
-                    Tag="Поиск"
                     TextChanged="FilterTextBox_TextChanged"
                     />
             </DockPanel>
@@ -120,12 +118,6 @@
                         IsEditable="True"/>
 
                     <Label Content="Дата отправления"/>
-                    <!--<TextBox 
-                        Style="{StaticResource BaseTextBox}"
-                        x:Name="DateBeginTextBox"
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.date_begin, StringFormat=dd.MM.yyyy}"
-                        />-->
-
                     <DatePicker 
                         x:Name="DateBeginDatePicker"  
                         FontSize="18"
@@ -136,7 +128,6 @@
                         />
                 </StackPanel>
             </ScrollViewer>
-
 
             <Grid 
                 Grid.Row="3" 

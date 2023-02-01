@@ -14,6 +14,7 @@
         WindowStartupLocation="CenterScreen" 
         ResizeMode="CanMinimize"
         BorderThickness="14">
+
     <Window.Effect>
         <DropShadowEffect
             Color="black"
@@ -22,8 +23,6 @@
             ShadowDepth="2"
             Direction="315"/>
     </Window.Effect>
-
-    
 
     <Border CornerRadius="55"
             Background="#FFF"
@@ -48,31 +47,25 @@
                 
                 <TextBox
                     x:Name="LoginTextBox"
-                    Style="{StaticResource BaseTextBox}"
                     Tag="Логин"
-                    Margin="0,0,0,14" 
                     Height="30"
+                    Margin="0,0,0,14"
                     Text="admin"/>
 
-                <Grid 
-                    Height="30"
-                    Margin="0,0,0,14">
-
+                <Grid Margin="0,0,0,14">
                     <TextBox 
                         x:Name="PasswordTextBox"
-                        Style="{StaticResource BaseTextBox}"
                         Tag="Пароль"
-                        Visibility="Collapsed"
-                        />
+                        Visibility="Collapsed"/>
 
                     <PasswordBox
                         Style="{StaticResource BasePasswordBox}"
                         x:Name="PasswordPasswordBox"
-                        FontSize="18"
                         Visibility="Visible"
                         Tag="Пароль"
                         PasswordChanged="PasswordBox_PasswordChanged"
-                        Password="admin"/>
+                        Password="admin"
+                        Height="30"/>
 
                     <CheckBox
                         Style="{StaticResource EyeToggleButton}"
@@ -80,17 +73,17 @@
                         x:Name="PasswordCheckBox"
                         HorizontalAlignment="Right"
                         Width="30"/>
-
                 </Grid>
 
                 <Button
-                    Height="30"
                     Style="{StaticResource AuthorizationButton}"
                     x:Name="AutorizationButton"
                     Content="Авторизироваться"
                     Click="AutorizationButton_Click"
                     Grid.Column="0"
-                    Margin="0,0,0,14" IsDefault="True"/>
+                    Margin="0,0,0,14" 
+                    Height="30"
+                    IsDefault="True"/>
 
                 <Grid Height="30">
                     <Grid.ColumnDefinitions>

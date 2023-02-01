@@ -6,7 +6,9 @@
       xmlns:local="clr-namespace:BookingClient.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PersonsPage"      Background="White"
+      Title="PersonsPage"      
+      Background="White"
+      Loaded="Page_Loaded"
       >
 
     <Grid>
@@ -47,32 +49,32 @@
 
                 <ComboBox
                     x:Name="FilterComboBox"
+                    FontSize="16"
+                    VerticalContentAlignment="Center"
                     Width="180"
-                    IsEditable="True"
                     SelectionChanged="FilterComboBox_SelectionChanged"/>
 
                 <TextBox
+                    Style="{StaticResource SearchTextBox}"
                     x:Name="FilterTextBox"
-                    Style="{StaticResource BaseTextBox}"
-                    Tag="Поиск"
                     TextChanged="FilterTextBox_TextChanged"/>
             </DockPanel>
 
             <DataGrid
                 RowBackground="#DDD"
                 AlternatingRowBackground="White"
+                IsReadOnly="True"
                 x:Name="RecordsDataGrid"
                 Grid.Row="1"
                 AutoGenerateColumns="False"
-                CanUserAddRows="False"
+                CanUserAddRows="true"
                 >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Номер заказа" Binding="{Binding order_id, StringFormat={}№{0}}" Width="100"/>
-                    <DataGridTextColumn Header="Конт. номер" Binding="{Binding contact_phone}" Width="100"/>
-                    <DataGridTextColumn Header="Туристы" Binding="{Binding person_count}" Width="80"/>
-                    <DataGridTextColumn Header="Тур" Binding="{Binding departures.tours.tour_name}" Width="10*"/>
-                    <DataGridTextColumn Header="Дата" Binding="{Binding departures.date_begin, StringFormat=dd.MM.yyyy}" Width="80"/>
-                    <DataGridTextColumn Header="Цена" Binding="{Binding price}" Width="80"/>
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding last_name}" Width="10*"/>
+                    <DataGridTextColumn Header="Имя" Binding="{Binding first_name}" Width="10*"/>
+                    <DataGridTextColumn Header="Номер паспорта" Binding="{Binding passport}" Width="100"/>
+                    <DataGridTextColumn Header="Дата рождения" Binding="{Binding birthday, StringFormat=dd.MM.yyyy}" Width="100"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
@@ -109,29 +111,26 @@
                     <Label Content="Номер заказа"/>
                     <ComboBox
                         x:Name="OrderIdComboBox" 
-                        DisplayMemberPath="OrderIdComboBox"
-                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.departures.tours}"
+                        DisplayMemberPath="order_id"
+                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.orders}"
                         />
 
                     <Label Content="Фамилия"/>
                     <TextBox
-                        Style="{StaticResource BaseTextBox}"
                         x:Name="LastNameTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.price}"
+                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.last_name}"
                         />
 
                     <Label Content="Имя"/>
                     <TextBox
-                        Style="{StaticResource BaseTextBox}"
                         x:Name="FirstNameTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.price}"
+                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.first_name}"
                         />
 
                     <Label Content="Номер паспорта"/>
                     <TextBox
-                        Style="{StaticResource BaseTextBox}"
                         x:Name="PassportTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.price}"
+                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.passport}"
                         />
 
                     <Label Content="Дата рождения"/>
@@ -141,7 +140,7 @@
                         SelectedDateFormat="Short"
                         BorderThickness="1"
                         Padding="0"
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.date_begin, StringFormat=dd.MM.yyyy}"
+                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.birthday, StringFormat=dd.MM.yyyy}"
                         />
 
                 </StackPanel>

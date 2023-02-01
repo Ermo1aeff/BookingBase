@@ -129,7 +129,6 @@
     <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="passport" Type="Int64" />
     <Property Name="birthday" Type="DateTime" Precision="0" />
-    <Property Name="phone" Type="Int64" />
     <NavigationProperty Name="orders" Relationship="Self.FK_persons_orders" FromRole="persons" ToRole="orders" />
   </EntityType>
   <EntityType Name="rooms">

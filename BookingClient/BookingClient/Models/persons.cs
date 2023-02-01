@@ -20,7 +20,6 @@ namespace BookingClient.Models
         public string last_name { get; set; }
         public Nullable<long> passport { get; set; }
         public Nullable<System.DateTime> birthday { get; set; }
-        public Nullable<long> phone { get; set; }
     
         public virtual orders orders { get; set; }
     }

@@ -112,7 +112,6 @@
     <Property Name="last_name" Type="varchar" MaxLength="50" />
     <Property Name="passport" Type="bigint" />
     <Property Name="birthday" Type="date" />
-    <Property Name="phone" Type="bigint" />
   </EntityType>
   <EntityType Name="rooms">
     <Key>

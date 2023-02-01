@@ -310,6 +310,7 @@
       <DependentUpon>BookingModel.edmx</DependentUpon>
       <LastGenOutput>BookingModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\ComponentsStyle\search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

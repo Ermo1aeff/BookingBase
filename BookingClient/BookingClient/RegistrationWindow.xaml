@@ -34,55 +34,47 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <StackPanel VerticalAlignment="Top" Margin="100, 0" Grid.Row="1" >
+            <StackPanel VerticalAlignment="Top" Margin="100, 0">
                 <Label 
                     Content="Регистрация" 
-                    Margin="0, 16, 0, 10"
+                    Margin="0,16,0,10"
                     FontSize="36" 
                     HorizontalContentAlignment="Center" 
-                    VerticalAlignment="Center" 
-                    Grid.Row="0" 
+                    VerticalAlignment="Center"
                     FontFamily="Segoe UI Semilight"
                     />   
 
                 <TextBox
                     x:Name="LastNameTextBox"
-                    Style="{StaticResource BaseTextBox}"
                     Tag="Фамилия" 
-                    Margin="0,0,0,14" 
                     Height="30"
+                    Margin="0,0,0,14" 
                     />
                 
                 <TextBox 
                     x:Name="FirstNameTextBox"
-                    Style="{StaticResource BaseTextBox}"
-                    Tag="Имя" 
-                    Margin="0,0,0,14"
+                    Tag="Имя"
                     Height="30"
+                    Margin="0,0,0,14"
                     />
                 
                 <TextBox 
                     x:Name="LoginTextBox"
-                    Style="{StaticResource BaseTextBox}"
                     Tag="Логин" 
-                    Margin="0,0,0,14" 
                     Height="30"
+                    Margin="0,0,0,14"
                     />
 
-                <Grid 
-                    Margin="0,0,0,14" 
-                    Height="30">
-
+                <Grid Margin="0,0,0,14">
                     <TextBox 
+                        Height="30"
                         x:Name="PasswordTextBox"
-                        Style="{StaticResource BaseTextBox}"
                         Tag="Пароль"
                         />
 
                     <PasswordBox
                         Style="{StaticResource BasePasswordBox}"
                         x:Name="PasswordBox"
-                        FontSize="18"
                         Visibility="Collapsed"
                         Tag="Пароль"
                         PasswordChanged="PasswordBox_PasswordChanged"
@@ -94,22 +86,18 @@
                         x:Name="PasswordCheckBox"
                         Width="30"
                         HorizontalAlignment="Right"/>
-
                 </Grid>
                 
-                <Grid 
-                    Height="30">
-
+                <Grid>
                     <TextBox 
+                        Height="30"
                         x:Name="ConfirmPasswordTextBox"
-                        Style="{StaticResource BaseTextBox}"
                         Tag="Подтвердите пароль"
                         />
 
                     <PasswordBox
                         Style="{StaticResource BasePasswordBox}"
                         x:Name="ConfirmPasswordBox"
-                        FontSize="18"
                         Visibility="Collapsed"
                         Tag="Подтвердите пароль"
                         PasswordChanged="ConfirmPasswordBox_PasswordChanged"
@@ -121,18 +109,14 @@
                         Click="ConfirmPasswordCheckBox_Click"
                         Width="30"
                         HorizontalAlignment="Right"/>
-
                 </Grid>
 
-                <TextBox 
+                <TextBlock 
                     x:Name="MessageTextBox"
                     Margin="0,2"
-                    Foreground="Red"
-                    Style="{StaticResource BaseTextBox}"
                     TextWrapping="Wrap"
                     FontSize="14"
                     Height="auto"
-                    BorderThickness="0"
                     />
 
                 <Grid 
@@ -140,6 +124,7 @@
                     Margin="0, 0, 0, 14">
 
                     <TextBox 
+                        Height="auto"
                         x:Name="CapchaTextBox"
                         IsReadOnly="True"
                         Foreground="Red" 
@@ -150,9 +135,6 @@
                         FontStretch="UltraCondensed"
                         VerticalContentAlignment="Center"
                         >
-                        <!--<TextBox.Effect>
-                            <BlurEffect Radius="3"/>
-                        </TextBox.Effect>-->
                     </TextBox>
 
                     <CheckBox
@@ -160,16 +142,15 @@
                         Click="CapchaCheckBox_Click"
                         x:Name="CapchaCheckBox"
                         Width="60"
-                        HorizontalAlignment="Right" Loaded="CapchaCheckBox_Loaded"/>
-
+                        HorizontalAlignment="Right" 
+                        Loaded="CapchaCheckBox_Loaded"/>
                 </Grid>
 
                 <TextBox
                     x:Name="CapchaTextBoxInput"
-                    Style="{StaticResource BaseTextBox}"
                     Tag="Введите текст выше"
-                    Margin="0,0,0,14"
                     Height="30"
+                    Margin="0,0,0,14"
                     TextChanged="CapchaTextBoxInput_TextChanged"
                     />
 

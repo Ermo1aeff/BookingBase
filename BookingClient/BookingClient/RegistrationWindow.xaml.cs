@@ -53,6 +53,7 @@ namespace BookingClient
             string login = LoginTextBox.Text;
             string password = PasswordBox.Password != "" ? PasswordBox.Password : PasswordTextBox.Text;
             string confirmPssword = ConfirmPasswordBox.Password != "" ? ConfirmPasswordBox.Password : ConfirmPasswordTextBox.Text;
+            MessageTextBox.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("Red");
 
             if (lastName == "" && message == "")
                 message = "Введите фамилию";
@@ -81,13 +82,13 @@ namespace BookingClient
             if (regex.IsMatch(password) && message == "")
                 message = "Пароль НЕ должен содержать пробелов!";
 
-            regex = new Regex(".*[A-Z].*");
-            if (!regex.IsMatch(password) && message == "")
-                message = "Пароль должен содержать хотябы одну заглавную и прописную буквы латинского алфавита";
-
             regex = new Regex(".*[a-z].*");
             if (!regex.IsMatch(password) && message == "")
-                message = "Пароль должен содержать хотябы одну заглавную и прописную буквы латинского алфавита";
+                message = "Пароль должен содержать прописные буквы латинского алфавита";
+
+            regex = new Regex(".*[A-Z].*");
+            if (!regex.IsMatch(password) && message == "")
+                message = "Пароль должен содержать хотя бы одну заглавную букву латинского алфавита";
 
             regex = new Regex(@"(.*[0-9].*)");
             if (!regex.IsMatch(password) && message == "")
@@ -95,7 +96,7 @@ namespace BookingClient
 
             regex = new Regex(@"(.*\W.*)");
             if (!regex.IsMatch(password) && message == "")
-                message = "Пароль должен содержать хотябы один специальный символ по типу: ? . # * ^ - \\ # ^ ( ) @";
+                message = "Пароль должен содержать хотя бы один специальный символ по типу: \n? . # * ^ - \\ $ ^ ( ) @";
 
             if (confirmPssword == "" && message == "")
                 message = "Подтвердите пароль";

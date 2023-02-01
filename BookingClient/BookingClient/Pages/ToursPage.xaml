@@ -53,13 +53,11 @@
                 <ComboBox
                     x:Name="FilterComboBox"
                     Width="180"
-                    IsEditable="True"
                     SelectionChanged="FilterComboBox_SelectionChanged"
                     />
                 <TextBox
+                    Style="{StaticResource SearchTextBox}"
                     x:Name="FilterTextBox"
-                    Style="{StaticResource BaseTextBox}"
-                    Tag="Поиск"
                     TextChanged="FilterTextBox_TextChanged"
                     />
             </DockPanel>
@@ -187,13 +185,15 @@
                     >
                     <Label Content="Название тура"/>
                     <TextBox 
-                        Style="{StaticResource BaseTextBox}"
+                        FontSize="14"
+                        Height="27"
                         x:Name="TourNameTextBox" 
                         Text="{Binding Mode=OneWay, ElementName=RecordsDataGrid, Path=SelectedItem.tour_name}"
                         />
 
                     <Label Content="Начальный город"/>
                     <ComboBox 
+                        Height="27"
                         x:Name="BeginCityComboBox" 
                         DisplayMemberPath="city_name"
                         SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.cities}"
@@ -201,28 +201,26 @@
 
                     <Label Content="Конечный город"/>
                     <ComboBox 
+                        Height="27"
                         x:Name="EndCityTextBox" 
                         DisplayMemberPath="city_name"
                         SelectedItem="{Binding  ElementName=RecordsDataGrid,  Path=SelectedItem.cities1}"
-                        />
+                        IsEditable="True"/>
 
                     <Label Content="Цена"/>
                     <TextBox 
-                        Style="{StaticResource BaseTextBox}"
                         x:Name="PriceTextBox" 
                         Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.price}"
                         />
 
                     <Label Content="Количество дней"/>
                     <TextBox 
-                        Style="{StaticResource BaseTextBox}"
                         x:Name="DayCountTextBox" 
                         Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.day_count}"
                         />
 
                     <Label Content="Размер группы"/>
-                    <TextBox 
-                        Style="{StaticResource BaseTextBox}"
+                    <TextBox
                         x:Name="MaxGroupSizeTextBox" 
                         Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.max_group_size}"
                         />

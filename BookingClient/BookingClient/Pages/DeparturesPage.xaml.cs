@@ -1,6 +1,7 @@
 ﻿using BookingClient.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,18 +23,26 @@ namespace BookingClient.Pages
     public partial class DeparturesPage : Page
     {
         //описание вспомогательных переменных
+        private int DlgMode = -1;
         private string buf1;
+        private string buf2;
 
         public DeparturesPage()
         {
             InitializeComponent();
             DataContext = this;
-            UpdateDataGrid();
+            UpdateDataGrid(null);
             TourNameComboBox.ItemsSource = SourceCore.entities.tours.ToList();
         }
-        private void UpdateDataGrid()
+        public void UpdateDataGrid(departures SelectingItem)
         {
-            RecordsDataGrid.ItemsSource = SourceCore.entities.departures.ToList();
+            if ((SelectingItem == null) && (RecordsDataGrid.ItemsSource != null))
+            {
+                SelectingItem = (departures)RecordsDataGrid.SelectedItem;
+            }
+            var DataGridRecords = new ObservableCollection<departures>(SourceCore.entities.departures.ToList());
+            RecordsDataGrid.ItemsSource = DataGridRecords;
+            RecordsDataGrid.SelectedItem = SelectingItem;
         }
 
         public void DlgLoad(bool b)
@@ -61,12 +70,14 @@ namespace BookingClient.Pages
                 EditRecordButton.IsEnabled = true;
                 DeleteRecordButton.IsEnabled = true;
                 DialogGridSplitter.Visibility = Visibility.Collapsed;
+                DlgMode = -1;
             }
         }
 
         private void AddRecordButton_Click(object sender, RoutedEventArgs e)
         {
             DlgLoad(true);
+            DlgMode = 0;
             RecordsDataGrid.SelectedItem = null;        
             RecordChangeTitle.Content = "Добавление";
             DateBeginDatePicker.SelectedDate = DateTime.Now;
@@ -77,9 +88,18 @@ namespace BookingClient.Pages
             if (RecordsDataGrid.SelectedItem != null)
             {
                 DlgLoad(true);
+                DlgMode = 0;
                 RecordChangeTitle.Content = "Копирование";
+
+                //использование буферных переменных для «отрыва» от данных выбранной строки (чтобы не сработал Binding)
+                buf1 = TourNameComboBox.Text;
+                buf2 = DateBeginDatePicker.Text;
+
                 //убрать фокус с выделенной строки
                 RecordsDataGrid.SelectedItem = null;
+
+                TourNameComboBox.Text = buf1;
+                DateBeginDatePicker.Text = buf2;
             }
             else
             {
@@ -104,24 +124,49 @@ namespace BookingClient.Pages
         {
             if (MessageBox.Show("Удалить запись?", "Внимание", MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.OK)
             {
-                SourceCore.entities.departures.Remove((departures)RecordsDataGrid.SelectedItem);
-                SourceCore.entities.SaveChanges();
-                UpdateDataGrid();
+                try
+                {
+                    // Ссылка на удаляемую книгу
+                    var DeletingRecord = (departures)RecordsDataGrid.SelectedItem;
+                    // Определение ссылки, на которую должен перейти указатель после удаления
+                    if (RecordsDataGrid.SelectedIndex < RecordsDataGrid.Items.Count - 1)
+                    {
+                        RecordsDataGrid.SelectedIndex++;
+                    }
+                    else
+                    {
+                        if (RecordsDataGrid.SelectedIndex > 0)
+                        {
+                            RecordsDataGrid.SelectedIndex--;
+                        }
+                    }
+
+                    var SelectingRecord = (departures)RecordsDataGrid.SelectedItem;
+                    SourceCore.entities.departures.Remove(DeletingRecord);
+                    SourceCore.entities.SaveChanges();
+                    UpdateDataGrid(SelectingRecord);
+                }
+                catch
+                {
+
+                    MessageBox.Show("Невозможно удалить запись, так как она используется в других справочниках базы данных.",
+                    "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning, MessageBoxResult.None);
+                }
             }
         }
 
         private void CommitChangeRecordsButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Convert.ToString(RecordChangeTitle.Content) == "Добавление")
+            var NewRecord = new departures();
+            NewRecord.tours = (tours)TourNameComboBox.SelectedItem;
+            NewRecord.date_begin = DateBeginDatePicker.SelectedDate;
+            if (DlgMode == 0)
             {
-                var NewRecord = new departures();
-                NewRecord.tours = (tours)TourNameComboBox.SelectedItem;
-                NewRecord.date_begin = DateBeginDatePicker.SelectedDate;
                 SourceCore.entities.departures.Add(NewRecord);
             }
             SourceCore.entities.SaveChanges();
 
-            UpdateDataGrid();
+            UpdateDataGrid(NewRecord);
             DlgLoad(false);
         }
 

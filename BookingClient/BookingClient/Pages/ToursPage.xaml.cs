@@ -172,7 +172,6 @@ namespace BookingClient.Pages
             //{
             //    Column.CanUserSort = false;
             //}
-
         }
 
         private void FilterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

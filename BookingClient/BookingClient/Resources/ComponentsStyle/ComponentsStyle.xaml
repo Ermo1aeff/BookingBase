@@ -172,7 +172,7 @@
     <!--Кнопка с изображением-->
     <Style x:Key="BaseImageButton" TargetType="Button">
         <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="Width" Value="60"/>
+        <Setter Property="Width" Value="30"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -181,62 +181,83 @@
                         <Path 
                             SnapsToDevicePixels ="True"
                             x:Name="PART_ButtonPath"
-                            Fill="Black"
+                            Fill="{TemplateBinding Foreground}"
                             Width="30"
                             Height="30"
                             Data="{TemplateBinding Path.Data}"/>
                     </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="PART_ButtonPath" Property="Fill" Value="gray"/>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="PART_ButtonPath" Property="Fill" Value="White"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="PART_ButtonPath" Property="Fill" Value="darkgray"/>
-                            <!--<Setter Property="Background" Value="#838383"/>-->
-                            <Setter Property="Cursor" Value=""/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style x:Key="RightArrowButton" TargetType="Button" BasedOn="{StaticResource BaseImageButton}">
+    <Style x:Key="RecordChangeButton" TargetType="Button" BasedOn="{StaticResource BaseImageButton}">
+        <Setter Property="Width" Value="60"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="Darkgray"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Foreground" Value="Gray"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="LightGray"/>
+                <Setter Property="Cursor" Value=""/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="RightArrowButton" TargetType="Button" BasedOn="{StaticResource RecordChangeButton}">
         <Setter Property="Path.Data" Value="{DynamicResource PathArrowRight}"/>
         <Setter Property="ToolTip" Value="Предыдущая страница"/>
     </Style>
 
-    <Style x:Key="LeftArrowButton" TargetType="Button" BasedOn="{StaticResource BaseImageButton}">
+    <Style x:Key="LeftArrowButton" TargetType="Button" BasedOn="{StaticResource RecordChangeButton}">
         <Setter Property="Path.Data" Value="{DynamicResource PathArrowLeft}"/>
         <Setter Property="ToolTip" Value="Следующая страница"/>
     </Style>
 
-    <Style x:Key="ClosePageButton" TargetType="Button" BasedOn="{StaticResource BaseImageButton}">
+    <Style x:Key="ClosePageButton" TargetType="Button" BasedOn="{StaticResource RecordChangeButton}">
         <Setter Property="Path.Data" Value="{DynamicResource PathClosePage}"/>
         <Setter Property="ToolTip" Value="Закрыть страницу"/>
     </Style>
 
-    <Style x:Key="AddButton" TargetType="Button" BasedOn="{StaticResource BaseImageButton}">
+    <Style x:Key="AddButton" TargetType="Button" BasedOn="{StaticResource RecordChangeButton}">
         <Setter Property="Path.Data" Value="{DynamicResource PathAdd}"/>
         <Setter Property="ToolTip" Value="Добавить"/>
     </Style>
 
-    <Style x:Key="CopyButton" TargetType="Button" BasedOn="{StaticResource BaseImageButton}">
+    <Style x:Key="CopyButton" TargetType="Button" BasedOn="{StaticResource RecordChangeButton}">
         <Setter Property="Path.Data" Value="{DynamicResource PathCopy}"/>
         <Setter Property="ToolTip" Value="Копировать"/>
     </Style>
 
-    <Style x:Key="EditButton" TargetType="Button" BasedOn="{StaticResource BaseImageButton}">
+    <Style x:Key="EditButton" TargetType="Button" BasedOn="{StaticResource RecordChangeButton}">
         <Setter Property="Path.Data" Value="{DynamicResource PathEdit}"/>
         <Setter Property="ToolTip" Value="Редактировать"/>
     </Style>
 
-    <Style x:Key="DeleteButton" TargetType="Button" BasedOn="{StaticResource BaseImageButton}">
+    <Style x:Key="DeleteButton" TargetType="Button" BasedOn="{StaticResource RecordChangeButton}">
         <Setter Property="Path.Data" Value="{DynamicResource PathDelete}"/>
         <Setter Property="ToolTip" Value="Удалить"/>
     </Style>
-    
+
+    <Style x:Key="CrossButton" TargetType="Button" BasedOn="{StaticResource BaseImageButton}">
+        <Setter Property="Path.Data" Value="{DynamicResource PathCross}"/>
+        <Setter Property="ToolTip" Value="Стереть"/>
+        <Setter Property="Foreground" Value="Gray"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="Black"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Foreground" Value="Darkgray"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="LightGray"/>
+                <Setter Property="Cursor" Value=""/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
 </ResourceDictionary>

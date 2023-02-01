@@ -28,7 +28,6 @@ namespace BookingClient.Pages
         private string buf1;
         private string buf2;
         private string buf3;
-        private string buf4;
 
         public OrdersPage()
         {
@@ -50,7 +49,7 @@ namespace BookingClient.Pages
                 CopyRecordButton.IsEnabled = false;
                 EditRecordButton.IsEnabled = false;
                 DeleteRecordButton.IsEnabled = false;
-                //RecordsDataGrid.SelectedItem = null;
+                DialogGridSplitter.Visibility = Visibility.Visible;
             }
             else
             {
@@ -62,6 +61,7 @@ namespace BookingClient.Pages
                 CopyRecordButton.IsEnabled = true;
                 EditRecordButton.IsEnabled = true;
                 DeleteRecordButton.IsEnabled = true;
+                DialogGridSplitter.Visibility = Visibility.Collapsed;
                 DlgMode = -1;
             }
         }
@@ -85,7 +85,6 @@ namespace BookingClient.Pages
             RecordsDataGrid.SelectedItem = null;
             RecordChangeTitle.Content = "Добавление";
             ContactPhoneTextBox.Text = "";
-            PriceTextBox.Text = "";
         }
 
         private void CopyRecordButton_Click(object sender, RoutedEventArgs e)
@@ -100,7 +99,6 @@ namespace BookingClient.Pages
                 buf1 = ContactPhoneTextBox.Text;
                 buf2 = TourComboBox.Text;
                 buf3 = DateTourComboBox.Text;
-                buf4 = PriceTextBox.Text;
 
                 //убрать фокус с выделенной строки
                 RecordsDataGrid.SelectedItem = null;
@@ -108,7 +106,6 @@ namespace BookingClient.Pages
                 ContactPhoneTextBox.Text = buf1;
                 TourComboBox.Text = buf2;
                 DateTourComboBox.Text = buf3;
-                PriceTextBox.Text = buf4;
             }
             else
             {
@@ -135,7 +132,6 @@ namespace BookingClient.Pages
             {
                 try
                 {
-                    // Ссылка на удаляемую книгу
                     var DeletingRecord = (orders)RecordsDataGrid.SelectedItem;
                     // Определение ссылки, на которую должен перейти указатель после удаления
                     if (RecordsDataGrid.SelectedIndex < RecordsDataGrid.Items.Count - 1)
@@ -231,19 +227,25 @@ namespace BookingClient.Pages
             switch (FilterComboBox.SelectedIndex)
             {
                 case 0:
-                    RecordsDataGrid.ItemsSource = SourceCore.entities.tours.Where(filtercase => filtercase.tour_name.Contains(textbox)).ToList();
+                    RecordsDataGrid.ItemsSource = SourceCore.entities.orders.Where(filtercase => filtercase.departures.tour_id.ToString().Contains(textbox)).ToList();
                     break;
                 case 1:
-                    RecordsDataGrid.ItemsSource = SourceCore.entities.tours.Where(filtercase => filtercase.tour_description.Contains(textbox)).ToList();
+                    RecordsDataGrid.ItemsSource = SourceCore.entities.orders.Where(filtercase => filtercase.contact_phone.ToString().Contains(textbox)).ToList();
                     break;
                 case 2:
-                    RecordsDataGrid.ItemsSource = SourceCore.entities.tours.Where(filtercase => filtercase.price.ToString().Contains(textbox)).ToList();
+                    RecordsDataGrid.ItemsSource = SourceCore.entities.orders.Where(filtercase => filtercase.person_count.ToString().Contains(textbox)).ToList();
+                    break;
+                case 3:
+                    RecordsDataGrid.ItemsSource = SourceCore.entities.orders.Where(filtercase => filtercase.departures.tours.tour_name.Contains(textbox)).ToList();
+                    break;
+                case 4:
+                    RecordsDataGrid.ItemsSource = SourceCore.entities.orders.Where(filtercase => filtercase.departures.date_begin.ToString().Contains(textbox)).ToList();
+                    break;
+                case 5:
+                    RecordsDataGrid.ItemsSource = SourceCore.entities.orders.Where(filtercase => filtercase.price.ToString().Contains(textbox)).ToList();
                     break;
                 default:
                     break;
-                    //case 3:
-                    //    RecordsDataGrid.ItemsSource = SourceCore.entities.tours.Where(filtercase => filtercase.max_group_size.ToString().Contains(textbox)).ToList();
-                    //    break;
             }
         }
     }
