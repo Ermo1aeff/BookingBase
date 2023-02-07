@@ -21,8 +21,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="36"/>
                 <RowDefinition />
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="180"/>
             </Grid.RowDefinitions>
 
             <DockPanel>
@@ -70,6 +68,7 @@
                 >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Тур" Binding="{Binding tour_name}" Width="10*"/>
+                    <DataGridTextColumn Header="Описание тура" Binding="{Binding tour_description}" Width="10*"/>
                     <DataGridTextColumn Header="Нач. город" Binding="{Binding cities.city_name}" Width="5*"/>
                     <DataGridTextColumn Header="Кон. город" Binding="{Binding cities1.city_name}" Width="5*"/>
                     <DataGridTextColumn Header="Цена" Binding="{Binding price}" Width="3*"/>
@@ -77,80 +76,6 @@
                     <DataGridTextColumn Header="Размер группы" Binding="{Binding max_group_size}" Width="70"/>
                 </DataGrid.Columns>
             </DataGrid>
-
-            <GridSplitter 
-                x:Name="GridSplitter" 
-                Grid.Row="2"
-                VerticalAlignment="Center" 
-                HorizontalAlignment="Stretch"
-                Height="3"
-                Background="Silver"
-                />
-
-            <Grid Grid.Row="3">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-
-                <Grid Grid.Column="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <Label
-                        Grid.Row="0"
-                        Content="Описание тура"/>
-
-                    <TextBox
-                        Grid.Row="1"
-                        x:Name="TourDescriptionTextBox" 
-                        TextWrapping="Wrap"
-                        VerticalScrollBarVisibility="Auto"
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.tour_description}"
-                        BorderThickness="0"
-                        FontSize="16"
-
-                        />
-                </Grid>
-
-                <GridSplitter 
-                    x:Name="ImageGridSplitter" 
-                    Grid.Column="1" 
-                    HorizontalAlignment="Stretch" 
-                    Width="3"
-                    Background="Silver"
-                    />
-
-                <Grid 
-                    Grid.Column="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Button 
-                        Grid.Column="0"
-                        Width="50"
-                        Content="◄"
-                        FontSize="30"
-                        
-                        />
-                    <Image
-                        Grid.Column="1"
-                        Name="image" 
-                        RenderOptions.BitmapScalingMode="HighQuality"
-                        />
-                    <Button 
-                        Grid.Column="2"
-                        Width="50"
-                        FontSize="30"
-                        Content="►" 
-                        />
-                </Grid>
-
-            </Grid>
         </Grid>
 
         <GridSplitter 
@@ -185,48 +110,49 @@
                     >
                     <Label Content="Название тура"/>
                     <TextBox 
-                        FontSize="14"
-                        Height="27"
                         x:Name="TourNameTextBox" 
-                        Text="{Binding Mode=OneWay, ElementName=RecordsDataGrid, Path=SelectedItem.tour_name}"
+                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.tour_name, Mode=OneWay}"
+                        />
+
+                    <Label Content="Описание тура"/>
+                    <TextBox
+                        x:Name="TourDescriptionTextBox" 
+                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.tour_description, Mode=OneWay}"
                         />
 
                     <Label Content="Начальный город"/>
                     <ComboBox 
-                        Height="27"
                         x:Name="BeginCityComboBox" 
                         DisplayMemberPath="city_name"
-                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.cities}"
+                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.cities, Mode=OneWay}"
                         IsEditable="True"/>
 
                     <Label Content="Конечный город"/>
                     <ComboBox 
-                        Height="27"
                         x:Name="EndCityTextBox" 
                         DisplayMemberPath="city_name"
-                        SelectedItem="{Binding  ElementName=RecordsDataGrid,  Path=SelectedItem.cities1}"
+                        SelectedItem="{Binding  ElementName=RecordsDataGrid,  Path=SelectedItem.cities1, Mode=OneWay}"
                         IsEditable="True"/>
 
                     <Label Content="Цена"/>
                     <TextBox 
                         x:Name="PriceTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.price}"
+                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.price, Mode=OneWay}"
                         />
 
                     <Label Content="Количество дней"/>
                     <TextBox 
                         x:Name="DayCountTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.day_count}"
+                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.day_count, Mode=OneWay}"
                         />
 
                     <Label Content="Размер группы"/>
                     <TextBox
                         x:Name="MaxGroupSizeTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.max_group_size}"
+                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.max_group_size, Mode=OneWay}"
                         />
                 </StackPanel>
             </ScrollViewer>
-
 
             <Grid 
                 Grid.Row="3" 

@@ -12,12 +12,14 @@ namespace BookingClient.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class itinerary
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int itinerary_id { get; set; }
+        public Nullable<int> tour_id { get; set; }
+        public Nullable<int> day_num { get; set; }
+        public string itinerary_name { get; set; }
+        public string itirarary_description { get; set; }
+    
+        public virtual tours tours { get; set; }
     }
 }

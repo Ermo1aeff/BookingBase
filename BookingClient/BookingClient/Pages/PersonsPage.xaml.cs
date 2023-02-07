@@ -3,23 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BookingClient.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для PersonsPage.xaml
-    /// </summary>
     public partial class PersonsPage : Page
     {
         private int DlgMode = -1;
@@ -37,28 +25,33 @@ namespace BookingClient.Pages
 
         public void DlgLoad(bool b)
         {
-            if (b == true)
+            if (b)
             {
                 RecordChangeBlock.MinWidth = 230;
                 RecordChangeBlock.Width = new GridLength(230);
-                //Включаем кнопки
+                //Выключаем элементы управления
                 RecordsDataGrid.IsHitTestVisible = false;
+                FilterTextBox.IsEnabled = false;
+                FilterComboBox.IsEnabled = false;
                 AddRecordButton.IsEnabled = false;
                 CopyRecordButton.IsEnabled = false;
                 EditRecordButton.IsEnabled = false;
                 DeleteRecordButton.IsEnabled = false;
-                //RecordsDataGrid.SelectedItem = null;
+                DialogGridSplitter.Visibility = Visibility.Visible;
             }
             else
             {
                 RecordChangeBlock.MinWidth = 0;
                 RecordChangeBlock.Width = new GridLength(0);
-                //Выключаем кнопки
+                //Включаем элементы управления
                 RecordsDataGrid.IsHitTestVisible = true;
+                FilterTextBox.IsEnabled = true;
+                FilterComboBox.IsEnabled = true;
                 AddRecordButton.IsEnabled = true;
                 CopyRecordButton.IsEnabled = true;
                 EditRecordButton.IsEnabled = true;
                 DeleteRecordButton.IsEnabled = true;
+                DialogGridSplitter.Visibility = Visibility.Collapsed;
                 DlgMode = -1;
             }
         }
@@ -132,7 +125,7 @@ namespace BookingClient.Pages
             {
                 try
                 {
-                    // Ссылка на удаляемую книгу
+                    // Ссылка на удаляемую запись
                     var DeletingRecord = (persons)RecordsDataGrid.SelectedItem;
                     // Определение ссылки, на которую должен перейти указатель после удаления
                     if (RecordsDataGrid.SelectedIndex < RecordsDataGrid.Items.Count - 1)
@@ -154,7 +147,6 @@ namespace BookingClient.Pages
                 }
                 catch
                 {
-
                     MessageBox.Show("Невозможно удалить запись, так как она используется в других справочниках базы данных.",
                     "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning, MessageBoxResult.None);
                 }
@@ -173,13 +165,21 @@ namespace BookingClient.Pages
             if (DlgMode == 0)
             {
                 SourceCore.entities.persons.Add(NewRecord);
-
+            }
+            else
+            {
+                var ChangingRecord = (persons)RecordsDataGrid.SelectedItem;
+                ChangingRecord.orders = (orders)OrderIdComboBox.SelectedItem;
+                ChangingRecord.last_name = LastNameTextBox.Text;
+                ChangingRecord.first_name = FirstNameTextBox.Text;
+                ChangingRecord.passport = Convert.ToInt64(PassportTextBox.Text);
+                ChangingRecord.birthday = DateOfBirthDatePicker.SelectedDate;
             }
             SourceCore.entities.SaveChanges();
-            int orderId = (int)NewRecord.order_id;
-            var order = SourceCore.entities.orders.Where(U => U.order_id == orderId).FirstOrDefault();
+            //int orderId = (int)NewRecord.order_id;
+            //var order = SourceCore.entities.orders.Where(U => U.order_id == orderId).FirstOrDefault();
 
-            order.person_count = SourceCore.entities.persons.Count(U => U.order_id == orderId);
+            //order.person_count = SourceCore.entities.persons.Count(U => U.order_id == orderId);
 
             SourceCore.entities.SaveChanges();
             UpdateDataGrid(NewRecord);

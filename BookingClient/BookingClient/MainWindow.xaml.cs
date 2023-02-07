@@ -19,9 +19,6 @@ using BookingClient.Styles.CustomWindowStyle;
 
 namespace BookingClient
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public string accountName { get; set; }
@@ -159,7 +156,7 @@ namespace BookingClient
 
         private void InteraryButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ShowPage(typeof(ItineraryPage));
         }
 
         private void CitiesButton_Click_1(object sender, RoutedEventArgs e)
@@ -174,12 +171,12 @@ namespace BookingClient
 
         private void InclusionsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ShowPage(typeof(InclusionsPage));
         }
 
         private void IncludedButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ShowPage(typeof(IncludedPage));
         }
 
         private void OrderRoomsButton_Click(object sender, RoutedEventArgs e)
@@ -189,7 +186,7 @@ namespace BookingClient
 
         private void RoomsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ShowPage(typeof(RoomPage));
         }
 
         private void ImagesButton_Click(object sender, RoutedEventArgs e)

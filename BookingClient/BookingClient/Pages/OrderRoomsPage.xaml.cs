@@ -1,6 +1,7 @@
 ﻿using BookingClient.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,36 +17,42 @@ using System.Windows.Shapes;
 
 namespace BookingClient.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для OrderRoomsPage.xaml
-    /// </summary>
     public partial class OrderRoomsPage : Page
     {
+        private int DlgMode = -1;
         private string buf1;
+        private string buf2;
+        private string buf3;
         public OrderRoomsPage()
         {
             InitializeComponent();
             DataContext = this;
-            RecordsDataGrid.ItemsSource = SourceCore.entities.order_rooms.ToList();
+            UpdateDataGrid(null);
             OrderIdComboBox.ItemsSource = SourceCore.entities.orders.ToList();
             RoomNameComboBox.ItemsSource = SourceCore.entities.rooms.ToList();
-
-            UpdateDataGrid();
         }
 
-        private void UpdateDataGrid()
+        public void UpdateDataGrid(order_rooms SelectingItem)
         {
-            RecordsDataGrid.ItemsSource = SourceCore.entities.order_rooms.ToList();
+            if ((SelectingItem == null) && (RecordsDataGrid.ItemsSource != null))
+            {
+                SelectingItem = (order_rooms)RecordsDataGrid.SelectedItem;
+            }
+            var DataGridRecords = new ObservableCollection<order_rooms>(SourceCore.entities.order_rooms.ToList());
+            RecordsDataGrid.ItemsSource = DataGridRecords;
+            RecordsDataGrid.SelectedItem = SelectingItem;
         }
 
         public void DlgLoad(bool b)
         {
-            if (b == true)
+            if (b)
             {
                 RecordChangeBlock.MinWidth = 230;
                 RecordChangeBlock.Width = new GridLength(230);
-                //Включаем кнопки
+                //Выключаем элементы управления
                 RecordsDataGrid.IsHitTestVisible = false;
+                FilterTextBox.IsEnabled = false;
+                FilterComboBox.IsEnabled = false;
                 AddRecordButton.IsEnabled = false;
                 CopyRecordButton.IsEnabled = false;
                 EditRecordButton.IsEnabled = false;
@@ -56,13 +63,16 @@ namespace BookingClient.Pages
             {
                 RecordChangeBlock.MinWidth = 0;
                 RecordChangeBlock.Width = new GridLength(0);
-                //Выключаем кнопки
+                //Включаем элементы управления
                 RecordsDataGrid.IsHitTestVisible = true;
+                FilterTextBox.IsEnabled = true;
+                FilterComboBox.IsEnabled = true;
                 AddRecordButton.IsEnabled = true;
                 CopyRecordButton.IsEnabled = true;
                 EditRecordButton.IsEnabled = true;
                 DeleteRecordButton.IsEnabled = true;
                 DialogGridSplitter.Visibility = Visibility.Collapsed;
+                DlgMode = -1;
             }
         }
 
@@ -71,6 +81,8 @@ namespace BookingClient.Pages
             DlgLoad(true);
             RecordsDataGrid.SelectedItem = null;
             RecordChangeTitle.Content = "Добавление";
+            OrderIdComboBox.Text = "";
+            RoomNameComboBox.Text = "";
             RoomCountTextBox.Text = "";
         }
 
@@ -79,15 +91,20 @@ namespace BookingClient.Pages
             if (RecordsDataGrid.SelectedItem != null)
             {
                 DlgLoad(true);
+                DlgMode = 0;
                 RecordChangeTitle.Content = "Копирование";
 
                 //использование буферных переменных для «отрыва» от данных выбранной строки (чтобы не сработал Binding)
-                buf1 = RoomCountTextBox.Text;
+                buf1 = OrderIdComboBox.Text;
+                buf2 = RoomNameComboBox.Text;
+                buf3 = RoomCountTextBox.Text;
 
                 //убрать фокус с выделенной строки
                 RecordsDataGrid.SelectedItem = null;
 
-                RoomCountTextBox.Text = buf1;
+                OrderIdComboBox.Text = buf1;
+                RoomNameComboBox.Text = buf2;
+                RoomCountTextBox.Text = buf3;
             }
             else
             {
@@ -100,6 +117,7 @@ namespace BookingClient.Pages
             if (RecordsDataGrid.SelectedItem != null)
             {
                 DlgLoad(true);
+                DlgMode = 0;
                 RecordChangeTitle.Content = "Редактирование";
             }
             else
@@ -112,25 +130,57 @@ namespace BookingClient.Pages
         {
             if (MessageBox.Show("Удалить запись?", "Внимание", MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.OK)
             {
-                SourceCore.entities.order_rooms.Remove((order_rooms)RecordsDataGrid.SelectedItem);
-                SourceCore.entities.SaveChanges();
-                UpdateDataGrid();
+                try
+                {
+                    // Ссылка на удаляемую запись
+                    var DeletingRecord = (order_rooms)RecordsDataGrid.SelectedItem;
+                    // Определение ссылки, на которую должен перейти указатель после удаления
+                    if (RecordsDataGrid.SelectedIndex < RecordsDataGrid.Items.Count - 1)
+                    {
+                        RecordsDataGrid.SelectedIndex++;
+                    }
+                    else
+                    {
+                        if (RecordsDataGrid.SelectedIndex > 0)
+                        {
+                            RecordsDataGrid.SelectedIndex--;
+                        }
+                    }
+
+                    var SelectingRecord = (order_rooms)RecordsDataGrid.SelectedItem;
+                    SourceCore.entities.order_rooms.Remove(DeletingRecord);
+                    SourceCore.entities.SaveChanges();
+                    UpdateDataGrid(SelectingRecord);
+                }
+                catch
+                {
+
+                    MessageBox.Show("Невозможно удалить запись, так как она используется в других справочниках базы данных.",
+                    "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning, MessageBoxResult.None);
+                }
             }
         }
 
         private void CommitChangeRecordsButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Convert.ToString(RecordChangeTitle.Content) == "Добавление")
+            var NewRecord = new order_rooms();
+            NewRecord.orders = (orders)OrderIdComboBox.SelectedItem;
+            NewRecord.rooms = (rooms)RoomNameComboBox.SelectedItem;
+            NewRecord.room_count = Convert.ToInt32(RoomCountTextBox.Text);
+
+            if (DlgMode == 0)
             {
-                var NewRecord = new order_rooms();
-                NewRecord.orders = (orders)OrderIdComboBox.SelectedItem;
-                NewRecord.rooms = (rooms)RoomNameComboBox.SelectedItem;
-                NewRecord.room_count = Convert.ToInt32(RoomCountTextBox.Text);
                 SourceCore.entities.order_rooms.Add(NewRecord);
             }
+            else
+            {
+                var ChangingRecord = (order_rooms)RecordsDataGrid.SelectedItem;
+                ChangingRecord.orders = (orders)OrderIdComboBox.SelectedItem;
+                ChangingRecord.rooms = (rooms)RoomNameComboBox.SelectedItem;
+                ChangingRecord.room_count = Convert.ToInt32(RoomCountTextBox.Text);
+            }
             SourceCore.entities.SaveChanges();
-
-            UpdateDataGrid();
+            UpdateDataGrid(NewRecord);
             DlgLoad(false);
         }
 
@@ -149,10 +199,6 @@ namespace BookingClient.Pages
             }
             FilterComboBox.ItemsSource = Columns;
             FilterComboBox.SelectedIndex = 0;
-            //foreach (DataGridColumn Column in RecordsDataGrid.Columns)
-            //{
-            //    Column.CanUserSort = false;
-            //}
         }
 
         private void FilterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

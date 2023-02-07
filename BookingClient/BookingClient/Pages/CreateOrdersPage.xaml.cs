@@ -16,9 +16,6 @@ using BookingClient.Models;
 
 namespace BookingClient.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для CreateOrdersPage.xaml
-    /// </summary>
     public partial class CreateOrdersPage : Page
     {
         private int DlgMode = -1;

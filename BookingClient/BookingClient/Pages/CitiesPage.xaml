@@ -105,19 +105,18 @@
                     Margin="10,0,10,0"
                     Orientation="Vertical"
                     >
-
                     <Label Content="Название страны"/>
                     <ComboBox 
                         x:Name="CountryNameComboBox" 
-                        DisplayMemberPath="tour_name"
-                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.countries}"
+                        DisplayMemberPath="country_name"
+                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.countries, Mode=OneWay}"
                         IsEditable="True"/>
 
                     <Label Content="Название города"/>
                     <TextBox 
                         x:Name="CityNameTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.city_name}"
-                        />
+                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.city_name, Mode=OneWay}"/>
+                    
                 </StackPanel>
             </ScrollViewer>
 

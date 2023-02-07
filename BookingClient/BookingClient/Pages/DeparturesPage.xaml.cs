@@ -3,26 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BookingClient.Pages
 {
-    /// <summary>
-    /// Interaction logic for DeparturesPage.xaml
-    /// </summary>
     public partial class DeparturesPage : Page
     {
-        //описание вспомогательных переменных
         private int DlgMode = -1;
         private string buf1;
         private string buf2;
@@ -34,6 +21,7 @@ namespace BookingClient.Pages
             UpdateDataGrid(null);
             TourNameComboBox.ItemsSource = SourceCore.entities.tours.ToList();
         }
+
         public void UpdateDataGrid(departures SelectingItem)
         {
             if ((SelectingItem == null) && (RecordsDataGrid.ItemsSource != null))
@@ -44,15 +32,16 @@ namespace BookingClient.Pages
             RecordsDataGrid.ItemsSource = DataGridRecords;
             RecordsDataGrid.SelectedItem = SelectingItem;
         }
-
         public void DlgLoad(bool b)
         {
-            if (b == true)
+            if (b)
             {
                 RecordChangeBlock.MinWidth = 230;
                 RecordChangeBlock.Width = new GridLength(230);
-                //Включаем кнопки
+                //Выключаем элементы управления
                 RecordsDataGrid.IsHitTestVisible = false;
+                FilterTextBox.IsEnabled = false;
+                FilterComboBox.IsEnabled = false;
                 AddRecordButton.IsEnabled = false;
                 CopyRecordButton.IsEnabled = false;
                 EditRecordButton.IsEnabled = false;
@@ -63,8 +52,10 @@ namespace BookingClient.Pages
             {
                 RecordChangeBlock.MinWidth = 0;
                 RecordChangeBlock.Width = new GridLength(0);
-                //Выключаем кнопки
+                //Включаем элементы управления
                 RecordsDataGrid.IsHitTestVisible = true;
+                FilterTextBox.IsEnabled = true;
+                FilterComboBox.IsEnabled = true;
                 AddRecordButton.IsEnabled = true;
                 CopyRecordButton.IsEnabled = true;
                 EditRecordButton.IsEnabled = true;
@@ -78,7 +69,7 @@ namespace BookingClient.Pages
         {
             DlgLoad(true);
             DlgMode = 0;
-            RecordsDataGrid.SelectedItem = null;        
+            RecordsDataGrid.SelectedItem = null;
             RecordChangeTitle.Content = "Добавление";
             DateBeginDatePicker.SelectedDate = DateTime.Now;
         }
@@ -126,7 +117,7 @@ namespace BookingClient.Pages
             {
                 try
                 {
-                    // Ссылка на удаляемую книгу
+                    // Ссылка на удаляемую запись
                     var DeletingRecord = (departures)RecordsDataGrid.SelectedItem;
                     // Определение ссылки, на которую должен перейти указатель после удаления
                     if (RecordsDataGrid.SelectedIndex < RecordsDataGrid.Items.Count - 1)
@@ -160,12 +151,18 @@ namespace BookingClient.Pages
             var NewRecord = new departures();
             NewRecord.tours = (tours)TourNameComboBox.SelectedItem;
             NewRecord.date_begin = DateBeginDatePicker.SelectedDate;
+
             if (DlgMode == 0)
             {
                 SourceCore.entities.departures.Add(NewRecord);
             }
+            else
+            {
+                var ChangingRecord = (departures)RecordsDataGrid.SelectedItem;
+                ChangingRecord.tours = (tours)TourNameComboBox.SelectedItem;
+                ChangingRecord.date_begin = DateBeginDatePicker.SelectedDate;
+            }
             SourceCore.entities.SaveChanges();
-
             UpdateDataGrid(NewRecord);
             DlgLoad(false);
         }

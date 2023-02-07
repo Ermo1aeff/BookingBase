@@ -65,18 +65,6 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Тур" Binding="{Binding tours.tour_name}" Width="5*"/>
                     <DataGridTextColumn Header="Дата отправления" Binding="{Binding date_begin, StringFormat=dd.MM.yyyy}" Width="5*"/>
-                    <!--<DataGridTemplateColumn>
-                        <DataGridTemplateColumn.Header>
-                            Дата отправления
-                        </DataGridTemplateColumn.Header>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Label 
-                                    ContentStringFormat="dd.MM.yyyy"
-                                    Content="{Binding date_begin}"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>-->
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
@@ -114,7 +102,7 @@
                     <ComboBox 
                         x:Name="TourNameComboBox" 
                         DisplayMemberPath="tour_name"
-                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.tours}"
+                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.tours, Mode=OneWay}"
                         IsEditable="True"/>
 
                     <Label Content="Дата отправления"/>
@@ -124,7 +112,7 @@
                         SelectedDateFormat="Short"
                         BorderThickness="1"
                         Padding="0"
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.date_begin, StringFormat=dd.MM.yyyy}"
+                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.date_begin, Mode=OneWay, StringFormat=dd.MM.yyyy}"
                         />
                 </StackPanel>
             </ScrollViewer>

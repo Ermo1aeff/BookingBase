@@ -7,7 +7,8 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ImagesPage"
-      Background="White">
+      Background="White"
+      Loaded="Page_Loaded">
 
     <Page.Resources>
         <DataTemplate x:Key="listTemplate">
@@ -35,6 +36,7 @@
             </Grid.RowDefinitions>
 
             <Image 
+                Source="{Binding ElementName=imgList, Path=SelectedItem.img, Mode=OneWay}"
                 Grid.Row="1" 
                 Name="image" 
                 RenderOptions.BitmapScalingMode="HighQuality"/>
@@ -45,12 +47,6 @@
                     Style="{StaticResource AddButton}"
                     ToolTip="Добавить"
                     Click="AddRecordButton_Click"
-                    />
-                <Button
-                    x:Name="EditRecordButton"
-                    Style="{StaticResource EditButton}"
-                    ToolTip="Редактировать"
-                    Click="EditRecordButton_Click"
                     />
                 <Button
                     x:Name="DeleteRecordButton"
@@ -72,12 +68,11 @@
 
             <ListBox  
                 Grid.Row="3"
-                x:Name="imgList"
-                ItemsSource="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.tours}"
+                x:Name="ImgListBox"
+                ItemsSource="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.images}"
                 ItemTemplate="{StaticResource listTemplate}"
                 ScrollViewer.HorizontalScrollBarVisibility="Visible"
                 ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                SelectionChanged="imgList_SelectionChanged"
                 Height="140">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -126,15 +121,14 @@
                 Grid.Row="1"
                 AutoGenerateColumns="False"
                 CanUserAddRows="False"
-                SelectionChanged="RecordsDataGrid_SelectionChanged"
                 >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Тур" Binding="{Binding tour_name}" Width="12*"/>
-                    <DataGridTextColumn Header="Нач. город" Binding="{Binding cities.city_name}" Width="5*"/>
-                    <DataGridTextColumn Header="Кон. город" Binding="{Binding cities.city_name}" Width="5*"/>
-                    <DataGridTextColumn Header="Цена" Binding="{Binding price}" Width="3*"/>
-                    <DataGridTextColumn Header="Дни" Binding="{Binding day_count}" Width="2*"/>
-                    <DataGridTextColumn Header="Размер группы" Binding="{Binding max_group_size}" Width="3*"/>
+                    <DataGridTextColumn Header="Тур" Binding="{Binding tour_name}" Width="10*"/>
+                    <DataGridTextColumn Header="Нач. город" Binding="{Binding cities.city_name}" Width="2*"/>
+                    <DataGridTextColumn Header="Кон. город" Binding="{Binding cities.city_name}" Width="2*"/>
+                    <DataGridTextColumn Header="Цена" Binding="{Binding price}" Width="60"/>
+                    <DataGridTextColumn Header="Дни" Binding="{Binding day_count}" Width="60"/>
+                    <DataGridTextColumn Header="Размер группы" Binding="{Binding max_group_size}" Width="60"/>
                 </DataGrid.Columns>
             </DataGrid>
 

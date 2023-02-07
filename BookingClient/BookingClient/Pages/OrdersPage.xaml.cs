@@ -1,29 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using BookingClient.Models;
 
 namespace BookingClient.Pages
 {
-    /// <summary>
-    /// Interaction logic for OrdersPage.xaml
-    /// </summary>
     public partial class OrdersPage : Page
     {
-        //описание вспомогательных переменных
         private int DlgMode = -1;
         private string buf1;
         private string buf2;
@@ -37,35 +23,6 @@ namespace BookingClient.Pages
             TourComboBox.ItemsSource = SourceCore.entities.tours.ToList();
         }
 
-        public void DlgLoad(bool b)
-        {
-            if (b == true)
-            {
-                RecordChangeBlock.MinWidth = 230;
-                RecordChangeBlock.Width = new GridLength(230);
-                //Включаем кнопки
-                RecordsDataGrid.IsHitTestVisible = false;
-                AddRecordButton.IsEnabled = false;
-                CopyRecordButton.IsEnabled = false;
-                EditRecordButton.IsEnabled = false;
-                DeleteRecordButton.IsEnabled = false;
-                DialogGridSplitter.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                RecordChangeBlock.MinWidth = 0;
-                RecordChangeBlock.Width = new GridLength(0);
-                //Выключаем кнопки
-                RecordsDataGrid.IsHitTestVisible = true;
-                AddRecordButton.IsEnabled = true;
-                CopyRecordButton.IsEnabled = true;
-                EditRecordButton.IsEnabled = true;
-                DeleteRecordButton.IsEnabled = true;
-                DialogGridSplitter.Visibility = Visibility.Collapsed;
-                DlgMode = -1;
-            }
-        }
-
         public void UpdateDataGrid(orders SelectingItem)
         {
             if ((SelectingItem == null) && (RecordsDataGrid.ItemsSource != null))
@@ -77,6 +34,38 @@ namespace BookingClient.Pages
             RecordsDataGrid.SelectedItem = SelectingItem;
         }
 
+        public void DlgLoad(bool b)
+        {
+            if (b)
+            {
+                RecordChangeBlock.MinWidth = 230;
+                RecordChangeBlock.Width = new GridLength(230);
+                //Выключаем элементы управления
+                RecordsDataGrid.IsHitTestVisible = false;
+                FilterTextBox.IsEnabled = false;
+                FilterComboBox.IsEnabled = false;
+                AddRecordButton.IsEnabled = false;
+                CopyRecordButton.IsEnabled = false;
+                EditRecordButton.IsEnabled = false;
+                DeleteRecordButton.IsEnabled = false;
+                DialogGridSplitter.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                RecordChangeBlock.MinWidth = 0;
+                RecordChangeBlock.Width = new GridLength(0);
+                //Включаем элементы управления
+                RecordsDataGrid.IsHitTestVisible = true;
+                FilterTextBox.IsEnabled = true;
+                FilterComboBox.IsEnabled = true;
+                AddRecordButton.IsEnabled = true;
+                CopyRecordButton.IsEnabled = true;
+                EditRecordButton.IsEnabled = true;
+                DeleteRecordButton.IsEnabled = true;
+                DialogGridSplitter.Visibility = Visibility.Collapsed;
+                DlgMode = -1;
+            }
+        }
 
         private void AddRecordButton_Click(object sender, RoutedEventArgs e)
         {
@@ -153,7 +142,6 @@ namespace BookingClient.Pages
                 }
                 catch
                 {
-
                     MessageBox.Show("Невозможно удалить запись, так как она используется в других справочниках базы данных.",
                     "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning, MessageBoxResult.None);
                 }
@@ -164,32 +152,20 @@ namespace BookingClient.Pages
         {
             var NewRecord = new orders();
             NewRecord.contact_phone = Convert.ToInt64(ContactPhoneTextBox.Text);
-            NewRecord.person_count = SourceCore.entities.persons.Count(U => U.order_id == 1);
-
-            // Пример SQL запроса (требуется полключение к БД)
-
-            //string connectionSring = @"Data Source=ERMOLAEV;Initial Catalog=Booking_Base;Integrated security=true";
-            //SqlConnection sqlConnection = new SqlConnection(connectionSring);
-            //sqlConnection.Open();
-            //string query = "select count(*) from persons where order_id = 1 group by order_id";
-            //SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
-            //SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-            //int requestbody = 0;
-            //while (sqlDataReader.Read())
-            //{
-            //    requestbody = sqlDataReader.GetInt32(0);
-            //}
-
-            //NewOrders.person_count = requestbody;
-
-            NewRecord.person_count = 0;
             NewRecord.departures = (departures)DateTourComboBox.SelectedItem;
+            NewRecord.person_count = 0;
+
             if (DlgMode == 0)
             {
                 SourceCore.entities.orders.Add(NewRecord);
             }
+            else
+            {
+                var ChangingRecord = (orders)RecordsDataGrid.SelectedItem;
+                ChangingRecord.contact_phone = Convert.ToInt64(ContactPhoneTextBox.Text);
+                ChangingRecord.departures = (departures)DateTourComboBox.SelectedItem;
+            }
             SourceCore.entities.SaveChanges();
-
             UpdateDataGrid(NewRecord);
             DlgLoad(false);
         }

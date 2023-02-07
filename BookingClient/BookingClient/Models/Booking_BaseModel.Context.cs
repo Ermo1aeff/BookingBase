@@ -13,10 +13,10 @@ namespace BookingClient.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Booking_BaseEntities3 : DbContext
+    public partial class Booking_BaseEntities : DbContext
     {
-        public Booking_BaseEntities3()
-            : base("name=Booking_BaseEntities3")
+        public Booking_BaseEntities()
+            : base("name=Booking_BaseEntities")
         {
         }
     
@@ -33,13 +33,12 @@ namespace BookingClient.Models
         public virtual DbSet<images> images { get; set; }
         public virtual DbSet<included> included { get; set; }
         public virtual DbSet<inclusions> inclusions { get; set; }
-        public virtual DbSet<itirerary> itirerary { get; set; }
+        public virtual DbSet<itinerary> itinerary { get; set; }
         public virtual DbSet<last_names> last_names { get; set; }
         public virtual DbSet<order_rooms> order_rooms { get; set; }
         public virtual DbSet<orders> orders { get; set; }
         public virtual DbSet<persons> persons { get; set; }
         public virtual DbSet<rooms> rooms { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tour_countries> tour_countries { get; set; }
         public virtual DbSet<tours> tours { get; set; }
     }

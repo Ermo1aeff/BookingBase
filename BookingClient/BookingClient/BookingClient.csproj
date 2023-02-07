@@ -78,70 +78,67 @@
       <DependentUpon>AuthorizationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\accounts.cs">
-      <DependentUpon>BookingModel.tt</DependentUpon>
+      <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BookingModel.Context.cs">
+    <Compile Include="Models\Booking_BaseModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BookingModel.Context.tt</DependentUpon>
+      <DependentUpon>Booking_BaseModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BookingModel.cs">
+    <Compile Include="Models\Booking_BaseModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BookingModel.tt</DependentUpon>
+      <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BookingModel.Designer.cs">
+    <Compile Include="Models\Booking_BaseModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BookingModel.edmx</DependentUpon>
+      <DependentUpon>Booking_BaseModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\cities.cs">
-      <DependentUpon>BookingModel.tt</DependentUpon>
+      <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\countries.cs">
-      <DependentUpon>BookingModel.tt</DependentUpon>
+      <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\departures.cs">
-      <DependentUpon>BookingModel.tt</DependentUpon>
+      <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\first_names.cs">
-      <DependentUpon>BookingModel.tt</DependentUpon>
+      <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\images.cs">
-      <DependentUpon>BookingModel.tt</DependentUpon>
+      <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\included.cs">
-      <DependentUpon>BookingModel.tt</DependentUpon>
+      <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\inclusions.cs">
-      <DependentUpon>BookingModel.tt</DependentUpon>
+      <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\itirerary.cs">
-      <DependentUpon>BookingModel.tt</DependentUpon>
+    <Compile Include="Models\itinerary.cs">
+      <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\last_names.cs">
-      <DependentUpon>BookingModel.tt</DependentUpon>
+      <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\orders.cs">
-      <DependentUpon>BookingModel.tt</DependentUpon>
+      <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\order_rooms.cs">
-      <DependentUpon>BookingModel.tt</DependentUpon>
+      <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\persons.cs">
-      <DependentUpon>BookingModel.tt</DependentUpon>
+      <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\rooms.cs">
-      <DependentUpon>BookingModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>BookingModel.tt</DependentUpon>
+      <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tours.cs">
-      <DependentUpon>BookingModel.tt</DependentUpon>
+      <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tour_countries.cs">
-      <DependentUpon>BookingModel.tt</DependentUpon>
+      <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Pages\CitiesPage.xaml.cs">
       <DependentUpon>CitiesPage.xaml</DependentUpon>
@@ -158,6 +155,15 @@
     <Compile Include="Pages\ImagesPage.xaml.cs">
       <DependentUpon>ImagesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\IncludedPage.xaml.cs">
+      <DependentUpon>IncludedPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\InclusionsPage.xaml.cs">
+      <DependentUpon>InclusionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ItineraryPage.xaml.cs">
+      <DependentUpon>ItineraryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\OrderRoomsPage.xaml.cs">
       <DependentUpon>OrderRoomsPage.xaml</DependentUpon>
     </Compile>
@@ -166,6 +172,9 @@
     </Compile>
     <Compile Include="Pages\PersonsPage.xaml.cs">
       <DependentUpon>PersonsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RoomPage.xaml.cs">
+      <DependentUpon>RoomPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ToursPage.xaml.cs">
       <DependentUpon>ToursPage.xaml</DependentUpon>
@@ -187,8 +196,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Core\ObserveObject.cs" />
-    <Compile Include="Core\RelayCommand.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -213,6 +220,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\IncludedPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\InclusionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ItineraryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\OrderRoomsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -222,6 +241,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\PersonsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RoomPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -268,12 +291,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Models\BookingModel.edmx">
+    <EntityDeploy Include="Models\Booking_BaseModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BookingModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>Booking_BaseModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\BookingModel.edmx.diagram">
-      <DependentUpon>BookingModel.edmx</DependentUpon>
+    <None Include="Models\Booking_BaseModel.edmx.diagram">
+      <DependentUpon>Booking_BaseModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -299,18 +322,18 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Content Include="Models\BookingModel.Context.tt">
+    <Content Include="Models\Booking_BaseModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BookingModel.edmx</DependentUpon>
-      <LastGenOutput>BookingModel.Context.cs</LastGenOutput>
+      <DependentUpon>Booking_BaseModel.edmx</DependentUpon>
+      <LastGenOutput>Booking_BaseModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\BookingModel.tt">
+    <Content Include="Models\Booking_BaseModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BookingModel.edmx</DependentUpon>
-      <LastGenOutput>BookingModel.cs</LastGenOutput>
+      <DependentUpon>Booking_BaseModel.edmx</DependentUpon>
+      <LastGenOutput>Booking_BaseModel.cs</LastGenOutput>
     </Content>
-    <Resource Include="Resources\ComponentsStyle\search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

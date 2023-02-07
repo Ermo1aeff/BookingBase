@@ -17,22 +17,6 @@ C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingClient\Boo
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingClient\BookingClient\obj\Debug\Pages\Page1.baml
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingClient\BookingClient\obj\Debug\Pages\Page2.g.cs
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingClient\BookingClient\obj\Debug\Pages\Page2.baml
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.AssemblyReference.cache
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\MainWindow.g.cs
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\App.g.cs
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient_MarkupCompile.cache
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient_MarkupCompile.lref
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.exe
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.pdb
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\bin\Debug\BookingClient.exe.config
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\bin\Debug\BookingClient.exe
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\bin\Debug\BookingClient.pdb
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\MainWindow.baml
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.g.resources
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.Properties.Resources.resources
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.GenerateResource.cache
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.CoreCompileInputs.cache
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\App.baml
 D:\4-is-2\Ermolaev\BookingBase-main\BookingBase-main\BookingClient\BookingClient\bin\Debug\BookingClient.exe.config
 D:\4-is-2\Ermolaev\BookingBase-main\BookingBase-main\BookingClient\BookingClient\bin\Debug\BookingClient.exe
 D:\4-is-2\Ermolaev\BookingBase-main\BookingBase-main\BookingClient\BookingClient\bin\Debug\BookingClient.pdb
@@ -57,10 +41,6 @@ D:\4-is-2\Ermolaev\BookingBase-main\BookingBase-main\BookingClient\BookingClient
 D:\4-is-2\Ermolaev\BookingBase-main\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.CoreCompileInputs.cache
 D:\4-is-2\Ermolaev\BookingBase-main\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient.exe
 D:\4-is-2\Ermolaev\BookingBase-main\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient.pdb
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\AuthorizationWindow.g.cs
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\AuthorizationWindow.baml
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\RegistrationWindow.g.cs
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\RegistrationWindow.baml
 D:\4ИС2\Ermolaev\BookingBase\BookingClient\BookingClient\bin\Debug\BookingClient.exe.config
 D:\4ИС2\Ermolaev\BookingBase\BookingClient\BookingClient\bin\Debug\BookingClient.exe
 D:\4ИС2\Ermolaev\BookingBase\BookingClient\BookingClient\bin\Debug\BookingClient.pdb
@@ -113,13 +93,6 @@ D:\4ИС1\Ermolaev\BookingBase-main\BookingClient\BookingClient\obj\Debug\Resour
 D:\4ИС1\Ermolaev\BookingBase-main\BookingClient\BookingClient\obj\Debug\Resources\ComponentsStyle\Geometries.baml
 D:\4ИС1\Ermolaev\BookingBase-main\BookingClient\BookingClient\obj\Debug\Resources\CustomWindowStyle\WindowStyle.g.cs
 D:\4ИС1\Ermolaev\BookingBase-main\BookingClient\BookingClient\obj\Debug\Resources\ComponentsStyle\BaseComponentsStyles.baml
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\ComponentsStyle\ComponentsStyle.baml
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\CustomWindowStyle\WindowStyle.baml
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\ComponentsStyle\Geometries.baml
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\ToursPage.g.cs
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\CustomWindowStyle\WindowStyle.g.cs
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\ComponentsStyle\BaseComponentsStyles.baml
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\ToursPage.baml
 D:\4IS2\Ermolaev\BookingBase-main\BookingClient\BookingClient\bin\Debug\BookingClient.exe.config
 D:\4IS2\Ermolaev\BookingBase-main\BookingClient\BookingClient\bin\Debug\BookingClient.exe
 D:\4IS2\Ermolaev\BookingBase-main\BookingClient\BookingClient\bin\Debug\BookingClient.pdb
@@ -147,13 +120,6 @@ D:\4IS2\Ermolaev\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingC
 D:\4IS2\Ermolaev\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.CoreCompileInputs.cache
 D:\4IS2\Ermolaev\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient.exe
 D:\4IS2\Ermolaev\BookingBase-main\BookingClient\BookingClient\obj\Debug\BookingClient.pdb
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\bin\Debug\EntityFramework.dll
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\bin\Debug\EntityFramework.xml
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\bin\Debug\ru\EntityFramework.resources.dll
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient_Content.g.cs
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.CopyComplete
 D:\4-is-2\Ermolaev\BookingBase-main\BookingClient\BookingClient\bin\Debug\BookingClient.exe.config
 D:\4-is-2\Ermolaev\BookingBase-main\BookingClient\BookingClient\bin\Debug\BookingClient.exe
 D:\4-is-2\Ermolaev\BookingBase-main\BookingClient\BookingClient\bin\Debug\BookingClient.pdb
@@ -239,20 +205,62 @@ D:\4is2\Ermolaev\BookingBase-main\BookingClient\BookingClient\obj\Debug\Pages\Or
 D:\4is2\Ermolaev\BookingBase-main\BookingClient\BookingClient\obj\Debug\Pages\OrdersPage.baml
 C:\Users\1\Desktop\BookingBase-main\BookingClient\BookingClient\obj\Debug\Pages\OrdersPage.g.cs
 C:\Users\1\Desktop\BookingBase-main\BookingClient\BookingClient\obj\Debug\Pages\OrdersPage.baml
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DeparturesPage.g.cs
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\OrdersPage.g.cs
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DeparturesPage.baml
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\OrdersPage.baml
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\ComponentsStyle\ComponentsStyle.g.cs
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\CreateOrdersPage.g.cs
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\CreateOrdersPage.baml
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\ImagesPage.g.cs
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\ImagesPage.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\bin\Debug\EntityFramework.xml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\bin\Debug\BookingClient.exe.config
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\bin\Debug\BookingClient.exe
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\bin\Debug\BookingClient.pdb
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\bin\Debug\EntityFramework.dll
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\ComponentsStyle\BaseComponentsStyles.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\ComponentsStyle\ComponentsStyle.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\CustomWindowStyle\WindowStyle.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\ComponentsStyle\Geometries.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\AuthorizationWindow.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\MainWindow.g.cs
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\CitiesPage.g.cs
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\CountriesPage.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\CreateOrdersPage.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DeparturesPage.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\ImagesPage.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\IncludedPage.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\InclusionsPage.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\ItineraryPage.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\OrderRoomsPage.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\OrdersPage.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\PersonsPage.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\RoomPage.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\ToursPage.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\RegistrationWindow.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\ComponentsStyle\ComponentsStyle.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\CustomWindowStyle\WindowStyle.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\App.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient_Content.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient_MarkupCompile.cache
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient_MarkupCompile.lref
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\App.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\AuthorizationWindow.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\MainWindow.baml
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\CitiesPage.baml
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\CountriesPage.baml
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\OrderRoomsPage.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\CreateOrdersPage.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DeparturesPage.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\ImagesPage.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\IncludedPage.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\InclusionsPage.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\ItineraryPage.baml
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\OrderRoomsPage.baml
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\PersonsPage.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\OrdersPage.baml
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\PersonsPage.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\RoomPage.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\ToursPage.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\RegistrationWindow.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.g.resources
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.Properties.Resources.resources
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.GenerateResource.cache
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.CoreCompileInputs.cache
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.CopyComplete
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.exe
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.pdb
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.AssemblyReference.cache

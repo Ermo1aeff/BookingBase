@@ -20,7 +20,7 @@ namespace BookingClient.Models
             this.departures = new HashSet<departures>();
             this.images = new HashSet<images>();
             this.included = new HashSet<included>();
-            this.itirerary = new HashSet<itirerary>();
+            this.itinerary = new HashSet<itinerary>();
             this.rooms = new HashSet<rooms>();
             this.tour_countries = new HashSet<tour_countries>();
         }
@@ -43,7 +43,7 @@ namespace BookingClient.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<included> included { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<itirerary> itirerary { get; set; }
+        public virtual ICollection<itinerary> itinerary { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<rooms> rooms { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

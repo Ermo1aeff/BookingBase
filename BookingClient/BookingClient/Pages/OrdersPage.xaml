@@ -109,14 +109,14 @@
                     <Label Content="Контактный номер"/>
                     <TextBox
                         x:Name="ContactPhoneTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.contact_phone}"
+                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.contact_phone, Mode=OneWay}"
                         />
 
                     <Label Content="Тур"/>
                     <ComboBox
                         x:Name="TourComboBox" 
                         DisplayMemberPath="tour_name"
-                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.departures.tours}"
+                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.departures.tours, Mode=OneWay}"
                         IsEditable="True"/>
 
                     <Label Content="Дата"/>
@@ -124,8 +124,8 @@
                         x:Name="DateTourComboBox" 
                         DisplayMemberPath="date_begin"
                         ItemStringFormat="dd.MM.yyyy"
-                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.departures}"
-                        ItemsSource="{Binding ElementName=TourComboBox, Path=SelectedItem.departures}"
+                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.departures, Mode=OneWay}"
+                        ItemsSource="{Binding ElementName=TourComboBox, Path=SelectedItem.departures, Mode=OneWay}"
                         IsEditable="True"/>
 
                 </StackPanel>

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\App.xaml
-161083502090
-2986484669
-41-2045461385
+20-1904001612
+21358198715
+422091997476
 19-220321214
-AuthorizationWindow.xaml;MainWindow.xaml;Pages\CitiesPage.xaml;Pages\CountriesPage.xaml;Pages\CreateOrdersPage.xaml;Pages\DeparturesPage.xaml;Pages\ImagesPage.xaml;Pages\OrderRoomsPage.xaml;Pages\OrdersPage.xaml;Pages\PersonsPage.xaml;Pages\ToursPage.xaml;RegistrationWindow.xaml;Resources\ComponentsStyle\BaseComponentsStyles.xaml;Resources\ComponentsStyle\ComponentsStyle.xaml;Resources\CustomWindowStyle\WindowStyle.xaml;Resources\ComponentsStyle\Geometries.xaml;
+AuthorizationWindow.xaml;MainWindow.xaml;Pages\CitiesPage.xaml;Pages\CountriesPage.xaml;Pages\CreateOrdersPage.xaml;Pages\DeparturesPage.xaml;Pages\ImagesPage.xaml;Pages\IncludedPage.xaml;Pages\InclusionsPage.xaml;Pages\ItineraryPage.xaml;Pages\OrderRoomsPage.xaml;Pages\OrdersPage.xaml;Pages\PersonsPage.xaml;Pages\RoomPage.xaml;Pages\ToursPage.xaml;RegistrationWindow.xaml;Resources\ComponentsStyle\BaseComponentsStyles.xaml;Resources\ComponentsStyle\ComponentsStyle.xaml;Resources\CustomWindowStyle\WindowStyle.xaml;Resources\ComponentsStyle\Geometries.xaml;
 resources\images\slpashscreen1.png
-True
+False
 

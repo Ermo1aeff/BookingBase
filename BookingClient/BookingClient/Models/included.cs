@@ -14,7 +14,7 @@ namespace BookingClient.Models
     
     public partial class included
     {
-        public int included1 { get; set; }
+        public int included_id { get; set; }
         public Nullable<int> tour_id { get; set; }
         public Nullable<int> inclusion_id { get; set; }
         public Nullable<int> included_choice { get; set; }

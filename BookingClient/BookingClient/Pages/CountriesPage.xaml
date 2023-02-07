@@ -104,7 +104,7 @@
                     <Label Content="Название страны"/>
                     <TextBox 
                         x:Name="CountryNameTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.country_name}"
+                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.country_name, Mode=OneWay}"
                         />
                 </StackPanel>
             </ScrollViewer>

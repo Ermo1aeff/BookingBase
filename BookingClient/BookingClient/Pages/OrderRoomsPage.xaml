@@ -107,21 +107,20 @@
                     <ComboBox 
                         x:Name="OrderIdComboBox" 
                         DisplayMemberPath="order_id"
-                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.orders}"
+                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.orders, Mode=OneWay}"
                         IsEditable="True"/>
 
                     <Label Content="Название номера"/>
                     <ComboBox 
                         x:Name="RoomNameComboBox" 
                         DisplayMemberPath="room_name"
-                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.orders}"
+                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.orders, Mode=OneWay}"
                         IsEditable="True"/>
 
                     <Label Content="Количество комнат"/>
                     <TextBox
                         x:Name="RoomCountTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.city_name}"
-                        />
+                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.city_name, Mode=OneWay}"/>
                 </StackPanel>
             </ScrollViewer>
 

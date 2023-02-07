@@ -19,9 +19,6 @@ using BookingClient.Styles.CustomWindowStyle;
 
 namespace BookingClient
 {
-    /// <summary>
-    /// Логика взаимодействия для AuthorizationWindow.xaml
-    /// </summary>
     public partial class AuthorizationWindow : Window
     {
         public AuthorizationWindow()
@@ -48,7 +45,7 @@ namespace BookingClient
 
         private void AutorizationButton_Click(object sender, RoutedEventArgs e)
         {
-            string password = PasswordPasswordBox.Visibility == Visibility.Collapsed ? PasswordTextBox.Text : PasswordPasswordBox.Password;
+            string password = PasswordPasswordBox.Password != "" ? PasswordPasswordBox.Password : PasswordTextBox.Text;
             accounts Accounts = SourceCore.entities.accounts.SingleOrDefault(U => U.account_login == LoginTextBox.Text && U.account_password == password);
             if (Accounts != null)
             {

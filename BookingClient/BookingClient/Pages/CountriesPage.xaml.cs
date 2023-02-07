@@ -1,47 +1,45 @@
 ﻿using BookingClient.Models;
-using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BookingClient.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для CountriesPage.xaml
-    /// </summary>
     public partial class CountriesPage : Page
     {
+        private int DlgMode = -1;
         private string buf1;
+
         public CountriesPage()
         {
             InitializeComponent();
             DataContext = this;
-            UpdateDataGrid();
+            UpdateDataGrid(null);
         }
 
-        private void UpdateDataGrid()
+        public void UpdateDataGrid(countries SelectingItem)
         {
-            RecordsDataGrid.ItemsSource = SourceCore.entities.countries.ToList();
+            if ((SelectingItem == null) && (RecordsDataGrid.ItemsSource != null))
+            {
+                SelectingItem = (countries)RecordsDataGrid.SelectedItem;
+            }
+            var DataGridRecords = new ObservableCollection<countries>(SourceCore.entities.countries.ToList());
+            RecordsDataGrid.ItemsSource = DataGridRecords;
+            RecordsDataGrid.SelectedItem = SelectingItem;
         }
 
         public void DlgLoad(bool b)
         {
-            if (b == true)
+            if (b)
             {
                 RecordChangeBlock.MinWidth = 230;
                 RecordChangeBlock.Width = new GridLength(230);
-                //Включаем кнопки
+                //Выключаем элементы управления
                 RecordsDataGrid.IsHitTestVisible = false;
+                FilterTextBox.IsEnabled = false;
+                FilterComboBox.IsEnabled = false;
                 AddRecordButton.IsEnabled = false;
                 CopyRecordButton.IsEnabled = false;
                 EditRecordButton.IsEnabled = false;
@@ -52,19 +50,23 @@ namespace BookingClient.Pages
             {
                 RecordChangeBlock.MinWidth = 0;
                 RecordChangeBlock.Width = new GridLength(0);
-                //Выключаем кнопки
+                //Включаем элементы управления
                 RecordsDataGrid.IsHitTestVisible = true;
+                FilterTextBox.IsEnabled = true;
+                FilterComboBox.IsEnabled = true;
                 AddRecordButton.IsEnabled = true;
                 CopyRecordButton.IsEnabled = true;
                 EditRecordButton.IsEnabled = true;
                 DeleteRecordButton.IsEnabled = true;
                 DialogGridSplitter.Visibility = Visibility.Collapsed;
+                DlgMode = -1;
             }
         }
 
         private void AddRecordButton_Click(object sender, RoutedEventArgs e)
         {
             DlgLoad(true);
+            DlgMode = 0;
             RecordsDataGrid.SelectedItem = null;
             RecordChangeTitle.Content = "Добавление";
             CountryNameTextBox.Text = "";
@@ -75,6 +77,7 @@ namespace BookingClient.Pages
             if (RecordsDataGrid.SelectedItem != null)
             {
                 DlgLoad(true);
+                DlgMode = 0;
                 RecordChangeTitle.Content = "Копирование";
 
                 //использование буферных переменных для «отрыва» от данных выбранной строки (чтобы не сработал Binding)
@@ -108,23 +111,53 @@ namespace BookingClient.Pages
         {
             if (MessageBox.Show("Удалить запись?", "Внимание", MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.OK)
             {
-                SourceCore.entities.countries.Remove((countries)RecordsDataGrid.SelectedItem);
-                SourceCore.entities.SaveChanges();
-                UpdateDataGrid();
+                try
+                {
+                    // Ссылка на удаляемую запись
+                    var DeletingRecord = (countries)RecordsDataGrid.SelectedItem;
+                    // Определение ссылки, на которую должен перейти указатель после удаления
+                    if (RecordsDataGrid.SelectedIndex < RecordsDataGrid.Items.Count - 1)
+                    {
+                        RecordsDataGrid.SelectedIndex++;
+                    }
+                    else
+                    {
+                        if (RecordsDataGrid.SelectedIndex > 0)
+                        {
+                            RecordsDataGrid.SelectedIndex--;
+                        }
+                    }
+
+                    var SelectingRecord = (countries)RecordsDataGrid.SelectedItem;
+                    SourceCore.entities.countries.Remove(DeletingRecord);
+                    SourceCore.entities.SaveChanges();
+                    UpdateDataGrid(SelectingRecord);
+                }
+                catch
+                {
+
+                    MessageBox.Show("Невозможно удалить запись, так как она используется в других справочниках базы данных.",
+                    "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning, MessageBoxResult.None);
+                }
             }
         }
 
         private void CommitChangeRecordsButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Convert.ToString(RecordChangeTitle.Content) == "Добавление")
+            var NewRecord = new countries();
+            NewRecord.country_name = CountryNameTextBox.Text;
+
+            if (DlgMode == 0)
             {
-                var NewRecord = new countries();
-                NewRecord.country_name = CountryNameTextBox.Text;
                 SourceCore.entities.countries.Add(NewRecord);
             }
+            else
+            {
+                var ChangingRecord = (countries)RecordsDataGrid.SelectedItem;
+                ChangingRecord.country_name = CountryNameTextBox.Text;
+            }
             SourceCore.entities.SaveChanges();
-
-            UpdateDataGrid();
+            UpdateDataGrid(NewRecord);
             DlgLoad(false);
         }
 
@@ -143,11 +176,6 @@ namespace BookingClient.Pages
             }
             FilterComboBox.ItemsSource = Columns;
             FilterComboBox.SelectedIndex = 0;
-            //foreach (DataGridColumn Column in RecordsDataGrid.Columns)
-            //{
-            //    Column.CanUserSort = false;
-            //}
-
         }
 
         private void FilterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
