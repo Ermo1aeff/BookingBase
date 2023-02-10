@@ -1,0 +1,73 @@
+﻿<Page x:Class="Registy.Pages.AuthorizationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Registy.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Title="AuthorizationPage"
+      PreviewMouseDown="Page_PreviewMouseDown">
+
+    <Grid Background="#BFEAF5" x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border Width="500" Height="574" CornerRadius="26" Background="#A2D2DE">
+                <StackPanel HorizontalAlignment="Center">
+                    <Label
+                        Content="Авторизация"
+                        HorizontalAlignment="Center"
+                        FontSize="48"
+                        Margin="0,35,0,0"/>
+                    
+                    <TextBlock
+                        Text="Пожалуйста авторизуйтесь для входа в личный кабинет"
+                        TextWrapping="Wrap"
+                        TextAlignment="Center"
+                        FontSize="20"
+                        Margin="0,10,0,20"
+                        />
+                    
+                    <TextBox
+                        Name="authLoginTextBox"
+                        Width="384"
+                        Height="70"
+                        Margin="0,0,0,25"
+                        Padding="20,0"
+                        FontSize="16"
+                        Tag="Логин"/>
+                    
+                    <TextBox 
+                        Name="authPasswordTextBox"
+                        Width="384"
+                        Height="70"
+                        Margin="0,0,0,35"
+                        Padding="20,0"
+                        FontSize="16"
+                        Tag="Пароль"/>
+                    
+                    <Button
+                        x:Name="AuthorizationButton"
+                        Content="Вход"
+                        Width="384"
+                        Height="96"
+                        FontSize="36"
+                        Margin="0,0,0,15"
+                        Click="AuthorizationButton_Click"
+                        />
+                    
+                    <Label
+                        Content="Сменить пароль"
+                        HorizontalAlignment="Center"
+                        FontSize="20"
+                        MouseLeftButtonUp="Label_MouseLeftButtonUp"/>
+                    
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+    </Grid>
+</Page>
