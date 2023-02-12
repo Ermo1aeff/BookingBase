@@ -14,196 +14,120 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Shell;
+using BookingClient.Models;
 using BookingClient.Pages;
+using BookingClient.PagesForWindow;
 using BookingClient.Styles.CustomWindowStyle;
 
 namespace BookingClient
 {
     public partial class MainWindow : Window
     {
-        public string accountName { get; set; }
-
-        private List<Page> ActivePages;
-
-        private int CurrentPageIndex;
+        public string AccountId { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
-            ActivePages = new List<Page>();
-            CurrentPageIndex = -1;
-        }
-        private void BookingClient_Loaded(object sender, RoutedEventArgs e)
-        {
-            BookingClient.Tag = accountName;
-        }
-
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            Page Page;
-            ActivePages.RemoveAt(CurrentPageIndex);
-            if (CurrentPageIndex > 0)
-            {
-                CurrentPageIndex--;
-                Page = ActivePages[CurrentPageIndex];
-            }
-            else
-            {
-                if (CurrentPageIndex < ActivePages.Count)
-                {
-                    Page = ActivePages[CurrentPageIndex];
-                }
-                else
-                {
-                    Page = null;
-                }
-            }
-            // Отображение в фрейме новой выбранной страницы
-            RootFrame.Navigate(Page);
-        }
-
-        private int GetActivePageIndexByType(Type PageType)
-        {
-            int Index = ActivePages.Count - 1;
-            while ((Index >= 0) && (ActivePages[Index].GetType() != PageType))
-            {
-                Index--;
-            }
-            return Index;
-        }
-
-        private void ShowPage(Type PageType)
-        {
-            Page Page;
-            if (PageType != null)
-            {
-                int Index = GetActivePageIndexByType(PageType);
-                if (Index < 0)
-                {
-                    Page = (Page)Activator.CreateInstance(PageType);
-                    ActivePages.Add(Page);
-                    CurrentPageIndex = ActivePages.Count - 1;
-                }
-                else
-                {
-                    Page = ActivePages[Index];
-                    CurrentPageIndex = Index;
-                }
-            }
-            else
-            {
-                Page = null;
-            }
-            RootFrame.Navigate(Page);
-        }
-        private void PreviousButton_Click(object sender, RoutedEventArgs e)
-        {
-            CurrentPageIndex--;
-            RootFrame.Navigate(ActivePages[CurrentPageIndex]);
-        }
-
-        private void NextButton_Click(object sender, RoutedEventArgs e)
-        {
-            CurrentPageIndex++;
-            RootFrame.Navigate(ActivePages[CurrentPageIndex]);
-        }
-
-        private void SetControlsEnabled()
-        {
-            PreviousButton.IsEnabled = (CurrentPageIndex > 0);
-            NextButton.IsEnabled = (CurrentPageIndex < ActivePages.Count - 1);
-            CloseButton.IsEnabled = (ActivePages.Count > 0);
         }
 
         private void RootFrame_LoadCompleted(object sender, NavigationEventArgs e)
         {
-            while (RootFrame.CanGoBack)
+            if (e.Content == (e.Content as DirectoryPage))
+                (e.Content as DirectoryPage).Tag = this;
+
+            if (e.Content == (e.Content as CreateOrderPage))
+                (e.Content as CreateOrderPage).Tag = this;
+        }
+
+        public void SetTitleCaption(string PageName)
+        {
+            TitleCaption.Text = DirectoryButton.Content + PageName + " - " + Title;
+        }
+
+        // Деформирование окна под полноэкранный режим
+        private void BookingClient_Loaded(object sender, RoutedEventArgs e)
+        {
+            TitleCaption.Text = Title;
+            accounts AccountProfile = SourceCore.entities.accounts.SingleOrDefault(U => U.account_id.ToString() == AccountId);
+            AccountCaptionButton.Content = AccountProfile != null ? AccountProfile.first_name + " " + AccountProfile.last_name : "Не удалось найти данные пользователя";
+
+            ((Window)sender).StateChanged += WindowStateChanged;
+
+            if (WindowState == WindowState.Maximized)
             {
-                RootFrame.RemoveBackEntry();
+                MainBorder.Padding = new Thickness(8);
+                WinChrome.CaptionHeight = 34;
+                PART_MaxButton_Path.Data = Geometry.Parse("M1,10 8,10 8,3, 1,3 1,10.5 M3,3 3,1 10,1, 10,8, 8,8");
             }
-            SetControlsEnabled();
         }
 
-        private void BookingClient_SizeChanged(object sender, SizeChangedEventArgs e)
+        void WindowStateChanged(object sender, EventArgs e)
         {
-            //MainGrid.Width =  (1600 - 800) / (100 - 200) * MainGrid.Width - 100; 
-        }
-
-        private void ToursButton_Click(object sender, RoutedEventArgs e)
-        {
-            ShowPage(typeof(ToursPage));
-        }
-
-        private void PersonsButton_Click(object sender, RoutedEventArgs e)
-        {
-            ShowPage(typeof(PersonsPage));
-        }
-
-        private void DeparturesButton_Click(object sender, RoutedEventArgs e)
-        {
-            ShowPage(typeof(DeparturesPage));
-        }
-
-        private void OrdersButton_Click(object sender, RoutedEventArgs e)
-        {
-            ShowPage(typeof(OrdersPage));
-        }
-
-        private void OrderToursButton_Click(object sender, RoutedEventArgs e)
-        {
-            ShowPage(typeof(CreateOrdersPage));
-        }
-
-        private void InteraryButton_Click(object sender, RoutedEventArgs e)
-        {
-            ShowPage(typeof(ItineraryPage));
-        }
-
-        private void CitiesButton_Click_1(object sender, RoutedEventArgs e)
-        {
-            ShowPage(typeof(CitiesPage));
-        }
-
-        private void CountriesButton_Click(object sender, RoutedEventArgs e)
-        {
-            ShowPage(typeof(CountriesPage));
-        }
-
-        private void InclusionsButton_Click(object sender, RoutedEventArgs e)
-        {
-            ShowPage(typeof(InclusionsPage));
-        }
-
-        private void IncludedButton_Click(object sender, RoutedEventArgs e)
-        {
-            ShowPage(typeof(IncludedPage));
-        }
-
-        private void OrderRoomsButton_Click(object sender, RoutedEventArgs e)
-        {
-            ShowPage(typeof(OrderRoomsPage));
-        }
-
-        private void RoomsButton_Click(object sender, RoutedEventArgs e)
-        {
-            ShowPage(typeof(RoomPage));
-        }
-
-        private void ImagesButton_Click(object sender, RoutedEventArgs e)
-        {
-            ShowPage(typeof(ImagesPage));
-        }
-
-        private void BookingClient_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Right && NextButton.IsEnabled)
+            if (WindowState == WindowState.Maximized)
             {
-                NextButton_Click(null, null);
+                MainBorder.Padding = new Thickness(8);
+                WinChrome.CaptionHeight = 34;
+                ((Path)FindName("PART_MaxButton_Path")).Data = Geometry.Parse("M1,10 8,10 8,3, 1,3 1,10.5 M3,3 3,1 10,1, 10,8, 8,8");
             }
-            if (e.Key == Key.Left && PreviousButton.IsEnabled)
+            else
             {
-                PreviousButton_Click(null, null);
+                MainBorder.Padding = new Thickness(0);
+                WinChrome.CaptionHeight = 26;
+                PART_MaxButton_Path.Data = Geometry.Parse("M1,1 L10,1 L10,10 L1,10 Z");
             }
+        }
+
+        private void IconMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount > 1)
+            {
+                Close();
+            }
+        }
+
+        private void IconMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            FrameworkElement element = sender as FrameworkElement;
+            Point point = element.PointToScreen(new Point(element.ActualWidth / 2, element.ActualHeight));
+            SystemCommands.ShowSystemMenu(this, point);
+        }
+
+        private void MinButtonClick(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void MaxButtonClick(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+        }
+
+        private void CloseButtonClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void AccountCaptionButtonClick(object sender, RoutedEventArgs e)
+        {
+            Window AuthorizationWin = new AuthorizationWindow();
+            Close();
+            AuthorizationWin.Show();
+        }
+
+        private void NewTourButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DirectoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            RootFrame.Navigate(new DirectoryPage());
+            TitleCaption.Text = DirectoryButton.Content + " - " + Title;
+        }
+
+        private void CreateOrderButton_Click(object sender, RoutedEventArgs e)
+        {
+            RootFrame.Navigate(new CreateOrderPage());
         }
     }
 }

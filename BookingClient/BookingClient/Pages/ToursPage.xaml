@@ -81,12 +81,7 @@
         <GridSplitter 
             x:Name="DialogGridSplitter" 
             Grid.Column="1" 
-            HorizontalAlignment="Stretch" 
-            Width="3"
-            Background="Silver"
-            />
-
-
+            HorizontalAlignment="Stretch"/>
 
         <Grid Grid.Column="2" >
             <Grid.RowDefinitions>

@@ -8,8 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="OrdersPage"
       Background="White"
-      Loaded="Page_Loaded"
-      >
+      Loaded="Page_Loaded">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -80,11 +79,7 @@
         <GridSplitter 
             x:Name="DialogGridSplitter" 
             Grid.Column="1" 
-            Grid.Row="2"
-            HorizontalAlignment="Stretch" 
-            Width="2" 
-            Background="Gray"
-            />
+            HorizontalAlignment="Stretch" />
 
         <Grid Grid.Column="2" >
             <Grid.RowDefinitions>

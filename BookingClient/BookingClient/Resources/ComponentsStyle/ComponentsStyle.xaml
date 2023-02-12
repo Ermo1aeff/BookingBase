@@ -81,13 +81,18 @@
 
     <Style TargetType="Button" x:Key="MenuButton" BasedOn="{StaticResource BaseButton}">
         <Setter Property="Height" Value="36"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontFamily" Value="Segoe UI Semilight"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="Padding" Value="18, 0"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="Silver"/>
+                <Setter Property="Background" Value="{StaticResource PrimaryLightColor}"/>
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="Gray"/>
+                <Setter Property="Background" Value="{StaticResource SecondaryLightColor}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -112,6 +117,23 @@
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="Background" Value="#ff8597"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="Button" x:Key="TitleButton" BasedOn="{StaticResource BaseButton}">
+        <Setter Property="Padding" Value="14, 0"/>
+        <Setter Property="Background" Value="{StaticResource ButtonBackgroud}"/>
+        <Setter Property="Foreground" Value="white"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource PrimaryDarkColor}"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{StaticResource SecondaryDarkColor}"/>
+                <Setter Property="Foreground" Value="White"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -256,6 +278,16 @@
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Foreground" Value="LightGray"/>
                 <Setter Property="Cursor" Value=""/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="GridSplitter">
+        <Setter Property="Background" Value="#e6e6e6"/>
+        <Setter Property="Width" Value="2"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#949494"/>
             </Trigger>
         </Style.Triggers>
     </Style>

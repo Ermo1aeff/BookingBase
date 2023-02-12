@@ -264,3 +264,9 @@ C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\Booki
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.exe
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.pdb
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.AssemblyReference.cache
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\PagesOnWindow\CreateOrderPage.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\PagesOnWindow\DirectoryPage.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\PagesOnWindow\CreateOrderPage.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\PagesOnWindow\DirectoryPage.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\PagesOnWindow\DateSelectingPage.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\PagesOnWindow\DateSelectingPage.baml

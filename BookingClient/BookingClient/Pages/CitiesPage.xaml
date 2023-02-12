@@ -29,28 +29,24 @@
                     Style="{StaticResource AddButton}"
                     ToolTip="Добавить"
                     Click="AddRecordButton_Click"
-                    IsEnabled="False"
                     />
                 <Button
                     x:Name="CopyRecordButton"
                     Style="{StaticResource CopyButton}" 
                     ToolTip="Копировать"
                     Click="CopyRecordButton_Click"
-                    IsEnabled="False"
                     />
                 <Button
                     x:Name="EditRecordButton"
                     Style="{StaticResource EditButton}"
                     ToolTip="Редактировать"
                     Click="EditRecordButton_Click"
-                    IsEnabled="False"
                     />
                 <Button
                     x:Name="DeleteRecordButton"
                     Style="{StaticResource DeleteButton}"
                     ToolTip="Удалить"
                     Click="DeleteRecordButton_Click"
-                    IsEnabled="False"
                     />
                 <ComboBox
                     x:Name="FilterComboBox"
@@ -81,8 +77,6 @@
             x:Name="DialogGridSplitter" 
             Grid.Column="1" 
             HorizontalAlignment="Stretch" 
-            Width="3"
-            Background="Silver"
             />
 
         <Grid Grid.Column="2" >

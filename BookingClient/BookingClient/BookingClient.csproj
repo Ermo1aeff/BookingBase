@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\Images\BookingIco.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Images\WhiteBookingIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup />
@@ -140,6 +140,12 @@
     <Compile Include="Models\tour_countries.cs">
       <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="PagesOnWindow\CreateOrderPage.xaml.cs">
+      <DependentUpon>CreateOrderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesOnWindow\DateSelectingPage.xaml.cs">
+      <DependentUpon>DateSelectingPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CitiesPage.xaml.cs">
       <DependentUpon>CitiesPage.xaml</DependentUpon>
     </Compile>
@@ -151,6 +157,9 @@
     </Compile>
     <Compile Include="Pages\DeparturesPage.xaml.cs">
       <DependentUpon>DeparturesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesOnWindow\DirectoryPage.xaml.cs">
+      <DependentUpon>DirectoryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ImagesPage.xaml.cs">
       <DependentUpon>ImagesPage.xaml</DependentUpon>
@@ -200,6 +209,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PagesOnWindow\CreateOrderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesOnWindow\DateSelectingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\CitiesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -213,6 +230,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\DeparturesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesOnWindow\DirectoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -311,7 +332,7 @@
     <SplashScreen Include="Resources\Images\SlpashScreen1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\BookingIco.ico" />
+    <Resource Include="Resources\Images\WhiteBookingIcon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -334,6 +355,8 @@
       <DependentUpon>Booking_BaseModel.edmx</DependentUpon>
       <LastGenOutput>Booking_BaseModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="PagesOnWindow\199790_5ed58e77d9716.jpg" />
+    <Resource Include="Resources\Images\GreenBookingIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

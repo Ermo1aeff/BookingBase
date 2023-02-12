@@ -31,8 +31,6 @@ namespace BookingClient.Styles.CustomWindowStyle
 
     public partial class CutosmWindowStyle
     {
-        
-
         public string accountName { get; set; }
         Window windowStyleSender { get; set; }
 

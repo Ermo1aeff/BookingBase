@@ -8,9 +8,8 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="InclusionsPage" 
       Background="White"
-      Loaded="Page_Loaded"
-      >
-
+      Loaded="Page_Loaded">
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -28,24 +27,23 @@
                 <Button
                     x:Name="AddRecordButton"
                     Style="{StaticResource AddButton}"
-                    Click="AddRecordButton_Click"
-                    />
+                    Click="AddRecordButton_Click"/>
+                
                 <Button
                     RenderOptions.BitmapScalingMode="HighQuality"
                     x:Name="CopyRecordButton"
                     Style="{StaticResource CopyButton}" 
-                    Click="CopyRecordButton_Click"
-                    />
+                    Click="CopyRecordButton_Click"/>
+                
                 <Button
                     x:Name="EditRecordButton"
                     Style="{StaticResource EditButton}"
-                    Click="EditRecordButton_Click"
-                    />
+                    Click="EditRecordButton_Click"/>
+                
                 <Button
                     x:Name="DeleteRecordButton"
                     Style="{StaticResource DeleteButton}"
-                    Click="DeleteRecordButton_Click"
-                    />
+                    Click="DeleteRecordButton_Click"/>
 
                 <ComboBox
                     x:Name="FilterComboBox"
@@ -65,8 +63,8 @@
                 x:Name="RecordsDataGrid"
                 Grid.Row="1"
                 AutoGenerateColumns="False"
-                CanUserAddRows="true"
-                >
+                CanUserAddRows="true">
+                
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Включение" Binding="{Binding inclusion_name}" Width="*"/>
                 </DataGrid.Columns>
@@ -75,12 +73,8 @@
 
         <GridSplitter 
             x:Name="DialogGridSplitter" 
-            Grid.Column="1" 
-            Grid.Row="2"
-            HorizontalAlignment="Stretch" 
-            Width="2" 
-            Background="Gray"
-            />
+            Grid.Column="1"
+            HorizontalAlignment="Stretch"/>
 
         <Grid Grid.Column="2" >
             <Grid.RowDefinitions>
@@ -94,14 +88,12 @@
                 x:Name="RecordChangeTitle" 
                 Content="None"
                 VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                />
+                HorizontalAlignment="Center"/>
 
             <ScrollViewer Grid.Row="1">
                 <StackPanel
                     Margin="10,0,10,0"
-                    Orientation="Vertical"
-                    >
+                    Orientation="Vertical">
                     
                     <Label Content="Название включения"/>
                     <TextBox

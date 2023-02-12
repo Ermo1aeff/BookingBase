@@ -8,111 +8,168 @@
         Title="Bookimg Client"
         Height="570"
         Width="860"
-        MinWidth="800"
-        MinHeight="450"
-        Icon="Resources/Images/BookingIco.ico"
+        MinWidth="860"
+        MinHeight="570"
+        Icon="Resources/Images/GreenBookingIcon.ico"
         Name="BookingClient"
         Background="White"
-        Style="{StaticResource WindowStyle}"
-        SizeChanged="BookingClient_SizeChanged"
         Loaded="BookingClient_Loaded"
-        WindowState="Maximized" KeyDown="BookingClient_KeyDown"
-        >
+        WindowState="Maximized">
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="160"/>
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
+    <Window.Effect>
+        <DropShadowEffect
+            Color="black"
+            Opacity="1.5"
+            BlurRadius="14"
+            ShadowDepth="2"
+            Direction="315"/>
+    </Window.Effect>
 
-        <StackPanel Background="Silver">
-            <Button
-                x:Name="OrderToursButton"
-                Style="{StaticResource MenuButton}"
-                Content="Оформить заказ"
-                Click="OrderToursButton_Click"
-                />
-            <Button
-                x:Name="OrdersButton"
-                Style="{StaticResource MenuButton}"
-                Content="Заказы"
-                Click="OrdersButton_Click"
-                />
-            <Button 
-                x:Name="DeparturesButton"
-                Style="{StaticResource MenuButton}"
-                Content="Рассписание туров" 
-                Click="DeparturesButton_Click" 
-                />
-            <Button
-                x:Name="OrderRoomsButton"
-                Style="{StaticResource MenuButton}"
-                Content="Номера заказов"
-                Click="OrderRoomsButton_Click"
-                />
-            <Button
-                x:Name="ToursButton"
-                Style="{StaticResource MenuButton}"
-                Content="Туры"
-                Click="ToursButton_Click"/>
-            <Button
-                x:Name="PersonsButton"
-                Style="{StaticResource MenuButton}"
-                Content="Туристы"
-                Click="PersonsButton_Click"
-                />
-            <Button
-                x:Name="IncludedButton"
-                Style="{StaticResource MenuButton}"
-                Content="Услуги"
-                Click="IncludedButton_Click"
-                />
-            <Button
-                x:Name="InteraryButton"
-                Style="{StaticResource MenuButton}"
-                Content="Маршруты"
-                Click="InteraryButton_Click"
-                />
-            <Button
-                x:Name="RoomsButton"
-                Style="{StaticResource MenuButton}"
-                Content="Номера туров"
-                Click="RoomsButton_Click"
-                />
-            <Button
-                x:Name="InclusionsButton"
-                Style="{StaticResource MenuButton}"
-                Content="Список услуг"
-                Click="InclusionsButton_Click"
-                />
-            <Button
-                x:Name="ImagesButton"
-                Style="{StaticResource MenuButton}"
-                Content="Изображения"
-                Click="ImagesButton_Click"
-                />
-            <Button
-                x:Name="CountriesButton"
-                Style="{StaticResource MenuButton}"
-                Content="Страны"
-                Click="CountriesButton_Click"
-                />
-            <Button
-                x:Name="CitiesButton"
-                Style="{StaticResource MenuButton}"
-                Content="Города"
-                Click="CitiesButton_Click_1"
-                />
+    <WindowChrome.WindowChrome>
+        <WindowChrome 
+            x:Name="WinChrome"
+            CaptionHeight="27"
+            NonClientFrameEdges="None"
+            UseAeroCaptionButtons="False"
+            GlassFrameThickness="1"
+            CornerRadius="0"/>
+    </WindowChrome.WindowChrome>
 
-        </StackPanel>
-
-        <Grid Grid.Column="1" Grid.ColumnSpan="2">
+    <Border x:Name="MainBorder">
+        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition Height="36"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0" x:Name="MainGrid" Grid.ColumnSpan="2">
+            <Grid Grid.Row="0">
+                <Border 
+                    TextOptions.TextRenderingMode="ClearType"
+                    TextOptions.TextFormattingMode="Display"
+                    x:Name="TitleBorder"
+                    DockPanel.Dock="Top"
+                    Background="{StaticResource PrimaryColor}">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image
+                            x:Name="Icon"
+                            Grid.Column="0"
+                            Source="{Binding Path=Icon, RelativeSource={RelativeSource AncestorType=Window, Mode=FindAncestor}}"
+                            Width="23"
+                            Height="23"
+                            MouseUp="IconMouseUp"
+                            RenderOptions.BitmapScalingMode="HighQuality"
+                            MouseLeftButtonDown="IconMouseLeftButtonDown"
+                            WindowChrome.IsHitTestVisibleInChrome="True"/>
+
+                        <TextBlock
+                            x:Name="TitleCaption"
+                            Grid.ColumnSpan="4"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Foreground="{StaticResource TitleLable}"/>
+
+
+                        <Grid Grid.Column="1">
+                            <DockPanel>
+                                <Button
+                                    Style="{StaticResource TitleButton}"
+                                    x:Name="CreateOrderButton"
+                                    Content="Новый заказа"
+                                    Click="CreateOrderButton_Click"
+                                    WindowChrome.IsHitTestVisibleInChrome="True"/>
+
+                                <Button
+                                    Style="{StaticResource TitleButton}"
+                                    x:Name="NewTourButton"
+                                    Content="Новый тур"
+                                    Click="NewTourButton_Click"
+                                    WindowChrome.IsHitTestVisibleInChrome="True"/>
+
+                                <Button
+                                    Style="{StaticResource TitleButton}"
+                                    x:Name="DirectoryButton"
+                                    Content="Справочник"
+                                    Click="DirectoryButton_Click"
+                                    WindowChrome.IsHitTestVisibleInChrome="True"/>
+                            </DockPanel>
+                        </Grid>
+
+                        <StackPanel 
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal"
+                            Grid.Column="3">
+
+                            <Button
+                                Content="Имя Фамилия"
+                                Style="{StaticResource TitleButton}"
+                                x:Name="AccountCaptionButton"
+                                WindowChrome.IsHitTestVisibleInChrome="True"
+                                Click="AccountCaptionButtonClick"/>
+
+                            <Button
+                                x:Name="MinButton"
+                                Style="{StaticResource WindowStyleTitleBarButton}"
+                                Click="MinButtonClick"
+                                WindowChrome.IsHitTestVisibleInChrome="True">
+
+                                <Path 
+                                    Height="10" Width="10"
+                                    Stroke="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    StrokeThickness="1"
+                                    Stretch="None"
+                                    RenderOptions.EdgeMode="Aliased"
+                                    Data="M0,5 L10,5"/>
+                            </Button>
+
+                            <Button
+                                x:Name="MaxButton" 
+                                Style="{StaticResource WindowStyleTitleBarButton}"
+                                Click="MaxButtonClick"
+                                WindowChrome.IsHitTestVisibleInChrome="True">
+
+                                <Path 
+                                    Height="10" Width="10"
+                                    x:Name="PART_MaxButton_Path"
+                                    Stroke="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"
+                                    StrokeThickness="1"
+                                    Stretch="None"
+                                    RenderOptions.EdgeMode="Aliased"
+                                    Data="M1,1 L10,1 L10,10 L1,10 Z"/>
+                            </Button>
+
+                            <Button
+                                x:Name="CloseButton"
+                                Style="{StaticResource WindowStyleTitleBarButtonClose}"
+                                Click="CloseButtonClick"
+                                WindowChrome.IsHitTestVisibleInChrome="True">
+
+                                <Path 
+                                    Height="10" Width="10"
+                                    Stroke="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"
+                                    StrokeThickness="1"
+                                    Stretch="None"
+                                    Data="M0,10 L10,0 M10,10 L0,0"/>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+            
+            <Grid Grid.Row="1" x:Name="MainGrid" Grid.ColumnSpan="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100*"/>
                     <RowDefinition Height="200*" x:Name="GridRow"/>
@@ -123,37 +180,18 @@
                     <ColumnDefinition Width="200*"/>
                     <ColumnDefinition Width="100*"/>
                 </Grid.ColumnDefinitions>
-                <Image x:Name="MainImage" RenderOptions.BitmapScalingMode="HighQuality" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Source="Resources/Images/Tour booking Serviсe.png"/>
+
+                <Image 
+                    x:Name="MainImage" 
+                    RenderOptions.BitmapScalingMode="HighQuality" 
+                    Grid.Row="1" Grid.Column="1" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" 
+                    Source="pack://application:,,,/Resources/Images/Tour booking Serviсe.png"/>
             </Grid>
 
-            <Frame x:Name="RootFrame" Grid.Row="0" NavigationUIVisibility="Hidden" LoadCompleted="RootFrame_LoadCompleted" Grid.ColumnSpan="2"/>
-
-            <Border Grid.Row="1" Grid.ColumnSpan="2" Background="Silver"/>
-
-            <Button 
-                x:Name="CloseButton"
-                Style="{StaticResource ClosePageButton}"
-                Grid.Row="1"
-                HorizontalAlignment="Right" 
-                Click="CloseButton_Click"
-                IsEnabled="False" 
-                />
-            <StackPanel Grid.Row="1" Orientation="Horizontal" Grid.ColumnSpan="2">
-                <Button
-                    x:Name="PreviousButton"
-                    Style="{StaticResource LeftArrowButton}"
-                    Click="PreviousButton_Click"
-                    IsEnabled="False"
-                    />
-                <Button
-                    x:Name="NextButton"
-                    Style="{StaticResource RightArrowButton}"
-                    Click="NextButton_Click"
-                    IsEnabled="False"
-                    />
-            </StackPanel>
-
+            <Frame x:Name="RootFrame" Grid.Row="1" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2" LoadCompleted="RootFrame_LoadCompleted"/>
         </Grid>
-    </Grid>
+    </Border>
 
 </Window>

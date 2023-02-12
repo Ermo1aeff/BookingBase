@@ -50,7 +50,7 @@ namespace BookingClient
             if (Accounts != null)
             {
                 MainWindow MainWin = new MainWindow();
-                MainWin.accountName = Accounts.account_id.ToString();
+                MainWin.AccountId = Accounts.account_id.ToString();
                 Close();
                 MainWin.Show();
             }
