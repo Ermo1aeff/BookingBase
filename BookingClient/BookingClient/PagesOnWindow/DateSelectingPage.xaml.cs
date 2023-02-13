@@ -21,7 +21,26 @@ namespace BookingClient.PagesOnWindow
         public DateSelectingPage(int TourId)
         {
             InitializeComponent();
-            DepartureListBox.ItemsSource = SourceCore.entities.departures.ToList();
+            DepartureListBox.ItemsSource = SourceCore.entities.departures.Where(filtercase => filtercase.tour_id == TourId).ToList();
+            var Tour = SourceCore.entities.tours.Where(U => U.tour_id == TourId).FirstOrDefault();
+            TourNameTextBlock.Text = Tour.tour_name;
+            DayCountTextBlick.Text = Tour.day_count.ToString();
+            if (Tour.city_begin_id == Tour.city_end_id)
+            {
+                BeginAndEndIsDifferentStackPnanel.Visibility = Visibility.Collapsed;
+                BeginAndEndIsIdenticalStackPanel.Visibility = Visibility.Visible;
+                BeginAndEndTextBlock.Text = Tour.cities.city_name + ", " + Tour.cities.countries.country_name;
+            }
+            else
+            {
+                BeginAndEndIsDifferentStackPnanel.Visibility = Visibility.Visible;
+                BeginAndEndIsIdenticalStackPanel.Visibility = Visibility.Collapsed;
+                BeginTextBock.Text = Tour.cities.city_name + ", " + Tour.cities.countries.country_name;
+                EndTextBlock.Text = Tour.cities1.city_name + ", " + Tour.cities1.countries.country_name;
+            }
+            MaxGroupSizeTextBlock.Text = Tour.max_group_size.ToString();
+            TourIdTextBlock.Text = Tour.tour_id.ToString();
+            TourPriceTextBlock.Text = Tour.price.ToString();
         }
 
         private void DepartureListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -30,9 +49,11 @@ namespace BookingClient.PagesOnWindow
             var sdfsd = (departures)DepartureListBox.SelectedItem;
         }
 
-        private void DepartureListBox_Selected(object sender, RoutedEventArgs e)
+
+        private void CommitDepartureButton_Click(object sender, RoutedEventArgs e)
         {
-            //CommitDepartureButton.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("LightGreen");
+            var SelectedDepartures = (departures)DepartureListBox.SelectedItem;
+            NavigationService.Navigate(new RoomsSelectingPage(SelectedDepartures.departure_id));
         }
     }
 }

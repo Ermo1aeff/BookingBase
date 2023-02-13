@@ -146,6 +146,12 @@
     <Compile Include="PagesOnWindow\DateSelectingPage.xaml.cs">
       <DependentUpon>DateSelectingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PagesOnWindow\PersonsAddingPage.xaml.cs">
+      <DependentUpon>PersonsAddingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesOnWindow\RoomsSelectingPage.xaml.cs">
+      <DependentUpon>RoomsSelectingPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CitiesPage.xaml.cs">
       <DependentUpon>CitiesPage.xaml</DependentUpon>
     </Compile>
@@ -214,6 +220,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PagesOnWindow\DateSelectingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesOnWindow\PersonsAddingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesOnWindow\RoomsSelectingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

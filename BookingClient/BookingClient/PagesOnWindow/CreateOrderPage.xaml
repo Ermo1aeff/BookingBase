@@ -99,8 +99,9 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBlock 
                                 FontSize="14" 
-                                Text="{Binding PricePerDay, StringFormat={}{0:#,###}}"
-                                FontWeight="DemiBold"/>
+                                Text="{Binding PricePerDay, StringFormat={}{0:# ###}}"
+                                FontWeight="DemiBold"
+                                />
                             
                             <TextBlock 
                                 FontSize="14" 
@@ -121,7 +122,7 @@
                         <StackPanel Orientation="Horizontal">
                         <TextBlock 
                             FontSize="20" 
-                            Text="{Binding Price, StringFormat={}{0:#,###}}"
+                            Text="{Binding Price, StringFormat={}{0:# ###}}"
                             FontWeight="DemiBold"/>
                         
                         <TextBlock 
@@ -148,7 +149,6 @@
 
     <Grid>
         <ListBox
-            MouseMove="TourListBox_MouseMove"
             x:Name="TourListBox"
             ItemTemplate="{StaticResource listTemplate}"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"

@@ -56,11 +56,5 @@ namespace BookingClient.PagesForWindow
             var TourId = Convert.ToInt32(pi.GetValue(button.DataContext, null));
             NavigationService.Navigate(new DateSelectingPage(TourId));
         }
-
-        private void TourListBox_MouseMove(object sender, MouseEventArgs e)
-        {
-            var listbox = (ListBox)sender;
-            //listbox.SelectedItem = listbox.SelectionMode;
-        }
     }
 }

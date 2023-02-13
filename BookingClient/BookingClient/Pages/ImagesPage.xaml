@@ -36,7 +36,7 @@
             </Grid.RowDefinitions>
 
             <Image 
-                Source="{Binding ElementName=imgList, Path=SelectedItem.img, Mode=OneWay}"
+                Source="{Binding ElementName=ImgListBox, Path=SelectedItem.img, Mode=OneWay}"
                 Grid.Row="1" 
                 Name="image" 
                 RenderOptions.BitmapScalingMode="HighQuality"/>
