@@ -90,12 +90,12 @@
                                     Click="CreateOrderButton_Click"
                                     WindowChrome.IsHitTestVisibleInChrome="True"/>
 
-                                <Button
+                                <!--<Button
                                     Style="{StaticResource TitleButton}"
                                     x:Name="NewTourButton"
                                     Content="Новый тур"
                                     Click="NewTourButton_Click"
-                                    WindowChrome.IsHitTestVisibleInChrome="True"/>
+                                    WindowChrome.IsHitTestVisibleInChrome="True"/>-->
 
                                 <Button
                                     Style="{StaticResource TitleButton}"

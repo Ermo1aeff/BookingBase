@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,9 +11,7 @@ namespace BookingClient.Pages
 {
     public partial class DeparturesPage : Page
     {
-        private int DlgMode = -1;
-        private string buf1;
-        private string buf2;
+        private bool DlgMode = false;
 
         public DeparturesPage()
         {
@@ -32,65 +31,54 @@ namespace BookingClient.Pages
             RecordsDataGrid.ItemsSource = DataGridRecords;
             RecordsDataGrid.SelectedItem = SelectingItem;
         }
-        public void DlgLoad(bool b)
+        public void DlgLoad(bool DlgStatus)
         {
-            if (b)
+            if (DlgStatus)
             {
                 RecordChangeBlock.MinWidth = 230;
                 RecordChangeBlock.Width = new GridLength(230);
-                //Выключаем элементы управления
-                RecordsDataGrid.IsHitTestVisible = false;
-                FilterTextBox.IsEnabled = false;
-                FilterComboBox.IsEnabled = false;
-                AddRecordButton.IsEnabled = false;
-                CopyRecordButton.IsEnabled = false;
-                EditRecordButton.IsEnabled = false;
-                DeleteRecordButton.IsEnabled = false;
                 DialogGridSplitter.Visibility = Visibility.Visible;
             }
             else
             {
-                RecordChangeBlock.MinWidth = 0;
-                RecordChangeBlock.Width = new GridLength(0);
-                //Включаем элементы управления
-                RecordsDataGrid.IsHitTestVisible = true;
-                FilterTextBox.IsEnabled = true;
-                FilterComboBox.IsEnabled = true;
-                AddRecordButton.IsEnabled = true;
-                CopyRecordButton.IsEnabled = true;
-                EditRecordButton.IsEnabled = true;
-                DeleteRecordButton.IsEnabled = true;
-                DialogGridSplitter.Visibility = Visibility.Collapsed;
-                DlgMode = -1;
+                //RecordChangeBlock.MinWidth = 0;
+                //RecordChangeBlock.Width = new GridLength(0);
+                //DialogGridSplitter.Visibility = Visibility.Collapsed;
+                DlgMode = false;
             }
+
+            RecordsDataGrid.IsHitTestVisible = !DlgStatus;
+            FilterTextBox.IsEnabled = !DlgStatus;
+            FilterComboBox.IsEnabled = !DlgStatus;
+            AddRecordButton.IsEnabled = !DlgStatus;
+            CopyRecordButton.IsEnabled = !DlgStatus;
+            EditRecordButton.IsEnabled = !DlgStatus;
+            DeleteRecordButton.IsEnabled = !DlgStatus;
+        }
+
+        private void TransferRecords()
+        {
+            var SelectedRecord = (departures)RecordsDataGrid.SelectedItem;
+            TourNameComboBox.SelectedItem = SelectedRecord.tours;
+            DateBeginDatePicker.Text = SelectedRecord.date_begin.Value.ToString("dd.MM.yyyy");
         }
 
         private void AddRecordButton_Click(object sender, RoutedEventArgs e)
         {
-            DlgLoad(true);
-            DlgMode = 0;
-            RecordsDataGrid.SelectedItem = null;
             RecordChangeTitle.Content = "Добавление";
-            DateBeginDatePicker.SelectedDate = DateTime.Now;
+            DlgMode = true;
+            RecordsDataGrid.SelectedItem = null;
+            DlgLoad(true);
         }
 
         private void CopyRecordButton_Click(object sender, RoutedEventArgs e)
         {
             if (RecordsDataGrid.SelectedItem != null)
             {
-                DlgLoad(true);
-                DlgMode = 0;
                 RecordChangeTitle.Content = "Копирование";
-
-                //использование буферных переменных для «отрыва» от данных выбранной строки (чтобы не сработал Binding)
-                buf1 = TourNameComboBox.Text;
-                buf2 = DateBeginDatePicker.Text;
-
-                //убрать фокус с выделенной строки
-                RecordsDataGrid.SelectedItem = null;
-
-                TourNameComboBox.Text = buf1;
-                DateBeginDatePicker.Text = buf2;
+                DlgMode = true;
+                TransferRecords();
+                DlgLoad(true);
             }
             else
             {
@@ -102,8 +90,9 @@ namespace BookingClient.Pages
         {
             if (RecordsDataGrid.SelectedItem != null)
             {
-                DlgLoad(true);
                 RecordChangeTitle.Content = "Редактирование";
+                TransferRecords();
+                DlgLoad(true);
             }
             else
             {
@@ -139,7 +128,6 @@ namespace BookingClient.Pages
                 }
                 catch
                 {
-
                     MessageBox.Show("Невозможно удалить запись, так как она используется в других справочниках базы данных.",
                     "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning, MessageBoxResult.None);
                 }
@@ -152,7 +140,7 @@ namespace BookingClient.Pages
             NewRecord.tours = (tours)TourNameComboBox.SelectedItem;
             NewRecord.date_begin = DateBeginDatePicker.SelectedDate;
 
-            if (DlgMode == 0)
+            if (DlgMode)
             {
                 SourceCore.entities.departures.Add(NewRecord);
             }

@@ -1,23 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using Microsoft.Win32;
-using System.Windows.Shapes;
 using System.IO;
-using System.Data.SqlClient;
 using BookingClient.Models;
 using System.Data;
-using System.Drawing.Imaging;
 using System.Collections.ObjectModel;
 
 namespace BookingClient.Pages
@@ -121,7 +111,7 @@ namespace BookingClient.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            List<String> Columns = new List<string>();
+            List<string> Columns = new List<string>();
             int DataGridItemsCount = RecordsDataGrid.Columns.Count;
             for (int I = 0; I < DataGridItemsCount; I++)
             {

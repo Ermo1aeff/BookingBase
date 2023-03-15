@@ -107,25 +107,20 @@
                     <ComboBox
                         x:Name="TourNameComboBox" 
                         DisplayMemberPath="tour_name"
-                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.tours, Mode=OneWay}"
                         IsEditable="True"/>
 
                     <Label Content="Название включения"/>
                     <ComboBox
                         x:Name="InclusionNameComboBox" 
                         DisplayMemberPath="inclusion_name"
-                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.inclusions, Mode=OneWay}"
                         IsEditable="True"/>
 
                     <Label Content="Статус"/>
-                    <TextBox
-                        x:Name="IncludedChoiceTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.included_choice, Mode=OneWay}"/>
+                    <TextBox x:Name="IncludedChoiceTextBox"/>
 
                     <Label Content="Описание"/>
                     <TextBox
-                        x:Name="IncludedDescriptionTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.included_description, Mode=OneWay}"
+                        x:Name="IncludedDescriptionTextBox"
                         TextWrapping="Wrap"
                         Height="300"
                         AcceptsReturn="True"

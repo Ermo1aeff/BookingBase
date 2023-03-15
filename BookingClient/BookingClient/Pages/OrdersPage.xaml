@@ -58,13 +58,11 @@
             </DockPanel>
 
             <DataGrid
-                RowBackground="#DDD"
-                AlternatingRowBackground="White"
                 x:Name="RecordsDataGrid"
                 Grid.Row="1"
                 AutoGenerateColumns="False"
-                CanUserAddRows="False"
-                >
+                CanUserAddRows="False">
+                
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Номер заказа" Binding="{Binding order_id, StringFormat={}№{0}}" Width="100"/>
                     <DataGridTextColumn Header="Конт. номер" Binding="{Binding contact_phone, StringFormat={}# (###) ###-##-##}" Width="110"/>
@@ -93,25 +91,20 @@
                 x:Name="RecordChangeTitle" 
                 Content="None"
                 VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                />
+                HorizontalAlignment="Center"/>
 
             <ScrollViewer Grid.Row="1">
                 <StackPanel
                     Margin="10,0,10,0"
-                    Orientation="Vertical"
-                    >
+                    Orientation="Vertical">
+                    
                     <Label Content="Контактный номер"/>
-                    <TextBox
-                        x:Name="ContactPhoneTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.contact_phone, Mode=OneWay}"
-                        />
+                    <TextBox x:Name="ContactPhoneTextBox"/>
 
                     <Label Content="Тур"/>
                     <ComboBox
                         x:Name="TourComboBox" 
                         DisplayMemberPath="tour_name"
-                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.departures.tours, Mode=OneWay}"
                         IsEditable="True"/>
 
                     <Label Content="Дата"/>
@@ -119,7 +112,6 @@
                         x:Name="DateTourComboBox" 
                         DisplayMemberPath="date_begin"
                         ItemStringFormat="dd.MM.yyyy"
-                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.departures, Mode=OneWay}"
                         ItemsSource="{Binding ElementName=TourComboBox, Path=SelectedItem.departures, Mode=OneWay}"
                         IsEditable="True"/>
 
@@ -129,8 +121,8 @@
             <Grid 
                 Grid.Row="2" 
                 Height="30"
-                Margin="10,0,10,0"
-                >
+                Margin="10,0,10,0">
+                
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -142,8 +134,7 @@
                     Grid.Column="0"
                     Content="Принять"
                     Margin="0,0,5,0"
-                    Click="CommitChangeRecordsButton_Click"
-                    />
+                    Click="CommitChangeRecordsButton_Click"/>
 
                 <Button
                     x:Name="RollbackChangeRecordsButton"
@@ -151,10 +142,8 @@
                     Grid.Column="1"
                     Content="Отменить"
                     Margin="5,0,0,0"
-                    Click="RollbackChangeRecordsButton_Click"
-                    />
+                    Click="RollbackChangeRecordsButton_Click"/>
             </Grid>
         </Grid>
-
     </Grid>
 </Page>

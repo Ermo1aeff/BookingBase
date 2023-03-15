@@ -91,41 +91,34 @@
                 x:Name="RecordChangeTitle" 
                 Content="None"
                 VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                />
+                HorizontalAlignment="Center"/>
 
             <ScrollViewer Grid.Row="1">
                 <StackPanel 
                     Margin="10,0,10,0"
-                    Orientation="Vertical"
-                    >
+                    Orientation="Vertical">
 
                     <Label Content="Номер заказа"/>
                     <ComboBox 
                         x:Name="OrderIdComboBox" 
                         DisplayMemberPath="order_id"
-                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.orders, Mode=OneWay}"
                         IsEditable="True"/>
 
                     <Label Content="Название номера"/>
                     <ComboBox 
                         x:Name="RoomNameComboBox" 
                         DisplayMemberPath="room_name"
-                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.orders, Mode=OneWay}"
                         IsEditable="True"/>
 
                     <Label Content="Количество комнат"/>
-                    <TextBox
-                        x:Name="RoomCountTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.city_name, Mode=OneWay}"/>
+                    <TextBox x:Name="RoomCountTextBox" />
                 </StackPanel>
             </ScrollViewer>
 
             <Grid 
                 Grid.Row="3" 
                 Height="30"
-                Margin="10,15"
-                >
+                Margin="10,15">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -138,16 +131,15 @@
                     Grid.Column="0"
                     Content="Принять"
                     Margin="0,0,5,0" 
-                    Click="CommitChangeRecordsButton_Click"
-                    />
+                    Click="CommitChangeRecordsButton_Click"/>
+                
                 <Button 
                     x:Name="RollbackChangeRecordsButton"
                     Style="{StaticResource RecordCancelButton}"
                     Grid.Column="1"
                     Content="Отменить"
                     Margin="5,0,0,0"
-                    Click="RollbackChangeRecordsButton_Click"
-                    />
+                    Click="RollbackChangeRecordsButton_Click"/>
             </Grid>
         </Grid>
 

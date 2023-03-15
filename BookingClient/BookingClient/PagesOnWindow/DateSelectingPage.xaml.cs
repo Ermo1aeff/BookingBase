@@ -46,7 +46,6 @@ namespace BookingClient.PagesOnWindow
         private void DepartureListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             CommitDepartureButton.IsEnabled = true;
-            var sdfsd = (departures)DepartureListBox.SelectedItem;
         }
 
 

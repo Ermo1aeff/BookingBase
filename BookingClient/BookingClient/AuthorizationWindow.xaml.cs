@@ -21,6 +21,11 @@ namespace BookingClient
 {
     public partial class AuthorizationWindow : Window
     {
+        private bool IsCtrl = false;
+        private bool IsF9 = false;
+        private bool IsF = false;
+
+
         public AuthorizationWindow()
         {
             InitializeComponent();
@@ -71,6 +76,45 @@ namespace BookingClient
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
             PasswordPasswordBox.Tag = PasswordPasswordBox.Password == "" ? "Пароль" : "";
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.Key == Key.LeftCtrl)
+            {
+                IsCtrl = true;
+            }
+
+            if (e.Key == Key.F9)
+            {
+                IsF9 = true;
+            }
+
+            if (e.Key == Key.F)
+            {
+                IsF = true;
+            }
+
+            if (IsCtrl && IsF)
+            {
+                ConnectionWindow ConnWin = new ConnectionWindow();
+                Close();
+                ConnWin.Show();
+            }
+        }
+
+        private void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.LeftCtrl)
+            {
+                IsCtrl = false;
+            }
+
+            if (e.Key == Key.F9)
+            {
+                IsF9 = false;
+            }
         }
     }
 }

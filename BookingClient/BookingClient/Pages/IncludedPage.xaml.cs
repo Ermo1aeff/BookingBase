@@ -10,11 +10,7 @@ namespace BookingClient.Pages
 {
     public partial class IncludedPage : Page
     {
-        private int DlgMode = -1;
-        private string buf1;
-        private string buf2;
-        private string buf3;
-        private string buf4;
+        private bool DlgMode = false;
 
         public IncludedPage()
         {
@@ -23,41 +19,6 @@ namespace BookingClient.Pages
             UpdateDataGrid(null);
             TourNameComboBox.ItemsSource = SourceCore.entities.tours.ToList();
             InclusionNameComboBox.ItemsSource = SourceCore.entities.inclusions.ToList();
-        }
-
-        public void DlgLoad(bool b)
-        {
-            if (b)
-            {
-                RecordChangeGrid.Visibility = Visibility.Visible;
-                RecordChangeBlock.MinWidth = 230;
-                RecordChangeBlock.Width = new GridLength(230);
-                //Выключаем элементы управления
-                RecordsDataGrid.IsHitTestVisible = false;
-                FilterTextBox.IsEnabled = false;
-                FilterComboBox.IsEnabled = false;
-                AddRecordButton.IsEnabled = false;
-                CopyRecordButton.IsEnabled = false;
-                EditRecordButton.IsEnabled = false;
-                DeleteRecordButton.IsEnabled = false;
-                DialogGridSplitter.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                RecordChangeGrid.Visibility = Visibility.Collapsed;
-                RecordChangeBlock.MinWidth = 0;
-                RecordChangeBlock.Width = new GridLength(0);
-                //Включаем элементы управления
-                RecordsDataGrid.IsHitTestVisible = true;
-                FilterTextBox.IsEnabled = true;
-                FilterComboBox.IsEnabled = true;
-                AddRecordButton.IsEnabled = true;
-                CopyRecordButton.IsEnabled = true;
-                EditRecordButton.IsEnabled = true;
-                DeleteRecordButton.IsEnabled = true;
-                DialogGridSplitter.Visibility = Visibility.Collapsed;
-                DlgMode = -1;
-            }
         }
 
         public void UpdateDataGrid(included SelectingItem)
@@ -71,40 +32,62 @@ namespace BookingClient.Pages
             RecordsDataGrid.SelectedItem = SelectingItem;
         }
 
+        public void DlgLoad(bool DlgStatus)
+        {
+            if (DlgStatus)
+            {
+                RecordChangeGrid.Visibility = Visibility.Visible;
+                RecordChangeBlock.MinWidth = 230;
+                RecordChangeBlock.Width = new GridLength(230);
+                DialogGridSplitter.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                //RecordChangeGrid.Visibility = Visibility.Collapsed;
+                //RecordChangeBlock.MinWidth = 0;
+                //RecordChangeBlock.Width = new GridLength(0);
+                //DialogGridSplitter.Visibility = Visibility.Collapsed;
+                DlgMode = false;
+            }
+
+            RecordsDataGrid.IsHitTestVisible = !DlgStatus;
+            FilterTextBox.IsEnabled = !DlgStatus;
+            FilterComboBox.IsEnabled = !DlgStatus;
+            AddRecordButton.IsEnabled = !DlgStatus;
+            CopyRecordButton.IsEnabled = !DlgStatus;
+            EditRecordButton.IsEnabled = !DlgStatus;
+            DeleteRecordButton.IsEnabled = !DlgStatus;
+        }
+
+        private void TransferRecords()
+        {
+            var SelectedRecord = (included)RecordsDataGrid.SelectedItem;
+            TourNameComboBox.SelectedItem = SelectedRecord.tours.tour_name;
+            InclusionNameComboBox.Text = SelectedRecord.inclusions.inclusion_name;
+            IncludedChoiceTextBox.Text = SelectedRecord.included_choice.ToString();
+            IncludedDescriptionTextBox.Text = SelectedRecord.included_description;
+        }
 
         private void AddRecordButton_Click(object sender, RoutedEventArgs e)
         {
-            DlgLoad(true);
-            DlgMode = 0;
+            DlgMode = true;
             RecordsDataGrid.SelectedItem = null;
             RecordChangeTitle.Content = "Добавление";
             TourNameComboBox.Text = "";
             InclusionNameComboBox.Text = "";
             IncludedChoiceTextBox.Text = "";
             IncludedDescriptionTextBox.Text = "";
+            DlgLoad(true);
         }
 
         private void CopyRecordButton_Click(object sender, RoutedEventArgs e)
         {
             if (RecordsDataGrid.SelectedItem != null)
             {
-                DlgLoad(true);
-                DlgMode = 0;
                 RecordChangeTitle.Content = "Копирование";
-
-                //использование буферных переменных для «отрыва» от данных выбранной строки (чтобы не сработал Binding)
-                buf1 = TourNameComboBox.Text;
-                buf2 = InclusionNameComboBox.Text;
-                buf3 = IncludedChoiceTextBox.Text;
-                buf4 = IncludedDescriptionTextBox.Text;
-
-                //убрать фокус с выделенной строки
-                RecordsDataGrid.SelectedItem = null;
-
-                TourNameComboBox.Text = buf1;
-                InclusionNameComboBox.Text = buf2;
-                IncludedChoiceTextBox.Text = buf3;
-                IncludedDescriptionTextBox.Text = buf4;
+                DlgMode = true;
+                TransferRecords();
+                DlgLoad(true);
             }
             else
             {
@@ -116,8 +99,9 @@ namespace BookingClient.Pages
         {
             if (RecordsDataGrid.SelectedItem != null)
             {
-                DlgLoad(true);
                 RecordChangeTitle.Content = "Редактирование";
+                TransferRecords();
+                DlgLoad(true);
             }
             else
             {
@@ -162,13 +146,13 @@ namespace BookingClient.Pages
         private void CommitChangeRecordsButton_Click(object sender, RoutedEventArgs e)
         {
             var NewRecord = new included();
-            NewRecord.tours = (tours)TourNameComboBox.SelectedItem;
-            NewRecord.inclusions = (inclusions)InclusionNameComboBox.SelectedItem;
-            NewRecord.included_choice = Convert.ToInt32(IncludedChoiceTextBox.Text);
-            NewRecord.included_description = IncludedDescriptionTextBox.Text;
 
-            if (DlgMode == 0)
+            if (DlgMode)
             {
+                NewRecord.tours = (tours)TourNameComboBox.SelectedItem;
+                NewRecord.inclusions = (inclusions)InclusionNameComboBox.SelectedItem;
+                NewRecord.included_choice = Convert.ToInt32(IncludedChoiceTextBox.Text);
+                NewRecord.included_description = IncludedDescriptionTextBox.Text;
                 SourceCore.entities.included.Add(NewRecord);
             }
             else
@@ -191,7 +175,7 @@ namespace BookingClient.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            List<String> Columns = new List<string>();
+            List<string> Columns = new List<string>();
             int DataGridItemsCount = RecordsDataGrid.Columns.Count;
             for (int I = 0; I < DataGridItemsCount; I++)
             {

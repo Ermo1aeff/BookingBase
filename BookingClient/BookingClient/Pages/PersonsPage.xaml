@@ -4,12 +4,11 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BookingClient.Pages"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PersonsPage"      
+      Title="PersonsPage"
       Background="White"
-      Loaded="Page_Loaded"
-      >
+      Loaded="Page_Loaded">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -106,23 +105,16 @@
                     <ComboBox
                         x:Name="OrderIdComboBox" 
                         DisplayMemberPath="order_id"
-                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.orders, Mode=OneWay}"
                         IsEditable="True"/>
 
                     <Label Content="Фамилия"/>
-                    <TextBox
-                        x:Name="LastNameTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.last_name, Mode=OneWay}"/>
+                    <TextBox x:Name="LastNameTextBox"/>
 
                     <Label Content="Имя"/>
-                    <TextBox
-                        x:Name="FirstNameTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.first_name, Mode=OneWay}"/>
+                    <TextBox x:Name="FirstNameTextBox"/>
 
                     <Label Content="Номер паспорта"/>
-                    <TextBox
-                        x:Name="PassportTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.passport, Mode=OneWay}"/>
+                    <TextBox x:Name="PassportTextBox"/>
 
                     <Label Content="Дата рождения"/>
                     <DatePicker 
@@ -163,6 +155,5 @@
                     Click="RollbackChangeRecordsButton_Click"/>
             </Grid>
         </Grid>
-
     </Grid>
 </Page>

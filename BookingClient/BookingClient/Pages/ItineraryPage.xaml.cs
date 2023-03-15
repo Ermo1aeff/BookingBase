@@ -10,11 +10,7 @@ namespace BookingClient.Pages
 {
     public partial class ItineraryPage : Page
     {
-        private int DlgMode = -1;
-        private string buf1;
-        private string buf2;
-        private string buf3;
-        private string buf4;
+        private bool DlgMode = false;
 
         public ItineraryPage()
         {
@@ -24,37 +20,29 @@ namespace BookingClient.Pages
             TourIdComboBox.ItemsSource = SourceCore.entities.tours.ToList();
         }
 
-        public void DlgLoad(bool b)
+        public void DlgLoad(bool DlgStatus)
         {
-            if (b)
+            if (DlgStatus)
             {
                 RecordChangeBlock.MinWidth = 230;
                 RecordChangeBlock.Width = new GridLength(230);
-                //Выключаем элементы управления
-                RecordsDataGrid.IsHitTestVisible = false;
-                FilterTextBox.IsEnabled = false;
-                FilterComboBox.IsEnabled = false;
-                AddRecordButton.IsEnabled = false;
-                CopyRecordButton.IsEnabled = false;
-                EditRecordButton.IsEnabled = false;
-                DeleteRecordButton.IsEnabled = false;
                 DialogGridSplitter.Visibility = Visibility.Visible;
             }
             else
             {
-                RecordChangeBlock.MinWidth = 0;
-                RecordChangeBlock.Width = new GridLength(0);
-                //Включаем элементы управления
-                RecordsDataGrid.IsHitTestVisible = true;
-                FilterTextBox.IsEnabled = true;
-                FilterComboBox.IsEnabled = true;
-                AddRecordButton.IsEnabled = true;
-                CopyRecordButton.IsEnabled = true;
-                EditRecordButton.IsEnabled = true;
-                DeleteRecordButton.IsEnabled = true;
-                DialogGridSplitter.Visibility = Visibility.Collapsed;
-                DlgMode = -1;
+                //RecordChangeBlock.MinWidth = 0;
+                //RecordChangeBlock.Width = new GridLength(0);
+                //DialogGridSplitter.Visibility = Visibility.Collapsed;
+                DlgMode = false;
             }
+
+            RecordsDataGrid.IsHitTestVisible = !DlgStatus;
+            FilterTextBox.IsEnabled = !DlgStatus;
+            FilterComboBox.IsEnabled = !DlgStatus;
+            AddRecordButton.IsEnabled = !DlgStatus;
+            CopyRecordButton.IsEnabled = !DlgStatus;
+            EditRecordButton.IsEnabled = !DlgStatus;
+            DeleteRecordButton.IsEnabled = !DlgStatus;
         }
 
         public void UpdateDataGrid(itinerary SelectingItem)
@@ -68,39 +56,34 @@ namespace BookingClient.Pages
             RecordsDataGrid.SelectedItem = SelectingItem;
         }
 
+        private void TransferRecords()
+        {
+            var SelectedRecord = (itinerary)RecordsDataGrid.SelectedItem;
+            TourIdComboBox.SelectedItem = SelectedRecord.tour_id;
+            DayNumTextBox.Text = SelectedRecord.day_num.ToString();
+            ItineraryNameTextBox.Text = SelectedRecord.itinerary_name;
+            ItirararyDescriptionTextBox.Text = SelectedRecord.itirarary_description;
+        }
+
         private void AddRecordButton_Click(object sender, RoutedEventArgs e)
         {
-            DlgLoad(true);
-            DlgMode = 0;
-            RecordsDataGrid.SelectedItem = null;
             RecordChangeTitle.Content = "Добавление";
+            DlgMode = true;
             TourIdComboBox.Text = "";
             DayNumTextBox.Text = "";
             ItineraryNameTextBox.Text = "";
             ItirararyDescriptionTextBox.Text = "";
+            DlgLoad(true);
         }
 
         private void CopyRecordButton_Click(object sender, RoutedEventArgs e)
         {
             if (RecordsDataGrid.SelectedItem != null)
             {
-                DlgLoad(true);
-                DlgMode = 0;
                 RecordChangeTitle.Content = "Копирование";
-
-                //использование буферных переменных для «отрыва» от данных выбранной строки (чтобы не сработал Binding)
-                buf1 = TourIdComboBox.Text;
-                buf2 = DayNumTextBox.Text;
-                buf3 = ItineraryNameTextBox.Text;
-                buf4 = ItirararyDescriptionTextBox.Text;
-
-                //убрать фокус с выделенной строки
-                RecordsDataGrid.SelectedItem = null;
-
-                TourIdComboBox.Text = buf1;
-                DayNumTextBox.Text = buf2;
-                ItineraryNameTextBox.Text = buf3;
-                ItirararyDescriptionTextBox.Text = buf4;
+                DlgMode = true;
+                TransferRecords();
+                DlgLoad(true);
             }
             else
             {
@@ -112,8 +95,9 @@ namespace BookingClient.Pages
         {
             if (RecordsDataGrid.SelectedItem != null)
             {
-                DlgLoad(true);
                 RecordChangeTitle.Content = "Редактирование";
+                TransferRecords();
+                DlgLoad(true);
             }
             else
             {
@@ -157,13 +141,13 @@ namespace BookingClient.Pages
         private void CommitChangeRecordsButton_Click(object sender, RoutedEventArgs e)
         {
             var NewRecord = new itinerary();
-            NewRecord.tours = (tours)TourIdComboBox.SelectedItem;
-            NewRecord.day_num = Convert.ToInt32(DayNumTextBox.Text);
-            NewRecord.itinerary_name = ItineraryNameTextBox.Text;
-            NewRecord.itirarary_description = ItirararyDescriptionTextBox.Text;
 
-            if (DlgMode == 0)
+            if (DlgMode)
             {
+                NewRecord.tours = (tours)TourIdComboBox.SelectedItem;
+                NewRecord.day_num = Convert.ToInt32(DayNumTextBox.Text);
+                NewRecord.itinerary_name = ItineraryNameTextBox.Text;
+                NewRecord.itirarary_description = ItirararyDescriptionTextBox.Text;
                 SourceCore.entities.itinerary.Add(NewRecord);
             }
             else
@@ -187,7 +171,7 @@ namespace BookingClient.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            List<String> Columns = new List<string>();
+            List<string> Columns = new List<string>();
             int DataGridItemsCount = RecordsDataGrid.Columns.Count;
             for (int I = 0; I < DataGridItemsCount; I++)
             {

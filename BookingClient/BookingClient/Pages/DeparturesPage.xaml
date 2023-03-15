@@ -92,14 +92,12 @@
             <ScrollViewer Grid.Row="1">
                 <StackPanel 
                     Margin="10,0,10,0"
-                    Orientation="Vertical"
-                    >
+                    Orientation="Vertical">
 
                     <Label Content="Название тура"/>
                     <ComboBox 
                         x:Name="TourNameComboBox" 
                         DisplayMemberPath="tour_name"
-                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.tours, Mode=OneWay}"
                         IsEditable="True"/>
 
                     <Label Content="Дата отправления"/>
@@ -109,7 +107,6 @@
                         SelectedDateFormat="Short"
                         BorderThickness="1"
                         Padding="0"
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.date_begin, Mode=OneWay, StringFormat=dd.MM.yyyy}"
                         />
                 </StackPanel>
             </ScrollViewer>
@@ -117,8 +114,7 @@
             <Grid 
                 Grid.Row="3" 
                 Height="30"
-                Margin="10,15"
-                >
+                Margin="10,15">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -131,16 +127,15 @@
                     Grid.Column="0"
                     Content="Принять"
                     Margin="0,0,5,0" 
-                    Click="CommitChangeRecordsButton_Click"
-                    />
+                    Click="CommitChangeRecordsButton_Click"/>
+                
                 <Button 
                     x:Name="RollbackChangeRecordsButton"
                     Style="{StaticResource RecordCancelButton}"
                     Grid.Column="1"
                     Content="Отменить"
                     Margin="5,0,0,0"
-                    Click="RollbackChangeRecordsButton_Click"
-                    />
+                    Click="RollbackChangeRecordsButton_Click"/>
             </Grid>
         </Grid>
 

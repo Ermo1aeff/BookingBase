@@ -13,7 +13,9 @@
         Background="Transparent"
         WindowStartupLocation="CenterScreen" 
         ResizeMode="CanMinimize"
-        BorderThickness="14">
+        BorderThickness="14"
+        KeyDown="Window_KeyDown"
+        KeyUp="Window_KeyUp">
 
     <Window.Effect>
         <DropShadowEffect
@@ -34,7 +36,7 @@
                 <RowDefinition Height="30*"/>
                 <RowDefinition Height="70*"/>
             </Grid.RowDefinitions>
-            
+
             <Label 
                 Content="Авторизация" 
                 FontSize="36" 
@@ -43,7 +45,11 @@
                 Grid.Row="0" 
                 FontFamily="Segoe UI Semilight"/>
 
-            <StackPanel VerticalAlignment="Top" Margin="100, 0" Grid.Row="1">
+            <StackPanel 
+                VerticalAlignment="Top" 
+                Margin="100, 0"
+                Grid.Row="1"
+                Height="162">
                 
                 <TextBox
                     x:Name="LoginTextBox"
@@ -107,13 +113,8 @@
                         Grid.Column="1"
                         Margin="7,0,0,0"
                         IsCancel="True"/>
-
                 </Grid>
-                
             </StackPanel>
         </Grid>
-        
-        
     </Border>
-    
 </Window>

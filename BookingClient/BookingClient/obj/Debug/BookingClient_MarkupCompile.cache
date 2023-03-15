@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\App.xaml
-25-1401996068
+26-1925993990
 21358198715
-46-1746309012
-19-220321214
-AuthorizationWindow.xaml;MainWindow.xaml;PagesOnWindow\CreateOrderPage.xaml;PagesOnWindow\DateSelectingPage.xaml;PagesOnWindow\PersonsAddingPage.xaml;PagesOnWindow\RoomsSelectingPage.xaml;Pages\CitiesPage.xaml;Pages\CountriesPage.xaml;Pages\CreateOrdersPage.xaml;Pages\DeparturesPage.xaml;PagesOnWindow\DirectoryPage.xaml;Pages\ImagesPage.xaml;Pages\IncludedPage.xaml;Pages\InclusionsPage.xaml;Pages\ItineraryPage.xaml;Pages\OrderRoomsPage.xaml;Pages\OrdersPage.xaml;Pages\PersonsPage.xaml;Pages\RoomPage.xaml;Pages\ToursPage.xaml;RegistrationWindow.xaml;Resources\ComponentsStyle\BaseComponentsStyles.xaml;Resources\ComponentsStyle\ComponentsStyle.xaml;Resources\CustomWindowStyle\WindowStyle.xaml;Resources\ComponentsStyle\Geometries.xaml;
+47-197725357
+20-1943734057
+AuthorizationWindow.xaml;ConnectionWindow.xaml;MainWindow.xaml;PagesOnWindow\CreateOrderPage.xaml;PagesOnWindow\DateSelectingPage.xaml;PagesOnWindow\PersonsAddingPage.xaml;PagesOnWindow\RoomsSelectingPage.xaml;Pages\CitiesPage.xaml;Pages\CountriesPage.xaml;Pages\DeparturesPage.xaml;PagesOnWindow\DirectoryPage.xaml;Pages\ImagesPage.xaml;Pages\IncludedPage.xaml;Pages\InclusionsPage.xaml;Pages\ItineraryPage.xaml;Pages\OrderRoomsPage.xaml;Pages\OrdersPage.xaml;Pages\PersonsPage.xaml;Pages\RoomPage.xaml;Pages\ToursPage.xaml;RegistrationWindow.xaml;Resources\ComponentsStyle\BaseComponentsStyles.xaml;Resources\ComponentsStyle\ComponentsStyle.xaml;Resources\CustomWindowStyle\WindowStyle.xaml;Resources\ComponentsStyle\Geometries.xaml;TestWindow.xaml;
 resources\images\slpashscreen1.png
 False
 

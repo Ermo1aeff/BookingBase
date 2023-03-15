@@ -101,29 +101,22 @@
             <ScrollViewer Grid.Row="1">
                 <StackPanel
                     Margin="10,0,10,0"
-                    Orientation="Vertical"
-                    >
+                    Orientation="Vertical">
+                    
                     <Label Content="Название тура"/>
                     <ComboBox
                         x:Name="TourIdComboBox" 
                         DisplayMemberPath="tour_id"
-                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.tours, Mode=OneWay}"
                         IsEditable="True"/>
 
                     <Label Content="День тура"/>
-                    <TextBox
-                        x:Name="DayNumTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.day_num, Mode=OneWay}"/>
+                    <TextBox x:Name="DayNumTextBox" />
 
                     <Label Content="Краткое описание"/>
-                    <TextBox
-                        x:Name="ItineraryNameTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.itinerary_name, Mode=OneWay}"/>
+                    <TextBox x:Name="ItineraryNameTextBox"/>
 
                     <Label Content="Полное описание"/>
-                    <TextBox
-                        x:Name="ItirararyDescriptionTextBox"
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.itirarary_description, Mode=OneWay}"/>
+                    <TextBox x:Name="ItirararyDescriptionTextBox"/>
 
                 </StackPanel>
             </ScrollViewer>

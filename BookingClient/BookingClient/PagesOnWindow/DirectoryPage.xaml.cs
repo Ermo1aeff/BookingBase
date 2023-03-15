@@ -113,9 +113,9 @@ namespace BookingClient.Pages
 
         private void SetControlsEnabled()
         {
-            PreviousButton.IsEnabled = (CurrentPageIndex > 0);
-            NextButton.IsEnabled = (CurrentPageIndex < ActivePages.Count - 1);
-            CloseButton.IsEnabled = (ActivePages.Count > 0);
+            PreviousButton.IsEnabled = CurrentPageIndex > 0;
+            NextButton.IsEnabled = CurrentPageIndex < ActivePages.Count - 1;
+            CloseButton.IsEnabled = ActivePages.Count > 0;
         }
 
         private void RootFrame_LoadCompleted(object sender, NavigationEventArgs e)
@@ -145,11 +145,6 @@ namespace BookingClient.Pages
         private void OrdersButton_Click(object sender, RoutedEventArgs e)
         {
             ShowPage(typeof(OrdersPage), ((Button)sender).Content.ToString());
-        }
-
-        private void OrderToursButton_Click(object sender, RoutedEventArgs e)
-        {
-            ShowPage(typeof(CreateOrdersPage), ((Button)sender).Content.ToString());
         }
 
         private void InteraryButton_Click(object sender, RoutedEventArgs e)

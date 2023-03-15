@@ -52,6 +52,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
@@ -76,6 +77,9 @@
     </ApplicationDefinition>
     <Compile Include="AuthorizationWindow.xaml.cs">
       <DependentUpon>AuthorizationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConnectionWindow.xaml.cs">
+      <DependentUpon>ConnectionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\accounts.cs">
       <DependentUpon>Booking_BaseModel.tt</DependentUpon>
@@ -158,9 +162,6 @@
     <Compile Include="Pages\CountriesPage.xaml.cs">
       <DependentUpon>CountriesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\CreateOrdersPage.xaml.cs">
-      <DependentUpon>CreateOrdersPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\DeparturesPage.xaml.cs">
       <DependentUpon>DeparturesPage.xaml</DependentUpon>
     </Compile>
@@ -199,7 +200,14 @@
     </Compile>
     <Compile Include="Resources\CustomWindowStyle\WindowStyle.cs" />
     <Compile Include="SourceCore.cs" />
+    <Compile Include="TestWindow.xaml.cs">
+      <DependentUpon>TestWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="AuthorizationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConnectionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -236,10 +244,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\CountriesPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\CreateOrdersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -304,6 +308,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\ComponentsStyle\Geometries.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

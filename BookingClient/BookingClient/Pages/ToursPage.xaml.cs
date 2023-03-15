@@ -10,14 +10,7 @@ namespace BookingClient.Pages
 {
     public partial class ToursPage : Page
     {
-        private int DlgMode = -1;
-        private string buf1;
-        private string buf2;
-        private string buf3;
-        private string buf4;
-        private string buf5;
-        private string buf6;
-        private string buf7;
+        private bool DlgMode = false;
 
         public ToursPage()
         {
@@ -39,45 +32,48 @@ namespace BookingClient.Pages
             RecordsDataGrid.SelectedItem = SelectingItem;
         }
 
-        public void DlgLoad(bool b)
+        public void DlgLoad(bool DlgStatus)
         {
-            if (b)
+            if (DlgStatus)
             {
                 RecordChangeBlock.MinWidth = 230;
                 RecordChangeBlock.Width = new GridLength(230);
-                //Выключаем элементы управления
-                RecordsDataGrid.IsHitTestVisible = false;
-                FilterTextBox.IsEnabled = false;
-                FilterComboBox.IsEnabled = false;
-                AddRecordButton.IsEnabled = false;
-                CopyRecordButton.IsEnabled = false;
-                EditRecordButton.IsEnabled = false;
-                DeleteRecordButton.IsEnabled = false;
                 DialogGridSplitter.Visibility = Visibility.Visible;
             }
             else
             {
-                RecordChangeBlock.MinWidth = 0;
-                RecordChangeBlock.Width = new GridLength(0);
-                //Включаем элементы управления
-                RecordsDataGrid.IsHitTestVisible = true;
-                FilterTextBox.IsEnabled = true;
-                FilterComboBox.IsEnabled = true;
-                AddRecordButton.IsEnabled = true;
-                CopyRecordButton.IsEnabled = true;
-                EditRecordButton.IsEnabled = true;
-                DeleteRecordButton.IsEnabled = true;
-                DialogGridSplitter.Visibility = Visibility.Collapsed;
-                DlgMode = -1;
+                //RecordChangeBlock.MinWidth = 0;
+                //RecordChangeBlock.Width = new GridLength(0);
+                //DialogGridSplitter.Visibility = Visibility.Collapsed;
+                DlgMode = false;
             }
+
+            RecordsDataGrid.IsHitTestVisible = !DlgStatus;
+            FilterTextBox.IsEnabled = !DlgStatus;
+            FilterComboBox.IsEnabled = !DlgStatus;
+            AddRecordButton.IsEnabled = !DlgStatus;
+            CopyRecordButton.IsEnabled = !DlgStatus;
+            EditRecordButton.IsEnabled = !DlgStatus;
+            DeleteRecordButton.IsEnabled = !DlgStatus;
+        }
+
+        private void TransferRecords()
+        {
+            var SelectedRecord = (tours)RecordsDataGrid.SelectedItem;
+            TourNameTextBox.Text = SelectedRecord.tour_name;
+            TourDescriptionTextBox.Text = SelectedRecord.tour_description;
+            BeginCityComboBox.SelectedItem = SelectedRecord.cities;
+            EndCityTextBox.SelectedItem = SelectedRecord.cities1;
+            PriceTextBox.Text = SelectedRecord.price.ToString();
+            DayCountTextBox.Text = SelectedRecord.day_count.ToString();
+            MaxGroupSizeTextBox.Text = SelectedRecord.max_group_size.ToString();
         }
 
         private void AddRecordButton_Click(object sender, RoutedEventArgs e)
         {
-            DlgLoad(true);
-            DlgMode = 0;
-            RecordsDataGrid.SelectedItem = null;
             RecordChangeTitle.Content = "Добавление";
+            DlgMode = true;
+            RecordsDataGrid.SelectedItem = null;
             TourNameTextBox.Text = "";
             TourDescriptionTextBox.Text = "";
             BeginCityComboBox.Text = "";
@@ -85,35 +81,17 @@ namespace BookingClient.Pages
             PriceTextBox.Text = "";
             DayCountTextBox.Text = "";
             MaxGroupSizeTextBox.Text = "";
+            DlgLoad(true);
         }
 
         private void CopyRecordButton_Click(object sender, RoutedEventArgs e)
         {
             if (RecordsDataGrid.SelectedItem != null)
             {
-                DlgLoad(true);
-                DlgMode = 0;
                 RecordChangeTitle.Content = "Копирование";
-
-                //использование буферных переменных для «отрыва» от данных выбранной строки (чтобы не сработал Binding)
-                buf1 = TourNameTextBox.Text;
-                buf2 = TourDescriptionTextBox.Text;
-                buf3 = BeginCityComboBox.Text;
-                buf4 = EndCityTextBox.Text;
-                buf5 = PriceTextBox.Text;
-                buf6 = DayCountTextBox.Text;
-                buf7 = MaxGroupSizeTextBox.Text;
-
-                //убрать фокус с выделенной строки
-                RecordsDataGrid.SelectedItem = null;
-
-                TourNameTextBox.Text = buf1;
-                TourDescriptionTextBox.Text = buf2;
-                BeginCityComboBox.Text = buf3;
-                EndCityTextBox.Text = buf4;
-                PriceTextBox.Text = buf5;
-                DayCountTextBox.Text = buf6;
-                MaxGroupSizeTextBox.Text = buf7;
+                DlgMode = true;
+                TransferRecords();
+                DlgLoad(true);
             }
             else
             {
@@ -125,8 +103,9 @@ namespace BookingClient.Pages
         {
             if (RecordsDataGrid.SelectedItem != null)
             {
-                DlgLoad(true);
                 RecordChangeTitle.Content = "Редактирование";
+                TransferRecords();
+                DlgLoad(true);
             }
             else
             {
@@ -171,16 +150,16 @@ namespace BookingClient.Pages
         private void CommitChangeRecordsButton_Click(object sender, RoutedEventArgs e)
         {
             var NewRecord = new tours();
-            NewRecord.tour_name = TourNameTextBox.Text;
-            NewRecord.tour_description = TourDescriptionTextBox.Text;
-            NewRecord.cities = (cities)BeginCityComboBox.SelectedItem;
-            NewRecord.cities1 = (cities)EndCityTextBox.SelectedItem;
-            NewRecord.price = Convert.ToDecimal(PriceTextBox.Text);
-            NewRecord.day_count = Convert.ToInt32(DayCountTextBox.Text);
-            NewRecord.max_group_size = Convert.ToInt32(MaxGroupSizeTextBox.Text);
 
-            if (DlgMode == 0)
+            if (DlgMode)
             {
+                NewRecord.tour_name = TourNameTextBox.Text;
+                NewRecord.tour_description = TourDescriptionTextBox.Text;
+                NewRecord.cities = (cities)BeginCityComboBox.SelectedItem;
+                NewRecord.cities1 = (cities)EndCityTextBox.SelectedItem;
+                NewRecord.price = Convert.ToDecimal(PriceTextBox.Text);
+                NewRecord.day_count = Convert.ToInt32(DayCountTextBox.Text);
+                NewRecord.max_group_size = Convert.ToInt32(MaxGroupSizeTextBox.Text);
                 SourceCore.entities.tours.Add(NewRecord);
             } 
             else

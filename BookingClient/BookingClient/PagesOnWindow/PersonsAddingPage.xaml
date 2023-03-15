@@ -180,28 +180,29 @@
                         FontFamily="Segoe UI Semibold"/>
 
                     <TextBlock
-                        x:Name="TotalDueTextBox"
+                        x:Name="NeedPersonsTextBox"
                         Margin="10,20,0,0"
                         FontSize="20"
                         Text="0" 
                         FontFamily="Segoe UI Semibold"/>
                 </DockPanel>
 
-                <Label Content="Имя" FontSize="20"/>
-                <TextBox 
-                    Margin="0,0,10,0"/>
-
                 <Label Content="Фамилия" FontSize="20"/>
-                <TextBox 
-                    Margin="0,0,10,0"/>
+                <TextBox x:Name="LastName"/>
+ 
+                <Label Content="Имя" FontSize="20"/>
+                <TextBox x:Name="FirstName"/>
 
                 <Label Content="Паспорт" FontSize="20"/>
-                <TextBox 
-                    Margin="0,0,10,0"/>
+                <TextBox x:Name="Passport"/>
 
-                <Label Content="День рождения" FontSize="20"/>
-                <TextBox 
-                    Margin="0,0,10,0"/>
+                <Label Content="Дата рождения" FontSize="20"/>
+                <DatePicker
+                    x:Name="DateBeginDatePicker"  
+                    FontSize="18"
+                    SelectedDateFormat="Short"
+                    BorderThickness="1"
+                    Padding="0"/>
 
                 <Button 
                     Margin="0,30,0,0"

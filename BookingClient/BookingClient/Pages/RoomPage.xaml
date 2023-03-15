@@ -100,30 +100,21 @@
                     Margin="10,0,10,0"
                     Orientation="Vertical"
                     >
-                    <!--<StackPanel.Resources>
-                        <Style TargetType="TextBox"/>
-                    </StackPanel.Resources>-->
+                    
                     <Label Content="Название тура"/>
-                    <ComboBox
+                    <ComboBox 
                         x:Name="TourNameComboBox" 
                         DisplayMemberPath="tour_name"
-                        SelectedItem="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.tours, Mode=OneWay}"
                         IsEditable="True"/>
 
                     <Label Content="Описание номера"/>
-                    <TextBox
-                        x:Name="RoomNameTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.room_name, Mode=OneWay}"/>
+                    <TextBox x:Name="RoomNameTextBox"/>
 
-                    <Label Content="Имя"/>
-                    <TextBox
-                        x:Name="BedsCountTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.beds_count, Mode=OneWay}"/>
+                    <Label Content="Количество кроватей"/>
+                    <TextBox x:Name="BedsCountTextBox"/>
 
-                    <Label Content="Номер паспорта"/>
-                    <TextBox
-                        x:Name="PriceTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.price, Mode=OneWay}"/>
+                    <Label Content="Цена за номер"/>
+                    <TextBox x:Name="PriceTextBox"/>
 
                 </StackPanel>
             </ScrollViewer>

@@ -96,9 +96,7 @@
                     Orientation="Vertical">
                     
                     <Label Content="Название включения"/>
-                    <TextBox
-                        x:Name="InclusionNameTextBox" 
-                        Text="{Binding ElementName=RecordsDataGrid, Path=SelectedItem.inclusion_name, Mode=OneWay}"/>
+                    <TextBox x:Name="InclusionNameTextBox"/>
                     
                 </StackPanel>
             </ScrollViewer>

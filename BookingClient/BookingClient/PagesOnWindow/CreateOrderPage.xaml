@@ -99,16 +99,10 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBlock 
                                 FontSize="14" 
-                                Text="{Binding PricePerDay, StringFormat={}{0:# ###}}"
-                                FontWeight="DemiBold"
-                                />
-                            
-                            <TextBlock 
-                                FontSize="14" 
-                                Text="₽"
+                                Text="{Binding PricePerDay, StringFormat={}{0:C}}"
+                                Language="ru"
                                 FontWeight="DemiBold"/>
                         </StackPanel>
-
                     </StackPanel>
 
                     <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
@@ -120,14 +114,10 @@
                             Text="От:" />
 
                         <StackPanel Orientation="Horizontal">
-                        <TextBlock 
+                            <TextBlock 
                             FontSize="20" 
-                            Text="{Binding Price, StringFormat={}{0:# ###}}"
-                            FontWeight="DemiBold"/>
-                        
-                        <TextBlock 
-                            FontSize="20" 
-                            Text="₽"
+                            Text="{Binding Price, StringFormat={}{0:C}}"
+                            Language="ru"
                             FontWeight="DemiBold"/>
                         </StackPanel>
 

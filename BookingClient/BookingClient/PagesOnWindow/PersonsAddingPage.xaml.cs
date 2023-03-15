@@ -17,10 +17,11 @@ namespace BookingClient.PagesOnWindow
 {
     public partial class PersonsAddingPage : Page
     {
-        public PersonsAddingPage(decimal TotalPrice, int TotalPlace,  List<List<int>> RoomList)
+        public PersonsAddingPage(decimal TotalPrice, int TotalPlace,  List<List<string>> RoomList)
         {
             InitializeComponent();
             PersonListBox.ItemsSource = SourceCore.entities.persons.ToList();
+            NeedPersonsTextBox.Text = TotalPlace.ToString();
         }
 
         private void CommitSelectingRoomsButton_Click(object sender, RoutedEventArgs e)

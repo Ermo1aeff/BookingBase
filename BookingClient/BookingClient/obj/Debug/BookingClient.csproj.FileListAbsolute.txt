@@ -221,7 +221,6 @@ C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\Booki
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\MainWindow.g.cs
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\CitiesPage.g.cs
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\CountriesPage.g.cs
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\CreateOrdersPage.g.cs
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DeparturesPage.g.cs
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\ImagesPage.g.cs
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\IncludedPage.g.cs
@@ -244,7 +243,6 @@ C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\Booki
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\MainWindow.baml
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\CitiesPage.baml
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\CountriesPage.baml
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\CreateOrdersPage.baml
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DeparturesPage.baml
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\ImagesPage.baml
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\IncludedPage.baml
@@ -274,3 +272,7 @@ C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\Booki
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\PagesOnWindow\RoomsSelectingPage.baml
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\PagesOnWindow\PersonsAddingPage.g.cs
 C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\PagesOnWindow\PersonsAddingPage.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\ConnectionWindow.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\ConnectionWindow.baml
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\TestWindow.g.cs
+C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\TestWindow.baml

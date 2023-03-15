@@ -127,7 +127,9 @@ namespace BookingClient
 
         private void CreateOrderButton_Click(object sender, RoutedEventArgs e)
         {
-            RootFrame.Navigate(new CreateOrderPage());
+            Uri Source = new Uri("PagesOnWindow/CreateOrderPage.xaml", UriKind.Relative);
+            if (RootFrame.NavigationService.CurrentSource != Source)
+                RootFrame.Navigate(Source);
         }
     }
 }
