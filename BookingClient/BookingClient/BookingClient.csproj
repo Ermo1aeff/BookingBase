@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\Images\WhiteBookingIcon.ico</ApplicationIcon>
+    <ApplicationIcon>Images\WhiteBookingIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup />
@@ -75,10 +75,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AuthorizationWindow.xaml.cs">
+    <Compile Include="Pages\NewOrderPages\ListToursPage.xaml.cs">
+      <DependentUpon>ListToursPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AuthorizationWindow.xaml.cs">
       <DependentUpon>AuthorizationWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ConnectionWindow.xaml.cs">
+    <Compile Include="Windows\ConnectionWindow.xaml.cs">
       <DependentUpon>ConnectionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\accounts.cs">
@@ -144,74 +147,75 @@
     <Compile Include="Models\tour_countries.cs">
       <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="PagesOnWindow\CreateOrderPage.xaml.cs">
+    <Compile Include="Pages\NewOrderPages\CreateOrderPage.xaml.cs">
       <DependentUpon>CreateOrderPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PagesOnWindow\DateSelectingPage.xaml.cs">
+    <Compile Include="Pages\NewOrderPages\DateSelectingPage.xaml.cs">
       <DependentUpon>DateSelectingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PagesOnWindow\PersonsAddingPage.xaml.cs">
+    <Compile Include="Pages\NewOrderPages\PersonsAddingPage.xaml.cs">
       <DependentUpon>PersonsAddingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PagesOnWindow\RoomsSelectingPage.xaml.cs">
+    <Compile Include="Pages\NewOrderPages\RoomsSelectingPage.xaml.cs">
       <DependentUpon>RoomsSelectingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\CitiesPage.xaml.cs">
+    <Compile Include="Pages\DirectoryPages\CitiesPage.xaml.cs">
       <DependentUpon>CitiesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\CountriesPage.xaml.cs">
+    <Compile Include="Pages\DirectoryPages\CountriesPage.xaml.cs">
       <DependentUpon>CountriesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\DeparturesPage.xaml.cs">
+    <Compile Include="Pages\DirectoryPages\DeparturesPage.xaml.cs">
       <DependentUpon>DeparturesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PagesOnWindow\DirectoryPage.xaml.cs">
+    <Compile Include="Pages\DirectoryPage.xaml.cs">
       <DependentUpon>DirectoryPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ImagesPage.xaml.cs">
+    <Compile Include="Pages\DirectoryPages\ImagesPage.xaml.cs">
       <DependentUpon>ImagesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\IncludedPage.xaml.cs">
+    <Compile Include="Pages\DirectoryPages\IncludedPage.xaml.cs">
       <DependentUpon>IncludedPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\InclusionsPage.xaml.cs">
+    <Compile Include="Pages\DirectoryPages\InclusionsPage.xaml.cs">
       <DependentUpon>InclusionsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ItineraryPage.xaml.cs">
+    <Compile Include="Pages\DirectoryPages\ItineraryPage.xaml.cs">
       <DependentUpon>ItineraryPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\OrderRoomsPage.xaml.cs">
+    <Compile Include="Pages\DirectoryPages\OrderRoomsPage.xaml.cs">
       <DependentUpon>OrderRoomsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\OrdersPage.xaml.cs">
+    <Compile Include="Pages\DirectoryPages\OrdersPage.xaml.cs">
       <DependentUpon>OrdersPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\PersonsPage.xaml.cs">
+    <Compile Include="Pages\DirectoryPages\PersonsPage.xaml.cs">
       <DependentUpon>PersonsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\RoomPage.xaml.cs">
+    <Compile Include="Pages\DirectoryPages\RoomPage.xaml.cs">
       <DependentUpon>RoomPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ToursPage.xaml.cs">
+    <Compile Include="Pages\DirectoryPages\ToursPage.xaml.cs">
       <DependentUpon>ToursPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RegistrationWindow.xaml.cs">
+    <Compile Include="Windows\RegistrationWindow.xaml.cs">
       <DependentUpon>RegistrationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Resources\CustomWindowStyle\WindowStyle.cs" />
     <Compile Include="SourceCore.cs" />
-    <Compile Include="TestWindow.xaml.cs">
-      <DependentUpon>TestWindow.xaml</DependentUpon>
-    </Compile>
-    <Page Include="AuthorizationWindow.xaml">
+    <Page Include="Pages\NewOrderPages\ListToursPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ConnectionWindow.xaml">
+    <Page Include="Windows\AuthorizationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Windows\ConnectionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -219,101 +223,97 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="PagesOnWindow\CreateOrderPage.xaml">
+    <Page Include="Pages\NewOrderPages\CreateOrderPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PagesOnWindow\DateSelectingPage.xaml">
+    <Page Include="Pages\NewOrderPages\DateSelectingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PagesOnWindow\PersonsAddingPage.xaml">
+    <Page Include="Pages\NewOrderPages\PersonsAddingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PagesOnWindow\RoomsSelectingPage.xaml">
+    <Page Include="Pages\NewOrderPages\RoomsSelectingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\CitiesPage.xaml">
+    <Page Include="Pages\DirectoryPages\CitiesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\CountriesPage.xaml">
+    <Page Include="Pages\DirectoryPages\CountriesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\DeparturesPage.xaml">
+    <Page Include="Pages\DirectoryPages\DeparturesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PagesOnWindow\DirectoryPage.xaml">
+    <Page Include="Pages\DirectoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ImagesPage.xaml">
+    <Page Include="Pages\DirectoryPages\ImagesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\IncludedPage.xaml">
+    <Page Include="Pages\DirectoryPages\IncludedPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\InclusionsPage.xaml">
+    <Page Include="Pages\DirectoryPages\InclusionsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ItineraryPage.xaml">
+    <Page Include="Pages\DirectoryPages\ItineraryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\OrderRoomsPage.xaml">
+    <Page Include="Pages\DirectoryPages\OrderRoomsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\OrdersPage.xaml">
+    <Page Include="Pages\DirectoryPages\OrdersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\PersonsPage.xaml">
+    <Page Include="Pages\DirectoryPages\PersonsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\RoomPage.xaml">
+    <Page Include="Pages\DirectoryPages\RoomPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ToursPage.xaml">
+    <Page Include="Pages\DirectoryPages\ToursPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RegistrationWindow.xaml">
+    <Page Include="Windows\RegistrationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\ComponentsStyle\BaseComponentsStyles.xaml">
+    <Page Include="Resources\Styles\BaseComponentsStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\ComponentsStyle\ComponentsStyle.xaml">
+    <Page Include="Resources\Styles\ComponentsStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Geometries.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\CustomWindowStyle\WindowStyle.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\ComponentsStyle\Geometries.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="TestWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -338,6 +338,8 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Booking_BaseModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Resource Include="Fonts\SourceCodePro-Regular.ttf" />
+    <Resource Include="Fonts\SourceCodePro-SemiBold.ttf" />
     <None Include="Models\Booking_BaseModel.edmx.diagram">
       <DependentUpon>Booking_BaseModel.edmx</DependentUpon>
     </None>
@@ -351,21 +353,20 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <SplashScreen Include="Resources\Images\SlpashScreen1.png" />
+    <SplashScreen Include="Images\SlpashScreen1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\WhiteBookingIcon.ico" />
+    <Resource Include="Images\WhiteBookingIcon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Tour booking Serviсe.png" />
+    <Resource Include="Images\Tour booking Serviсe.png" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <Folder Include="Pages\NewTourPages\" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Models\Booking_BaseModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -377,8 +378,8 @@
       <DependentUpon>Booking_BaseModel.edmx</DependentUpon>
       <LastGenOutput>Booking_BaseModel.cs</LastGenOutput>
     </Content>
-    <Resource Include="PagesOnWindow\199790_5ed58e77d9716.jpg" />
-    <Resource Include="Resources\Images\GreenBookingIcon.ico" />
+    <Resource Include="Images\199790_5ed58e77d9716.jpg" />
+    <Resource Include="Images\GreenBookingIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

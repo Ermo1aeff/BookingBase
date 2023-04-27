@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\obj\Debug\
+C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\
 BookingClient
 none
 false
 DEBUG;TRACE
-C:\Users\1\Desktop\Курсовой проект по ТРПП\BookingBase\BookingClient\BookingClient\App.xaml
-26-1925993990
+C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\App.xaml
+261714714529
 21358198715
-47-197725357
-20-1943734057
-AuthorizationWindow.xaml;ConnectionWindow.xaml;MainWindow.xaml;PagesOnWindow\CreateOrderPage.xaml;PagesOnWindow\DateSelectingPage.xaml;PagesOnWindow\PersonsAddingPage.xaml;PagesOnWindow\RoomsSelectingPage.xaml;Pages\CitiesPage.xaml;Pages\CountriesPage.xaml;Pages\DeparturesPage.xaml;PagesOnWindow\DirectoryPage.xaml;Pages\ImagesPage.xaml;Pages\IncludedPage.xaml;Pages\InclusionsPage.xaml;Pages\ItineraryPage.xaml;Pages\OrderRoomsPage.xaml;Pages\OrdersPage.xaml;Pages\PersonsPage.xaml;Pages\RoomPage.xaml;Pages\ToursPage.xaml;RegistrationWindow.xaml;Resources\ComponentsStyle\BaseComponentsStyles.xaml;Resources\ComponentsStyle\ComponentsStyle.xaml;Resources\CustomWindowStyle\WindowStyle.xaml;Resources\ComponentsStyle\Geometries.xaml;TestWindow.xaml;
-resources\images\slpashscreen1.png
+472079216364
+201545378457
+Pages\NewOrderPages\ListToursPage.xaml;Windows\AuthorizationWindow.xaml;Windows\ConnectionWindow.xaml;Windows\MainWindow.xaml;Pages\NewOrderPages\CreateOrderPage.xaml;Pages\NewOrderPages\DateSelectingPage.xaml;Pages\NewOrderPages\PersonsAddingPage.xaml;Pages\NewOrderPages\RoomsSelectingPage.xaml;Pages\DirectoryPages\CitiesPage.xaml;Pages\DirectoryPages\CountriesPage.xaml;Pages\DirectoryPages\DeparturesPage.xaml;Pages\DirectoryPage.xaml;Pages\DirectoryPages\ImagesPage.xaml;Pages\DirectoryPages\IncludedPage.xaml;Pages\DirectoryPages\InclusionsPage.xaml;Pages\DirectoryPages\ItineraryPage.xaml;Pages\DirectoryPages\OrderRoomsPage.xaml;Pages\DirectoryPages\OrdersPage.xaml;Pages\DirectoryPages\PersonsPage.xaml;Pages\DirectoryPages\RoomPage.xaml;Pages\DirectoryPages\ToursPage.xaml;Windows\RegistrationWindow.xaml;Resources\Styles\BaseComponentsStyles.xaml;Resources\Styles\ComponentsStyle.xaml;Resources\Geometries.xaml;Resources\CustomWindowStyle\WindowStyle.xaml;
+images\slpashscreen1.png
 False
 
