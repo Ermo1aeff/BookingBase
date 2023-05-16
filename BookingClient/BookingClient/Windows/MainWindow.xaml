@@ -17,15 +17,6 @@
         WindowState="Maximized"
         SizeChanged="BookingClient_SizeChanged">
 
-    <Window.Effect>
-        <DropShadowEffect
-            Color="black"
-            Opacity="1.5"
-            BlurRadius="14"
-            ShadowDepth="2"
-            Direction="315"/>
-    </Window.Effect>
-
     <WindowChrome.WindowChrome>
         <WindowChrome 
             x:Name="WinChrome"
@@ -49,7 +40,7 @@
                     TextOptions.TextFormattingMode="Display"
                     x:Name="TitleBorder"
                     DockPanel.Dock="Top"
-                    Background="Green">
+                    Background="{StaticResource BackgroundMainColor}">
 
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -75,49 +66,34 @@
                             Grid.ColumnSpan="4"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Foreground="{StaticResource TitleLable}"/>
+                            Foreground="{StaticResource ForegroundLightColor}"/>
 
 
                         <Grid Grid.Column="1">
                             <DockPanel>
-                                <!--<Button
-                                    Style="{StaticResource TitleButton}"
-                                    Content="Файл"
-                                    Click="CreateOrderButton_Click"
-                                    WindowChrome.IsHitTestVisibleInChrome="True" 
-                                    
-                                    />
-
                                 <Button
-                                    Style="{StaticResource TitleButton}"
-                                    Content="Правка"
-                                    Click="CreateOrderButton_Click"
-                                    WindowChrome.IsHitTestVisibleInChrome="True" 
-                                    />
-                                
-                                <Button
-                                    Style="{StaticResource TitleButton}"
-                                    Content="Набросок"
-                                    Click="CreateOrderButton_Click"
-                                    WindowChrome.IsHitTestVisibleInChrome="True"
-                                    />-->
-                                
-                                <Button
-                                    Style="{StaticResource TitleButton}"
+                                    Style="{StaticResource TextTitleBarButton}"
                                     x:Name="CreateOrderButton"
-                                    Content="Новый заказ"
+                                    Content="Создать заказ"
                                     Click="CreateOrderButton_Click"
                                     WindowChrome.IsHitTestVisibleInChrome="True"/>
 
                                 <Button
-                                    Style="{StaticResource TitleButton}"
+                                    Style="{StaticResource TextTitleBarButton}"
                                     x:Name="NewTourButton"
-                                    Content="Новый тур"
+                                    Content="Создать тур"
                                     Click="NewTourButton_Click"
                                     WindowChrome.IsHitTestVisibleInChrome="True"/>
 
                                 <Button
-                                    Style="{StaticResource TitleButton}"
+                                    Style="{StaticResource TextTitleBarButton}"
+                                    x:Name="TourListButton"
+                                    Content="Список туров"
+                                    Click="TourListButton_Click"
+                                    WindowChrome.IsHitTestVisibleInChrome="True"/>
+
+                                <Button
+                                    Style="{StaticResource TextTitleBarButton}"
                                     x:Name="DirectoryButton"
                                     Content="Справочник"
                                     Click="DirectoryButton_Click"
@@ -132,14 +108,60 @@
 
                             <Button
                                 Content="Имя Фамилия"
-                                Style="{StaticResource TitleButton}"
+                                Style="{StaticResource TextTitleBarButton}"
                                 x:Name="AccountCaptionButton"
                                 WindowChrome.IsHitTestVisibleInChrome="True"
                                 Click="AccountCaptionButtonClick"/>
 
+                            <Menu
+                                Background="{StaticResource BackgroundMainColor}"
+                                Foreground="{StaticResource ForegroundLightColor}"
+                                VerticalAlignment="Center"
+                                FontSize="14"
+                                x:Name="AccountCaptionMenu"
+                                WindowChrome.IsHitTestVisibleInChrome="True">
+                                
+                                <MenuItem 
+                                    Header="Имя Фамилия"
+                                    Background="{StaticResource BackgroundMainColor}"
+                                    Foreground="{StaticResource ForegroundLightColor}"
+                                    VerticalAlignment="Center"
+                                    BorderThickness="0"
+                                    Height="40">
+                                    
+                                    <MenuItem 
+                                        Header="Мой профиль"
+                                        Background="{StaticResource BackgroundMainColor}"
+                                        Foreground="{StaticResource ForegroundLightColor}"
+                                        VerticalAlignment="Center"
+                                        Height="40"/>
+
+                                    <MenuItem 
+                                        Header="Настройки аккаунта"
+                                        Background="{StaticResource BackgroundMainColor}"
+                                        Foreground="{StaticResource ForegroundLightColor}"
+                                        VerticalAlignment="Center"
+                                        Height="40"/>
+
+                                    <MenuItem 
+                                        Header="Войти в другой аккаунт"
+                                        Background="{StaticResource BackgroundMainColor}"
+                                        Foreground="{StaticResource ForegroundLightColor}"
+                                        VerticalAlignment="Center"
+                                        Height="40"/>
+
+                                    <MenuItem 
+                                        Header="Выйти из аккаунта"
+                                        Background="{StaticResource BackgroundMainColor}"
+                                        Foreground="{StaticResource ForegroundLightColor}"
+                                        VerticalAlignment="Center"
+                                        Height="40"/>
+                                </MenuItem>
+                            </Menu>
+
                             <Button
                                 x:Name="MinButton"
-                                Style="{StaticResource WindowStyleTitleBarButton}"
+                                Style="{StaticResource PathTitleBarButton}"
                                 Click="MinButtonClick"
                                 WindowChrome.IsHitTestVisibleInChrome="True"
                                 VerticalContentAlignment="Center">
@@ -157,7 +179,7 @@
 
                             <Button
                                 x:Name="MaxButton" 
-                                Style="{StaticResource WindowStyleTitleBarButton}"
+                                Style="{StaticResource PathTitleBarButton}"
                                 Click="MaxButtonClick"
                                 WindowChrome.IsHitTestVisibleInChrome="True">
 
@@ -171,8 +193,8 @@
                             </Button>
 
                             <Button
+                                Style="{StaticResource TitleBarCloseButton}"
                                 x:Name="CloseButton"
-                                Style="{StaticResource WindowStyleTitleBarButtonClose}"
                                 Click="CloseButtonClick"
                                 WindowChrome.IsHitTestVisibleInChrome="True">
 
@@ -209,7 +231,7 @@
                     Source="pack://application:,,,/Images/Tour booking Serviсe.png"/>
             </Grid>
 
-            <Frame x:Name="RootFrame" Grid.Row="1" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2" LoadCompleted="RootFrame_LoadCompleted"/>
+            <Frame x:Name="RootFrame" Grid.Row="1" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2" LoadCompleted="RootFrame_LoadCompleted" />
         </Grid>
     </Border>
 

@@ -223,7 +223,7 @@
                     x:Name="CommitSelectingRoomsButton"
                     Click="CommitSelectingRoomsButton_Click"
                     Content="Перейти далее"
-                    Style="{StaticResource RecordCommitButton}"
+                    Style="{StaticResource AcceptButton}"
                     />
             </StackPanel>
 

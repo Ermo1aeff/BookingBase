@@ -15,15 +15,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BookingClient.Models;
 using BookingClient.Resources;
+using System.Threading;
+
 
 namespace BookingClient
 {
     public partial class AuthorizationWindow : Window
     {
         private bool IsCtrl = false;
-        private bool IsF9 = false;
         private bool IsF = false;
-
 
         public AuthorizationWindow()
         {
@@ -56,7 +56,11 @@ namespace BookingClient
                 MainWindow MainWin = new MainWindow();
                 MainWin.AccountId = Accounts.account_id.ToString();
                 Close();
+                SplashScreen splashScreen = new SplashScreen("Images/SlpashScreen1.png");
+                splashScreen.Show(false);
                 MainWin.Show();
+                TimeSpan duration = new TimeSpan(0, 0, 0, 1);
+                splashScreen.Close(duration);
             }
         }
 
@@ -85,11 +89,6 @@ namespace BookingClient
                 IsCtrl = true;
             }
 
-            if (e.Key == Key.F9)
-            {
-                IsF9 = true;
-            }
-
             if (e.Key == Key.F)
             {
                 IsF = true;
@@ -110,9 +109,9 @@ namespace BookingClient
                 IsCtrl = false;
             }
 
-            if (e.Key == Key.F9)
+            if (e.Key == Key.F)
             {
-                IsF9 = false;
+                IsF = false;
             }
         }
     }

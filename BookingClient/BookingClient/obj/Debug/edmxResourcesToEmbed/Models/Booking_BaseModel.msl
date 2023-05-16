@@ -7,9 +7,11 @@
           <ScalarProperty Name="account_id" ColumnName="account_id" />
           <ScalarProperty Name="account_login" ColumnName="account_login" />
           <ScalarProperty Name="account_password" ColumnName="account_password" />
-          <ScalarProperty Name="first_name" ColumnName="first_name" />
-          <ScalarProperty Name="last_name" ColumnName="last_name" />
-          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="first_name_id" ColumnName="first_name_id" />
+          <ScalarProperty Name="last_name_id" ColumnName="last_name_id" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -39,11 +41,30 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="discounts">
+      <EntityTypeMapping TypeName="Booking_BaseModel.discounts">
+        <MappingFragment StoreEntitySet="discounts">
+          <ScalarProperty Name="discount_id" ColumnName="discount_id" />
+          <ScalarProperty Name="discount_percentage" ColumnName="discount_percentage" />
+          <ScalarProperty Name="tour_id" ColumnName="tour_id" />
+          <ScalarProperty Name="date_begin" ColumnName="date_begin" />
+          <ScalarProperty Name="date_end" ColumnName="date_end" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="first_names">
       <EntityTypeMapping TypeName="Booking_BaseModel.first_names">
         <MappingFragment StoreEntitySet="first_names">
           <ScalarProperty Name="first_name_id" ColumnName="first_name_id" />
           <ScalarProperty Name="first_name" ColumnName="first_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="grades">
+      <EntityTypeMapping TypeName="Booking_BaseModel.grades">
+        <MappingFragment StoreEntitySet="grades">
+          <ScalarProperty Name="grade_id" ColumnName="grade_id" />
+          <ScalarProperty Name="tour_id" ColumnName="tour_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -120,10 +141,17 @@
         <MappingFragment StoreEntitySet="persons">
           <ScalarProperty Name="person_id" ColumnName="person_id" />
           <ScalarProperty Name="order_id" ColumnName="order_id" />
-          <ScalarProperty Name="first_name" ColumnName="first_name" />
-          <ScalarProperty Name="last_name" ColumnName="last_name" />
-          <ScalarProperty Name="passport" ColumnName="passport" />
+          <ScalarProperty Name="first_name_id" ColumnName="first_name_id" />
+          <ScalarProperty Name="last_name_id" ColumnName="last_name_id" />
           <ScalarProperty Name="birthday" ColumnName="birthday" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="Booking_BaseModel.roles">
+        <MappingFragment StoreEntitySet="roles">
+          <ScalarProperty Name="roles_id" ColumnName="roles_id" />
+          <ScalarProperty Name="role_name" ColumnName="role_name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -138,12 +166,23 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tour_countries">
-      <EntityTypeMapping TypeName="Booking_BaseModel.tour_countries">
-        <MappingFragment StoreEntitySet="tour_countries">
-          <ScalarProperty Name="tour_country_id" ColumnName="tour_country_id" />
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Booking_BaseModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tour_lists">
+      <EntityTypeMapping TypeName="Booking_BaseModel.tour_lists">
+        <MappingFragment StoreEntitySet="tour_lists">
+          <ScalarProperty Name="account_tour_id" ColumnName="account_tour_id" />
           <ScalarProperty Name="tour_id" ColumnName="tour_id" />
-          <ScalarProperty Name="country_id" ColumnName="country_id" />
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -158,6 +197,18 @@
           <ScalarProperty Name="price" ColumnName="price" />
           <ScalarProperty Name="day_count" ColumnName="day_count" />
           <ScalarProperty Name="max_group_size" ColumnName="max_group_size" />
+          <ScalarProperty Name="min_age" ColumnName="min_age" />
+          <ScalarProperty Name="max_age" ColumnName="max_age" />
+          <ScalarProperty Name="drade" ColumnName="drade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wish_lists">
+      <EntityTypeMapping TypeName="Booking_BaseModel.wish_lists">
+        <MappingFragment StoreEntitySet="wish_lists">
+          <ScalarProperty Name="wish_list_id" ColumnName="wish_list_id" />
+          <ScalarProperty Name="tour_id" ColumnName="tour_id" />
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -14,11 +14,28 @@ namespace BookingClient.Models
     
     public partial class accounts
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public accounts()
+        {
+            this.tour_lists = new HashSet<tour_lists>();
+            this.wish_lists = new HashSet<wish_lists>();
+        }
+    
         public int account_id { get; set; }
         public string account_login { get; set; }
         public string account_password { get; set; }
-        public string first_name { get; set; }
-        public string last_name { get; set; }
-        public Nullable<int> status { get; set; }
+        public Nullable<int> first_name_id { get; set; }
+        public Nullable<int> last_name_id { get; set; }
+        public Nullable<int> role_id { get; set; }
+        public byte[] image { get; set; }
+        public Nullable<long> phone { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tour_lists> tour_lists { get; set; }
+        public virtual first_names first_names { get; set; }
+        public virtual last_names last_names { get; set; }
+        public virtual roles roles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<wish_lists> wish_lists { get; set; }
     }
 }

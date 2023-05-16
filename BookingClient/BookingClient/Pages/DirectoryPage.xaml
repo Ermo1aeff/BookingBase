@@ -18,74 +18,65 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Background="#e6e6e6">
+            <StackPanel.Resources>
+                <Style TargetType="Button" BasedOn="{StaticResource RecordsMenuButton}"/>
+            </StackPanel.Resources>
             <Button
                 x:Name="OrdersButton"
-                Style="{StaticResource MenuButton}"
                 Content="Заказы"
                 Click="OrdersButton_Click"
                 />
             <Button 
                 x:Name="DeparturesButton"
-                Style="{StaticResource MenuButton}"
                 Content="Рассписание туров" 
                 Click="DeparturesButton_Click" 
                 />
             <Button
                 x:Name="OrderRoomsButton"
-                Style="{StaticResource MenuButton}"
                 Content="Номера заказов"
                 Click="OrderRoomsButton_Click"
                 />
             <Button
                 x:Name="ToursButton"
-                Style="{StaticResource MenuButton}"
                 Content="Туры"
                 Click="ToursButton_Click"/>
             <Button
                 x:Name="PersonsButton"
-                Style="{StaticResource MenuButton}"
                 Content="Туристы"
                 Click="PersonsButton_Click"
                 />
             <Button
                 x:Name="IncludedButton"
-                Style="{StaticResource MenuButton}"
                 Content="Услуги"
                 Click="IncludedButton_Click"
                 />
             <Button
                 x:Name="InteraryButton"
-                Style="{StaticResource MenuButton}"
                 Content="Маршруты"
                 Click="InteraryButton_Click"
                 />
             <Button
                 x:Name="RoomsButton"
-                Style="{StaticResource MenuButton}"
                 Content="Номера туров"
                 Click="RoomsButton_Click"
                 />
             <Button
                 x:Name="InclusionsButton"
-                Style="{StaticResource MenuButton}"
                 Content="Список услуг"
                 Click="InclusionsButton_Click"
                 />
             <Button
                 x:Name="ImagesButton"
-                Style="{StaticResource MenuButton}"
                 Content="Изображения"
                 Click="ImagesButton_Click"
                 />
             <Button
                 x:Name="CountriesButton"
-                Style="{StaticResource MenuButton}"
                 Content="Страны"
                 Click="CountriesButton_Click"
                 />
             <Button
                 x:Name="CitiesButton"
-                Style="{StaticResource MenuButton}"
                 Content="Города"
                 Click="CitiesButton_Click"
                 />

@@ -8,17 +8,14 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/CustomWindowStyle/WindowStyle.xaml"/>
-                <ResourceDictionary Source="Resources/Styles/BaseComponentsStyles.xaml"/>
-                <ResourceDictionary Source="Resources/Styles/ComponentsStyle.xaml"/>
+                <ResourceDictionary Source="Resources/Colors.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/ComponentStyles.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/СomplexComponentStyle.xaml"/>
                 <ResourceDictionary Source="Resources/Geometries.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <FontFamily x:Key="SourceCodeProRegular">pack://application:,,,/Fonts/#Source Code Pro Regular</FontFamily>
-            <FontFamily x:Key="SourceCodeProMeduim">pack://application:,,,/Fonts/#Source Code Pro Medium</FontFamily>
             <FontFamily x:Key="SourceCodeProSemiBold">pack://application:,,,/Fonts/#Source Code Pro SemiBold</FontFamily>
-            <FontFamily x:Key="ComfortaaMedium">pack://application:,,,/Fonts/#Comfortaa Medium</FontFamily>
-            <FontFamily x:Key="ComfortaaBold">pack://application:,,,/Fonts/#Comfortaa Bold</FontFamily>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -24,21 +24,12 @@
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
-                            <RowDefinition/>
+                            <!--<RowDefinition/>-->
                         </Grid.RowDefinitions>
 
                         <TextBlock
                             VerticalAlignment="Center"
                             Grid.Row="0"
-                            Text="Имя"
-                            TextWrapping="Wrap"
-                            FontSize="18" 
-                            Padding="50,0,0,0" 
-                            FontFamily="Segoe UI SemiLight"/>
-
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            Grid.Row="1"
                             Text="Фамилия"
                             TextWrapping="Wrap"
                             FontSize="18" 
@@ -47,16 +38,25 @@
 
                         <TextBlock
                             VerticalAlignment="Center"
-                            Grid.Row="2"
-                            Text="Паспорт"
+                            Grid.Row="1"
+                            Text="Имя"
                             TextWrapping="Wrap"
                             FontSize="18" 
                             Padding="50,0,0,0" 
                             FontFamily="Segoe UI SemiLight"/>
 
+                        <!--<TextBlock
+                            VerticalAlignment="Center"
+                            Grid.Row="2"
+                            Text="Паспорт"
+                            TextWrapping="Wrap"
+                            FontSize="18" 
+                            Padding="50,0,0,0" 
+                            FontFamily="Segoe UI SemiLight"/>-->
+
                         <TextBlock
                             VerticalAlignment="Center"
-                            Grid.Row="3"
+                            Grid.Row="2"
                             Text="Дата рождения"
                             TextWrapping="Wrap"
                             FontSize="18" 
@@ -68,14 +68,14 @@
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
-                            <RowDefinition/>
+                            <!--<RowDefinition/>-->
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
                         <TextBlock
                             VerticalAlignment="Center"
                             Grid.Row="0"
-                            Text="Егор"
+                            Text="{Binding [0]}"
                             TextWrapping="Wrap"
                             FontSize="18" 
                             FontFamily="Segoe UI Semibold"/>
@@ -83,23 +83,23 @@
                         <TextBlock
                             VerticalAlignment="Center"
                             Grid.Row="1"
-                            Text="Ермолаев"
+                            Text="{Binding [1]}"
                             TextWrapping="Wrap"
                             FontSize="18" 
                             FontFamily="Segoe UI Semibold"/>
 
-                        <TextBlock
+                        <!--<TextBlock
                             VerticalAlignment="Center"
                             Grid.Row="2"
                             Text="1234567890"
                             TextWrapping="Wrap"
                             FontSize="18" 
-                            FontFamily="Segoe UI Semibold"/>
+                            FontFamily="Segoe UI Semibold"/>-->
 
                         <TextBlock
                             VerticalAlignment="Center"
-                            Grid.Row="3"
-                            Text="16.09.2002"
+                            Grid.Row="2"
+                            Text="{Binding [2]}"
                             TextWrapping="Wrap"
                             FontSize="18" 
                             FontFamily="Segoe UI Semibold"/>
@@ -113,13 +113,13 @@
                         <Button
                             Grid.Row="0"
                             Margin="30, 10, 10, 5"
-                            Style="{StaticResource RecordCommitButton}"
+                            Style="{StaticResource AnotherActionButton}"
                             Content="Редактировать"
                             />
                         <Button 
                             Grid.Row="1"
                             Margin="30, 5, 10, 10"
-                            Style="{StaticResource RecordCancelButton}"
+                            Style="{StaticResource CancelButton}"
                             Content="Удалить"
                             />
                     </Grid>
@@ -141,7 +141,7 @@
                 x:Name="PersonListBox"
                 ItemTemplate="{StaticResource listTemplate}"
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                ScrollViewer.VerticalScrollBarVisibility="Auto">
+                ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0,10,0,-10">
 
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -193,12 +193,12 @@
                 <Label Content="Имя" FontSize="20"/>
                 <TextBox x:Name="FirstName"/>
 
-                <Label Content="Паспорт" FontSize="20"/>
-                <TextBox x:Name="Passport"/>
+                <!--<Label Content="Паспорт" FontSize="20"/>
+                <TextBox x:Name="Passport"/>-->
 
                 <Label Content="Дата рождения" FontSize="20"/>
                 <DatePicker
-                    x:Name="DateBeginDatePicker"  
+                    x:Name="DateOfBrithDatePicker"  
                     FontSize="18"
                     SelectedDateFormat="Short"
                     BorderThickness="1"
@@ -211,7 +211,7 @@
                     x:Name="CommitSelectingRoomsButton"
                     Click="CommitSelectingRoomsButton_Click"
                     Content="Добавить"
-                    Style="{StaticResource RecordCommitButton}"
+                    Style="{StaticResource AcceptButton}"
                     />
             </StackPanel>
 
@@ -317,13 +317,13 @@
                         <Button
                             Grid.Row="0"
                             Margin="30, 10"
-                            Style="{StaticResource RecordCommitButton}"
+                            Style="{StaticResource AcceptButton}"
                             Content="Редактировать"
                             />
                         <Button 
                             Grid.Row="1"
                             Margin="30, 10"
-                            Style="{StaticResource RecordCancelButton}"
+                            Style="{StaticResource CancelButton}"
                             Content="Удалить"
                             />
                     </Grid>

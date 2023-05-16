@@ -106,9 +106,25 @@ namespace BookingClient
 
             if (message == "")
             {
+                if (SourceCore.entities.last_names.Where(U => U.last_name == lastName).FirstOrDefault() == null)
+                {
+                    last_names NewLastName = new last_names();
+                    NewLastName.last_name = lastName;
+                    SourceCore.entities.last_names.Add(NewLastName);
+                    SourceCore.entities.SaveChanges();
+                }
+
+                if (SourceCore.entities.first_names.Where(U => U.first_name == firstName).FirstOrDefault() == null)
+                {
+                    first_names NewFirstName = new first_names();
+                    NewFirstName.first_name = firstName;
+                    SourceCore.entities.first_names.Add(NewFirstName);
+                    SourceCore.entities.SaveChanges();
+                }
+
                 accounts Accounts = new accounts();
-                Accounts.last_name = lastName;
-                Accounts.first_name = firstName;
+                Accounts.last_names = SourceCore.entities.last_names.Where(U => U.last_name == lastName).FirstOrDefault();
+                Accounts.first_names = SourceCore.entities.first_names.Where(U => U.first_name == firstName).FirstOrDefault();
                 Accounts.account_login = login;
                 //Accounts.account_password = ConfirmPasswordBox.Visibility == Visibility.Collapsed ? ConfirmPasswordTextBox.Text : ConfirmPasswordBox.Password;
                 Accounts.account_password = password;

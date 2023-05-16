@@ -14,7 +14,19 @@ namespace BookingClient.Models
     
     public partial class last_names
     {
-        public string last_name_id { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public last_names()
+        {
+            this.accounts = new HashSet<accounts>();
+            this.persons = new HashSet<persons>();
+        }
+    
+        public int last_name_id { get; set; }
         public string last_name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<accounts> accounts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<persons> persons { get; set; }
     }
 }

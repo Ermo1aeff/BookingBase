@@ -14,9 +14,24 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,6 +39,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -75,15 +91,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Pages\NewOrderPages\ListToursPage.xaml.cs">
-      <DependentUpon>ListToursPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\AuthorizationWindow.xaml.cs">
-      <DependentUpon>AuthorizationWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\ConnectionWindow.xaml.cs">
-      <DependentUpon>ConnectionWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Models\accounts.cs">
       <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
@@ -111,7 +118,13 @@
     <Compile Include="Models\departures.cs">
       <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\discounts.cs">
+      <DependentUpon>Booking_BaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\first_names.cs">
+      <DependentUpon>Booking_BaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\grades.cs">
       <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\images.cs">
@@ -138,17 +151,38 @@
     <Compile Include="Models\persons.cs">
       <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\roles.cs">
+      <DependentUpon>Booking_BaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\rooms.cs">
+      <DependentUpon>Booking_BaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tours.cs">
       <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tour_countries.cs">
+    <Compile Include="Models\tour_lists.cs">
       <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Pages\NewOrderPages\CreateOrderPage.xaml.cs">
-      <DependentUpon>CreateOrderPage.xaml</DependentUpon>
+    <Compile Include="Models\wish_lists.cs">
+      <DependentUpon>Booking_BaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NewOrderPages\ListToursPage.xaml.cs">
+      <DependentUpon>ListToursPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NewTourPages\NewTourPage.xaml.cs">
+      <DependentUpon>NewTourPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TOTourListPage.xaml.cs">
+      <DependentUpon>TOTourListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AuthorizationWindow.xaml.cs">
+      <DependentUpon>AuthorizationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ConnectionWindow.xaml.cs">
+      <DependentUpon>ConnectionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\NewOrderPages\DateSelectingPage.xaml.cs">
       <DependentUpon>DateSelectingPage.xaml</DependentUpon>
@@ -201,9 +235,20 @@
     <Compile Include="Windows\RegistrationWindow.xaml.cs">
       <DependentUpon>RegistrationWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Resources\CustomWindowStyle\WindowStyle.cs" />
     <Compile Include="SourceCore.cs" />
     <Page Include="Pages\NewOrderPages\ListToursPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\NewTourPages\NewTourPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TOTourListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Colors.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -227,10 +272,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\NewOrderPages\CreateOrderPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\NewOrderPages\DateSelectingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -299,21 +340,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\Styles\BaseComponentsStyles.xaml">
+    <Page Include="Resources\Styles\СomplexComponentStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\Styles\ComponentsStyle.xaml">
+    <Page Include="Resources\Styles\ComponentStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Geometries.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\CustomWindowStyle\WindowStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -334,12 +371,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Fonts\SourceCodePro-Regular.ttf" />
+    <Resource Include="Fonts\SourceCodePro-SemiBold.ttf" />
     <EntityDeploy Include="Models\Booking_BaseModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Booking_BaseModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Resource Include="Fonts\SourceCodePro-Regular.ttf" />
-    <Resource Include="Fonts\SourceCodePro-SemiBold.ttf" />
     <None Include="Models\Booking_BaseModel.edmx.diagram">
       <DependentUpon>Booking_BaseModel.edmx</DependentUpon>
     </None>
@@ -364,8 +401,22 @@
   <ItemGroup>
     <Resource Include="Images\Tour booking Serviсe.png" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Pages\NewTourPages\" />
+    <Resource Include="Images\199790_5ed58e77d9716.jpg" />
+    <Resource Include="Images\GreenBookingIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Models\Booking_BaseModel.Context.tt">
@@ -378,8 +429,6 @@
       <DependentUpon>Booking_BaseModel.edmx</DependentUpon>
       <LastGenOutput>Booking_BaseModel.cs</LastGenOutput>
     </Content>
-    <Resource Include="Images\199790_5ed58e77d9716.jpg" />
-    <Resource Include="Images\GreenBookingIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

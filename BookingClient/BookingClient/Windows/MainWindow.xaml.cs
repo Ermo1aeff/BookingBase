@@ -16,7 +16,9 @@ using System.Windows.Shapes;
 using System.Windows.Shell;
 using BookingClient.Models;
 using BookingClient.Pages;
-using BookingClient.PagesForWindow;
+using BookingClient.Pages.NewOrderPages;
+using BookingClient.Pages.NewTourPages;
+using System.Threading;
 
 namespace BookingClient
 {
@@ -34,8 +36,8 @@ namespace BookingClient
             if (e.Content == (e.Content as DirectoryPage))
                 (e.Content as DirectoryPage).Tag = this;
 
-            if (e.Content == (e.Content as CreateOrderPage))
-                (e.Content as CreateOrderPage).Tag = this;
+            if (e.Content == (e.Content as ListToursPage))
+                (e.Content as ListToursPage).Tag = this;
         }
 
         public void SetTitleCaption(string PageName)
@@ -46,17 +48,40 @@ namespace BookingClient
         // Деформирование окна под полноэкранный режим
         private void BookingClient_Loaded(object sender, RoutedEventArgs e)
         {
-            TitleCaption.Text = Title;
-            accounts AccountProfile = SourceCore.entities.accounts.SingleOrDefault(U => U.account_id.ToString() == AccountId);
-            AccountCaptionButton.Content = AccountProfile != null ? AccountProfile.first_name + " " + AccountProfile.last_name : "Не удалось найти данные пользователя";
-
             ((Window)sender).StateChanged += WindowStateChanged;
 
             if (WindowState == WindowState.Maximized)
             {
                 MainBorder.Padding = new Thickness(8);
                 WinChrome.CaptionHeight = 34;
-                PART_MaxButton_Path.Data = Geometry.Parse("M1,10 8,10 8,3, 1,3 1,10.5 M3,3 3,1 10,1, 10,8, 8,8");
+                PART_MaxButton_Path.Data = Geometry.Parse("M1,12 10,12 10,3, 1,3 1,12.6 M3,3 3,1 12,1, 12,10, 10,10");
+            }
+
+            TitleCaption.Text = Title;
+
+            accounts AccountProfile = SourceCore.entities.accounts.SingleOrDefault(U => U.account_id.ToString() == AccountId);
+            AccountCaptionButton.Content = AccountProfile != null ? AccountProfile.first_names.first_name + " " + AccountProfile.last_names.last_name : "Не удалось найти данные пользователя";
+
+            switch (AccountProfile.role_id)
+            {
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+                    DirectoryButton.Visibility = Visibility.Collapsed;
+                    break;
+                case 4:
+                    RootFrame.Navigate(new ListToursPage());
+                    CreateOrderButton.Visibility = Visibility.Collapsed;
+                    NewTourButton.Visibility = Visibility.Collapsed;
+                    TourListButton.Visibility = Visibility.Collapsed;
+                    DirectoryButton.Visibility = Visibility.Collapsed;
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -66,7 +91,7 @@ namespace BookingClient
             {
                 MainBorder.Padding = new Thickness(8);
                 WinChrome.CaptionHeight = 34;
-                ((Path)FindName("PART_MaxButton_Path")).Data = Geometry.Parse("M1,10 8,10 8,3, 1,3 1,10.5 M3,3 3,1 10,1, 10,8, 8,8");
+                ((Path)FindName("PART_MaxButton_Path")).Data = Geometry.Parse("M1,12 10,12 10,3, 1,3 1,12.6 M3,3 3,1 12,1, 12,10, 10,10");
             }
             else
             {
@@ -115,7 +140,7 @@ namespace BookingClient
 
         private void NewTourButton_Click(object sender, RoutedEventArgs e)
         {
-
+            RootFrame.Navigate(new NewTourPage());
         }
 
         private void DirectoryButton_Click(object sender, RoutedEventArgs e)
@@ -126,7 +151,7 @@ namespace BookingClient
 
         private void CreateOrderButton_Click(object sender, RoutedEventArgs e)
         {
-            Uri Source = new Uri("Pages/NewOrderPages/CreateOrderPage.xaml", UriKind.Relative);
+            Uri Source = new Uri("Pages/NewOrderPages/ListToursPage.xaml", UriKind.Relative);
             if (RootFrame.NavigationService.CurrentSource != Source)
                 RootFrame.Navigate(Source);
         }
@@ -154,6 +179,12 @@ namespace BookingClient
             //    Grid.SetColumn(TitleCaption, 0);
             //    Grid.SetColumnSpan(TitleCaption, 4);
             //}
+        }
+
+        private void TourListButton_Click(object sender, RoutedEventArgs e)
+        {
+            RootFrame.Navigate(new TOTourListPage());
+
         }
     }
 }

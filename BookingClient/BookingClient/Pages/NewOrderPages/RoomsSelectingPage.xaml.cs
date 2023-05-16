@@ -22,11 +22,13 @@ namespace BookingClient.PagesOnWindow
         private List<List<string>> RoomList = new List<List<string>>();
         private decimal TotalPrice = 0;
         private int TotalPlace = 0;
+        private int DepartureId = 0;
         public RoomsSelectingPage(int DepartureId)
         {
             InitializeComponent();
 
-            var Departure = SourceCore.entities.departures.Where(U => U.departure_id == DepartureId).FirstOrDefault();
+            this.DepartureId = DepartureId;
+            departures Departure = SourceCore.entities.departures.Where(U => U.departure_id == DepartureId).FirstOrDefault();
             RoomListBox.ItemsSource = SourceCore.entities.rooms.Where(U => U.tour_id == Departure.tour_id).ToList();
         }
 
@@ -43,6 +45,7 @@ namespace BookingClient.PagesOnWindow
 
             List<string> RoomL = new List<string>();
             bool flag = false;
+
 
             for (int i = 0; i < RoomList.Count; i++)
             {
@@ -77,7 +80,19 @@ namespace BookingClient.PagesOnWindow
 
         private void CommitSelectingRoomsButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new PersonsAddingPage(TotalPrice, TotalPlace, RoomList));
+            List<List<string>> RoomIDList = new List<List<string>>();
+            List<string> RoomRecordsList = new List<string>();
+
+            foreach (var item in RoomList)
+            {
+                if (item[1] != "0")
+                {
+                    RoomRecordsList.Add(item[0]);
+                    RoomRecordsList.Add(item[1]);
+                    RoomIDList.Add(RoomRecordsList);
+                }
+            }
+            NavigationService.Navigate(new PersonsAddingPage(TotalPrice, TotalPlace, RoomIDList, DepartureId));
         }
     }
 }

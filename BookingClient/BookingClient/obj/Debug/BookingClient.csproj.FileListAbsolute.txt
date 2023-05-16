@@ -284,15 +284,10 @@ C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\bin\Debu
 C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\bin\Debug\EntityFramework.xml
 C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\bin\Debug\ru\EntityFramework.resources.dll
-C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.AssemblyReference.cache
-C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\Styles\BaseComponentsStyles.baml
-C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\Styles\ComponentsStyle.baml
 C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\Geometries.baml
-C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\CustomWindowStyle\WindowStyle.baml
 C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Windows\AuthorizationWindow.g.cs
 C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Windows\ConnectionWindow.g.cs
 C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Windows\MainWindow.g.cs
-C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\NewOrderPages\CreateOrderPage.g.cs
 C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\NewOrderPages\DateSelectingPage.g.cs
 C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\NewOrderPages\PersonsAddingPage.g.cs
 C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\NewOrderPages\RoomsSelectingPage.g.cs
@@ -310,8 +305,6 @@ C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debu
 C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\RoomPage.g.cs
 C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\ToursPage.g.cs
 C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Windows\RegistrationWindow.g.cs
-C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\Styles\ComponentsStyle.g.cs
-C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\CustomWindowStyle\WindowStyle.g.cs
 C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\App.g.cs
 C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient_Content.g.cs
 C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient_MarkupCompile.cache
@@ -320,7 +313,6 @@ C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debu
 C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Windows\AuthorizationWindow.baml
 C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Windows\ConnectionWindow.baml
 C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Windows\MainWindow.baml
-C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\NewOrderPages\CreateOrderPage.baml
 C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\NewOrderPages\DateSelectingPage.baml
 C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\NewOrderPages\PersonsAddingPage.baml
 C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\NewOrderPages\RoomsSelectingPage.baml
@@ -347,3 +339,84 @@ C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debu
 C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.pdb
 C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\NewOrderPages\ListToursPage.g.cs
 C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\NewOrderPages\ListToursPage.baml
+C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\Colors.baml
+C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\NewTourPages\NewTourPage.g.cs
+C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\NewTourPages\NewTourPage.baml
+C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.AssemblyReference.cache
+C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\TOTourListPage.g.cs
+C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\TOTourListPage.baml
+C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\Styles\СomplexComponentStyle.baml
+C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\Styles\ComponentStyles.baml
+C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\Styles\ComponentStyles.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\bin\Debug\BookingClient.exe.config
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\bin\Debug\BookingClient.exe
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\bin\Debug\BookingClient.pdb
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\bin\Debug\EntityFramework.dll
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\bin\Debug\EntityFramework.xml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.AssemblyReference.cache
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\Colors.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\Styles\СomplexComponentStyle.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\Styles\ComponentStyles.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\Geometries.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\NewOrderPages\ListToursPage.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\NewTourPages\NewTourPage.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\TOTourListPage.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Windows\AuthorizationWindow.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Windows\ConnectionWindow.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Windows\MainWindow.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\NewOrderPages\DateSelectingPage.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\NewOrderPages\PersonsAddingPage.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\NewOrderPages\RoomsSelectingPage.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\CitiesPage.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\CountriesPage.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\DeparturesPage.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPage.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\ImagesPage.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\IncludedPage.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\InclusionsPage.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\ItineraryPage.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\OrderRoomsPage.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\OrdersPage.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\PersonsPage.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\RoomPage.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\ToursPage.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Windows\RegistrationWindow.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Resources\Styles\ComponentStyles.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\App.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient_Content.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient_MarkupCompile.cache
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient_MarkupCompile.lref
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\App.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\NewOrderPages\ListToursPage.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\NewTourPages\NewTourPage.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\TOTourListPage.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Windows\AuthorizationWindow.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Windows\ConnectionWindow.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Windows\MainWindow.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\NewOrderPages\DateSelectingPage.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\NewOrderPages\PersonsAddingPage.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\NewOrderPages\RoomsSelectingPage.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\CitiesPage.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\CountriesPage.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\DeparturesPage.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPage.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\ImagesPage.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\IncludedPage.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\InclusionsPage.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\ItineraryPage.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\OrderRoomsPage.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\OrdersPage.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\PersonsPage.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\RoomPage.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\DirectoryPages\ToursPage.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Windows\RegistrationWindow.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.g.resources
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.Properties.Resources.resources
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.GenerateResource.cache
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.CoreCompileInputs.cache
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.CopyComplete
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.exe
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.pdb

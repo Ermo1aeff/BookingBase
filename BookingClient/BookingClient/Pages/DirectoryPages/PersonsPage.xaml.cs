@@ -60,9 +60,9 @@ namespace BookingClient.Pages
         {
             var SelectedRecord = (persons)RecordsDataGrid.SelectedItem;
             OrderIdComboBox.SelectedItem = SelectedRecord.orders;
-            LastNameTextBox.Text = SelectedRecord.last_name;
-            FirstNameTextBox.Text = SelectedRecord.first_name;
-            PassportTextBox.Text = SelectedRecord.passport.ToString();
+            LastNameTextBox.Text = SelectedRecord.last_names.last_name;
+            FirstNameTextBox.Text = SelectedRecord.first_names.first_name;
+            //PassportTextBox.Text = SelectedRecord.passport.ToString();
             DateOfBirthDatePicker.Text = SelectedRecord.birthday.Value.ToString("dd.MM.yyyy");
         }
 
@@ -73,7 +73,7 @@ namespace BookingClient.Pages
             OrderIdComboBox.Text = "";
             LastNameTextBox.Text = "";
             FirstNameTextBox.Text = "";
-            PassportTextBox.Text = "";
+            //PassportTextBox.Text = "";
             DateOfBirthDatePicker.SelectedDate = null;
             DlgLoad(true);
         }
@@ -143,14 +143,31 @@ namespace BookingClient.Pages
 
         private void CommitChangeRecordsButton_Click(object sender, RoutedEventArgs e)
         {
-            var NewRecord = new persons();
+            string LastName = LastNameTextBox.Text;
+            string FirstName = FirstNameTextBox.Text;
+            if (SourceCore.entities.last_names.Where(U => U.last_name == LastName).FirstOrDefault() == null)
+            {
+                last_names NewLastName = new last_names();
+                NewLastName.last_name = LastName;
+                SourceCore.entities.last_names.Add(NewLastName);
+                SourceCore.entities.SaveChanges();
+            }
 
+            if (SourceCore.entities.first_names.Where(U => U.first_name == FirstName).FirstOrDefault() == null)
+            {
+                first_names NewFirstName = new first_names();
+                NewFirstName.first_name = FirstName;
+                SourceCore.entities.first_names.Add(NewFirstName);
+                SourceCore.entities.SaveChanges();
+            }
+
+            var NewRecord = new persons();
             if (DlgMode)
             {
                 NewRecord.orders = (orders)OrderIdComboBox.SelectedItem;
-                NewRecord.last_name = LastNameTextBox.Text;
-                NewRecord.first_name = FirstNameTextBox.Text;
-                NewRecord.passport = Convert.ToInt64(PassportTextBox.Text);
+                NewRecord.last_names = SourceCore.entities.last_names.Where(U => U.last_name == LastName).FirstOrDefault();
+                NewRecord.first_names = SourceCore.entities.first_names.Where(U => U.first_name == FirstName).FirstOrDefault();
+                //NewRecord.passport = Convert.ToInt64(PassportTextBox.Text);
                 NewRecord.birthday = DateOfBirthDatePicker.SelectedDate;  // Date of birth, not birthday.
                 SourceCore.entities.persons.Add(NewRecord);
             }
@@ -158,9 +175,9 @@ namespace BookingClient.Pages
             {
                 var ChangingRecord = (persons)RecordsDataGrid.SelectedItem;
                 ChangingRecord.orders = (orders)OrderIdComboBox.SelectedItem;
-                ChangingRecord.last_name = LastNameTextBox.Text;
-                ChangingRecord.first_name = FirstNameTextBox.Text;
-                ChangingRecord.passport = Convert.ToInt64(PassportTextBox.Text);
+                NewRecord.last_names = SourceCore.entities.last_names.Where(U => U.last_name == LastName).FirstOrDefault();
+                NewRecord.first_names = SourceCore.entities.first_names.Where(U => U.first_name == FirstName).FirstOrDefault();
+                //ChangingRecord.passport = Convert.ToInt64(PassportTextBox.Text);
                 ChangingRecord.birthday = DateOfBirthDatePicker.SelectedDate;
             }
             SourceCore.entities.SaveChanges();
@@ -210,15 +227,12 @@ namespace BookingClient.Pages
                     RecordsDataGrid.ItemsSource = SourceCore.entities.persons.Where(filtercase => filtercase.orders.order_id.ToString().Contains(textbox)).ToList();
                     break;
                 case 1:
-                    RecordsDataGrid.ItemsSource = SourceCore.entities.persons.Where(filtercase => filtercase.last_name.Contains(textbox)).ToList();
+                    RecordsDataGrid.ItemsSource = SourceCore.entities.persons.Where(filtercase => filtercase.last_names.last_name.Contains(textbox)).ToList();
                     break;
                 case 2:
-                    RecordsDataGrid.ItemsSource = SourceCore.entities.persons.Where(filtercase => filtercase.first_name.Contains(textbox)).ToList();
+                    RecordsDataGrid.ItemsSource = SourceCore.entities.persons.Where(filtercase => filtercase.first_names.first_name.Contains(textbox)).ToList();
                     break;
                 case 3:
-                    RecordsDataGrid.ItemsSource = SourceCore.entities.persons.Where(filtercase => filtercase.passport.ToString().Contains(textbox)).ToList();
-                    break;
-                case 4:
                     RecordsDataGrid.ItemsSource = SourceCore.entities.persons.Where(filtercase => filtercase.birthday.ToString().Contains(textbox)).ToList();
                     break;
                 default:

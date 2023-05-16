@@ -68,9 +68,9 @@
                 >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Номер заказа" Binding="{Binding order_id, StringFormat={}№{0}}" Width="100"/>
-                    <DataGridTextColumn Header="Фамилия" Binding="{Binding last_name}" Width="10*"/>
-                    <DataGridTextColumn Header="Имя" Binding="{Binding first_name}" Width="10*"/>
-                    <DataGridTextColumn Header="Номер паспорта" Binding="{Binding passport}" Width="100"/>
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding last_names.last_name}" Width="10*"/>
+                    <DataGridTextColumn Header="Имя" Binding="{Binding first_names.first_name}" Width="10*"/>
+                    <!--<DataGridTextColumn Header="Номер паспорта" Binding="{Binding passport}" Width="100"/>-->
                     <DataGridTextColumn Header="Дата рождения" Binding="{Binding birthday, StringFormat=dd.MM.yyyy}" Width="100"/>
                 </DataGrid.Columns>
             </DataGrid>
@@ -113,8 +113,8 @@
                     <Label Content="Имя"/>
                     <TextBox x:Name="FirstNameTextBox"/>
 
-                    <Label Content="Номер паспорта"/>
-                    <TextBox x:Name="PassportTextBox"/>
+                    <!--<Label Content="Номер паспорта"/>
+                    <TextBox x:Name="PassportTextBox"/>-->
 
                     <Label Content="Дата рождения"/>
                     <DatePicker 
@@ -139,7 +139,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Button 
-                    Style="{StaticResource RecordCommitButton}"
+                    Style="{StaticResource AcceptButton}"
                     x:Name="CommitChangeRecordsButton" 
                     Grid.Column="0"
                     Content="Принять"
@@ -148,7 +148,7 @@
 
                 <Button
                     x:Name="RollbackChangeRecordsButton"
-                    Style="{StaticResource RecordCancelButton}"
+                    Style="{StaticResource CancelButton}"
                     Grid.Column="1"
                     Content="Отменить"
                     Margin="5,0,0,0"

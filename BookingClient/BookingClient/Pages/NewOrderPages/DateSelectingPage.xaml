@@ -50,17 +50,36 @@
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
-                    <Image 
+                    <Image
+                        x:Name="TourImage"
                         Margin="11,31,11,10"
                         VerticalAlignment="Top"
                         RenderOptions.BitmapScalingMode="HighQuality"
-                        Source="pack://application:,,,/Images/199790_5ed58e77d9716.jpg"/>
+                        Source="{Binding ImageListBox.Image}"/>
 
                     <Border 
                         BorderThickness="11" 
                         BorderBrush="White" 
                         CornerRadius="30" 
                         Margin="0,20,0,0"/>
+
+                    <Button
+                        HorizontalAlignment="Right"
+                        Margin="0,0,30,0"
+                        Width="37"
+                        Height="37"
+                        Background="White"
+                        Click="ForwardButton_Click"
+                        />
+                    
+                    <Button
+                        HorizontalAlignment="Left"
+                        Margin="30,0,00,0"
+                        Width="37"
+                        Height="37"
+                        Background="White"
+                        Click="BackButton_Click"
+                        />
                 </Grid>
                 
                 <Grid Grid.Row="1" Background="LightGray" Margin="10">
@@ -69,7 +88,7 @@
                         SelectionChanged="DepartureListBox_SelectionChanged"
                         ItemTemplate="{StaticResource listTemplate}"
                         x:Name="DepartureListBox"
-                        ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                        ScrollViewer.HorizontalScrollBarVisibility="Auto"
                         ScrollViewer.VerticalScrollBarVisibility="Disabled">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -137,7 +156,7 @@
                                 TextWrapping="Wrap"
                                 FontSize="16"
                                 x:Name="DayCountTextBlick"
-                                Text="7" FontFamily="Segoe UI Semibold"/>
+                                Text="-" FontFamily="Segoe UI Semibold"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
@@ -182,7 +201,7 @@
                                     x:Name="BeginAndEndTextBlock"
                                     TextWrapping="Wrap"
                                     FontSize="16"
-                                    Text="Моши"/>
+                                    Text="-"/>
                             </StackPanel>
                         </StackPanel>
 
@@ -201,9 +220,10 @@
                                     FontFamily="Segoe UI Semibold"/>
 
                                 <TextBlock
+                                    x:Name="AgeTextBlock"
                                     TextWrapping="Wrap"
                                     FontSize="16"
-                                    Text="От 2 до 90" 
+                                    Text="От - до -" 
                                     Margin="0,0,0,6"
                                     FontFamily="Segoe UI Semilight"/>
 
@@ -218,7 +238,7 @@
                                     x:Name="TourIdTextBlock"
                                     TextWrapping="Wrap"
                                     FontSize="16"
-                                    Text="102228" 
+                                    Text="-" 
                                     FontFamily="Segoe UI Semilight"/>
                             </StackPanel>
 
@@ -234,7 +254,7 @@
                                     TextWrapping="Wrap"
                                     FontSize="16"
                                     Margin="0,0,0,6"
-                                    Text="6" 
+                                    Text="-" 
                                     FontFamily="Segoe UI Semilight"/>
 
                                 <TextBlock
@@ -247,7 +267,7 @@
                                 <TextBlock
                                     TextWrapping="Wrap"
                                     FontSize="16"
-                                    Text="Europamundo" 
+                                    Text="-" 
                                     FontFamily="Segoe UI Semilight"/>
                             </StackPanel>
                         </Grid>
@@ -273,7 +293,7 @@
                             Height="80"
                             FontSize="24"
                             FontFamily="Segoe UI Semilight"
-                            Style="{StaticResource RecordCommitButton}"
+                            Style="{StaticResource AcceptButton}"
                             Click="CommitDepartureButton_Click"/>
                     </StackPanel>
                 </ScrollViewer>

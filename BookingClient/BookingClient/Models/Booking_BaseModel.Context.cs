@@ -29,7 +29,9 @@ namespace BookingClient.Models
         public virtual DbSet<cities> cities { get; set; }
         public virtual DbSet<countries> countries { get; set; }
         public virtual DbSet<departures> departures { get; set; }
+        public virtual DbSet<discounts> discounts { get; set; }
         public virtual DbSet<first_names> first_names { get; set; }
+        public virtual DbSet<grades> grades { get; set; }
         public virtual DbSet<images> images { get; set; }
         public virtual DbSet<included> included { get; set; }
         public virtual DbSet<inclusions> inclusions { get; set; }
@@ -38,8 +40,11 @@ namespace BookingClient.Models
         public virtual DbSet<order_rooms> order_rooms { get; set; }
         public virtual DbSet<orders> orders { get; set; }
         public virtual DbSet<persons> persons { get; set; }
+        public virtual DbSet<roles> roles { get; set; }
         public virtual DbSet<rooms> rooms { get; set; }
-        public virtual DbSet<tour_countries> tour_countries { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<tour_lists> tour_lists { get; set; }
         public virtual DbSet<tours> tours { get; set; }
+        public virtual DbSet<wish_lists> wish_lists { get; set; }
     }
 }

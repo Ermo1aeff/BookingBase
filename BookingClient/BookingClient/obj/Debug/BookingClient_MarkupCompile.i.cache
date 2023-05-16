@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\
 BookingClient
 none
 false
 DEBUG;TRACE
-C:\Users\1\Desktop\Диплом\BookingBase\BookingClient\BookingClient\App.xaml
-261714714529
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\App.xaml
+27-1915371273
 21358198715
-481236856997
-201545378457
-Pages\NewOrderPages\ListToursPage.xaml;Windows\AuthorizationWindow.xaml;Windows\ConnectionWindow.xaml;Windows\MainWindow.xaml;Pages\NewOrderPages\CreateOrderPage.xaml;Pages\NewOrderPages\DateSelectingPage.xaml;Pages\NewOrderPages\PersonsAddingPage.xaml;Pages\NewOrderPages\RoomsSelectingPage.xaml;Pages\DirectoryPages\CitiesPage.xaml;Pages\DirectoryPages\CountriesPage.xaml;Pages\DirectoryPages\DeparturesPage.xaml;Pages\DirectoryPage.xaml;Pages\DirectoryPages\ImagesPage.xaml;Pages\DirectoryPages\IncludedPage.xaml;Pages\DirectoryPages\InclusionsPage.xaml;Pages\DirectoryPages\ItineraryPage.xaml;Pages\DirectoryPages\OrderRoomsPage.xaml;Pages\DirectoryPages\OrdersPage.xaml;Pages\DirectoryPages\PersonsPage.xaml;Pages\DirectoryPages\RoomPage.xaml;Pages\DirectoryPages\ToursPage.xaml;Windows\RegistrationWindow.xaml;Resources\Styles\BaseComponentsStyles.xaml;Resources\Styles\ComponentsStyle.xaml;Resources\Geometries.xaml;Resources\CustomWindowStyle\WindowStyle.xaml;
+53-1788534744
+20-707208683
+Pages\NewOrderPages\ListToursPage.xaml;Pages\NewTourPages\NewTourPage.xaml;Pages\TOTourListPage.xaml;Resources\Colors.xaml;Windows\AuthorizationWindow.xaml;Windows\ConnectionWindow.xaml;Windows\MainWindow.xaml;Pages\NewOrderPages\DateSelectingPage.xaml;Pages\NewOrderPages\PersonsAddingPage.xaml;Pages\NewOrderPages\RoomsSelectingPage.xaml;Pages\DirectoryPages\CitiesPage.xaml;Pages\DirectoryPages\CountriesPage.xaml;Pages\DirectoryPages\DeparturesPage.xaml;Pages\DirectoryPage.xaml;Pages\DirectoryPages\ImagesPage.xaml;Pages\DirectoryPages\IncludedPage.xaml;Pages\DirectoryPages\InclusionsPage.xaml;Pages\DirectoryPages\ItineraryPage.xaml;Pages\DirectoryPages\OrderRoomsPage.xaml;Pages\DirectoryPages\OrdersPage.xaml;Pages\DirectoryPages\PersonsPage.xaml;Pages\DirectoryPages\RoomPage.xaml;Pages\DirectoryPages\ToursPage.xaml;Windows\RegistrationWindow.xaml;Resources\Styles\СomplexComponentStyle.xaml;Resources\Styles\ComponentStyles.xaml;Resources\Geometries.xaml;
 images\slpashscreen1.png
 True
 

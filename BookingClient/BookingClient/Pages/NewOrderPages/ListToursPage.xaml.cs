@@ -25,22 +25,19 @@ namespace BookingClient.Pages.NewOrderPages
             InitializeComponent();
             DataContext = this;
 
-            using (Booking_BaseEntities dw = new Booking_BaseEntities())
-            {
-                TourListBox.ItemsSource =
-                    (from em in dw.tours
-                     select new
-                     {
-                         TourName = em.tour_name,
-                         PricePerDay = Math.Round((double)(em.price / em.day_count)),
-                         Price = Math.Round((double)em.price),
-                         DayCount = em.day_count,
-                         em.tour_id,
-                         BeginCity = em.cities.city_name,
-                         EndCity = em.cities1.city_name,
-                         TourImage = em.images.FirstOrDefault(filtercase => filtercase.tour_id == em.tour_id)
-                     }).ToList();
-            }
+            TourListBox.ItemsSource =
+                (from em in SourceCore.entities.tours
+                 select new
+                 {
+                     TourName = em.tour_name,
+                     PricePerDay = Math.Round((double)(em.price / em.day_count)),
+                     Price = Math.Round((double)em.price),
+                     DayCount = em.day_count,
+                     em.tour_id,
+                     BeginCity = em.cities.city_name,
+                     EndCity = em.cities1.city_name,
+                     TourImage = em.images.FirstOrDefault(filtercase => filtercase.tour_id == em.tour_id)
+                 }).ToList();
         }
 
         private void ViewTourButton_Click(object sender, RoutedEventArgs e)

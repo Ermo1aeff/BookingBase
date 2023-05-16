@@ -37,7 +37,7 @@
                 <RowDefinition Height="70*"/>
             </Grid.RowDefinitions>
 
-            <Label 
+            <Label
                 Content="Авторизация" 
                 FontSize="36" 
                 HorizontalContentAlignment="Center" 
@@ -74,7 +74,7 @@
                         Height="30"/>
 
                     <CheckBox
-                        Style="{StaticResource EyeToggleButton}"
+                        Style="{StaticResource HidePasswordToggleButton}"
                         Click="PasswordCheckBox_Click"
                         x:Name="PasswordCheckBox"
                         HorizontalAlignment="Right"
@@ -82,7 +82,7 @@
                 </Grid>
 
                 <Button
-                    Style="{StaticResource AuthorizationButton}"
+                    Style="{StaticResource AcceptButton}"
                     x:Name="AutorizationButton"
                     Content="Авторизоваться"
                     Click="AutorizationButton_Click"
@@ -98,7 +98,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Button 
-                        Style="{StaticResource RegistrationButton}"
+                        Style="{StaticResource AnotherActionButton}"
                         x:Name="RegistrationButton"
                         Content="Регистрация"
                         Click="RegistrationButton_Click"
@@ -106,7 +106,7 @@
                         Margin="0,0,7,0"/>
 
                     <Button 
-                        Style="{StaticResource CloseButton}"
+                        Style="{StaticResource CancelButton}"
                         x:Name="CloseButton"
                         Content="Закрыть"
                         Click="CloseButton_Click"

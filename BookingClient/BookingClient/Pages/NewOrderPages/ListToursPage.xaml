@@ -129,7 +129,7 @@
                         Content="Смотреть тур"
                         Grid.ColumnSpan="2"
                         Grid.Row="1"
-                        Style="{StaticResource RecordCommitButton}"
+                        Style="{StaticResource AcceptButton}"
                         Click="ViewTourButton_Click"
                         />
                 </Grid>

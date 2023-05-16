@@ -5,11 +5,12 @@
       <PropertyRef Name="account_id" />
     </Key>
     <Property Name="account_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="account_login" Type="varchar" MaxLength="50" />
-    <Property Name="account_password" Type="varchar" MaxLength="50" />
-    <Property Name="first_name" Type="varchar" MaxLength="50" />
-    <Property Name="last_name" Type="varchar" MaxLength="50" />
-    <Property Name="status" Type="int" />
+    <Property Name="account_login" Type="varchar" MaxLength="16" />
+    <Property Name="account_password" Type="varchar" MaxLength="16" />
+    <Property Name="first_name" Type="varchar" MaxLength="25" />
+    <Property Name="last_name" Type="varchar" MaxLength="25" />
+    <Property Name="role_id" Type="int" />
+    <Property Name="image" Type="image" />
   </EntityType>
   <EntityType Name="cities">
     <Key>
@@ -51,9 +52,9 @@
   </EntityType>
   <EntityType Name="included">
     <Key>
-      <PropertyRef Name="included" />
+      <PropertyRef Name="included_id" />
     </Key>
-    <Property Name="included" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="included_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="tour_id" Type="int" />
     <Property Name="inclusion_id" Type="int" />
     <Property Name="included_choice" Type="int" />
@@ -66,11 +67,11 @@
     <Property Name="inclusion_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="inclusion_name" Type="varchar" MaxLength="50" />
   </EntityType>
-  <EntityType Name="itirerary">
+  <EntityType Name="itinerary">
     <Key>
-      <PropertyRef Name="itinerary" />
+      <PropertyRef Name="itinerary_id" />
     </Key>
-    <Property Name="itinerary" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="itinerary_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="tour_id" Type="int" />
     <Property Name="day_num" Type="int" />
     <Property Name="itinerary_name" Type="varchar" MaxLength="100" />
@@ -87,7 +88,7 @@
     <Key>
       <PropertyRef Name="order_room_id" />
     </Key>
-    <Property Name="order_room_id" Type="int" Nullable="false" />
+    <Property Name="order_room_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="order_id" Type="int" />
     <Property Name="room_id" Type="int" />
     <Property Name="room_count" Type="int" />
@@ -108,21 +109,37 @@
     </Key>
     <Property Name="person_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="order_id" Type="int" />
-    <Property Name="first_name" Type="char" MaxLength="25" />
-    <Property Name="last_name" Type="char" MaxLength="25" />
-    <Property Name="city_id" Type="int" />
+    <Property Name="first_name" Type="varchar" MaxLength="50" />
+    <Property Name="last_name" Type="varchar" MaxLength="50" />
     <Property Name="passport" Type="bigint" />
     <Property Name="birthday" Type="date" />
+  </EntityType>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="roles_id" />
+    </Key>
+    <Property Name="roles_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="role_name" Type="varchar" MaxLength="25" />
   </EntityType>
   <EntityType Name="rooms">
     <Key>
       <PropertyRef Name="room_id" />
     </Key>
     <Property Name="room_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="room_name" Type="char" MaxLength="500" />
+    <Property Name="room_name" Type="varchar" MaxLength="100" />
     <Property Name="tour_id" Type="int" />
     <Property Name="beds_count" Type="int" />
     <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="tour_countries">
     <Key>
@@ -145,6 +162,18 @@
     <Property Name="day_count" Type="int" />
     <Property Name="max_group_size" Type="int" />
   </EntityType>
+  <Association Name="FK_accounts_roles">
+    <End Role="roles" Type="Self.roles" Multiplicity="0..1" />
+    <End Role="accounts" Type="Self.accounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="roles_id" />
+      </Principal>
+      <Dependent Role="accounts">
+        <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_cities_countries">
     <End Role="countries" Type="Self.countries" Multiplicity="0..1" />
     <End Role="cities" Type="Self.cities" Multiplicity="*" />
@@ -207,12 +236,12 @@
   </Association>
   <Association Name="FK_itirerary_tours">
     <End Role="tours" Type="Self.tours" Multiplicity="0..1" />
-    <End Role="itirerary" Type="Self.itirerary" Multiplicity="*" />
+    <End Role="itinerary" Type="Self.itinerary" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tours">
         <PropertyRef Name="tour_id" />
       </Principal>
-      <Dependent Role="itirerary">
+      <Dependent Role="itinerary">
         <PropertyRef Name="tour_id" />
       </Dependent>
     </ReferentialConstraint>
@@ -250,18 +279,6 @@
       </Principal>
       <Dependent Role="orders">
         <PropertyRef Name="departures_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_persons_cities">
-    <End Role="cities" Type="Self.cities" Multiplicity="0..1" />
-    <End Role="persons" Type="Self.persons" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="cities">
-        <PropertyRef Name="city_id" />
-      </Principal>
-      <Dependent Role="persons">
-        <PropertyRef Name="city_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -346,14 +363,20 @@
     <EntitySet Name="images" EntityType="Self.images" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="included" EntityType="Self.included" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="inclusions" EntityType="Self.inclusions" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="itirerary" EntityType="Self.itirerary" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="itinerary" EntityType="Self.itinerary" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="last_names" EntityType="Self.last_names" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="order_rooms" EntityType="Self.order_rooms" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="persons" EntityType="Self.persons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="rooms" EntityType="Self.rooms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tour_countries" EntityType="Self.tour_countries" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tours" EntityType="Self.tours" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_accounts_roles" Association="Self.FK_accounts_roles">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="accounts" EntitySet="accounts" />
+    </AssociationSet>
     <AssociationSet Name="FK_cities_countries" Association="Self.FK_cities_countries">
       <End Role="countries" EntitySet="countries" />
       <End Role="cities" EntitySet="cities" />
@@ -376,7 +399,7 @@
     </AssociationSet>
     <AssociationSet Name="FK_itirerary_tours" Association="Self.FK_itirerary_tours">
       <End Role="tours" EntitySet="tours" />
-      <End Role="itirerary" EntitySet="itirerary" />
+      <End Role="itinerary" EntitySet="itinerary" />
     </AssociationSet>
     <AssociationSet Name="FK_order_rooms_orders" Association="Self.FK_order_rooms_orders">
       <End Role="orders" EntitySet="orders" />
@@ -389,10 +412,6 @@
     <AssociationSet Name="FK_orders_departures" Association="Self.FK_orders_departures">
       <End Role="departures" EntitySet="departures" />
       <End Role="orders" EntitySet="orders" />
-    </AssociationSet>
-    <AssociationSet Name="FK_persons_cities" Association="Self.FK_persons_cities">
-      <End Role="cities" EntitySet="cities" />
-      <End Role="persons" EntitySet="persons" />
     </AssociationSet>
     <AssociationSet Name="FK_persons_orders" Association="Self.FK_persons_orders">
       <End Role="orders" EntitySet="orders" />

@@ -54,20 +54,17 @@
 
                 <TextBox 
                     Margin="0,0,0,14"
-                    Height="30"
                     x:Name="BaseNameTextBox"
                     Tag="Имя базы данных"
                     Text="Booking_Base"/>
 
                 <TextBox 
                     Margin="0,0,0,14"
-                    Height="30"
                     x:Name="LoginTextBox"
                     Tag="Логин"/>
 
                 <Grid Margin="0,0,0,14">
-                    <TextBox 
-                        Height="30"
+                    <TextBox
                         x:Name="PasswordTextBox"
                         Tag="Пароль"
                         Text=""/>
@@ -77,11 +74,10 @@
                         x:Name="PasswordPasswordBox"
                         Visibility="Visible"
                         Tag="Пароль"
-                        PasswordChanged="PasswordBox_PasswordChanged"
-                        Height="30"/>
+                        PasswordChanged="PasswordBox_PasswordChanged"/>
 
                     <CheckBox
-                        Style="{StaticResource EyeToggleButton}"
+                        Style="{StaticResource HidePasswordToggleButton}"
                         Click="PasswordCheckBox_Click"
                         x:Name="PasswordCheckBox"
                         HorizontalAlignment="Right"
@@ -91,7 +87,7 @@
 
 
                 <Button
-                    Style="{StaticResource AuthorizationButton}"
+                    Style="{StaticResource AcceptButton}"
                     x:Name="CheckConnectionButton"
                     Content="Подключить соединение"
                     Click="CheckConnectionButton_Click"
@@ -107,7 +103,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Button 
-                        Style="{StaticResource RegistrationButton}"
+                        Style="{StaticResource AnotherActionButton}"
                         x:Name="AuthorizationButton"
                         Content="Авторизация"
                         Click="AuthorizationButton_Click"
@@ -115,7 +111,7 @@
                         Margin="0,0,7,0"/>
 
                     <Button 
-                        Style="{StaticResource CloseButton}"
+                        Style="{StaticResource CancelButton}"
                         x:Name="CloseButton"
                         Content="Закрыть"
                         Click="CloseButton_Click"

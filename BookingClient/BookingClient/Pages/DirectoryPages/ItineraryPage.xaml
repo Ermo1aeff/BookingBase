@@ -132,7 +132,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Button 
-                    Style="{StaticResource RecordCommitButton}"
+                    Style="{StaticResource AcceptButton}"
                     x:Name="CommitChangeRecordsButton"
                     Grid.Column="0"
                     Content="Принять"
@@ -141,7 +141,7 @@
 
                 <Button
                     x:Name="RollbackChangeRecordsButton"
-                    Style="{StaticResource RecordCancelButton}"
+                    Style="{StaticResource CancelButton}"
                     Grid.Column="1"
                     Content="Отменить"
                     Margin="5,0,0,0"

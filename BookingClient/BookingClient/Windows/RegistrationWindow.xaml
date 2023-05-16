@@ -81,7 +81,7 @@
                         />
 
                     <CheckBox
-                        Style="{StaticResource BaseToggleButton}"
+                        Style="{StaticResource HidePasswordToggleButton}"
                         Click="PasswordCheckBox_Click"
                         x:Name="PasswordCheckBox"
                         Width="30"
@@ -104,7 +104,7 @@
                         />
 
                     <CheckBox
-                        Style="{StaticResource BaseToggleButton}"
+                        Style="{StaticResource HidePasswordToggleButton}"
                         x:Name="ConfirmPasswordCheckBox"
                         Click="ConfirmPasswordCheckBox_Click"
                         Width="30"
@@ -156,7 +156,7 @@
 
                 <Button 
                     Height="30"
-                    Style="{StaticResource AuthorizationButton}"
+                    Style="{StaticResource AcceptButton}"
                     x:Name="AutorizationButton"
                     Content="Зарегистрироваться"
                     Click="AutorizationButton_Click"
@@ -172,7 +172,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Button 
-                        Style="{StaticResource RegistrationButton}"
+                        Style="{StaticResource AnotherActionButton}"
                         x:Name="RegistrationButton"
                         Content="Авторизация"
                         Click="RegistrationButton_Click"
@@ -180,7 +180,7 @@
                         Margin="0,0,7,0"/>
 
                     <Button 
-                        Style="{StaticResource CloseButton}"
+                        Style="{StaticResource CancelButton}"
                         x:Name="CloseButton"
                         Content="Закрыть"
                         Click="CloseButton_Click"
