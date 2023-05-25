@@ -7,15 +7,16 @@
     
     <Application.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Colors.xaml"/>
-                <ResourceDictionary Source="Resources/Styles/ComponentStyles.xaml"/>
-                <ResourceDictionary Source="Resources/Styles/СomplexComponentStyle.xaml"/>
-                <ResourceDictionary Source="Resources/Geometries.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-
+            <FontFamily x:Key="InterMedium">pack://application:,,,/Fonts/#Inter Medium</FontFamily>
             <FontFamily x:Key="SourceCodeProRegular">pack://application:,,,/Fonts/#Source Code Pro Regular</FontFamily>
             <FontFamily x:Key="SourceCodeProSemiBold">pack://application:,,,/Fonts/#Source Code Pro SemiBold</FontFamily>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Colors.xaml"/>
+                <ResourceDictionary Source="Resources/Geometries.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/ComponentStyles.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/СomplexComponentStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

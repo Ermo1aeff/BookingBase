@@ -16,7 +16,9 @@ namespace BookingClient.Models
     {
         public int grade_id { get; set; }
         public Nullable<int> tour_id { get; set; }
+        public Nullable<int> account_id { get; set; }
     
+        public virtual accounts accounts { get; set; }
         public virtual tours tours { get; set; }
     }
 }

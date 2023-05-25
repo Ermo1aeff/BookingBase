@@ -28,7 +28,7 @@
                 />
             <Button 
                 x:Name="DeparturesButton"
-                Content="Рассписание туров" 
+                Content="Расписание туров" 
                 Click="DeparturesButton_Click" 
                 />
             <Button

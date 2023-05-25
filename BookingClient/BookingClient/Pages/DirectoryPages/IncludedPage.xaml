@@ -61,6 +61,7 @@
             </DockPanel>
 
             <DataGrid
+                ScrollViewer.CanContentScroll="False"
                 IsReadOnly="True"
                 x:Name="RecordsDataGrid"
                 Grid.Row="1"

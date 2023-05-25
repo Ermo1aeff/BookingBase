@@ -49,7 +49,7 @@ namespace BookingClient.Pages
                 {
                     int imgcnt = 0;
                     foreach (string filename in opndlgfl.FileNames)
-                    {
+                    {           
                         ImageSourceConverter isc = new ImageSourceConverter();
 
                         FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);

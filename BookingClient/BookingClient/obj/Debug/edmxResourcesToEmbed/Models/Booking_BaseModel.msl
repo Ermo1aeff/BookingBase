@@ -65,6 +65,7 @@
         <MappingFragment StoreEntitySet="grades">
           <ScalarProperty Name="grade_id" ColumnName="grade_id" />
           <ScalarProperty Name="tour_id" ColumnName="tour_id" />
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -199,7 +200,6 @@
           <ScalarProperty Name="max_group_size" ColumnName="max_group_size" />
           <ScalarProperty Name="min_age" ColumnName="min_age" />
           <ScalarProperty Name="max_age" ColumnName="max_age" />
-          <ScalarProperty Name="drade" ColumnName="drade" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

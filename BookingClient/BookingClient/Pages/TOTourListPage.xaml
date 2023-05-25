@@ -6,25 +6,96 @@
       xmlns:local="clr-namespace:BookingClient.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="570" d:DesignWidth="860"
-      Title="TOTourListPage">
+      Title="TOTourListPage"
+      Language="ru">
 
     <Page.Resources>
-        <DataTemplate x:Key="listTemplate">
-            <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Label 
-                    HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    FontSize="20" 
-                    Content="{Binding Path=date_begin}"
-                    ContentStringFormat="dd.MM.yyyy">
-                    <Label.Style>
-                        <Style TargetType="Label">
+        <local:DateEndConverter x:Key="DateEndConverter"/>
+        <local:PersonCountConverter x:Key="PersonCountConverter"/>
 
-                        </Style>
-                    </Label.Style>
-                </Label>
+        <DataTemplate x:Key="PersonDataTemplate">
+            <Border CornerRadius="20" Width="126" Height="113">
+                <Grid>
+                    <Label 
+                        FontFamily="{StaticResource InterMedium}"
+                        FontSize="16" 
+                        VerticalContentAlignment="Top"
+                        HorizontalContentAlignment="Left"
+                        Padding="15,12,0,0"
+                        Content="{Binding order_id}"
+                        ContentStringFormat="№{0}"/>
 
-            </Grid>
+                    <StackPanel
+                        Margin="0,0,0,11"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Center">
+
+                        <TextBlock
+                            FontFamily="{StaticResource InterMedium}"
+                            FontSize="12"
+                            Text="{Binding order_id, Converter={StaticResource PersonCountConverter}}"
+                            Margin="0,0,0,6"/>
+
+                        <TextBlock
+                            FontFamily="{StaticResource InterMedium}"
+                            FontSize="12"
+                            Text="{Binding contact_phone, StringFormat={}# (###) ###-##-##}"/>
+
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="DeparturesDataTemplate">
+            <Border 
+                CornerRadius="18"
+                Width="393"
+                Height="68">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel
+                        Grid.Column="0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+
+                        <TextBlock
+                            Text="{Binding date_begin, StringFormat=dddd}"
+                            FontSize="12"
+                            FontFamily="{StaticResource InterMedium}"
+                            />
+
+                        <TextBlock
+                            Text="{Binding date_begin, StringFormat=d MMMM yyyy}"
+                            FontSize="16"
+                            FontFamily="{StaticResource InterMedium}"
+                            />
+
+                    </StackPanel>
+
+                    <StackPanel
+                        Grid.Column="2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+
+                        <TextBlock
+                            Text="{Binding departure_id, StringFormat=dddd, Converter={StaticResource DateEndConverter}, Mode=OneWay}"
+                            FontSize="12"
+                            FontFamily="{StaticResource InterMedium}"
+                            />
+                        <TextBlock
+                            Text="{Binding departure_id, StringFormat=d MMMM yyyy, Converter={StaticResource DateEndConverter}, Mode=OneWay}"
+                            FontSize="16"
+                            FontFamily="{StaticResource InterMedium}"
+                            />
+
+                    </StackPanel>
+                </Grid>
+            </Border>
         </DataTemplate>
     </Page.Resources>
 
@@ -41,24 +112,31 @@
                     <RowDefinition Height="100"/>
                 </Grid.RowDefinitions>
 
+                <Grid Grid.Column="0">
+                    <ListBox 
+                        Grid.Row="0"
+                        x:Name="DeparturesListBox"
+                        Margin="7,18,7,0"
+                        Style="{StaticResource DeparturesListBox}"
+                        ItemTemplate="{StaticResource DeparturesDataTemplate}">
+                        <ListBox.Resources>
+                            <Style TargetType="ScrollBar" BasedOn="{StaticResource DarkScrollBar}"/>
+                            <Style TargetType="ListBoxItem" BasedOn="{StaticResource DeparturesListBoxItem}"/>
+                        </ListBox.Resources>
+                    </ListBox>
+                </Grid>
+
                 <Border 
                     Grid.Row="1" 
                     Background="#D1D0D0" 
                     CornerRadius="20" 
                     Margin="3,18,3,3">
 
-                    <!--<Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="auto"/>
-                        </Grid.ColumnDefinitions>
-                    </Grid>-->
-
                     <DockPanel>
                         <Button 
                             Width="110"
                             Height="37"
-                            Style="{StaticResource AcceptButton}"
+                            Style="{StaticResource RecordCommitButton}"
                             Content="Вернуться"
                             Margin="16,0,0,0"/>
 
@@ -66,22 +144,21 @@
                             Orientation="Horizontal" 
                             HorizontalAlignment="Right"
                             Margin="0,0,16,0">
+
                             <Button 
                                 Width="110"
                                 Height="37"
-                                Style="{StaticResource AcceptButton}"
+                                Style="{StaticResource RecordAnotherActionButton}"
                                 Content="Добавить"
                                 Margin="0,0,12,0"/>
 
                             <Button 
                                 Width="110"
                                 Height="37"
-                                Style="{StaticResource AcceptButton}"
+                                Style="{StaticResource RecordCancelButton}"
                                 Content="Удалить"/>
                         </StackPanel>
                     </DockPanel>
-
-                    
                 </Border>
             </Grid>
 
@@ -89,85 +166,75 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="96"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
+                <DataGrid
+                    x:Name="PersonsDataGrid"
+                    Grid.Row="1"
+                    Margin="14"
+                    IsReadOnly="True"
+                    AutoGenerateColumns="False"
+                    CanUserAddRows="true"
+                    ItemsSource="{Binding ElementName=OrdersListBox, Path=SelectedItem.persons}"
+                    >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Фамилия" Binding="{Binding last_names.last_name}" Width="10*"/>
+                        <DataGridTextColumn Header="Имя" Binding="{Binding first_names.first_name}" Width="10*"/>
+                        <!--<DataGridTextColumn Header="Номер паспорта" Binding="{Binding passport}" Width="100"/>-->
+                        <DataGridTextColumn Header="Дата рождения" Binding="{Binding birthday, StringFormat=dd.MM.yyyy}" Width="100"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
                 <ListBox 
-                    Margin="14,18,14,14"
+                    ItemsSource="{Binding ElementName=DeparturesListBox, Path=SelectedItem.orders}"
                     Grid.Row="0"
-                    BorderThickness="0"
-                    ItemTemplate="{StaticResource listTemplate}"
-                    x:Name="DepartureListBox"
-                    Background="Transparent"
-                    ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                    ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                    <ListBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel/>
-                        </ItemsPanelTemplate>
-                    </ListBox.ItemsPanel>
-                    <ListBox.ItemContainerStyle>
-                        <Style TargetType="{x:Type ListBoxItem}">
-                            <Setter Property="Margin" Value="0,0,12,14"/>
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                        <Border 
-                                            CornerRadius="20" 
-                                            Background="#DDDDDD" 
-                                            Width="125" Height="113" 
-                                            x:Name="PART_Border">
-                                            <ContentPresenter/>
-                                        </Border>
-                                        <ControlTemplate.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter TargetName="PART_Border" Property="Background" Value="LightGreen"/>
-                                            </Trigger>
-                                            <Trigger Property="IsSelected" Value="True">
-                                                <Setter TargetName="PART_Border" Property="Background" Value="#68ee68"/>
-                                            </Trigger>
-                                        </ControlTemplate.Triggers>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </ListBox.ItemContainerStyle>
+                    x:Name="OrdersListBox"
+                    Margin="14,18,14,0"
+                    Style="{StaticResource OrderListBox}"
+                    ItemTemplate="{StaticResource PersonDataTemplate}"
+                    ScrollViewer.PreviewMouseWheel="OrderListBox_PreviewMouseWheel">
+                    <ListBox.Resources>
+                        <Style TargetType="ScrollBar" BasedOn="{StaticResource LightScrollBar}"/>
+                        <Style TargetType="ListBoxItem" BasedOn="{StaticResource OrderListBoxItem}"/>
+                    </ListBox.Resources>
                 </ListBox>
 
                 <Border 
                     Grid.Row="2" 
                     Background="#DDDDDD" 
                     CornerRadius="20" 
-                    Margin="3,14,3,3">
+                    Margin="3,14,3,3"
+                    Height="79"
+                    >
 
-                    <StackPanel Orientation="Horizontal">
+                    <DockPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontFamily="{StaticResource InterMedium}"
+                                FontSize="16"
+                                Text="Стоимость: "
+                                Margin="16,0,0,0"/>
+
+                            <TextBlock
+                                Text="{Binding ElementName=OrdersListBox, Path=SelectedItem.price, StringFormat={}{0:C}}"
+                                Language="ru"
+                                VerticalAlignment="Center"
+                                FontFamily="{StaticResource InterMedium}"
+                                FontSize="16"/>
+
+                        
+                        </StackPanel>
                         <Button 
-                            Width="110"
-                            Height="37"
-                            Style="{StaticResource AcceptButton}"
-                            Content="Вернуться"
                             Background="#CACACA"
-                            Margin="16,0,0,0"/>
-
-                        <Button 
-                            Width="110"
+                            HorizontalAlignment="Right"
+                            Margin="0,0,16,0"
+                            Width="165"
                             Height="37"
-                            Style="{StaticResource AcceptButton}"
-                            Content="Добавить"
-                            Margin="16,0,0,0"
-                            Background="#CACACA"
-                            />
-
-                        <Button 
-                            Width="110"
-                            Height="37"
-                            Style="{StaticResource AcceptButton}"
-                            Content="Добавить"
-                            Margin="16,0,0,0"
-                            Background="#CACACA"
-                            />
-                    </StackPanel>
-
+                            Style="{StaticResource RecordCommitButton}"
+                            Content="Составить отчёт"/>
+                    </DockPanel>
 
                 </Border>
             </Grid>

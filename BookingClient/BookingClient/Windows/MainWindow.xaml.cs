@@ -60,7 +60,23 @@ namespace BookingClient
             TitleCaption.Text = Title;
 
             accounts AccountProfile = SourceCore.entities.accounts.SingleOrDefault(U => U.account_id.ToString() == AccountId);
-            AccountCaptionButton.Content = AccountProfile != null ? AccountProfile.first_names.first_name + " " + AccountProfile.last_names.last_name : "Не удалось найти данные пользователя";
+
+
+            if (AccountProfile != null)
+            {
+                if (AccountProfile.last_names == null)
+                {
+                    AccountCaptionButton.Content = AccountProfile.first_names.first_name;
+                }
+                else
+                {
+                    AccountCaptionButton.Content = $"{AccountProfile.first_names.first_name} {AccountProfile.last_names.last_name}";
+                }
+            } 
+            else
+            {
+                AccountCaptionButton.Content = "Не удалось найти данные пользователя";
+            }
 
             switch (AccountProfile.role_id)
             {
@@ -133,9 +149,11 @@ namespace BookingClient
 
         private void AccountCaptionButtonClick(object sender, RoutedEventArgs e)
         {
-            Window AuthorizationWin = new AuthorizationWindow();
-            Close();
-            AuthorizationWin.Show();
+            RootFrame.Navigate(new ProfilePage());
+
+            //Window AuthorizationWin = new AuthorizationWindow();
+            //Close();
+            //AuthorizationWin.Show();
         }
 
         private void NewTourButton_Click(object sender, RoutedEventArgs e)

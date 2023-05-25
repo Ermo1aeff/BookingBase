@@ -75,29 +75,25 @@
                                     Style="{StaticResource TextTitleBarButton}"
                                     x:Name="CreateOrderButton"
                                     Content="Создать заказ"
-                                    Click="CreateOrderButton_Click"
-                                    WindowChrome.IsHitTestVisibleInChrome="True"/>
+                                    Click="CreateOrderButton_Click"/>
 
                                 <Button
                                     Style="{StaticResource TextTitleBarButton}"
                                     x:Name="NewTourButton"
                                     Content="Создать тур"
-                                    Click="NewTourButton_Click"
-                                    WindowChrome.IsHitTestVisibleInChrome="True"/>
+                                    Click="NewTourButton_Click"/>
 
                                 <Button
                                     Style="{StaticResource TextTitleBarButton}"
                                     x:Name="TourListButton"
                                     Content="Список туров"
-                                    Click="TourListButton_Click"
-                                    WindowChrome.IsHitTestVisibleInChrome="True"/>
+                                    Click="TourListButton_Click"/>
 
                                 <Button
                                     Style="{StaticResource TextTitleBarButton}"
                                     x:Name="DirectoryButton"
                                     Content="Справочник"
-                                    Click="DirectoryButton_Click"
-                                    WindowChrome.IsHitTestVisibleInChrome="True"/>
+                                    Click="DirectoryButton_Click"/>
                             </DockPanel>
                         </Grid>
 
@@ -122,6 +118,7 @@
                                 WindowChrome.IsHitTestVisibleInChrome="True">
                                 
                                 <MenuItem 
+                                    Visibility="Collapsed"
                                     Header="Имя Фамилия"
                                     Background="{StaticResource BackgroundMainColor}"
                                     Foreground="{StaticResource ForegroundLightColor}"
@@ -162,47 +159,38 @@
                             <Button
                                 x:Name="MinButton"
                                 Style="{StaticResource PathTitleBarButton}"
-                                Click="MinButtonClick"
-                                WindowChrome.IsHitTestVisibleInChrome="True"
-                                VerticalContentAlignment="Center">
+                                Click="MinButtonClick">
 
                                 <Path 
                                     Width="15"
                                     Stroke="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Center"
                                     StrokeThickness="1.2"
                                     RenderOptions.EdgeMode="Unspecified"
-                                    Stretch="None"
                                     Data="M1,1 L14,1"/>
                             </Button>
 
                             <Button
                                 x:Name="MaxButton" 
                                 Style="{StaticResource PathTitleBarButton}"
-                                Click="MaxButtonClick"
-                                WindowChrome.IsHitTestVisibleInChrome="True">
+                                Click="MaxButtonClick">
 
                                 <Path 
                                     Height="13" Width="13"
                                     x:Name="PART_MaxButton_Path"
                                     Stroke="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"
                                     StrokeThickness="1.2"
-                                    Stretch="None"
                                     Data="M1,1 L12,1 L12,12 L1,12 Z"/>
                             </Button>
 
                             <Button
                                 Style="{StaticResource TitleBarCloseButton}"
                                 x:Name="CloseButton"
-                                Click="CloseButtonClick"
-                                WindowChrome.IsHitTestVisibleInChrome="True">
+                                Click="CloseButtonClick">
 
                                 <Path 
                                     Height="12" Width="12"
                                     Stroke="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"
                                     StrokeThickness="1.4"
-                                    Stretch="None"
                                     Data="M0,12 L12,0 M12,12 L0,0"/>
                             </Button>
                         </StackPanel>
@@ -231,7 +219,7 @@
                     Source="pack://application:,,,/Images/Tour booking Serviсe.png"/>
             </Grid>
 
-            <Frame x:Name="RootFrame" Grid.Row="1" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2" LoadCompleted="RootFrame_LoadCompleted" />
+            <Frame x:Name="RootFrame" Grid.Row="1" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2" LoadCompleted="RootFrame_LoadCompleted" Focusable="False"/>
         </Grid>
     </Border>
 

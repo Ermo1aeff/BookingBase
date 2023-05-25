@@ -59,6 +59,7 @@
     </Key>
     <Property Name="grade_id" Type="int" Nullable="false" />
     <Property Name="tour_id" Type="int" />
+    <Property Name="account_id" Type="int" />
   </EntityType>
   <EntityType Name="images">
     <Key>
@@ -180,7 +181,6 @@
     <Property Name="max_group_size" Type="int" />
     <Property Name="min_age" Type="int" />
     <Property Name="max_age" Type="int" />
-    <Property Name="drade" Type="int" />
   </EntityType>
   <EntityType Name="wish_lists">
     <Key>
@@ -283,6 +283,18 @@
       </Principal>
       <Dependent Role="discounts">
         <PropertyRef Name="tour_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_grades_accounts">
+    <End Role="accounts" Type="Self.accounts" Multiplicity="0..1" />
+    <End Role="grades" Type="Self.grades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="accounts">
+        <PropertyRef Name="account_id" />
+      </Principal>
+      <Dependent Role="grades">
+        <PropertyRef Name="account_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -531,6 +543,10 @@
     <AssociationSet Name="FK_discounts_tours" Association="Self.FK_discounts_tours">
       <End Role="tours" EntitySet="tours" />
       <End Role="discounts" EntitySet="discounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_grades_accounts" Association="Self.FK_grades_accounts">
+      <End Role="accounts" EntitySet="accounts" />
+      <End Role="grades" EntitySet="grades" />
     </AssociationSet>
     <AssociationSet Name="FK_grades_tours" Association="Self.FK_grades_tours">
       <End Role="tours" EntitySet="tours" />

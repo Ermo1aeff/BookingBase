@@ -175,6 +175,9 @@
     <Compile Include="Pages\NewTourPages\NewTourPage.xaml.cs">
       <DependentUpon>NewTourPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ProfilePage.xaml.cs">
+      <DependentUpon>ProfilePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\TOTourListPage.xaml.cs">
       <DependentUpon>TOTourListPage.xaml</DependentUpon>
     </Compile>
@@ -241,6 +244,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\NewTourPages\NewTourPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -373,6 +380,7 @@
     </EmbeddedResource>
     <Resource Include="Fonts\SourceCodePro-Regular.ttf" />
     <Resource Include="Fonts\SourceCodePro-SemiBold.ttf" />
+    <Resource Include="Fonts\Inter-Medium.ttf" />
     <EntityDeploy Include="Models\Booking_BaseModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Booking_BaseModel.Designer.cs</LastGenOutput>
@@ -417,6 +425,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\image 2.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Models\Booking_BaseModel.Context.tt">

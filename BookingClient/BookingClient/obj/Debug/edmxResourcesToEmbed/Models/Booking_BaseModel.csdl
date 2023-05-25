@@ -16,6 +16,7 @@
     <NavigationProperty Name="first_names" Relationship="Self.FK_accounts_first_names" FromRole="accounts" ToRole="first_names" />
     <NavigationProperty Name="last_names" Relationship="Self.FK_accounts_last_names" FromRole="accounts" ToRole="last_names" />
     <NavigationProperty Name="roles" Relationship="Self.FK_accounts_roles" FromRole="accounts" ToRole="roles" />
+    <NavigationProperty Name="grades" Relationship="Self.FK_grades_accounts" FromRole="accounts" ToRole="grades" />
     <NavigationProperty Name="wish_lists" Relationship="Self.FK_wish_lists_accounts" FromRole="accounts" ToRole="wish_lists" />
   </EntityType>
   <EntityType Name="cities">
@@ -73,6 +74,8 @@
     </Key>
     <Property Name="grade_id" Type="Int32" Nullable="false" />
     <Property Name="tour_id" Type="Int32" />
+    <Property Name="account_id" Type="Int32" />
+    <NavigationProperty Name="accounts" Relationship="Self.FK_grades_accounts" FromRole="grades" ToRole="accounts" />
     <NavigationProperty Name="tours" Relationship="Self.FK_grades_tours" FromRole="grades" ToRole="tours" />
   </EntityType>
   <EntityType Name="images">
@@ -215,7 +218,6 @@
     <Property Name="max_group_size" Type="Int32" />
     <Property Name="min_age" Type="Int32" />
     <Property Name="max_age" Type="Int32" />
-    <Property Name="drade" Type="Int32" />
     <NavigationProperty Name="cities" Relationship="Self.FK_tours_cities" FromRole="tours" ToRole="cities" />
     <NavigationProperty Name="cities1" Relationship="Self.FK_tours_cities1" FromRole="tours" ToRole="cities" />
     <NavigationProperty Name="departures" Relationship="Self.FK_departures_tours" FromRole="tours" ToRole="departures" />
@@ -283,6 +285,18 @@
       </Principal>
       <Dependent Role="accounts">
         <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_grades_accounts">
+    <End Role="accounts" Type="Self.accounts" Multiplicity="0..1" />
+    <End Role="grades" Type="Self.grades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="accounts">
+        <PropertyRef Name="account_id" />
+      </Principal>
+      <Dependent Role="grades">
+        <PropertyRef Name="account_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -563,6 +577,10 @@
     <AssociationSet Name="FK_accounts_roles" Association="Self.FK_accounts_roles">
       <End Role="roles" EntitySet="roles" />
       <End Role="accounts" EntitySet="accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_grades_accounts" Association="Self.FK_grades_accounts">
+      <End Role="accounts" EntitySet="accounts" />
+      <End Role="grades" EntitySet="grades" />
     </AssociationSet>
     <AssociationSet Name="FK_wish_lists_accounts" Association="Self.FK_wish_lists_accounts">
       <End Role="accounts" EntitySet="accounts" />

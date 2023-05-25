@@ -142,7 +142,8 @@
             x:Name="TourListBox"
             ItemTemplate="{StaticResource listTemplate}"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-            ScrollViewer.VerticalScrollBarVisibility="Auto">
+            ScrollViewer.VerticalScrollBarVisibility="Auto"
+            ScrollViewer.CanContentScroll="False">
 
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>

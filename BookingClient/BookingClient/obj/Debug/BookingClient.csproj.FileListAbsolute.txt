@@ -420,3 +420,6 @@ C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClie
 C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.csproj.CopyComplete
 C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.exe
 C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\BookingClient.pdb
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\ProfilePage.g.cs
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\ProfilePage.baml

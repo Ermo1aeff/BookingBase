@@ -38,7 +38,6 @@ namespace BookingClient.Models
         public Nullable<int> max_group_size { get; set; }
         public Nullable<int> min_age { get; set; }
         public Nullable<int> max_age { get; set; }
-        public Nullable<int> drade { get; set; }
     
         public virtual cities cities { get; set; }
         public virtual cities cities1 { get; set; }

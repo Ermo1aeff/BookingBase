@@ -18,6 +18,7 @@ namespace BookingClient.Models
         public accounts()
         {
             this.tour_lists = new HashSet<tour_lists>();
+            this.grades = new HashSet<grades>();
             this.wish_lists = new HashSet<wish_lists>();
         }
     
@@ -35,6 +36,8 @@ namespace BookingClient.Models
         public virtual first_names first_names { get; set; }
         public virtual last_names last_names { get; set; }
         public virtual roles roles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<grades> grades { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<wish_lists> wish_lists { get; set; }
     }

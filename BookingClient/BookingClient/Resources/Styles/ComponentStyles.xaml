@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <FontFamily x:Key="InterMedium">pack://application:,,,/Fonts/#Inter Medium</FontFamily>
 
     <!--===================Кнопки===========================-->
 
@@ -83,17 +84,94 @@
     </Style>
 
     <!--Кнопки принятия или отмены комита-->
+    
+    <!--Светлый фон-->
     <Style TargetType="Button" x:Key="RecordCommitButton" BasedOn="{StaticResource AcceptButton}">
-        <Setter Property="Border.CornerRadius" Value="0,0,0,12" />
+        <Setter Property="FontFamily" Value="{StaticResource InterMedium}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Border.CornerRadius" Value="18" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#66C04F"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="#53B03C"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <Style TargetType="Button" x:Key="RecordCancelButton" BasedOn="{StaticResource CancelButton}">
-        <Setter Property="Border.CornerRadius" Value="0,0,0,12" />
+        <Setter Property="FontFamily" Value="{StaticResource InterMedium}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Border.CornerRadius" Value="18" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#EE6581"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="#E15368"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <Style TargetType="Button" x:Key="RecordAnotherActionButton" BasedOn="{StaticResource AnotherActionButton}">
-        <Setter Property="Border.CornerRadius" Value="0,0,0,12" />
+        <Setter Property="FontFamily" Value="{StaticResource InterMedium}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Border.CornerRadius" Value="18" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#54BEFF"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="#00A0D6"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
+    
+    <!--Темный фон-->
+    <!--<Style TargetType="Button" x:Key="RecordCommitButton" BasedOn="{StaticResource RecordCommitButton}">
+        <Setter Property="FontFamily" Value="{StaticResource InterMedium}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Border.CornerRadius" Value="18" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#66C04F"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="#53B03C"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="Button" x:Key="RecordCancelButton" BasedOn="{StaticResource RecordCancelButton}">
+        <Setter Property="FontFamily" Value="{StaticResource InterMedium}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Border.CornerRadius" Value="18" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#EE6581"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="#E15368"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="Button" x:Key="RecordAnotherActionButton" BasedOn="{StaticResource RecordAnotherActionButton}">
+        <Setter Property="FontFamily" Value="{StaticResource InterMedium}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Border.CornerRadius" Value="18" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#54BEFF"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="#00A0D6"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>-->
+
+
 
     <!--Кнопки с иконками для справочника (в будующем)-->
     <Style TargetType="Button" x:Key="RecordsMenuButton" BasedOn="{StaticResource BaseButton}">
@@ -116,6 +194,8 @@
 
     <!--Title Bar Button-->
     <Style TargetType="Button" x:Key="TitleBarButton" BasedOn="{StaticResource BaseButton}">
+        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
+        <Setter Property="Focusable" Value="False"/>
         <Setter Property="Background" Value="{StaticResource BackgroundMainColor}"/>
         <Setter Property="Foreground" Value="{StaticResource ForegroundLightColor}"/>
 
@@ -516,51 +596,6 @@
 
     <!--=================Скролбары=====================-->
 
-    <!--Стиль кнопок прокрутки-->
-    <Style x:Key="ScrollBarLineButton" TargetType="{x:Type RepeatButton}">
-        <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="OverridesDefaultStyle" Value="true" />
-        <Setter Property="Focusable" Value="false" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type RepeatButton}">
-                    <Border x:Name="Border"
-                        Margin="1"
-                        CornerRadius="10"
-                        Background="#DDDDDD">
-
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal" />
-                                <VisualState x:Name="MouseOver" />
-                                <VisualState x:Name="Pressed">
-                                    <Storyboard>
-                                        <ColorAnimationUsingKeyFrames 
-                                            Storyboard.TargetName="Border"
-                                            Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="#A2D2DE" />
-                                        </ColorAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
-
-                        <Path 
-                            x:Name="Arrow"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Data="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}" >
-
-                            <Path.Fill>
-                                <SolidColorBrush Color="Black"/>
-                            </Path.Fill>
-                        </Path>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
     <!--Какой-то RepeatButton-->
     <Style x:Key="ScrollBarPageButton" TargetType="{x:Type RepeatButton}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -633,52 +668,80 @@
         </Setter>
     </Style>
 
-    <!--Стиль вертикального скролбара-->
-    <ControlTemplate x:Key="VerticalScrollBar" TargetType="{x:Type ScrollBar}">
+    <!--Стили вертикального скролбара -->
+
+    <!--Cветлый фон-->
+    <ControlTemplate x:Key="LightVerticalScrollBar" TargetType="{x:Type ScrollBar}">
         <Grid>
             <Border 
                 CornerRadius="8"
-                Background="#D1D0D0" />
-
+                Background="#DDDDDD" />
             <Track 
                 x:Name="PART_Track"
-                Grid.Row="1"
                 IsDirectionReversed="true">
-
                 <Track.Thumb>
                     <Thumb
-                        Style="{StaticResource ScrollBarThumb}"
-                        Background="#CACACA">
+                        Style="{StaticResource ScrollBarThumb}">
                     </Thumb>
                 </Track.Thumb>
             </Track>
         </Grid>
     </ControlTemplate>
 
-    <!--Стиль горизонтального скролбара-->
-    <ControlTemplate x:Key="HorizontalScrollBar" TargetType="{x:Type ScrollBar}">
+    <!--Темный фон-->
+    <ControlTemplate x:Key="DarkVerticalScrollBar" TargetType="{x:Type ScrollBar}">
         <Grid>
             <Border 
                 CornerRadius="8"
                 Background="#CACACA" />
-
             <Track 
                 x:Name="PART_Track"
-                Grid.Column="1"
-                IsDirectionReversed="False">
-
+                IsDirectionReversed="true">
                 <Track.Thumb>
-                    <Thumb 
-                        Style="{StaticResource ScrollBarThumb}" 
-                        Background="#CACACA">
-                    </Thumb>
+                    <Thumb Style="{StaticResource ScrollBarThumb}"/>
+                </Track.Thumb>
+            </Track>
+        </Grid>
+    </ControlTemplate>
+
+    <!--Стили горизонтального скролбара-->
+
+    <!--Cветлый фон-->
+    <ControlTemplate x:Key="LightHorizontalScrollBar" TargetType="{x:Type ScrollBar}">
+        <Grid>
+            <Border 
+                CornerRadius="8"
+                Background="#DDDDDD" />
+            <Track 
+                x:Name="PART_Track"
+                IsDirectionReversed="False">
+                <Track.Thumb>
+                    <Thumb Style="{StaticResource ScrollBarThumb}" />
+                </Track.Thumb>
+            </Track>
+        </Grid>
+    </ControlTemplate>
+    
+    <!--Темный фон-->
+    <ControlTemplate x:Key="DarkHorizontalScrollBar" TargetType="{x:Type ScrollBar}">
+        <Grid>
+            <Border 
+                CornerRadius="8"
+                Background="#CACACA" />
+            <Track 
+                x:Name="PART_Track"
+                IsDirectionReversed="False">
+                <Track.Thumb>
+                    <Thumb Style="{StaticResource ScrollBarThumb}"/>
                 </Track.Thumb>
             </Track>
         </Grid>
     </ControlTemplate>
 
     <!--Общий стиль скролбара-->
-    <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+    
+    <!--Светлый фон-->
+    <Style x:Key="LightScrollBar" TargetType="{x:Type ScrollBar}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="ViewportSize" Value="2" />
@@ -688,14 +751,266 @@
             <Trigger Property="Orientation" Value="Horizontal">
                 <Setter Property="Width" Value="Auto" />
                 <Setter Property="Height" Value="16" />
-                <Setter Property="Template" Value="{StaticResource HorizontalScrollBar}" />
+                <Setter Property="Template" Value="{StaticResource LightHorizontalScrollBar}" />
             </Trigger>
             <Trigger Property="Orientation" Value="Vertical">
                 <Setter Property="Width" Value="16" />
                 <Setter Property="Height" Value="Auto" />
-                <Setter Property="Template" Value="{StaticResource VerticalScrollBar}" />
+                <Setter Property="Template" Value="{StaticResource LightVerticalScrollBar}" />
             </Trigger>
         </Style.Triggers>
     </Style>
+
+    <!--Темняй фон-->
+    <Style x:Key="DarkScrollBar" TargetType="{x:Type ScrollBar}">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="ViewportSize" Value="2" />
+        <Setter Property="Minimum" Value="0" />
+        <Setter Property="Maximum" Value="10" />
+        <Style.Triggers>
+            <Trigger Property="Orientation" Value="Horizontal">
+                <Setter Property="Width" Value="Auto" />
+                <Setter Property="Height" Value="16" />
+                <Setter Property="Template" Value="{StaticResource DarkHorizontalScrollBar}" />
+            </Trigger>
+            <Trigger Property="Orientation" Value="Vertical">
+                <Setter Property="Width" Value="16" />
+                <Setter Property="Height" Value="Auto" />
+                <Setter Property="Template" Value="{StaticResource DarkVerticalScrollBar}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    
+    <!--=====================Лист бокс=================================-->
+    
+    
+    <!--Лист бокс заказов-->
+    <Style x:Key="OrderListBox" TargetType="ListBox">
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBox">
+                    <Grid>
+                        <!--<Grid.OpacityMask>
+                            <VisualBrush Visual="{Binding ElementName=Border}" />
+                        </Grid.OpacityMask>
+                        <Border x:Name="Border" CornerRadius="20,20,0,0" Background="#CACACA"/>-->
+
+                        <ScrollViewer Focusable="false" CanContentScroll="False">
+                            <StackPanel IsItemsHost="True" Orientation="Horizontal" Margin="-6,0,-6,0"/>
+                        </ScrollViewer>
+                    </Grid>
+
+                    <!--<ControlTemplate.Triggers>
+                        <Trigger Property="IsGrouping" Value="true">
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>-->
+                    
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Итем лист бокса заказов-->
+    <Style TargetType="{x:Type ListBoxItem}" x:Key="OrderListBoxItem">
+        <Setter Property="Margin" Value="6,0,6,14"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Grid>
+                        <Border 
+                            CornerRadius="20"
+                            Background="#DDDDDD" 
+                            Width="126" Height="113"
+                            x:Name="PART_Border">
+                            <ContentPresenter/>
+                        </Border>
+                        <Border 
+                            CornerRadius="20" 
+                            Background="Transparent" 
+                            Width="126" Height="113"
+                            x:Name="PART_BorderThicknes"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_BorderThicknes" Property="BorderThickness" Value="1.5"/>
+                            <Setter TargetName="PART_BorderThicknes" Property="BorderBrush" Value="Black"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="PART_Border" Property="Background" Value="#66C04F"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Лист бокс расписания-->
+    <Style x:Key="DeparturesListBox" TargetType="ListBox">
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBox">
+                    <Grid>
+                        <ScrollViewer Margin="0" Focusable="false" CanContentScroll="False">
+                            <StackPanel IsItemsHost="True" Orientation="Vertical" Margin="0,-9,0,-9"/>
+                        </ScrollViewer>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Итем лист бокса расписания-->
+    <Style TargetType="{x:Type ListBoxItem}" x:Key="DeparturesListBoxItem">
+        <Setter Property="Margin" Value="0,9,7,9"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Grid>
+                        <Border 
+                            x:Name="PART_Border"
+                            CornerRadius="18" 
+                            Background="#D1D0D0"
+                            Width="393"
+                            Height="68">
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <ContentPresenter Grid.ColumnSpan="3"/>
+
+                                <Border 
+                                    Grid.Column="1"
+                                    x:Name="PART_ArrowButton"
+                                    CornerRadius="18"
+                                    Background="#9F9F9F"
+                                    Width="60"
+                                    Height="32">
+
+                                    <Path
+                                        Data="{StaticResource PathLongArrow}"
+                                        Width="32"
+                                        Height="32"
+                                        Fill="Black"/>
+                                </Border>
+                            </Grid>
+                        </Border>
+                        <Border
+                            CornerRadius="18" 
+                            Background="Transparent" 
+                            Width="393" Height="68"
+                            x:Name="PART_BorderThicknes"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_BorderThicknes" Property="BorderThickness" Value="1.5"/>
+                            <Setter TargetName="PART_BorderThicknes" Property="BorderBrush" Value="Black"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="PART_Border" Property="Background" Value="#4DA338"/>
+                            <Setter TargetName="PART_ArrowButton" Property="Background" Value="#66C04F"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    
+
+    <!--<Style x:Key="{x:Type ListBoxItem}" TargetType="ListBoxItem">
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border 
+                        CornerRadius="20" 
+                        Background="#DDDDDD" 
+                        Width="126" Height="113" 
+                        BorderThickness="0"
+                        Margin="0"
+                        x:Name="PART_Border"
+                        SnapsToDevicePixels="true">
+                        
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="SelectionStates">
+                                <VisualState x:Name="Unselected" />
+                                <VisualState x:Name="Selected">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource SelectedBackgroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="SelectedUnfocused">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource SelectedUnfocusedColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <ContentPresenter />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+    
+
+    <!--<Style TargetType="{x:Type ListBoxItem}">
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="Margin" Value="0,0,12,14"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Border 
+                        CornerRadius="20" 
+                        Background="#DDDDDD" 
+                        Width="126" Height="113" 
+                        BorderThickness="0"
+                        Margin="0"
+                        x:Name="PART_Border">
+                        <ContentPresenter/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_Border" Property="Background" Value="LightGreen"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="PART_Border" Property="Background" Value="#68ee68"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
 
 </ResourceDictionary>
