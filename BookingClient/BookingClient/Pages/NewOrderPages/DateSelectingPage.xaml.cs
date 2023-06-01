@@ -24,25 +24,11 @@ namespace BookingClient.PagesOnWindow
     {
         private List<byte[]> ImageList = new List<byte[]>();
 
-        public void ThreadProc(int TourId)
-        {
-            ImageList = (
-                from item in SourceCore.entities.images
-                where item.tour_id == TourId
-                select item.img).ToList();
-            Thread.Sleep(0);
-        }
-
         private int ImageIndex = 0;
 
         public DateSelectingPage(int TourId)
         {
             InitializeComponent();
-
-            //Thread t = new Thread(new ThreadStart(() => ThreadProc(TourId)));
-            //t.Start();
-            //t.Join();
-            //TourImage.Source = ToImage(ImageList[ImageIndex]);
 
             ImageList = (
                 from item in SourceCore.entities.images
@@ -90,13 +76,13 @@ namespace BookingClient.PagesOnWindow
 
         private void ForwardButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ImageIndex < ImageList.Count - 1) ImageIndex++;
+            ImageIndex = ImageIndex < ImageList.Count - 1 ? ImageIndex + 1 : 0;
             TourImage.Source = ToImage(ImageList[ImageIndex]);
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ImageIndex > 0) ImageIndex--;
+            ImageIndex = ImageIndex > 0 ? ImageIndex - 1 : ImageList.Count - 1;
             TourImage.Source = ToImage(ImageList[ImageIndex]);
         }
 

@@ -87,7 +87,7 @@ namespace BookingClient
 
                     break;
                 case 3:
-                    DirectoryButton.Visibility = Visibility.Collapsed;
+                    CreateOrderButton.Visibility = Visibility.Collapsed;
                     break;
                 case 4:
                     RootFrame.Navigate(new ListToursPage());

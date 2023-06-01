@@ -29,12 +29,16 @@
                     Style="{StaticResource AddButton}"
                     ToolTip="Добавить"
                     Click="AddRecordButton_Click"
-                    />
+                    Content="У"
+                    >
+                    
+                </Button>
                 <Button
                     x:Name="CopyRecordButton"
                     Style="{StaticResource CopyButton}" 
                     ToolTip="Копировать"
                     Click="CopyRecordButton_Click"
+                    Content="Копировать"
                     />
                 <Button
                     x:Name="EditRecordButton"

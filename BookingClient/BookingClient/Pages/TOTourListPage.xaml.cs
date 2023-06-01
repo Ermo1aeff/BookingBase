@@ -45,7 +45,7 @@ namespace BookingClient.Pages
         public object Convert(object value, Type targetType, object parameter,
             System.Globalization.CultureInfo culture)
         {
-            int PersonCount = SourceCore.entities.orders.FirstOrDefault(filtercase => filtercase.order_id== (int)value).persons.Count();
+            int PersonCount = SourceCore.entities.orders.FirstOrDefault(filtercase => filtercase.order_id == (int)value).persons.Count();
 
             string result = $"{PersonCount} туристов";
 

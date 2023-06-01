@@ -25,9 +25,11 @@
             Direction="315"/>
     </Window.Effect>
 
-    <Border CornerRadius="55"
-            Background="#FFF"
-            Padding="0,0,0,39">
+    <Border 
+        CornerRadius="55"
+        Background="#FFF"
+        Padding="0,0,0,39"
+        MouseLeftButtonDown="Border_MouseLeftButtonDown">
 
         <Grid>
             <Grid.RowDefinitions>
@@ -63,7 +65,7 @@
                     x:Name="LoginTextBox"
                     Tag="Логин"/>
 
-                <Grid Margin="0,0,0,14">
+                <Grid>
                     <TextBox
                         x:Name="PasswordTextBox"
                         Tag="Пароль"
@@ -84,12 +86,19 @@
                         Width="30"/>
                 </Grid>
 
-
+                <TextBlock 
+                    x:Name="MessageTextBlock"
+                    TextAlignment="Center"
+                    Margin="0,2"
+                    TextWrapping="Wrap"
+                    FontSize="14"
+                    Height="auto"
+                    />
 
                 <Button
                     Style="{StaticResource AcceptButton}"
                     x:Name="CheckConnectionButton"
-                    Content="Подключить соединение"
+                    Content="Создать соединение"
                     Click="CheckConnectionButton_Click"
                     Grid.Column="0"
                     Margin="0,0,0,14" 

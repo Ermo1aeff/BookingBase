@@ -385,6 +385,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Booking_BaseModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Resource Include="Fonts\Inter-SemiBold.ttf" />
     <None Include="Models\Booking_BaseModel.edmx.diagram">
       <DependentUpon>Booking_BaseModel.edmx</DependentUpon>
     </None>
@@ -430,6 +431,7 @@
     <Resource Include="Images\image 2.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\194015_5e46a09c2d7c8.jpg" />
     <Content Include="Models\Booking_BaseModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Booking_BaseModel.edmx</DependentUpon>
