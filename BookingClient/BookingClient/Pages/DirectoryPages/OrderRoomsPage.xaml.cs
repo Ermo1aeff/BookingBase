@@ -60,7 +60,7 @@ namespace BookingClient.Pages
         private void TransferRecords()
         {
             var SelectedRecord = (order_rooms)RecordsDataGrid.SelectedItem;
-            OrderIdComboBox.SelectedItem = SelectedRecord.order_id;
+            OrderIdComboBox.SelectedItem = SelectedRecord.orders;
             RoomNameComboBox.SelectedItem = SelectedRecord.rooms;
             RoomCountTextBox.Text = SelectedRecord.room_count.ToString();
         }
@@ -68,6 +68,7 @@ namespace BookingClient.Pages
         private void AddRecordButton_Click(object sender, RoutedEventArgs e)
         {
             RecordChangeTitle.Content = "Добавление";
+            DlgMode = true;
             RecordsDataGrid.SelectedItem = null;
             OrderIdComboBox.Text = "";
             RoomNameComboBox.Text = "";
@@ -95,7 +96,6 @@ namespace BookingClient.Pages
             if (RecordsDataGrid.SelectedItem != null)
             {
                 RecordChangeTitle.Content = "Редактирование";
-                DlgMode = true;
                 TransferRecords();
                 DlgLoad(true);
             }

@@ -1,34 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Shell;
 using BookingClient.Models;
 using BookingClient.Pages;
 using BookingClient.Pages.NewOrderPages;
 using BookingClient.Pages.NewTourPages;
-using System.Threading;
 
 namespace BookingClient
 {
     public partial class MainWindow : Window
     {
-        public string AccountId { get; set; }
+        public int AccountID { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
+            AppFrame.frameMain = RootFrame;
         }
 
         private void RootFrame_LoadCompleted(object sender, NavigationEventArgs e)
@@ -38,11 +31,40 @@ namespace BookingClient
 
             if (e.Content == (e.Content as ListToursPage))
                 (e.Content as ListToursPage).Tag = this;
+
+            if (e.Content == (e.Content as ProfilePage))
+                (e.Content as ProfilePage).Tag = this;
         }
 
         public void SetTitleCaption(string PageName)
         {
             TitleCaption.Text = DirectoryButton.Content + PageName + " - " + Title;
+        }
+
+        public void SetAccountCaption(int AccountId)
+        {
+            accounts AccountProfile = SourceCore.entities.accounts.SingleOrDefault(U => U.account_id == AccountId);
+
+            AccountCaptionTextBlock.Text = AccountProfile != null
+                ? AccountProfile.last_names == null
+                    ? AccountProfile.first_names.first_name
+                    : $"{AccountProfile.first_names.first_name} {AccountProfile.last_names.last_name}"
+                : "Не удалось найти данные пользователя";
+
+            if (AccountProfile.image != null)
+            {
+                AvatarImageBrush.ImageSource = ToImage(AccountProfile.image);
+                AdminAvatarImageBrush.ImageSource = ToImage(AccountProfile.image);
+            }
+
+            if (AccountProfile.role_id == 1 || AccountProfile.role_id == 2)
+            {
+                AdminRectangle.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                ClientElipse.Visibility = Visibility.Visible;
+            }
         }
 
         // Деформирование окна под полноэкранный режим
@@ -59,24 +81,9 @@ namespace BookingClient
 
             TitleCaption.Text = Title;
 
-            accounts AccountProfile = SourceCore.entities.accounts.SingleOrDefault(U => U.account_id.ToString() == AccountId);
+            SetAccountCaption(AccountID);
 
-
-            if (AccountProfile != null)
-            {
-                if (AccountProfile.last_names == null)
-                {
-                    AccountCaptionButton.Content = AccountProfile.first_names.first_name;
-                }
-                else
-                {
-                    AccountCaptionButton.Content = $"{AccountProfile.first_names.first_name} {AccountProfile.last_names.last_name}";
-                }
-            } 
-            else
-            {
-                AccountCaptionButton.Content = "Не удалось найти данные пользователя";
-            }
+            accounts AccountProfile = SourceCore.entities.accounts.SingleOrDefault(U => U.account_id == AccountID);
 
             switch (AccountProfile.role_id)
             {
@@ -90,9 +97,8 @@ namespace BookingClient
                     CreateOrderButton.Visibility = Visibility.Collapsed;
                     break;
                 case 4:
-                    RootFrame.Navigate(new ListToursPage());
-                    CreateOrderButton.Visibility = Visibility.Collapsed;
-                    NewTourButton.Visibility = Visibility.Collapsed;
+                    RootFrame.Navigate(new ListToursPage(AccountID));
+                    //NewTourButton.Visibility = Visibility.Collapsed;
                     TourListButton.Visibility = Visibility.Collapsed;
                     DirectoryButton.Visibility = Visibility.Collapsed;
                     break;
@@ -149,7 +155,10 @@ namespace BookingClient
 
         private void AccountCaptionButtonClick(object sender, RoutedEventArgs e)
         {
-            RootFrame.Navigate(new ProfilePage());
+            ProfilePage profilePage = new ProfilePage();
+            profilePage.AccountID = AccountID;
+
+            RootFrame.Navigate(profilePage);
 
             //Window AuthorizationWin = new AuthorizationWindow();
             //Close();
@@ -172,6 +181,9 @@ namespace BookingClient
             Uri Source = new Uri("Pages/NewOrderPages/ListToursPage.xaml", UriKind.Relative);
             if (RootFrame.NavigationService.CurrentSource != Source)
                 RootFrame.Navigate(Source);
+
+            RootFrame.Navigate(new ListToursPage(AccountID));
+
         }
 
         private void BookingClient_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -203,6 +215,19 @@ namespace BookingClient
         {
             RootFrame.Navigate(new TOTourListPage());
 
+        }
+
+        public BitmapImage ToImage(byte[] array)
+        {
+            using (System.IO.MemoryStream ms = new System.IO.MemoryStream(array))
+            {
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.StreamSource = ms;
+                image.EndInit();
+                return image;
+            }
         }
     }
 }

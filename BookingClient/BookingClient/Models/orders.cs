@@ -24,7 +24,6 @@ namespace BookingClient.Models
         public int order_id { get; set; }
         public Nullable<int> departures_id { get; set; }
         public Nullable<long> contact_phone { get; set; }
-        public Nullable<int> person_count { get; set; }
         public Nullable<decimal> price { get; set; }
     
         public virtual departures departures { get; set; }

@@ -83,16 +83,27 @@
                         VerticalAlignment="Center">
 
                         <TextBlock
-                            Text="{Binding departure_id, StringFormat=dddd, Converter={StaticResource DateEndConverter}, Mode=OneWay}"
+                            Text=
+                            "{
+                                Binding departure_id, 
+                                StringFormat=dddd, 
+                                Converter={StaticResource DateEndConverter},
+                                Mode=OneWay
+                            }"
                             FontSize="12"
-                            FontFamily="{StaticResource InterMedium}"
-                            />
+                            FontFamily="{StaticResource InterMedium}"/>
+                        
                         <TextBlock
-                            Text="{Binding departure_id, StringFormat=d MMMM yyyy, Converter={StaticResource DateEndConverter}, Mode=OneWay}"
+                            Text=
+                            "{
+                                Binding departure_id,
+                                StringFormat=d MMMM yyyy,
+                                Converter={StaticResource DateEndConverter},
+                                Mode=OneWay
+                            }"
                             FontSize="16"
-                            FontFamily="{StaticResource InterMedium}"
-                            />
-
+                            FontFamily="{StaticResource InterMedium}"/>
+                        
                     </StackPanel>
                 </Grid>
             </Border>
@@ -134,11 +145,13 @@
 
                     <DockPanel>
                         <Button 
+                            Name="BackButton"
                             Width="110"
                             Height="37"
                             Style="{StaticResource RecordCommitButton}"
                             Content="Вернуться"
-                            Margin="16,0,0,0"/>
+                            Margin="16,0,0,0"
+                            Click="BackButton_Click"/>
 
                         <StackPanel 
                             Orientation="Horizontal" 
@@ -205,8 +218,7 @@
                     Background="#DDDDDD" 
                     CornerRadius="20" 
                     Margin="3,14,3,3"
-                    Height="79"
-                    >
+                    Height="79">
 
                     <DockPanel>
                         <StackPanel Orientation="Horizontal">
@@ -223,9 +235,8 @@
                                 VerticalAlignment="Center"
                                 FontFamily="{StaticResource InterMedium}"
                                 FontSize="16"/>
-
-                        
                         </StackPanel>
+                        
                         <Button 
                             Background="#CACACA"
                             HorizontalAlignment="Right"

@@ -1,22 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Interop;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using BookingClient.Models;
-using BookingClient.Resources;
-using System.Threading;
-
 
 namespace BookingClient
 {
@@ -54,7 +40,7 @@ namespace BookingClient
             if (Accounts != null)
             {
                 MainWindow MainWin = new MainWindow();
-                MainWin.AccountId = Accounts.account_id.ToString();
+                MainWin.AccountID = Accounts.account_id;
                 Close();
                 SplashScreen splashScreen = new SplashScreen("Images/SlpashScreen1.png");
                 splashScreen.Show(false);

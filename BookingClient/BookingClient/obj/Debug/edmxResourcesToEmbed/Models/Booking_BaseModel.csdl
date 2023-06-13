@@ -12,12 +12,15 @@
     <Property Name="role_id" Type="Int32" />
     <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="phone" Type="Int64" />
-    <NavigationProperty Name="tour_lists" Relationship="Self.FK_account_tours_accounts" FromRole="accounts" ToRole="tour_lists" />
+    <NavigationProperty Name="passed_tours" Relationship="Self.FK_account_tours_accounts" FromRole="accounts" ToRole="passed_tours" />
     <NavigationProperty Name="first_names" Relationship="Self.FK_accounts_first_names" FromRole="accounts" ToRole="first_names" />
     <NavigationProperty Name="last_names" Relationship="Self.FK_accounts_last_names" FromRole="accounts" ToRole="last_names" />
     <NavigationProperty Name="roles" Relationship="Self.FK_accounts_roles" FromRole="accounts" ToRole="roles" />
     <NavigationProperty Name="grades" Relationship="Self.FK_grades_accounts" FromRole="accounts" ToRole="grades" />
-    <NavigationProperty Name="wish_lists" Relationship="Self.FK_wish_lists_accounts" FromRole="accounts" ToRole="wish_lists" />
+    <NavigationProperty Name="viewed_tours" Relationship="Self.FK_viewed_lists_accounts" FromRole="accounts" ToRole="viewed_tours" />
+    <NavigationProperty Name="liked_tours" Relationship="Self.FK_wish_lists_accounts" FromRole="accounts" ToRole="liked_tours" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dayofbirth" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="cities">
     <Key>
@@ -127,6 +130,16 @@
     <NavigationProperty Name="accounts" Relationship="Self.FK_accounts_last_names" FromRole="last_names" ToRole="accounts" />
     <NavigationProperty Name="persons" Relationship="Self.FK_persons_last_names" FromRole="last_names" ToRole="persons" />
   </EntityType>
+  <EntityType Name="liked_tours">
+    <Key>
+      <PropertyRef Name="liked_tour_id" />
+    </Key>
+    <Property Name="liked_tour_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tour_id" Type="Int32" />
+    <Property Name="account_id" Type="Int32" />
+    <NavigationProperty Name="accounts" Relationship="Self.FK_wish_lists_accounts" FromRole="liked_tours" ToRole="accounts" />
+    <NavigationProperty Name="tours" Relationship="Self.FK_wish_lists_tours" FromRole="liked_tours" ToRole="tours" />
+  </EntityType>
   <EntityType Name="order_rooms">
     <Key>
       <PropertyRef Name="order_room_id" />
@@ -145,11 +158,20 @@
     <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="departures_id" Type="Int32" />
     <Property Name="contact_phone" Type="Int64" />
-    <Property Name="person_count" Type="Int32" />
     <Property Name="price" Type="Decimal" Precision="18" Scale="2" />
     <NavigationProperty Name="departures" Relationship="Self.FK_orders_departures" FromRole="orders" ToRole="departures" />
     <NavigationProperty Name="order_rooms" Relationship="Self.FK_order_rooms_orders" FromRole="orders" ToRole="order_rooms" />
     <NavigationProperty Name="persons" Relationship="Self.FK_persons_orders" FromRole="orders" ToRole="persons" />
+  </EntityType>
+  <EntityType Name="passed_tours">
+    <Key>
+      <PropertyRef Name="passed_tour_id" />
+    </Key>
+    <Property Name="passed_tour_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tour_id" Type="Int32" />
+    <Property Name="account_id" Type="Int32" />
+    <NavigationProperty Name="accounts" Relationship="Self.FK_account_tours_accounts" FromRole="passed_tours" ToRole="accounts" />
+    <NavigationProperty Name="tours" Relationship="Self.FK_account_tours_tours" FromRole="passed_tours" ToRole="tours" />
   </EntityType>
   <EntityType Name="persons">
     <Key>
@@ -194,16 +216,6 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
-  <EntityType Name="tour_lists">
-    <Key>
-      <PropertyRef Name="account_tour_id" />
-    </Key>
-    <Property Name="account_tour_id" Type="Int32" Nullable="false" />
-    <Property Name="tour_id" Type="Int32" />
-    <Property Name="account_id" Type="Int32" />
-    <NavigationProperty Name="accounts" Relationship="Self.FK_account_tours_accounts" FromRole="tour_lists" ToRole="accounts" />
-    <NavigationProperty Name="tours" Relationship="Self.FK_account_tours_tours" FromRole="tour_lists" ToRole="tours" />
-  </EntityType>
   <EntityType Name="tours">
     <Key>
       <PropertyRef Name="tour_id" />
@@ -226,28 +238,29 @@
     <NavigationProperty Name="images" Relationship="Self.FK_images_tours" FromRole="tours" ToRole="images" />
     <NavigationProperty Name="included" Relationship="Self.FK_included_tours" FromRole="tours" ToRole="included" />
     <NavigationProperty Name="itinerary" Relationship="Self.FK_itirerary_tours" FromRole="tours" ToRole="itinerary" />
+    <NavigationProperty Name="liked_tours" Relationship="Self.FK_wish_lists_tours" FromRole="tours" ToRole="liked_tours" />
+    <NavigationProperty Name="passed_tours" Relationship="Self.FK_account_tours_tours" FromRole="tours" ToRole="passed_tours" />
     <NavigationProperty Name="rooms" Relationship="Self.FK_rooms_tours" FromRole="tours" ToRole="rooms" />
-    <NavigationProperty Name="tour_lists" Relationship="Self.FK_account_tours_tours" FromRole="tours" ToRole="tour_lists" />
-    <NavigationProperty Name="wish_lists" Relationship="Self.FK_wish_lists_tours" FromRole="tours" ToRole="wish_lists" />
+    <NavigationProperty Name="viewed_tours" Relationship="Self.FK_viewed_lists_tours" FromRole="tours" ToRole="viewed_tours" />
   </EntityType>
-  <EntityType Name="wish_lists">
+  <EntityType Name="viewed_tours">
     <Key>
-      <PropertyRef Name="wish_list_id" />
+      <PropertyRef Name="viewed_tour_id" />
     </Key>
-    <Property Name="wish_list_id" Type="Int32" Nullable="false" />
+    <Property Name="viewed_tour_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="tour_id" Type="Int32" />
     <Property Name="account_id" Type="Int32" />
-    <NavigationProperty Name="accounts" Relationship="Self.FK_wish_lists_accounts" FromRole="wish_lists" ToRole="accounts" />
-    <NavigationProperty Name="tours" Relationship="Self.FK_wish_lists_tours" FromRole="wish_lists" ToRole="tours" />
+    <NavigationProperty Name="accounts" Relationship="Self.FK_viewed_lists_accounts" FromRole="viewed_tours" ToRole="accounts" />
+    <NavigationProperty Name="tours" Relationship="Self.FK_viewed_lists_tours" FromRole="viewed_tours" ToRole="tours" />
   </EntityType>
   <Association Name="FK_account_tours_accounts">
     <End Role="accounts" Type="Self.accounts" Multiplicity="0..1" />
-    <End Role="tour_lists" Type="Self.tour_lists" Multiplicity="*" />
+    <End Role="passed_tours" Type="Self.passed_tours" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="accounts">
         <PropertyRef Name="account_id" />
       </Principal>
-      <Dependent Role="tour_lists">
+      <Dependent Role="passed_tours">
         <PropertyRef Name="account_id" />
       </Dependent>
     </ReferentialConstraint>
@@ -300,14 +313,26 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_wish_lists_accounts">
+  <Association Name="FK_viewed_lists_accounts">
     <End Role="accounts" Type="Self.accounts" Multiplicity="0..1" />
-    <End Role="wish_lists" Type="Self.wish_lists" Multiplicity="*" />
+    <End Role="viewed_tours" Type="Self.viewed_tours" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="accounts">
         <PropertyRef Name="account_id" />
       </Principal>
-      <Dependent Role="wish_lists">
+      <Dependent Role="viewed_tours">
+        <PropertyRef Name="account_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_wish_lists_accounts">
+    <End Role="accounts" Type="Self.accounts" Multiplicity="0..1" />
+    <End Role="liked_tours" Type="Self.liked_tours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="accounts">
+        <PropertyRef Name="account_id" />
+      </Principal>
+      <Dependent Role="liked_tours">
         <PropertyRef Name="account_id" />
       </Dependent>
     </ReferentialConstraint>
@@ -468,6 +493,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_wish_lists_tours">
+    <End Role="tours" Type="Self.tours" Multiplicity="0..1" />
+    <End Role="liked_tours" Type="Self.liked_tours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tours">
+        <PropertyRef Name="tour_id" />
+      </Principal>
+      <Dependent Role="liked_tours">
+        <PropertyRef Name="tour_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_order_rooms_orders">
     <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
     <End Role="order_rooms" Type="Self.order_rooms" Multiplicity="*" />
@@ -504,6 +541,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_account_tours_tours">
+    <End Role="tours" Type="Self.tours" Multiplicity="0..1" />
+    <End Role="passed_tours" Type="Self.passed_tours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tours">
+        <PropertyRef Name="tour_id" />
+      </Principal>
+      <Dependent Role="passed_tours">
+        <PropertyRef Name="tour_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_rooms_tours">
     <End Role="tours" Type="Self.tours" Multiplicity="0..1" />
     <End Role="rooms" Type="Self.rooms" Multiplicity="*" />
@@ -516,26 +565,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_account_tours_tours">
+  <Association Name="FK_viewed_lists_tours">
     <End Role="tours" Type="Self.tours" Multiplicity="0..1" />
-    <End Role="tour_lists" Type="Self.tour_lists" Multiplicity="*" />
+    <End Role="viewed_tours" Type="Self.viewed_tours" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tours">
         <PropertyRef Name="tour_id" />
       </Principal>
-      <Dependent Role="tour_lists">
-        <PropertyRef Name="tour_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_wish_lists_tours">
-    <End Role="tours" Type="Self.tours" Multiplicity="0..1" />
-    <End Role="wish_lists" Type="Self.wish_lists" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tours">
-        <PropertyRef Name="tour_id" />
-      </Principal>
-      <Dependent Role="wish_lists">
+      <Dependent Role="viewed_tours">
         <PropertyRef Name="tour_id" />
       </Dependent>
     </ReferentialConstraint>
@@ -553,18 +590,19 @@
     <EntitySet Name="inclusions" EntityType="Self.inclusions" />
     <EntitySet Name="itinerary" EntityType="Self.itinerary" />
     <EntitySet Name="last_names" EntityType="Self.last_names" />
+    <EntitySet Name="liked_tours" EntityType="Self.liked_tours" />
     <EntitySet Name="order_rooms" EntityType="Self.order_rooms" />
     <EntitySet Name="orders" EntityType="Self.orders" />
+    <EntitySet Name="passed_tours" EntityType="Self.passed_tours" />
     <EntitySet Name="persons" EntityType="Self.persons" />
     <EntitySet Name="roles" EntityType="Self.roles" />
     <EntitySet Name="rooms" EntityType="Self.rooms" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-    <EntitySet Name="tour_lists" EntityType="Self.tour_lists" />
     <EntitySet Name="tours" EntityType="Self.tours" />
-    <EntitySet Name="wish_lists" EntityType="Self.wish_lists" />
+    <EntitySet Name="viewed_tours" EntityType="Self.viewed_tours" />
     <AssociationSet Name="FK_account_tours_accounts" Association="Self.FK_account_tours_accounts">
       <End Role="accounts" EntitySet="accounts" />
-      <End Role="tour_lists" EntitySet="tour_lists" />
+      <End Role="passed_tours" EntitySet="passed_tours" />
     </AssociationSet>
     <AssociationSet Name="FK_accounts_first_names" Association="Self.FK_accounts_first_names">
       <End Role="first_names" EntitySet="first_names" />
@@ -582,9 +620,13 @@
       <End Role="accounts" EntitySet="accounts" />
       <End Role="grades" EntitySet="grades" />
     </AssociationSet>
+    <AssociationSet Name="FK_viewed_lists_accounts" Association="Self.FK_viewed_lists_accounts">
+      <End Role="accounts" EntitySet="accounts" />
+      <End Role="viewed_tours" EntitySet="viewed_tours" />
+    </AssociationSet>
     <AssociationSet Name="FK_wish_lists_accounts" Association="Self.FK_wish_lists_accounts">
       <End Role="accounts" EntitySet="accounts" />
-      <End Role="wish_lists" EntitySet="wish_lists" />
+      <End Role="liked_tours" EntitySet="liked_tours" />
     </AssociationSet>
     <AssociationSet Name="FK_cities_countries" Association="Self.FK_cities_countries">
       <End Role="countries" EntitySet="countries" />
@@ -638,6 +680,10 @@
       <End Role="last_names" EntitySet="last_names" />
       <End Role="persons" EntitySet="persons" />
     </AssociationSet>
+    <AssociationSet Name="FK_wish_lists_tours" Association="Self.FK_wish_lists_tours">
+      <End Role="tours" EntitySet="tours" />
+      <End Role="liked_tours" EntitySet="liked_tours" />
+    </AssociationSet>
     <AssociationSet Name="FK_order_rooms_orders" Association="Self.FK_order_rooms_orders">
       <End Role="orders" EntitySet="orders" />
       <End Role="order_rooms" EntitySet="order_rooms" />
@@ -650,17 +696,17 @@
       <End Role="orders" EntitySet="orders" />
       <End Role="persons" EntitySet="persons" />
     </AssociationSet>
+    <AssociationSet Name="FK_account_tours_tours" Association="Self.FK_account_tours_tours">
+      <End Role="tours" EntitySet="tours" />
+      <End Role="passed_tours" EntitySet="passed_tours" />
+    </AssociationSet>
     <AssociationSet Name="FK_rooms_tours" Association="Self.FK_rooms_tours">
       <End Role="tours" EntitySet="tours" />
       <End Role="rooms" EntitySet="rooms" />
     </AssociationSet>
-    <AssociationSet Name="FK_account_tours_tours" Association="Self.FK_account_tours_tours">
+    <AssociationSet Name="FK_viewed_lists_tours" Association="Self.FK_viewed_lists_tours">
       <End Role="tours" EntitySet="tours" />
-      <End Role="tour_lists" EntitySet="tour_lists" />
-    </AssociationSet>
-    <AssociationSet Name="FK_wish_lists_tours" Association="Self.FK_wish_lists_tours">
-      <End Role="tours" EntitySet="tours" />
-      <End Role="wish_lists" EntitySet="wish_lists" />
+      <End Role="viewed_tours" EntitySet="viewed_tours" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

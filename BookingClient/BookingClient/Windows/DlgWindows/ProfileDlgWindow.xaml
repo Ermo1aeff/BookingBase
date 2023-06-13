@@ -1,0 +1,165 @@
+﻿<Window x:Class="BookingClient.Windows.ProfileDlgWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BookingClient.Windows"
+        mc:Ignorable="d"
+        Title="ProfileDlgWindow" 
+        Height="550" Width="872"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        BorderThickness="14"
+        >
+    
+    <Border 
+        MouseLeftButtonDown="Border_MouseLeftButtonDown"
+        CornerRadius="20" 
+        Background="White" 
+        BorderThickness="0" 
+        BorderBrush="Black"
+        Effect="{StaticResource DropShadowEffect}"
+        >
+        <StackPanel 
+            VerticalAlignment="Center"
+            Margin="80,0">
+
+            <DockPanel
+                Margin="0,0,0,44" 
+                VerticalAlignment="Center">
+                <StackPanel>
+                    <TextBlock 
+                        VerticalAlignment="Top"
+                        Text="Персональные данные"
+                        FontFamily="{StaticResource InterMedium}"
+                        FontSize="24"/>
+                
+                    <TextBlock 
+                        VerticalAlignment="Bottom"
+                        Text="*данные сохраняются автоматически"
+                        FontFamily="{StaticResource InterMedium}"
+                        FontSize="12"/>
+                </StackPanel>
+
+                <Button 
+                    x:Name="BackButton"
+                    HorizontalAlignment="Right"
+                    Content="Вернуться" 
+                    Width="177"
+                    Height="50" 
+                    Style="{StaticResource RecordCommitButton}"
+                    Click="BackButton_Click"/>
+            </DockPanel>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+            
+                <StackPanel 
+                    Grid.Column="0"
+                    HorizontalAlignment="Left" 
+                    Width="282">
+                
+                    <TextBox 
+                        x:Name="LastNameTextBox"
+                        Tag="Фамилия"
+                        Margin="0,0,0,14"
+                        Height="53"
+                        FontSize="14"
+                        FontFamily="{StaticResource InterMedium}"/>
+                
+                    <TextBox 
+                        x:Name="FirstNameTextBox"
+                        Tag="Имя"
+                        Margin="0,0,0,14"
+                        Height="53"
+                        FontSize="14"
+                        FontFamily="{StaticResource InterMedium}"/>
+                
+                    <TextBox 
+                        x:Name="EmailTextBox"
+                        Tag="Электронная почта"
+                        Margin="0,0,0,14"
+                        Height="53"
+                        FontSize="14"
+                        FontFamily="{StaticResource InterMedium}"/>
+
+                    <TextBox 
+                        x:Name="PhoneTextBox"
+                        Tag="Номер телефона"
+                        Margin="0,0,0,14"
+                        Height="53"
+                        FontSize="14"
+                        FontFamily="{StaticResource InterMedium}"/>
+
+                    <DatePicker
+                        x:Name="DateOfBirthDatePicker"
+                        Height="53"
+                        FontSize="14"
+                        FontFamily="{StaticResource InterMedium}"
+                        VerticalContentAlignment="Center"/>
+                </StackPanel>
+
+                <Grid 
+                    Grid.Column="1"
+                    Height="128" 
+                    Width="128">
+                    
+                    <Button 
+                        Panel.ZIndex="1"
+                        Style="{StaticResource TransparentButton}"
+                        Name="ChangeAvatarButton"
+                        Click="ChangeAvatarButton_Click"/>
+
+                    <Border
+                        x:Name="Border"
+                        CornerRadius="64"/>
+
+                    <Ellipse
+                        RenderOptions.BitmapScalingMode="HighQuality">
+                        <Ellipse.Fill>
+                            <ImageBrush x:Name="AvatarImageBrush" ImageSource="pack://application:,,,/Images/avatar.png"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+
+
+                    <Border
+                        CornerRadius="64"
+                        Background="#66000000"/>
+
+                    <Image 
+                        Source="pack://application:,,,/Images/camera.png"
+                        Width="60"
+                        Height="60"
+                        RenderOptions.BitmapScalingMode="HighQuality"/>
+                </Grid>
+               
+                    <!--<Ellipse 
+                        RenderOptions.BitmapScalingMode="HighQuality">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="pack://application:,,,/Images/avatar.png"/>
+                        </Ellipse.Fill>
+                    </Ellipse>-->
+               
+
+                <!--<Ellipse 
+                    Grid.Column="1"
+                    Height="90" 
+                    Width="90"
+                    RenderOptions.BitmapScalingMode="HighQuality" Fill="#4C000000">
+                </Ellipse>
+
+                <Ellipse 
+                    Grid.Column="1"
+                    Height="90" 
+                    Width="90"
+                    >
+                </Ellipse>-->
+            </Grid>
+        </StackPanel>
+    </Border>
+</Window>

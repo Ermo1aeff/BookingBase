@@ -12,6 +12,8 @@
     <Property Name="role_id" Type="int" />
     <Property Name="image" Type="image" />
     <Property Name="phone" Type="bigint" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="dayofbirth" Type="datetime" />
   </EntityType>
   <EntityType Name="cities">
     <Key>
@@ -103,6 +105,14 @@
     <Property Name="last_name_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="last_name" Type="varchar" MaxLength="25" />
   </EntityType>
+  <EntityType Name="liked_tours">
+    <Key>
+      <PropertyRef Name="liked_tour_id" />
+    </Key>
+    <Property Name="liked_tour_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tour_id" Type="int" />
+    <Property Name="account_id" Type="int" />
+  </EntityType>
   <EntityType Name="order_rooms">
     <Key>
       <PropertyRef Name="order_room_id" />
@@ -119,8 +129,15 @@
     <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="departures_id" Type="int" />
     <Property Name="contact_phone" Type="bigint" />
-    <Property Name="person_count" Type="int" />
     <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="passed_tours">
+    <Key>
+      <PropertyRef Name="passed_tour_id" />
+    </Key>
+    <Property Name="passed_tour_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tour_id" Type="int" />
+    <Property Name="account_id" Type="int" />
   </EntityType>
   <EntityType Name="persons">
     <Key>
@@ -159,14 +176,6 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
-  <EntityType Name="tour_lists">
-    <Key>
-      <PropertyRef Name="account_tour_id" />
-    </Key>
-    <Property Name="account_tour_id" Type="int" Nullable="false" />
-    <Property Name="tour_id" Type="int" />
-    <Property Name="account_id" Type="int" />
-  </EntityType>
   <EntityType Name="tours">
     <Key>
       <PropertyRef Name="tour_id" />
@@ -182,34 +191,34 @@
     <Property Name="min_age" Type="int" />
     <Property Name="max_age" Type="int" />
   </EntityType>
-  <EntityType Name="wish_lists">
+  <EntityType Name="viewed_tours">
     <Key>
-      <PropertyRef Name="wish_list_id" />
+      <PropertyRef Name="viewed_tour_id" />
     </Key>
-    <Property Name="wish_list_id" Type="int" Nullable="false" />
+    <Property Name="viewed_tour_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="tour_id" Type="int" />
     <Property Name="account_id" Type="int" />
   </EntityType>
   <Association Name="FK_account_tours_accounts">
     <End Role="accounts" Type="Self.accounts" Multiplicity="0..1" />
-    <End Role="tour_lists" Type="Self.tour_lists" Multiplicity="*" />
+    <End Role="passed_tours" Type="Self.passed_tours" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="accounts">
         <PropertyRef Name="account_id" />
       </Principal>
-      <Dependent Role="tour_lists">
+      <Dependent Role="passed_tours">
         <PropertyRef Name="account_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_account_tours_tours">
     <End Role="tours" Type="Self.tours" Multiplicity="0..1" />
-    <End Role="tour_lists" Type="Self.tour_lists" Multiplicity="*" />
+    <End Role="passed_tours" Type="Self.passed_tours" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tours">
         <PropertyRef Name="tour_id" />
       </Principal>
-      <Dependent Role="tour_lists">
+      <Dependent Role="passed_tours">
         <PropertyRef Name="tour_id" />
       </Dependent>
     </ReferentialConstraint>
@@ -466,26 +475,50 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_wish_lists_accounts">
+  <Association Name="FK_viewed_lists_accounts">
     <End Role="accounts" Type="Self.accounts" Multiplicity="0..1" />
-    <End Role="wish_lists" Type="Self.wish_lists" Multiplicity="*" />
+    <End Role="viewed_tours" Type="Self.viewed_tours" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="accounts">
         <PropertyRef Name="account_id" />
       </Principal>
-      <Dependent Role="wish_lists">
+      <Dependent Role="viewed_tours">
+        <PropertyRef Name="account_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_viewed_lists_tours">
+    <End Role="tours" Type="Self.tours" Multiplicity="0..1" />
+    <End Role="viewed_tours" Type="Self.viewed_tours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tours">
+        <PropertyRef Name="tour_id" />
+      </Principal>
+      <Dependent Role="viewed_tours">
+        <PropertyRef Name="tour_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_wish_lists_accounts">
+    <End Role="accounts" Type="Self.accounts" Multiplicity="0..1" />
+    <End Role="liked_tours" Type="Self.liked_tours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="accounts">
+        <PropertyRef Name="account_id" />
+      </Principal>
+      <Dependent Role="liked_tours">
         <PropertyRef Name="account_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_wish_lists_tours">
     <End Role="tours" Type="Self.tours" Multiplicity="0..1" />
-    <End Role="wish_lists" Type="Self.wish_lists" Multiplicity="*" />
+    <End Role="liked_tours" Type="Self.liked_tours" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tours">
         <PropertyRef Name="tour_id" />
       </Principal>
-      <Dependent Role="wish_lists">
+      <Dependent Role="liked_tours">
         <PropertyRef Name="tour_id" />
       </Dependent>
     </ReferentialConstraint>
@@ -503,22 +536,23 @@
     <EntitySet Name="inclusions" EntityType="Self.inclusions" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="itinerary" EntityType="Self.itinerary" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="last_names" EntityType="Self.last_names" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="liked_tours" EntityType="Self.liked_tours" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="order_rooms" EntityType="Self.order_rooms" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="passed_tours" EntityType="Self.passed_tours" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="persons" EntityType="Self.persons" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="rooms" EntityType="Self.rooms" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tour_lists" EntityType="Self.tour_lists" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tours" EntityType="Self.tours" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="wish_lists" EntityType="Self.wish_lists" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="viewed_tours" EntityType="Self.viewed_tours" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_account_tours_accounts" Association="Self.FK_account_tours_accounts">
       <End Role="accounts" EntitySet="accounts" />
-      <End Role="tour_lists" EntitySet="tour_lists" />
+      <End Role="passed_tours" EntitySet="passed_tours" />
     </AssociationSet>
     <AssociationSet Name="FK_account_tours_tours" Association="Self.FK_account_tours_tours">
       <End Role="tours" EntitySet="tours" />
-      <End Role="tour_lists" EntitySet="tour_lists" />
+      <End Role="passed_tours" EntitySet="passed_tours" />
     </AssociationSet>
     <AssociationSet Name="FK_accounts_first_names" Association="Self.FK_accounts_first_names">
       <End Role="first_names" EntitySet="first_names" />
@@ -604,13 +638,21 @@
       <End Role="cities" EntitySet="cities" />
       <End Role="tours" EntitySet="tours" />
     </AssociationSet>
+    <AssociationSet Name="FK_viewed_lists_accounts" Association="Self.FK_viewed_lists_accounts">
+      <End Role="accounts" EntitySet="accounts" />
+      <End Role="viewed_tours" EntitySet="viewed_tours" />
+    </AssociationSet>
+    <AssociationSet Name="FK_viewed_lists_tours" Association="Self.FK_viewed_lists_tours">
+      <End Role="tours" EntitySet="tours" />
+      <End Role="viewed_tours" EntitySet="viewed_tours" />
+    </AssociationSet>
     <AssociationSet Name="FK_wish_lists_accounts" Association="Self.FK_wish_lists_accounts">
       <End Role="accounts" EntitySet="accounts" />
-      <End Role="wish_lists" EntitySet="wish_lists" />
+      <End Role="liked_tours" EntitySet="liked_tours" />
     </AssociationSet>
     <AssociationSet Name="FK_wish_lists_tours" Association="Self.FK_wish_lists_tours">
       <End Role="tours" EntitySet="tours" />
-      <End Role="wish_lists" EntitySet="wish_lists" />
+      <End Role="liked_tours" EntitySet="liked_tours" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

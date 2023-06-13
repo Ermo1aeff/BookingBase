@@ -51,8 +51,7 @@
                     Margin="0,0,0,14"
                     Height="30"
                     IsEditable="True"
-                    Text="ERMOLAEV"
-                    />
+                    Text="ERMOLAEV"/>
 
                 <TextBox 
                     Margin="0,0,0,14"
@@ -68,8 +67,7 @@
                 <Grid>
                     <TextBox
                         x:Name="PasswordTextBox"
-                        Tag="Пароль"
-                        Text=""/>
+                        Tag="Пароль"/>
 
                     <PasswordBox
                         Style="{StaticResource BasePasswordBox}"
@@ -92,9 +90,8 @@
                     Margin="0,2"
                     TextWrapping="Wrap"
                     FontSize="14"
-                    Height="auto"
-                    />
-
+                    Height="auto"/>
+                
                 <Button
                     Style="{StaticResource AcceptButton}"
                     x:Name="CheckConnectionButton"
@@ -127,13 +124,8 @@
                         Grid.Column="1"
                         Margin="7,0,0,0"
                         IsCancel="True"/>
-
                 </Grid>
-
             </StackPanel>
         </Grid>
-
-
     </Border>
-
 </Window>

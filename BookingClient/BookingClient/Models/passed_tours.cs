@@ -12,9 +12,9 @@ namespace BookingClient.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tour_lists
+    public partial class passed_tours
     {
-        public int account_tour_id { get; set; }
+        public int passed_tour_id { get; set; }
         public Nullable<int> tour_id { get; set; }
         public Nullable<int> account_id { get; set; }
     

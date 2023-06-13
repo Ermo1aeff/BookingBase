@@ -23,9 +23,10 @@ namespace BookingClient.Models
             this.images = new HashSet<images>();
             this.included = new HashSet<included>();
             this.itinerary = new HashSet<itinerary>();
+            this.liked_tours = new HashSet<liked_tours>();
+            this.passed_tours = new HashSet<passed_tours>();
             this.rooms = new HashSet<rooms>();
-            this.tour_lists = new HashSet<tour_lists>();
-            this.wish_lists = new HashSet<wish_lists>();
+            this.viewed_tours = new HashSet<viewed_tours>();
         }
     
         public int tour_id { get; set; }
@@ -54,10 +55,12 @@ namespace BookingClient.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<itinerary> itinerary { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<liked_tours> liked_tours { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<passed_tours> passed_tours { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<rooms> rooms { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tour_lists> tour_lists { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<wish_lists> wish_lists { get; set; }
+        public virtual ICollection<viewed_tours> viewed_tours { get; set; }
     }
 }

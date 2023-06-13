@@ -37,14 +37,15 @@ namespace BookingClient.Models
         public virtual DbSet<inclusions> inclusions { get; set; }
         public virtual DbSet<itinerary> itinerary { get; set; }
         public virtual DbSet<last_names> last_names { get; set; }
+        public virtual DbSet<liked_tours> liked_tours { get; set; }
         public virtual DbSet<order_rooms> order_rooms { get; set; }
         public virtual DbSet<orders> orders { get; set; }
+        public virtual DbSet<passed_tours> passed_tours { get; set; }
         public virtual DbSet<persons> persons { get; set; }
         public virtual DbSet<roles> roles { get; set; }
         public virtual DbSet<rooms> rooms { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<tour_lists> tour_lists { get; set; }
         public virtual DbSet<tours> tours { get; set; }
-        public virtual DbSet<wish_lists> wish_lists { get; set; }
+        public virtual DbSet<viewed_tours> viewed_tours { get; set; }
     }
 }

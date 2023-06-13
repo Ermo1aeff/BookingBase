@@ -143,7 +143,6 @@ namespace BookingClient.Pages
             {
                 NewRecord.contact_phone = Convert.ToInt64(ContactPhoneTextBox.Text);
                 NewRecord.departures = (departures)DateTourComboBox.SelectedItem;
-                NewRecord.person_count = 0;
                 SourceCore.entities.orders.Add(NewRecord);
             }
             else
@@ -195,16 +194,16 @@ namespace BookingClient.Pages
                 case 1:
                     RecordsDataGrid.ItemsSource = SourceCore.entities.orders.Where(filtercase => filtercase.contact_phone.ToString().Contains(textbox)).ToList();
                     break;
+                //case 2:
+                    //RecordsDataGrid.ItemsSource = SourceCore.entities.orders.Where(filtercase => filtercase.persons.Count().ToString().Contains(textbox)).ToList();
+                    //break;
                 case 2:
-                    RecordsDataGrid.ItemsSource = SourceCore.entities.orders.Where(filtercase => filtercase.person_count.ToString().Contains(textbox)).ToList();
-                    break;
-                case 3:
                     RecordsDataGrid.ItemsSource = SourceCore.entities.orders.Where(filtercase => filtercase.departures.tours.tour_name.Contains(textbox)).ToList();
                     break;
-                case 4:
+                case 3:
                     RecordsDataGrid.ItemsSource = SourceCore.entities.orders.Where(filtercase => filtercase.departures.date_begin.ToString().Contains(textbox)).ToList();
                     break;
-                case 5:
+                case 4:
                     RecordsDataGrid.ItemsSource = SourceCore.entities.orders.Where(filtercase => filtercase.price.ToString().Contains(textbox)).ToList();
                     break;
                 default:

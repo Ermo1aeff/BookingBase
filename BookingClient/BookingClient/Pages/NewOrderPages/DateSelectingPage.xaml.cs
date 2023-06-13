@@ -1,22 +1,12 @@
 ﻿using BookingClient.Models;
 using System;
 using System.Collections.Generic;
-using System.Drawing.Imaging;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Reflection;
 using System.IO;
-using System.Threading;
 
 namespace BookingClient.PagesOnWindow
 {
@@ -26,7 +16,7 @@ namespace BookingClient.PagesOnWindow
 
         private int ImageIndex = 0;
 
-        public DateSelectingPage(int TourId)
+        public DateSelectingPage(int TourId, int AccountId)
         {
             InitializeComponent();
 
@@ -60,13 +50,26 @@ namespace BookingClient.PagesOnWindow
             AgeTextBlock.Text = "От " + Tour.min_age.ToString() + " до " + Tour.max_age;
             TourIdTextBlock.Text = Tour.tour_id.ToString();
             TourPriceTextBlock.Text = Tour.price.ToString();
+
+            viewed_tours DelViewedTour = SourceCore.entities.viewed_tours.SingleOrDefault(U => U.account_id == AccountId && U.tour_id == TourId);
+            if (DelViewedTour != null)
+            {
+                SourceCore.entities.viewed_tours.Remove(DelViewedTour);
+            }
+
+            viewed_tours NewViewedTour = new viewed_tours();
+            NewViewedTour.account_id = AccountId;
+            NewViewedTour.tour_id = TourId;
+
+            SourceCore.entities.viewed_tours.Add(NewViewedTour);
+
+            SourceCore.entities.SaveChanges();
         }
 
         private void DepartureListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             CommitDepartureButton.IsEnabled = true;
         }
-
 
         private void CommitDepartureButton_Click(object sender, RoutedEventArgs e)
         {

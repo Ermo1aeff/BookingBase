@@ -1,29 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Data;
-using System.Data.Sql;
 using System.Data.SqlClient;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace BookingClient
 {
-    /// <summary>
-    /// Логика взаимодействия для ConnectionWindow.xaml
-    /// </summary>
     public partial class ConnectionWindow : Window
     {
         public ConnectionWindow()
@@ -31,7 +16,7 @@ namespace BookingClient
             InitializeComponent();
         }
 
-        Thread t;
+        private Thread t;
 
         private void CheckConnectionButton_Click(object sender, RoutedEventArgs e)
         {
@@ -39,7 +24,7 @@ namespace BookingClient
             {
                 timer.Stop();
                 t.Interrupt();
-            } 
+            }
             else
             {
                 string ServerName = ServerNameComboBox.Text;
@@ -148,7 +133,7 @@ namespace BookingClient
                 Dispatcher.Invoke(() => MessageTextBlock.Text = "Подключение установлено!");
             }
             catch (Exception e) when (!(e is ThreadInterruptedException))
-            { 
+            {
                 timer.Stop();
 
                 Dispatcher.Invoke(() => MessageTextBlock.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("Red"));

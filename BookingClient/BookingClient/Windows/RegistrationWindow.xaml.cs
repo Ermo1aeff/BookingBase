@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using BookingClient.Models;
 
 namespace BookingClient
@@ -128,6 +121,7 @@ namespace BookingClient
                 Accounts.account_login = login;
                 //Accounts.account_password = ConfirmPasswordBox.Visibility == Visibility.Collapsed ? ConfirmPasswordTextBox.Text : ConfirmPasswordBox.Password;
                 Accounts.account_password = password;
+                Accounts.role_id = 4;
                 SourceCore.entities.accounts.Add(Accounts);
                 SourceCore.entities.SaveChanges();
                 MessageTextBox.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("LightGreen");
@@ -188,7 +182,7 @@ namespace BookingClient
             Random r = new Random();
             for (int i = 0; i < 6; i++)
             {
-                temp = ar[(r.Next(0, ar.Length))];
+                temp = ar[r.Next(0, ar.Length)];
                 pwd += temp;
             }
             CapchaTextBox.Text = pwd;

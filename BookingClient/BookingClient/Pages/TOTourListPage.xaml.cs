@@ -122,6 +122,11 @@ namespace BookingClient.Pages
             }
             return foundElement;
         }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            AppFrame.frameMain.GoBack();
+        }
     }
 
     

@@ -7,40 +7,127 @@
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
       Title="ProfilePage"
-      Background="White">
+      Background="White"
+      Loaded="Page_Loaded">
+
+    <Page.Resources>
+        <DataTemplate x:Key="TourDataTemplate">
+            <Grid>
+                <Button 
+                    Style="{StaticResource TransparentButton}"
+                    Panel.ZIndex="1"
+                    x:Name="TransparentButton"
+                    Click="TransparentButton_Click"/>
+                <StackPanel Width="300">
+                    <Rectangle 
+                        Margin="0,0,0,17"
+                        RenderOptions.BitmapScalingMode="HighQuality"
+                        Height="160" Width="300"
+                        RadiusX="8" RadiusY="8">
+                        <Rectangle.Fill>
+                            <ImageBrush 
+                                ImageSource="{Binding TourImage.img}"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+
+                    <StackPanel Height="150">
+                        <TextBlock
+                            TextWrapping="Wrap"
+                            Grid.Row="0"
+                            Text="{Binding TourName}"
+                            FontSize="20"
+                            FontFamily="{StaticResource InterSemiBold}"
+                            />
+
+                        <ProgressBar
+                            HorizontalAlignment="Left"
+                            Width="108"
+                            Grid.Row="1"
+                            Height="18"
+                            Foreground="Gold"
+                            Background="Transparent"
+                            Value="4"
+                            Maximum="10"
+                            Minimum="0"
+                            Margin="0,4"/>
+
+                        <StackPanel
+                            Orientation="Horizontal"
+                            Grid.Row="2">
+                            <TextBlock 
+                                Text="{Binding DayCount}"
+                                FontSize="14"
+                                FontFamily="{StaticResource InterMedium}"/>
+
+                            <TextBlock 
+                                Text=" дней за "
+                                FontSize="14"
+                                FontFamily="{StaticResource InterMedium}"/>
+                        
+                            <TextBlock 
+                                Language="ru"
+                                Text="{Binding Price, StringFormat={}{0:C}}"
+                                FontSize="14"
+                                FontFamily="{StaticResource InterMedium}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition MinHeight="160" MaxHeight="260"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition />
+            <RowDefinition Height="25*" MinHeight="160" MaxHeight="260"/>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="75*"/>
         </Grid.RowDefinitions>
 
-        <DockPanel Margin="70,0" VerticalAlignment="Center">
-            <StackPanel Orientation="Horizontal">
+        <Grid 
+            Grid.RowSpan="2"
+            Margin="70,0" 
+            VerticalAlignment="Center">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <Grid HorizontalAlignment="Left">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
                 <Ellipse 
-                    Height="90" 
-                    Width="90"
+                    Grid.Column="0"
+                    Height="120" 
+                    Width="120"
                     RenderOptions.BitmapScalingMode="HighQuality">
                     <Ellipse.Fill>
-                        <ImageBrush ImageSource="pack://application:,,,/Images/image 2.png"/>
+                        <ImageBrush 
+                            x:Name="AvatarImageBrush" 
+                            ImageSource="pack://application:,,,/Images/avatar.png"/>
                     </Ellipse.Fill>
                 </Ellipse>
 
                 <StackPanel
+                    VerticalAlignment="Center"
                     Grid.Column="1"
                     Margin="20,0,0,0">
-                    
+
                     <TextBlock
+                        x:Name="ProfileCaptionTextBlock"
+                        TextWrapping="Wrap"
                         FontFamily="{StaticResource InterMedium}"
                         FontSize="24"
-                        Text="Привет Ермолаев Егор!"/>
-                    
+                        Text="Привет Фамилия Имя!"/>
+
                     <TextBlock
+                        x:Name="EmailTextBlock"
                         Margin="0,7,0,0"
                         FontFamily="{StaticResource InterMedium}"
                         FontSize="15"
-                        Text="egorka.ermolaev.02@gmail.com"
+                        Text="******.********.**@email.com"
                         Foreground="#757575"/>
                     
                     <TextBlock
@@ -48,10 +135,12 @@
                         FontFamily="{StaticResource InterMedium}"
                         FontSize="15"
                         Text="Изменить профиль"
-                        Foreground="#6284FF"/>
+                        Foreground="#6284FF"
+                        MouseDown="TextBlock_MouseDown"/>
                 </StackPanel>
-            </StackPanel>
+            </Grid>
             <Button 
+                Grid.Column="1"
                 x:Name="BackButton"
                 HorizontalAlignment="Right"
                 Content="Вернуться" 
@@ -60,58 +149,86 @@
                 Style="{StaticResource RecordCommitButton}"
                 Click="BackButton_Click"
                 />
-        </DockPanel>
+        </Grid>
 
-        <StackPanel
-            Margin="20,0"
+        <Border
+            Panel.ZIndex="1"
+            Grid.Row="1">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="White"/>
+                    <GradientStop Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <ScrollViewer 
+            Panel.ZIndex="0"
+            VerticalScrollBarVisibility="Visible"
             Grid.Row="1"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top">
+            Grid.RowSpan="2"
+            Margin="0,0,0,0">
             
-            <TextBlock 
-                Margin="0,0,0,20"
-                Text="Список желаемого"
-                FontFamily="{StaticResource InterMedium}"
-                FontSize="24"/>
-
-            <StackPanel Width="300">
-                <Rectangle 
-                    Height="160" Width="300"
-                    RadiusX="8" RadiusY="8"
-                    Margin="0,0,0,17">
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="pack://application:,,,/Images/194015_5e46a09c2d7c8.jpg"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-                    
+            <StackPanel 
+                Margin="20,15,20,0"
+                >
                 <StackPanel>
                     <TextBlock 
-                        TextWrapping="Wrap"
-                        Grid.Row="0"
-                        Text="Париж, город любви и Авиньон-Прованс - 7 дней (малая группа) 7 дней малая группа 7 дней малая группа"
-                        FontSize="20"
-                        FontFamily="{StaticResource InterSemiBold}"
-                        />
+                        Margin="0,0,0,20"
+                        Text="Недавно просмотренные"
+                        FontFamily="{StaticResource InterMedium}"
+                        FontSize="24"/>
 
-                    <ProgressBar
-                        HorizontalAlignment="Left"
-                        Width="108"
-                        Grid.Row="1"
-                        Height="18"
-                        Foreground="Gold"
-                        Background="Transparent"
-                        Value="4"
-                        Maximum="10"
-                        Minimum="0"
-                        Margin="0,4"/>
+                    <ListBox 
+                        x:Name="ViewedTourListBox"
+                        Style="{StaticResource TourListBox}"
+                        ItemTemplate="{StaticResource TourDataTemplate}"
+                        ScrollViewer.PreviewMouseWheel="ViewedTourListBox_PreviewMouseWheel">
+                        <ListBox.Resources>
+                            <Style TargetType="ScrollBar" BasedOn="{StaticResource LightScrollBar}"/>
+                            <Style TargetType="ListBoxItem" BasedOn="{StaticResource TourListBoxItem}"/>
+                        </ListBox.Resources>
+                    </ListBox>
+                </StackPanel>
 
-                    <TextBlock 
-                        Grid.Row="2"
-                        Text="5 дней за €1,958"
-                        FontSize="14"
-                        FontFamily="{StaticResource InterMedium}"/>
+                <StackPanel>
+                    <TextBlock
+                        Margin="0,0,0,20"
+                        Text="Список желаемого"
+                        FontFamily="{StaticResource InterMedium}"
+                        FontSize="24"/>
+
+                    <ListBox
+                        x:Name="LikedTourListBox"
+                        Style="{StaticResource TourListBox}"
+                        ItemTemplate="{StaticResource TourDataTemplate}"
+                        ScrollViewer.PreviewMouseWheel="LikedTourListBox_PreviewMouseWheel">
+                        <ListBox.Resources>
+                            <Style TargetType="ScrollBar" BasedOn="{StaticResource LightScrollBar}"/>
+                            <Style TargetType="ListBoxItem" BasedOn="{StaticResource TourListBoxItem}"/>
+                        </ListBox.Resources>
+                    </ListBox>
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock
+                        Margin="0,0,0,20"
+                        Text="Пройденые туры"
+                        FontFamily="{StaticResource InterMedium}"
+                        FontSize="24"/>
+
+                    <ListBox
+                        x:Name="PassedTourListBox"
+                        Style="{StaticResource TourListBox}"
+                        ItemTemplate="{StaticResource TourDataTemplate}"
+                        ScrollViewer.PreviewMouseWheel="PassedTourListBox_PreviewMouseWheel">
+                        <ListBox.Resources>
+                            <Style TargetType="ScrollBar" BasedOn="{StaticResource LightScrollBar}"/>
+                            <Style TargetType="ListBoxItem" BasedOn="{StaticResource TourListBoxItem}"/>
+                        </ListBox.Resources>
+                    </ListBox>
                 </StackPanel>
             </StackPanel>
-        </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

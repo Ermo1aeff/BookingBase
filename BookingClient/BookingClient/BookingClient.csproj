@@ -91,6 +91,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AppFrame.cs" />
     <Compile Include="Models\accounts.cs">
       <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
@@ -142,10 +143,16 @@
     <Compile Include="Models\last_names.cs">
       <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\liked_tours.cs">
+      <DependentUpon>Booking_BaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\orders.cs">
       <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\order_rooms.cs">
+      <DependentUpon>Booking_BaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\passed_tours.cs">
       <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\persons.cs">
@@ -163,10 +170,7 @@
     <Compile Include="Models\tours.cs">
       <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tour_lists.cs">
-      <DependentUpon>Booking_BaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\wish_lists.cs">
+    <Compile Include="Models\viewed_tours.cs">
       <DependentUpon>Booking_BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Pages\NewOrderPages\ListToursPage.xaml.cs">
@@ -234,6 +238,9 @@
     </Compile>
     <Compile Include="Pages\DirectoryPages\ToursPage.xaml.cs">
       <DependentUpon>ToursPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DlgWindows\ProfileDlgWindow.xaml.cs">
+      <DependentUpon>ProfileDlgWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\RegistrationWindow.xaml.cs">
       <DependentUpon>RegistrationWindow.xaml</DependentUpon>
@@ -343,6 +350,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\DlgWindows\ProfileDlgWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\RegistrationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -381,11 +392,11 @@
     <Resource Include="Fonts\SourceCodePro-Regular.ttf" />
     <Resource Include="Fonts\SourceCodePro-SemiBold.ttf" />
     <Resource Include="Fonts\Inter-Medium.ttf" />
+    <Resource Include="Fonts\Inter-SemiBold.ttf" />
     <EntityDeploy Include="Models\Booking_BaseModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Booking_BaseModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Resource Include="Fonts\Inter-SemiBold.ttf" />
     <None Include="Models\Booking_BaseModel.edmx.diagram">
       <DependentUpon>Booking_BaseModel.edmx</DependentUpon>
     </None>
@@ -410,9 +421,7 @@
   <ItemGroup>
     <Resource Include="Images\Tour booking Serviсe.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Images\199790_5ed58e77d9716.jpg" />
     <Resource Include="Images\GreenBookingIcon.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -428,10 +437,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\image 2.png" />
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\194015_5e46a09c2d7c8.jpg" />
+    <Resource Include="AccountXMLFile.xml" />
+    <Resource Include="Images\camera.png" />
+    <Resource Include="Images\avatar.png" />
     <Content Include="Models\Booking_BaseModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Booking_BaseModel.edmx</DependentUpon>

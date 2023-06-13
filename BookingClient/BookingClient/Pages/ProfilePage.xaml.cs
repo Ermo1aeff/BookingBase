@@ -1,6 +1,8 @@
-﻿using System;
+﻿using BookingClient.PagesOnWindow;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,14 +14,50 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BookingClient.Windows;
+using BookingClient.Models;
+using System.IO;
 
 namespace BookingClient.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для ProfilePage.xaml
-    /// </summary>
+    //[ValueConversion(typeof(int), typeof(departures))]
+    //public class DateEndConverter : IValueConverter
+    //{
+    //    public double MinimumCostRichCar { get; set; }
+    //    public object Convert(object value, Type targetType, object parameter,
+    //        System.Globalization.CultureInfo culture)
+    //    {
+    //        departures CurrentDeparture = SourceCore.entities.departures.FirstOrDefault(filtercase => filtercase.departure_id == (int)value);
+
+    //        double DayCount = (double)CurrentDeparture.tours.day_count;
+    //        DateTime DateBegin = (DateTime)CurrentDeparture.date_begin;
+    //        return DateBegin.AddDays(DayCount);
+    //    }
+
+    //    public object ConvertBack(object value, Type targetType, object parameter,
+    //        System.Globalization.CultureInfo culture)
+    //    {
+    //        departures CurrentDeparture = SourceCore.entities.departures.FirstOrDefault(filtercase => filtercase.departure_id == (int)value);
+    //        return CurrentDeparture;
+    //    }
+    //}
+
     public partial class ProfilePage : Page
     {
+        private int _AccountID;
+
+        public int AccountID 
+        { 
+            get
+            {
+                return _AccountID;
+            }
+            set 
+            {
+                _AccountID = value;
+            }
+        }
+
         public ProfilePage()
         {
             InitializeComponent();
@@ -27,7 +65,157 @@ namespace BookingClient.Pages
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            //RootFrame.Navigate(new ProfilePage());
+            AppFrame.frameMain.GoBack();
+        }
+
+        public static Visual GetDescendantByType(Visual element, Type type)
+        {
+            if (element == null)
+            {
+                return null;
+            }
+            if (element.GetType() == type)
+            {
+                return element;
+            }
+            Visual foundElement = null;
+            if (element is FrameworkElement)
+            {
+                (element as FrameworkElement).ApplyTemplate();
+            }
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(element); i++)
+            {
+                Visual visual = VisualTreeHelper.GetChild(element, i) as Visual;
+                foundElement = GetDescendantByType(visual, type);
+                if (foundElement != null)
+                {
+                    break;
+                }
+            }
+            return foundElement;
+        }
+
+        private void ViewedTourListBox_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            ScrollViewer scrollViewer = GetDescendantByType((ListBox)sender, typeof(ScrollViewer)) as ScrollViewer;
+            scrollViewer?.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset - e.Delta);
+        }
+
+        private void LikedTourListBox_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            ScrollViewer scrollViewer = GetDescendantByType((ListBox)sender, typeof(ScrollViewer)) as ScrollViewer;
+            scrollViewer?.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset - e.Delta);
+        }
+
+        private void PassedTourListBox_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            ScrollViewer scrollViewer = GetDescendantByType((ListBox)sender, typeof(ScrollViewer)) as ScrollViewer;
+            scrollViewer?.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset - e.Delta);
+        }
+
+        private void TransparentButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+
+            PropertyInfo pi = button.DataContext.GetType().GetProperty("tour_id");
+            var TourId = Convert.ToInt32(pi.GetValue(button.DataContext, null));
+            NavigationService.Navigate(new DateSelectingPage(TourId, AccountID));
+        }
+
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ProfileDlgWindow ProfileDlgWin = new ProfileDlgWindow(AccountID);
+
+            accounts Account = SourceCore.entities.accounts.FirstOrDefault(U => U.account_id == AccountID);
+
+            if (ProfileDlgWin.ShowDialog() == true)
+            {
+                SetAccountInfo();
+                (Tag as MainWindow).SetAccountCaption(Account.account_id);
+            }
+        }
+
+        public void SetAccountInfo()
+        {
+            accounts Account = SourceCore.entities.accounts.FirstOrDefault(U => U.account_id == AccountID);
+
+            if (Account.image != null)
+            {
+                AvatarImageBrush.ImageSource = ToImage(Account.image);
+            }
+
+            if (Account.last_names.last_name != null)
+            {
+                ProfileCaptionTextBlock.Text = $"Привет {Account.first_names.first_name} {Account.last_names.last_name}!";
+            }
+            else
+            {
+                ProfileCaptionTextBlock.Text = $"Тур оператор {Account.first_names.first_name}";
+            }
+
+            if (Account.email != null)
+            {
+                EmailTextBlock.Text = Account.email;
+            } 
+            else
+            {
+                EmailTextBlock.Text = "Почта еще не добавлена";
+            }
+
+        }
+
+        public BitmapImage ToImage(byte[] array)
+        {
+            using (MemoryStream ms = new MemoryStream(array))
+            {
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.StreamSource = ms;
+                image.EndInit();
+                return image;
+            }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            SetAccountInfo();
+
+            ViewedTourListBox.ItemsSource = (
+                from item in SourceCore.entities.viewed_tours
+                where item.account_id == _AccountID
+                select new
+                {
+                    TourName = item.tours.tour_name,
+                    Price = Math.Round((double)item.tours.price),
+                    DayCount = item.tours.day_count,
+                    item.tour_id,
+                    TourImage = item.tours.images.FirstOrDefault(filtercase => filtercase.tour_id == item.tour_id)
+                }).ToList();
+
+            LikedTourListBox.ItemsSource = (
+                from item in SourceCore.entities.liked_tours
+                where item.account_id == _AccountID
+                select new
+                {
+                    TourName = item.tours.tour_name,
+                    Price = Math.Round((double)item.tours.price),
+                    DayCount = item.tours.day_count,
+                    item.tour_id,
+                    TourImage = item.tours.images.FirstOrDefault(filtercase => filtercase.tour_id == item.tour_id)
+                }).ToList();
+
+            PassedTourListBox.ItemsSource = (
+                from item in SourceCore.entities.passed_tours
+                where item.account_id == _AccountID
+                select new
+                {
+                    TourName = item.tours.tour_name,
+                    Price = Math.Round((double)item.tours.price),
+                    DayCount = item.tours.day_count,
+                    item.tour_id,
+                    TourImage = item.tours.images.FirstOrDefault(filtercase => filtercase.tour_id == item.tour_id)
+                }).ToList();
         }
     }
 }

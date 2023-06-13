@@ -77,11 +77,11 @@
                                     Content="Создать заказ"
                                     Click="CreateOrderButton_Click"/>
 
-                                <Button
+                                <!--<Button
                                     Style="{StaticResource TextTitleBarButton}"
                                     x:Name="NewTourButton"
                                     Content="Создать тур"
-                                    Click="NewTourButton_Click"/>
+                                    Click="NewTourButton_Click"/>-->
 
                                 <Button
                                     Style="{StaticResource TextTitleBarButton}"
@@ -103,11 +103,47 @@
                             Grid.Column="3">
 
                             <Button
-                                Content="Имя Фамилия"
                                 Style="{StaticResource TextTitleBarButton}"
                                 x:Name="AccountCaptionButton"
                                 WindowChrome.IsHitTestVisibleInChrome="True"
-                                Click="AccountCaptionButtonClick"/>
+                                Click="AccountCaptionButtonClick">
+                                <StackPanel Orientation="Horizontal">
+
+                                    <TextBlock 
+                                        x:Name="AccountCaptionTextBlock"
+                                        Text="Имя Фамилия" 
+                                        VerticalAlignment="Center" 
+                                        Margin="0 0 16 0" 
+                                        TextOptions.TextFormattingMode="Ideal" 
+                                        TextOptions.TextHintingMode="Auto"/>
+
+                                    <Ellipse 
+                                        x:Name="ClientElipse"
+                                        Visibility="Collapsed"
+                                        Height="24" 
+                                        Width="24"
+                                        RenderOptions.BitmapScalingMode="HighQuality">
+                                        <Ellipse.Fill>
+                                            <ImageBrush 
+                                                x:Name="AvatarImageBrush" 
+                                                ImageSource="pack://application:,,,/Images/avatar.png"/>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+
+                                    <Rectangle
+                                        x:Name="AdminRectangle"
+                                        Visibility="Collapsed"
+                                        Height="28" 
+                                        Width="28"
+                                        RenderOptions.BitmapScalingMode="HighQuality">
+                                        <Rectangle.Fill>
+                                            <ImageBrush 
+                                                x:Name="AdminAvatarImageBrush" 
+                                                ImageSource="pack://application:,,,/Images/avatar.png"/>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </StackPanel>
+                            </Button>
 
                             <Menu
                                 Background="{StaticResource BackgroundMainColor}"

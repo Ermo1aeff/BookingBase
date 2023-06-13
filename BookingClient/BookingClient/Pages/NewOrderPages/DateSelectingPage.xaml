@@ -19,9 +19,7 @@
                     Content="{Binding Path=date_begin}"
                     ContentStringFormat="dd.MM.yyyy">
                     <Label.Style>
-                        <Style TargetType="Label">
-                            
-                        </Style>
+                        <Style TargetType="Label"/>
                     </Label.Style>
                 </Label>
 
@@ -271,19 +269,20 @@
                                     FontFamily="Segoe UI Semilight"/>
                             </StackPanel>
                         </Grid>
+                        
                         <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,20,0,0">
                             <TextBlock
-                                    x:Name="TourPriceTextBlock"
-                                    TextWrapping="Wrap"
-                                    FontSize="40"
-                                    Text="955" 
-                                    FontFamily="Segoe UI Bold"/>
+                                x:Name="TourPriceTextBlock"
+                                TextWrapping="Wrap"
+                                FontSize="40"
+                                Text="955" 
+                                FontFamily="Segoe UI Bold"/>
 
                             <TextBlock
-                                    TextWrapping="Wrap"
-                                    FontSize="40"
-                                    Text="₽" 
-                                    FontFamily="Segoe UI Bold"/>
+                                TextWrapping="Wrap"
+                                FontSize="40"
+                                Text="₽" 
+                                FontFamily="Segoe UI Bold"/>
                         </StackPanel>
                         <Button 
                             IsEnabled="False"

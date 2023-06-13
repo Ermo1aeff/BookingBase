@@ -17,9 +17,10 @@ namespace BookingClient.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public accounts()
         {
-            this.tour_lists = new HashSet<tour_lists>();
+            this.passed_tours = new HashSet<passed_tours>();
             this.grades = new HashSet<grades>();
-            this.wish_lists = new HashSet<wish_lists>();
+            this.viewed_tours = new HashSet<viewed_tours>();
+            this.liked_tours = new HashSet<liked_tours>();
         }
     
         public int account_id { get; set; }
@@ -30,15 +31,19 @@ namespace BookingClient.Models
         public Nullable<int> role_id { get; set; }
         public byte[] image { get; set; }
         public Nullable<long> phone { get; set; }
+        public string email { get; set; }
+        public Nullable<System.DateTime> dayofbirth { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tour_lists> tour_lists { get; set; }
+        public virtual ICollection<passed_tours> passed_tours { get; set; }
         public virtual first_names first_names { get; set; }
         public virtual last_names last_names { get; set; }
         public virtual roles roles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<grades> grades { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<wish_lists> wish_lists { get; set; }
+        public virtual ICollection<viewed_tours> viewed_tours { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<liked_tours> liked_tours { get; set; }
     }
 }

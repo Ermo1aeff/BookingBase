@@ -26,8 +26,7 @@
     <Border CornerRadius="55"
             Background="#FFF"
             MouseLeftButtonDown="Border_MouseLeftButtonDown"
-            x:Name="Border"
-            >
+            x:Name="Border">
 
         <Grid >
             <Grid.RowDefinitions>
