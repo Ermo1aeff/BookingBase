@@ -1,22 +1,17 @@
 ﻿using BookingClient.PagesOnWindow;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using BookingClient.Windows;
 using BookingClient.Models;
 using System.IO;
+using System.ComponentModel;
 
 namespace BookingClient.Pages
 {
@@ -74,15 +69,18 @@ namespace BookingClient.Pages
             {
                 return null;
             }
+
             if (element.GetType() == type)
             {
                 return element;
             }
+
             Visual foundElement = null;
             if (element is FrameworkElement)
             {
                 (element as FrameworkElement).ApplyTemplate();
             }
+
             for (int i = 0; i < VisualTreeHelper.GetChildrenCount(element); i++)
             {
                 Visual visual = VisualTreeHelper.GetChild(element, i) as Visual;
@@ -92,6 +90,7 @@ namespace BookingClient.Pages
                     break;
                 }
             }
+
             return foundElement;
         }
 
@@ -113,13 +112,36 @@ namespace BookingClient.Pages
             scrollViewer?.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset - e.Delta);
         }
 
+        private void TOTourListBox_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            ScrollViewer scrollViewer = GetDescendantByType((ListBox)sender, typeof(ScrollViewer)) as ScrollViewer;
+            scrollViewer?.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset - e.Delta);
+        }
+
         private void TransparentButton_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
 
             PropertyInfo pi = button.DataContext.GetType().GetProperty("tour_id");
             var TourId = Convert.ToInt32(pi.GetValue(button.DataContext, null));
-            NavigationService.Navigate(new DateSelectingPage(TourId, AccountID));
+
+            switch (SourceCore.entities.accounts.FirstOrDefault(U => U.account_id == _AccountID).role_id)
+            {
+                case 1:
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+                    NavigationService.Navigate(new TOTourListPage(TourId, AccountID));
+                    break;
+                case 4:
+                    NavigationService.Navigate(new DateSelectingPage(TourId, AccountID));
+                    break;
+                default:
+                    break;
+            }
+
         }
 
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
@@ -144,7 +166,7 @@ namespace BookingClient.Pages
                 AvatarImageBrush.ImageSource = ToImage(Account.image);
             }
 
-            if (Account.last_names.last_name != null)
+            if (Account.last_names != null)
             {
                 ProfileCaptionTextBlock.Text = $"Привет {Account.first_names.first_name} {Account.last_names.last_name}!";
             }
@@ -181,6 +203,23 @@ namespace BookingClient.Pages
         {
             SetAccountInfo();
 
+            switch (SourceCore.entities.accounts.FirstOrDefault(U => U.account_id == _AccountID).role_id)
+            {
+                case 1:
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+                    TOToursStackPanel.Visibility = Visibility.Visible;
+                    break;
+                case 4:
+                    CustomerToursStackPanel.Visibility = Visibility.Visible;
+                    break;
+                default:
+                    break;
+            }
+
             ViewedTourListBox.ItemsSource = (
                 from item in SourceCore.entities.viewed_tours
                 where item.account_id == _AccountID
@@ -215,6 +254,18 @@ namespace BookingClient.Pages
                     DayCount = item.tours.day_count,
                     item.tour_id,
                     TourImage = item.tours.images.FirstOrDefault(filtercase => filtercase.tour_id == item.tour_id)
+                }).ToList();
+
+            TOTourListBox.ItemsSource = (
+                from item in SourceCore.entities.tours
+                where item.account_id == _AccountID
+                select new
+                {
+                    TourName = item.tour_name,
+                    Price = Math.Round((double)item.price),
+                    DayCount = item.day_count,
+                    item.tour_id,
+                    TourImage = item.images.FirstOrDefault(filtercase => filtercase.tour_id == item.tour_id)
                 }).ToList();
         }
     }

@@ -7,9 +7,33 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.IO;
+using System.Windows.Data;
+using System.Reflection;
 
 namespace BookingClient.PagesOnWindow
 {
+    [ValueConversion(typeof(int), typeof(departures))]
+    public class DateEndConverter : IValueConverter
+    {
+        public double MinimumCostRichCar { get; set; }
+        public object Convert(object value, Type targetType, object parameter,
+            System.Globalization.CultureInfo culture)
+        {
+            departures CurrentDeparture = SourceCore.entities.departures.FirstOrDefault(filtercase => filtercase.departure_id == (int)value);
+
+            double DayCount = (double)CurrentDeparture.tours.day_count;
+            DateTime DateBegin = (DateTime)CurrentDeparture.date_begin;
+            return DateBegin.AddDays(DayCount);
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter,
+            System.Globalization.CultureInfo culture)
+        {
+            departures CurrentDeparture = SourceCore.entities.departures.FirstOrDefault(filtercase => filtercase.departure_id == (int)value);
+            return CurrentDeparture;
+        }
+    }
+
     public partial class DateSelectingPage : Page
     {
         private List<byte[]> ImageList = new List<byte[]>();
@@ -27,7 +51,7 @@ namespace BookingClient.PagesOnWindow
 
             TourImage.Source = ToImage(ImageList[ImageIndex]);
 
-            DepartureListBox.ItemsSource = SourceCore.entities.departures.Where(filtercase => filtercase.tour_id == TourId && filtercase.date_begin >= DateTime.Today).ToList();
+            DeparturesListBox.ItemsSource = SourceCore.entities.departures.Where(filtercase => filtercase.tour_id == TourId && filtercase.date_begin >= DateTime.Today).ToList();
             tours Tour = SourceCore.entities.tours.Where(U => U.tour_id == TourId).FirstOrDefault();
 
             TourNameTextBlock.Text = Tour.tour_name;
@@ -66,15 +90,13 @@ namespace BookingClient.PagesOnWindow
             SourceCore.entities.SaveChanges();
         }
 
-        private void DepartureListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            CommitDepartureButton.IsEnabled = true;
-        }
-
         private void CommitDepartureButton_Click(object sender, RoutedEventArgs e)
         {
-            var SelectedDepartures = (departures)DepartureListBox.SelectedItem;
-            NavigationService.Navigate(new RoomsSelectingPage(SelectedDepartures.departure_id));
+            Button button = (Button)sender;
+
+            PropertyInfo pi = button.DataContext.GetType().GetProperty("departure_id");
+            int DepartureId = Convert.ToInt32(pi.GetValue(button.DataContext, null));
+            NavigationService.Navigate(new RoomsSelectingPage(DepartureId));
         }
 
         private void ForwardButton_Click(object sender, RoutedEventArgs e)

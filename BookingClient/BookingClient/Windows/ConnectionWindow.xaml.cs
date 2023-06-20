@@ -82,11 +82,11 @@ namespace BookingClient
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //DataTable ServerTable = SqlDataSourceEnumerator.Instance.GetDataSources();
+            //datatable servertable = sqldatasourceenumerator.instance.getdatasources();
 
-            //foreach (DataRow row in ServerTable.Rows)
+            //foreach (datarow row in servertable.rows)
             //{
-            //    ServerNameComboBox.Items.Add(row["ServerName"]);
+            //    servernamecombobox.items.add(row["servername"]);
             //}
         }
 

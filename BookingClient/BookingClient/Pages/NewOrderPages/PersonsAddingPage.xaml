@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BookingClient.PagesOnWindow"
+      xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
       Title="PersonsAddingPage"
@@ -11,324 +12,132 @@
 
     <Page.Resources>
         <DataTemplate x:Key="listTemplate">
-            <Border BorderThickness="1" BorderBrush="Black" Height="140" CornerRadius="20" Width="800">
-                <Grid>
+            <Grid Width="800">
+
+                <Border Background="White" CornerRadius="8" Effect="{StaticResource DropShadowEffect}"/>
+
+                <Grid Margin="10">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <!--<RowDefinition/>-->
-                        </Grid.RowDefinitions>
-
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            Grid.Row="0"
-                            Text="Фамилия"
-                            TextWrapping="Wrap"
-                            FontSize="18" 
-                            Padding="50,0,0,0" 
-                            FontFamily="Segoe UI SemiLight"/>
-
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            Grid.Row="1"
-                            Text="Имя"
-                            TextWrapping="Wrap"
-                            FontSize="18" 
-                            Padding="50,0,0,0" 
-                            FontFamily="Segoe UI SemiLight"/>
-
-                        <!--<TextBlock
-                            VerticalAlignment="Center"
-                            Grid.Row="2"
-                            Text="Паспорт"
-                            TextWrapping="Wrap"
-                            FontSize="18" 
-                            Padding="50,0,0,0" 
-                            FontFamily="Segoe UI SemiLight"/>-->
-
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            Grid.Row="2"
-                            Text="Дата рождения"
-                            TextWrapping="Wrap"
-                            FontSize="18" 
-                            Padding="50,0,0,0" 
-                            FontFamily="Segoe UI SemiLight"/>
-                    </Grid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock 
+                            Text="Турист "
+                            FontFamily="{StaticResource InterMedium}"
+                            FontSize="16"
+                        />
+                        <TextBlock 
+                            Text="{Binding [4]}"
+                            FontFamily="{StaticResource InterMedium}"
+                            FontSize="16"
+                        />
+                    </StackPanel>
 
                     <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
-                            <!--<RowDefinition/>-->
-                            <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock
-                            VerticalAlignment="Center"
+                        <TextBox
+                            Margin="10"
+                            Height="48"
+                            Width="254"
+                            Tag="Имя"
                             Grid.Row="0"
+                            Grid.Column="0"
                             Text="{Binding [0]}"
-                            TextWrapping="Wrap"
-                            FontSize="18" 
-                            FontFamily="Segoe UI Semibold"/>
+                            FontSize="14"
+                            FontFamily="{StaticResource InterMedium}"/>
 
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            Grid.Row="1"
-                            Text="{Binding [1]}"
-                            TextWrapping="Wrap"
-                            FontSize="18" 
-                            FontFamily="Segoe UI Semibold"/>
-
-                        <!--<TextBlock
-                            VerticalAlignment="Center"
-                            Grid.Row="2"
-                            Text="1234567890"
-                            TextWrapping="Wrap"
-                            FontSize="18" 
-                            FontFamily="Segoe UI Semibold"/>-->
-
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            Grid.Row="2"
-                            Text="{Binding [2]}"
-                            TextWrapping="Wrap"
-                            FontSize="18" 
-                            FontFamily="Segoe UI Semibold"/>
-                    </Grid>
-
-                    <Grid Grid.Column="2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <Button
+                        <TextBox
+                            Margin="10"
+                            Height="48"
+                            Width="254"
+                            Tag="Фамилия"
                             Grid.Row="0"
-                            Margin="30, 10, 10, 5"
-                            Style="{StaticResource AnotherActionButton}"
-                            Content="Редактировать"
-                            />
-                        <Button 
+                            Grid.Column="1"
+                            Text="{Binding [1]}"
+                            FontSize="14"
+                            FontFamily="{StaticResource InterMedium}"/>
+
+                        <TextBox
+                            Margin="10"
+                            Height="48"
+                            Width="254"
+                            Tag="Дата рождения"
                             Grid.Row="1"
-                            Margin="30, 5, 10, 10"
-                            Style="{StaticResource CancelButton}"
-                            Content="Удалить"
-                            />
+                            Grid.Column="0"
+                            Text="{Binding [2]}"
+                            FontSize="14"
+                            FontFamily="{StaticResource InterMedium}"/>
+
+                        <TextBox
+                            Margin="10"
+                            Height="48"
+                            Width="254"
+                            Tag="Паспорт"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding [3]}"
+                            FontSize="14"
+                            FontFamily="{StaticResource InterMedium}"/>
                     </Grid>
                 </Grid>
-            </Border>
+            </Grid>
         </DataTemplate>
     </Page.Resources>
 
-    <Grid>
-        <Grid HorizontalAlignment="Center" Margin="0,160">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+    <Grid HorizontalAlignment="Center" Margin="0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-            <ListBox
-                BorderThickness="0"
-                Grid.Row="0"
-                x:Name="PersonListBox"
-                ItemTemplate="{StaticResource listTemplate}"
-                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0,10,0,-10">
+        <Button 
+            Grid.Row="0"
+            Height="60"
+            Width="200"
+            x:Name="AddPersonAndCommitOrderButton"
+            Click="AddPersonAndCommitOrderButton_Click"
+            Content="Оформить заказ"
+            Style="{StaticResource AcceptButton}"
+            />
 
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Vertical" Width="820"/>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
+        <ListBox
+            Grid.Row="1"
+            BorderThickness="0"
+            x:Name="PersonListBox"
+            ItemTemplate="{StaticResource listTemplate}"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            ScrollViewer.VerticalScrollBarVisibility="Auto"
+            ScrollViewer.CanContentScroll="False">
 
-                <ListBox.ItemContainerStyle>
-                    <Style TargetType="{x:Type ListBoxItem}">
-                        <Setter Property="Margin" Value="0,5"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                    <ContentPresenter/>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </ListBox.ItemContainerStyle>
-            </ListBox>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical" Margin="14"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
 
-            <StackPanel Grid.Column="1" Width="300" Margin="30,0,0,0">
-
-                <TextBlock
-                    TextWrapping="Wrap"
-                    Margin="0,60,0,0"
-                    FontSize="30"
-                    Text="Добавление туристов" 
-                    FontFamily="Segoe UI Semibold"/>
-
-                <DockPanel Margin="0,0,0,30">
-                    <TextBlock
-                        Margin="0,20,0,0"
-                        FontSize="20"
-                        Text="Необходимо добавить:" 
-                        FontFamily="Segoe UI Semibold"/>
-
-                    <TextBlock
-                        x:Name="NeedPersonsTextBox"
-                        Margin="10,20,0,0"
-                        FontSize="20"
-                        Text="0" 
-                        FontFamily="Segoe UI Semibold"/>
-                </DockPanel>
-
-                <Label Content="Фамилия" FontSize="20"/>
-                <TextBox x:Name="LastName"/>
- 
-                <Label Content="Имя" FontSize="20"/>
-                <TextBox x:Name="FirstName"/>
-
-                <!--<Label Content="Паспорт" FontSize="20"/>
-                <TextBox x:Name="Passport"/>-->
-
-                <Label Content="Дата рождения" FontSize="20"/>
-                <DatePicker
-                    x:Name="DateOfBrithDatePicker"  
-                    FontSize="18"
-                    SelectedDateFormat="Short"
-                    BorderThickness="1"
-                    Padding="0"/>
-
-                <Button 
-                    Margin="0,30,0,0"
-                    Height="60"
-                    Width="200"
-                    x:Name="CommitSelectingRoomsButton"
-                    Click="CommitSelectingRoomsButton_Click"
-                    Content="Добавить"
-                    Style="{StaticResource AcceptButton}"
-                    />
-            </StackPanel>
-
-            <!--<Border BorderThickness="1" BorderBrush="Black" Height="140" CornerRadius="20" Width="800">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-
-                    <Grid Grid.Column="0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            Grid.Row="0"
-                            Text="Имя"
-                            TextWrapping="Wrap"
-                            FontSize="18" 
-                            Padding="50,0,0,0" 
-                            FontFamily="Segoe UI SemiLight"/>
-                        
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            Grid.Row="1"
-                            Text="Фамилия"
-                            TextWrapping="Wrap"
-                            FontSize="18" 
-                            Padding="50,0,0,0" 
-                            FontFamily="Segoe UI SemiLight"/>
-                        
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            Grid.Row="2"
-                            Text="Паспорт"
-                            TextWrapping="Wrap"
-                            FontSize="18" 
-                            Padding="50,0,0,0" 
-                            FontFamily="Segoe UI SemiLight"/>
-
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            Grid.Row="3"
-                            Text="Дата рождения"
-                            TextWrapping="Wrap"
-                            FontSize="18" 
-                            Padding="50,0,0,0" 
-                            FontFamily="Segoe UI SemiLight"/>
-                    </Grid>
-
-                    <Grid Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            Grid.Row="0"
-                            Text="Егор"
-                            TextWrapping="Wrap"
-                            FontSize="18" 
-                            FontFamily="Segoe UI Semibold"/>
-
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            Grid.Row="1"
-                            Text="Ермолаев"
-                            TextWrapping="Wrap"
-                            FontSize="18" 
-                            FontFamily="Segoe UI Semibold"/>
-
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            Grid.Row="2"
-                            Text="1234567890"
-                            TextWrapping="Wrap"
-                            FontSize="18" 
-                            FontFamily="Segoe UI Semibold"/>
-
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            Grid.Row="3"
-                            Text="16.09.2002"
-                            TextWrapping="Wrap"
-                            FontSize="18" 
-                            FontFamily="Segoe UI Semibold"/>
-                    </Grid>
-
-                    <Grid Grid.Column="2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <Button
-                            Grid.Row="0"
-                            Margin="30, 10"
-                            Style="{StaticResource AcceptButton}"
-                            Content="Редактировать"
-                            />
-                        <Button 
-                            Grid.Row="1"
-                            Margin="30, 10"
-                            Style="{StaticResource CancelButton}"
-                            Content="Удалить"
-                            />
-                    </Grid>
-                </Grid>
-            </Border>-->
-        </Grid>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Margin" Value="0,17"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                <ContentPresenter/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
     </Grid>
 </Page>

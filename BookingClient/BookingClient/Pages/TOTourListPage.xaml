@@ -7,7 +7,8 @@
       mc:Ignorable="d" 
       d:DesignHeight="570" d:DesignWidth="860"
       Title="TOTourListPage"
-      Language="ru">
+      Language="ru"
+      Loaded="Page_Loaded">
 
     <Page.Resources>
         <local:DateEndConverter x:Key="DateEndConverter"/>
@@ -159,17 +160,21 @@
                             Margin="0,0,16,0">
 
                             <Button 
+                                x:Name="AddDateButton"
                                 Width="110"
                                 Height="37"
                                 Style="{StaticResource RecordAnotherActionButton}"
                                 Content="Добавить"
-                                Margin="0,0,12,0"/>
+                                Margin="0,0,12,0"
+                                Click="AddDateButton_Click"/>
 
                             <Button 
                                 Width="110"
                                 Height="37"
                                 Style="{StaticResource RecordCancelButton}"
-                                Content="Удалить"/>
+                                Content="Удалить"
+                                x:Name="DeleteDateButton"
+                                Click="DeleteDateButton_Click"/>
                         </StackPanel>
                     </DockPanel>
                 </Border>
@@ -238,13 +243,15 @@
                         </StackPanel>
                         
                         <Button 
+                            x:Name="CreateReport"
                             Background="#CACACA"
                             HorizontalAlignment="Right"
                             Margin="0,0,16,0"
                             Width="165"
                             Height="37"
                             Style="{StaticResource RecordCommitButton}"
-                            Content="Составить отчёт"/>
+                            Content="Составить отчёт"
+                            Click="CreateReport_Click"/>
                     </DockPanel>
 
                 </Border>

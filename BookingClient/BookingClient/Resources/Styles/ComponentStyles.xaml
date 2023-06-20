@@ -8,9 +8,18 @@
     <DropShadowEffect
         x:Key="DropShadowEffect"
         Color="black"
-        Opacity="1"
+        Opacity="0.75"
         BlurRadius="14"
         ShadowDepth="2"
+        Direction="315"
+        />
+
+    <DropShadowEffect
+        x:Key="MiniDropShadowEffect"
+        Color="black"
+        Opacity="0.75"
+        BlurRadius="4"
+        ShadowDepth="1"
         Direction="315"
         />
 
@@ -137,6 +146,41 @@
         </Style.Triggers>
     </Style>
 
+    <!--<Style x:Key="BaseImageRoundButton" TargetType="{x:Type Button}">
+        <Setter Property="FontFamily" Value="{StaticResource InterMedium}"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Cursor" Value="Hand"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid
+                        TextOptions.TextHintingMode="Animated"
+                        TextOptions.TextRenderingMode="ClearType">
+
+                        <Border
+                            x:Name="PART_DefaultButton"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding Border.CornerRadius}">
+                            <StackPanel>
+                                <ContentPresenter 
+                                    x:Name="contentPresenter" 
+                                    ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                    Content="{TemplateBinding Content}" 
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    Margin="{TemplateBinding Padding}" 
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+
+
+
+    <!--Прозрачная кнопка-->
     <Style TargetType="Button" x:Key="TransparentButton" BasedOn="{StaticResource BaseButton}">
         <Setter Property="Background" Value="Transparent" />
     </Style>
@@ -305,6 +349,51 @@
         </Setter>
     </Style>
 
+    <!--Кнопка добавить в желаемое-->
+    <Style x:Key="LikeToggleButton" TargetType="ToggleButton">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="ToolTip" Value="Добавить в список желамемого"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border
+                        CornerRadius="18"
+                        Background="White" 
+                        Width="27"
+                        Height="27"
+                        >
+                        <Grid>
+                            <Path
+                                x:Name="PATR_PathHeart"
+                                Height="19" 
+                                Width="19"
+                                Fill="Black"
+                                Data="{DynamicResource PathHeart}"/>
+                            
+                            <Path
+                                x:Name="PATR_PathSmallHeart"
+                                Height="19" 
+                                Width="19"
+                                Fill="Transparent"
+                                Data="{DynamicResource PathSmallHeart}"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="PATR_PathSmallHeart" Property="Fill" Value="Red"/>
+                            <Setter Property="ToolTip" Value="Убрать из списка желаемого"/>
+                            <!--<Setter TargetName="PATR_PathSmallHeart" Property="Visibility" Value="Visible"/>-->
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--<Style x:Key="FillLikeToggleButton" TargetType="ToggleButton" BasedOn="{StaticResource LikeToggleButton}">
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>-->
+
     <!--Кнопка с изображением для редактирования записей в справочнике-->
     <Style x:Key="BaseImageButton" TargetType="Button">
         <Setter Property="Cursor" Value="Hand"/>
@@ -344,7 +433,7 @@
     </Style>
 
     <Style x:Key="RightArrowButton" TargetType="Button" BasedOn="{StaticResource RecordChangeButton}">
-        <Setter Property="Image.Source" Value="pack://application:,,,/Images/camera.png"/>
+        <Setter Property="Path.Data" Value="{DynamicResource PathArrowRight}"/>
         <Setter Property="ToolTip" Value="Следующая страница"/>
     </Style>
 
@@ -377,6 +466,61 @@
         <Setter Property="Path.Data" Value="{DynamicResource PathDelete}"/>
         <Setter Property="ToolTip" Value="Удалить"/>
     </Style>
+
+    <!--Скругленная кнопка с изображением и текстом-->
+    <Style x:Key="BaseRoundImageButton" TargetType="Button">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Width" Value="37"/>
+        <Setter Property="Height" Value="37"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border 
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="18"
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}">
+                        <Path 
+                            SnapsToDevicePixels="True"
+                            x:Name="PART_ButtonPath"
+                            Fill="{TemplateBinding Foreground}"
+                            Width="27"
+                            Height="27"
+                            Data="{TemplateBinding Path.Data}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="NextImageButton" TargetType="Button" BasedOn="{StaticResource BaseRoundImageButton}">
+        <Setter Property="Path.Data" Value="{DynamicResource PathMoreThan}"/>
+        <Setter Property="ToolTip" Value="Следующее изображение"/>
+    </Style>
+
+    <Style x:Key="BackImageButton" TargetType="Button" BasedOn="{StaticResource BaseRoundImageButton}">
+        <Setter Property="Path.Data" Value="{DynamicResource PathLessThan}"/>
+        <Setter Property="ToolTip" Value="Предыдущее изображение"/>
+    </Style>
+
+    <!--Промежуточная кнопка-->
+    <!--<Style x:Key="RecordChangeButton" TargetType="Button" BasedOn="{StaticResource BaseImageButton}">
+        <Setter Property="Width" Value="60"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="Darkgray"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Foreground" Value="Gray"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="LightGray"/>
+                <Setter Property="Cursor" Value=""/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>-->
+
+
 
     <!--Кнопка удаления текста-->
     <Style x:Key="CrossButton" TargetType="Button" BasedOn="{StaticResource BaseImageButton}">
@@ -435,7 +579,8 @@
                         <Grid>
                             <ScrollViewer
                                 x:Name="PART_ContentHost"
-                                VerticalAlignment="Center"/>
+                                VerticalAlignment="Center"
+                                />
 
                             <TextBlock
                                 x:Name="hint"
@@ -780,7 +925,7 @@
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="ViewportSize" Value="2" />
         <Setter Property="Minimum" Value="0" />
-        <Setter Property="Maximum" Value="10" />
+        <Setter Property="Maximum" Value="2" />
         <Style.Triggers>
             <Trigger Property="Orientation" Value="Horizontal">
                 <Setter Property="Width" Value="Auto" />
@@ -989,6 +1134,115 @@
         </Setter>
     </Style>
 
+    <!--Лист бокс списка туров (для тур оператора)-->
+    <Style x:Key="TOTourListBox" TargetType="ListBox">
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBox">
+                    <Grid>
+                        <!--<Grid.OpacityMask>
+                            <VisualBrush Visual="{Binding ElementName=Border}" />
+                        </Grid.OpacityMask>
+                        <Border x:Name="Border" CornerRadius="20,20,0,0" Background="#CACACA"/>-->
+
+                        <WrapPanel IsItemsHost="True" Orientation="Horizontal" HorizontalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Итем лист бокса списка туров (для тур оператора)-->
+    <Style x:Key="TOTourListBoxItem" TargetType="{x:Type ListBoxItem}">
+        <Setter Property="Margin" Value="6,0,6,14"/>
+        <Setter Property="Padding" Value="10,0,10,0"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <!--<Setter Property="Cursor" Value="Hand"/>-->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <ContentPresenter/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Лист бокс расписания (на странице просмотра тура)-->
+    <Style x:Key="TourViewDeparturesListBox" TargetType="ListBox">
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBox">
+                    <Grid>
+                        <ScrollViewer Margin="0" Focusable="false" CanContentScroll="False">
+                            <StackPanel IsItemsHost="True" Orientation="Vertical" Margin="0,0,0,0"/>
+                        </ScrollViewer>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Итем лист бокса расписания (на странице просмотра тура)-->
+    <Style TargetType="{x:Type ListBoxItem}" x:Key="TourViewDeparturesListBoxItem">
+        <Setter Property="Margin" Value="14,7,14,7"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Grid>
+                        <ContentPresenter/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+
+    <!--Лист бокс списка номеров--><!--
+    <Style x:Key="TourRoomListBox" TargetType="ListBox">
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBox">
+                    <Grid>
+                        <ScrollViewer Margin="0" Focusable="false" CanContentScroll="False">
+                            <StackPanel IsItemsHost="True" Orientation="Vertical" Margin="0,0,0,0"/>
+                        </ScrollViewer>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    --><!--Итем лист бокса списка номеров--><!--
+    <Style TargetType="{x:Type ListBoxItem}" x:Key="TourRoomListBoxItem">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Grid>
+                        <ContentPresenter/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+
 
 
     <!--<Style x:Key="{x:Type ListBoxItem}" TargetType="ListBoxItem">
@@ -1066,5 +1320,37 @@
             </Setter.Value>
         </Setter>
     </Style>-->
+
+
+    <!--Тултип-->
+
+    <Style x:Key="{x:Type ToolTip}" TargetType="ToolTip">
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="HasDropShadow" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToolTip">
+                    <Border 
+                        Name="Border"
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        Background="White"
+                        Effect="{StaticResource MiniDropShadowEffect}"
+                        Margin="4">
+                        <ContentPresenter 
+                            Margin="4"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasDropShadow" Value="true">
+                            <Setter TargetName="Border" Property="CornerRadius" Value="6" />
+                            <Setter TargetName="Border" Property="SnapsToDevicePixels" Value="true" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 </ResourceDictionary>

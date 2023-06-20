@@ -7,22 +7,102 @@
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
       Title="DateSelectingPage"
-      Background="White">
+      Background="White"
+      Language="RU">
 
     <Page.Resources>
-        <DataTemplate x:Key="listTemplate">
-            <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Label 
-                    HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    FontSize="20" 
-                    Content="{Binding Path=date_begin}"
-                    ContentStringFormat="dd.MM.yyyy">
-                    <Label.Style>
-                        <Style TargetType="Label"/>
-                    </Label.Style>
-                </Label>
+        <local:DateEndConverter x:Key="DateEndConverter"/>
 
+        <DataTemplate x:Key="DeparturesDataTemplate" x:Name="DataTemplate">
+            <Grid>
+                <Border 
+                    Effect="{StaticResource DropShadowEffect}"
+                    Background="#FFFFFF"
+                    CornerRadius="8"
+                    Height="90"/>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="36"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel
+                        Grid.Column="0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        x:Name="StackPanel">
+
+                        <TextBlock
+                            Text="{Binding date_begin, StringFormat=dddd}"
+                            FontSize="12"
+                            FontFamily="{StaticResource InterMedium}"
+                            />
+
+                        <TextBlock
+                            Text="{Binding date_begin, StringFormat=d MMM. yyyy}"
+                            FontSize="16"
+                            FontFamily="{StaticResource InterMedium}"
+                            >
+                        </TextBlock>
+
+                    </StackPanel>
+
+                    <Border 
+                        Grid.Column="1"
+                        Height="36"
+                        CornerRadius="24"
+                        Background="{StaticResource BackgroundSecondaryLightColor}">
+                        
+                        <Path
+                            Width="26"
+                            Height="26"
+                            Fill="Black"
+                            Data="{StaticResource PathShortRigthArrow}"/>
+
+                    </Border>
+
+                    <StackPanel
+                        Grid.Column="2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+
+                        <TextBlock 
+                            Text=
+                            "{
+                                Binding departure_id, 
+                                StringFormat=dddd,
+                                Converter={StaticResource DateEndConverter},
+                                Mode=OneWay
+                            }"
+                            FontSize="12"
+                            FontFamily="{StaticResource InterMedium}"/>
+
+                        <TextBlock
+                            Text=
+                            "{
+                                Binding departure_id,
+                                StringFormat=d MMM yyyy,
+                                Converter={StaticResource DateEndConverter},
+                                Mode=OneWay
+                            }"
+                            FontSize="16"
+                            FontFamily="{StaticResource InterMedium}"/>
+                    </StackPanel>
+
+                    <Button 
+                        Content="Подтвердить дату"
+                        Grid.Column="3"
+                        Background="{StaticResource BackgroundSecondaryLightColor}"
+                        Height="40"
+                        Width="120"
+                        FontFamily="{StaticResource InterMedium}"
+                        FontSize="12"
+                        x:Name="CommitDepartureButton"
+                        Click="CommitDepartureButton_Click"/>
+                </Grid>
             </Grid>
         </DataTemplate>
     </Page.Resources>
@@ -30,7 +110,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition MaxHeight="100"/>
-            <RowDefinition MinHeight="570"/>
+            <RowDefinition MinHeight="530"/>
             <RowDefinition MaxHeight="100"/>
         </Grid.RowDefinitions>
         
@@ -41,10 +121,10 @@
                 <ColumnDefinition Width="340" MinWidth="340"/>
             </Grid.ColumnDefinitions>
 
-            <Grid  Grid.Column="0">
+            <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
@@ -52,8 +132,7 @@
                         x:Name="TourImage"
                         Margin="11,31,11,10"
                         VerticalAlignment="Top"
-                        RenderOptions.BitmapScalingMode="HighQuality"
-                        Source="{Binding ImageListBox.Image}"/>
+                        RenderOptions.BitmapScalingMode="HighQuality"/>
 
                     <Border 
                         BorderThickness="11" 
@@ -62,59 +141,31 @@
                         Margin="0,20,0,0"/>
 
                     <Button
+                        Style="{StaticResource NextImageButton}"
                         HorizontalAlignment="Right"
                         Margin="0,0,30,0"
-                        Width="37"
-                        Height="37"
                         Background="White"
                         Click="ForwardButton_Click"
                         />
                     
                     <Button
+                        Style="{StaticResource BackImageButton}"
                         HorizontalAlignment="Left"
-                        Margin="30,0,00,0"
-                        Width="37"
-                        Height="37"
+                        Margin="30,0,0,0"
                         Background="White"
                         Click="BackButton_Click"
                         />
                 </Grid>
-                
-                <Grid Grid.Row="1" Background="LightGray" Margin="10">
+
+                <Grid Grid.Row="1" Margin="0,5,11,0">
                     <ListBox 
-                        BorderThickness="0"
-                        SelectionChanged="DepartureListBox_SelectionChanged"
-                        ItemTemplate="{StaticResource listTemplate}"
-                        x:Name="DepartureListBox"
-                        ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                        ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                        <ListBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel/>
-                            </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
-                        <ListBox.ItemContainerStyle>
-                            <Style TargetType="{x:Type ListBoxItem}">
-                                <Setter Property="Margin" Value="5,5"/>
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                            <Border CornerRadius="20" Background="{StaticResource ButtonBackground}" Width="120" Height="120" x:Name="PART_Border">
-                                                <ContentPresenter/>
-                                            </Border>
-                                            <ControlTemplate.Triggers>
-                                                <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter TargetName="PART_Border" Property="Background" Value="LightGreen"/>
-                                                </Trigger>
-                                                <Trigger Property="IsSelected" Value="True">
-                                                    <Setter TargetName="PART_Border" Property="Background" Value="#68ee68"/>
-                                                </Trigger>
-                                            </ControlTemplate.Triggers>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </ListBox.ItemContainerStyle>
+                        x:Name="DeparturesListBox"
+                        Style="{StaticResource TourViewDeparturesListBox}"
+                        ItemTemplate="{StaticResource DeparturesDataTemplate}">
+                        <ListBox.Resources>
+                            <Style TargetType="ScrollBar" BasedOn="{StaticResource DarkScrollBar}"/>
+                            <Style TargetType="ListBoxItem" BasedOn="{StaticResource TourViewDeparturesListBoxItem}"/>
+                        </ListBox.Resources>
                     </ListBox>
                 </Grid>
             </Grid>
@@ -284,16 +335,14 @@
                                 Text="₽" 
                                 FontFamily="Segoe UI Bold"/>
                         </StackPanel>
-                        <Button 
-                            IsEnabled="False"
+                        <!--<Button 
                             x:Name="CommitDepartureButton"
                             Content="Подтвердить дату"
                             Margin="30,60,30,0"
                             Height="80"
                             FontSize="24"
                             FontFamily="Segoe UI Semilight"
-                            Style="{StaticResource AcceptButton}"
-                            Click="CommitDepartureButton_Click"/>
+                            Click="CommitDepartureButton_Click"/>-->
                     </StackPanel>
                 </ScrollViewer>
             </Grid>

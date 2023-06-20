@@ -18,6 +18,7 @@
                     Panel.ZIndex="1"
                     x:Name="TransparentButton"
                     Click="TransparentButton_Click"/>
+
                 <StackPanel Width="300">
                     <Rectangle 
                         Margin="0,0,0,17"
@@ -164,71 +165,125 @@
 
         <ScrollViewer 
             Panel.ZIndex="0"
-            VerticalScrollBarVisibility="Visible"
+            VerticalScrollBarVisibility="Auto"
             Grid.Row="1"
-            Grid.RowSpan="2"
-            Margin="0,0,0,0">
-            
-            <StackPanel 
-                Margin="20,15,20,0"
-                >
-                <StackPanel>
-                    <TextBlock 
-                        Margin="0,0,0,20"
-                        Text="Недавно просмотренные"
-                        FontFamily="{StaticResource InterMedium}"
-                        FontSize="24"/>
+            Grid.RowSpan="2">
+            <Grid Margin="20,15,20,0">
+                <StackPanel 
+                    x:Name="TOToursStackPanel"
+                    Visibility="Collapsed">
+                    <StackPanel>
+                        <!--<TextBlock 
+                            Margin="0,0,0,20"
+                            Text="Список туров"
+                            FontFamily="{StaticResource InterMedium}"
+                            FontSize="24"/>-->
 
-                    <ListBox 
-                        x:Name="ViewedTourListBox"
-                        Style="{StaticResource TourListBox}"
-                        ItemTemplate="{StaticResource TourDataTemplate}"
-                        ScrollViewer.PreviewMouseWheel="ViewedTourListBox_PreviewMouseWheel">
-                        <ListBox.Resources>
-                            <Style TargetType="ScrollBar" BasedOn="{StaticResource LightScrollBar}"/>
-                            <Style TargetType="ListBoxItem" BasedOn="{StaticResource TourListBoxItem}"/>
-                        </ListBox.Resources>
-                    </ListBox>
+                        <ListBox 
+                            x:Name="TOTourListBox"
+                            Style="{StaticResource TOTourListBox}"
+                            ItemTemplate="{StaticResource TourDataTemplate}"
+                            ScrollViewer.PreviewMouseWheel="TOTourListBox_PreviewMouseWheel">
+                            <ListBox.Resources>
+                                <Style TargetType="ScrollBar" BasedOn="{StaticResource LightScrollBar}"/>
+                                <Style TargetType="ListBoxItem" BasedOn="{StaticResource TOTourListBoxItem}"/>
+                            </ListBox.Resources>
+                        </ListBox>
+                    </StackPanel>
                 </StackPanel>
 
-                <StackPanel>
-                    <TextBlock
-                        Margin="0,0,0,20"
-                        Text="Список желаемого"
-                        FontFamily="{StaticResource InterMedium}"
-                        FontSize="24"/>
+                
 
-                    <ListBox
-                        x:Name="LikedTourListBox"
-                        Style="{StaticResource TourListBox}"
-                        ItemTemplate="{StaticResource TourDataTemplate}"
-                        ScrollViewer.PreviewMouseWheel="LikedTourListBox_PreviewMouseWheel">
-                        <ListBox.Resources>
-                            <Style TargetType="ScrollBar" BasedOn="{StaticResource LightScrollBar}"/>
-                            <Style TargetType="ListBoxItem" BasedOn="{StaticResource TourListBoxItem}"/>
-                        </ListBox.Resources>
-                    </ListBox>
+                <!--<WrapPanel>
+                    <Button Margin="10,0" Content="Button 1"/>
+                    <Button Margin="10,0" Width="200" Height="150" Content="Button 2"/>
+                    <Button Margin="10,0" Width="200" Height="150" Content="Button 3"/>
+                    <Button Margin="10,0" Width="200" Height="150" Content="Button 4"/>
+                    <Button Margin="10,0" Width="200" Height="150" Content="Button 5"/>
+                    <Button Margin="10,0" Width="200" Height="150" Content="Button 6"/>
+                    <Button Margin="10,0" Width="200" Height="150" Content="Button 7"/>
+                </WrapPanel>-->
+
+                
+
+
+                <!--<Viewbox Stretch="Uniform" MaxHeight="600" MaxWidth="600">
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle Fill="Red" Margin="5" Height="250" Width="250"/>
+                        <Rectangle Fill="Red" Margin="5" Height="50" Width="50"/>
+                        <Rectangle Fill="Red" Margin="5" Height="50" Width="50"/>
+                        <Rectangle Fill="Red" Margin="5" Height="50" Width="50"/>
+                        <Rectangle Fill="Red" Margin="5" Height="50" Width="50"/>
+                        <Rectangle Fill="Red" Margin="5" Height="50" Width="50"/>
+                        <Rectangle Fill="Red" Margin="5" Height="50" Width="50"/>
+                        <Rectangle Fill="Red" Margin="5" Height="50" Width="50"/>
+                        <Rectangle Fill="Red" Margin="5" Height="50" Width="50"/>
+                        <Rectangle Fill="Red" Margin="5" Height="50" Width="50"/>
+                    </StackPanel>
+                </Viewbox>-->
+
+
+                <StackPanel 
+                    x:Name="CustomerToursStackPanel"
+                    Visibility="Collapsed">
+                    <StackPanel>
+                        <TextBlock 
+                            Margin="0,0,0,20"
+                            Text="Недавно просмотренные"
+                            FontFamily="{StaticResource InterMedium}"
+                            FontSize="24"/>
+
+                        <ListBox 
+                            x:Name="ViewedTourListBox"
+                            Style="{StaticResource TourListBox}"
+                            ItemTemplate="{StaticResource TourDataTemplate}"
+                            ScrollViewer.PreviewMouseWheel="ViewedTourListBox_PreviewMouseWheel">
+                            <ListBox.Resources>
+                                <Style TargetType="ScrollBar" BasedOn="{StaticResource LightScrollBar}"/>
+                                <Style TargetType="ListBoxItem" BasedOn="{StaticResource TourListBoxItem}"/>
+                            </ListBox.Resources>
+                        </ListBox>
+                    </StackPanel>
+
+                    <StackPanel>
+                        <TextBlock
+                            Margin="0,0,0,20"
+                            Text="Список желаемого"
+                            FontFamily="{StaticResource InterMedium}"
+                            FontSize="24"/>
+
+                        <ListBox
+                            x:Name="LikedTourListBox"
+                            Style="{StaticResource TourListBox}"
+                            ItemTemplate="{StaticResource TourDataTemplate}"
+                            ScrollViewer.PreviewMouseWheel="LikedTourListBox_PreviewMouseWheel">
+                            <ListBox.Resources>
+                                <Style TargetType="ScrollBar" BasedOn="{StaticResource LightScrollBar}"/>
+                                <Style TargetType="ListBoxItem" BasedOn="{StaticResource TourListBoxItem}"/>
+                            </ListBox.Resources>
+                        </ListBox>
+                    </StackPanel>
+
+                    <StackPanel>
+                        <TextBlock
+                            Margin="0,0,0,20"
+                            Text="Пройденые туры"
+                            FontFamily="{StaticResource InterMedium}"
+                            FontSize="24"/>
+
+                        <ListBox
+                            x:Name="PassedTourListBox"
+                            Style="{StaticResource TourListBox}"
+                            ItemTemplate="{StaticResource TourDataTemplate}"
+                            ScrollViewer.PreviewMouseWheel="PassedTourListBox_PreviewMouseWheel">
+                            <ListBox.Resources>
+                                <Style TargetType="ScrollBar" BasedOn="{StaticResource LightScrollBar}"/>
+                                <Style TargetType="ListBoxItem" BasedOn="{StaticResource TourListBoxItem}"/>
+                            </ListBox.Resources>
+                        </ListBox>
+                    </StackPanel>
                 </StackPanel>
-
-                <StackPanel>
-                    <TextBlock
-                        Margin="0,0,0,20"
-                        Text="Пройденые туры"
-                        FontFamily="{StaticResource InterMedium}"
-                        FontSize="24"/>
-
-                    <ListBox
-                        x:Name="PassedTourListBox"
-                        Style="{StaticResource TourListBox}"
-                        ItemTemplate="{StaticResource TourDataTemplate}"
-                        ScrollViewer.PreviewMouseWheel="PassedTourListBox_PreviewMouseWheel">
-                        <ListBox.Resources>
-                            <Style TargetType="ScrollBar" BasedOn="{StaticResource LightScrollBar}"/>
-                            <Style TargetType="ListBoxItem" BasedOn="{StaticResource TourListBoxItem}"/>
-                        </ListBox.Resources>
-                    </ListBox>
-                </StackPanel>
-            </StackPanel>
+            </Grid>
         </ScrollViewer>
     </Grid>
 </Page>

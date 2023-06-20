@@ -42,6 +42,7 @@ namespace BookingClient
             string firstName = FirstNameTextBox.Text;
             string login = LoginTextBox.Text;
             string password = PasswordBox.Password != "" ? PasswordBox.Password : PasswordTextBox.Text;
+            //password = ConfirmPasswordBox.Visibility == Visibility.Collapsed ? ConfirmPasswordTextBox.Text : ConfirmPasswordBox.Password;
             string confirmPssword = ConfirmPasswordBox.Password != "" ? ConfirmPasswordBox.Password : ConfirmPasswordTextBox.Text;
             MessageTextBox.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("Red");
 
@@ -119,7 +120,6 @@ namespace BookingClient
                 Accounts.last_names = SourceCore.entities.last_names.Where(U => U.last_name == lastName).FirstOrDefault();
                 Accounts.first_names = SourceCore.entities.first_names.Where(U => U.first_name == firstName).FirstOrDefault();
                 Accounts.account_login = login;
-                //Accounts.account_password = ConfirmPasswordBox.Visibility == Visibility.Collapsed ? ConfirmPasswordTextBox.Text : ConfirmPasswordBox.Password;
                 Accounts.account_password = password;
                 Accounts.role_id = 4;
                 SourceCore.entities.accounts.Add(Accounts);
@@ -129,7 +129,6 @@ namespace BookingClient
             }
             MessageTextBox.Text = message;
         }
-
 
         //PasswordBox
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)

@@ -11,127 +11,147 @@
 
     <Page.Resources>
         <DataTemplate x:Key="listTemplate">
-            <Grid Height="160">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="300"/>
-                    <ColumnDefinition Width="300"/>
-                    <ColumnDefinition Width="200"/>
-                </Grid.ColumnDefinitions>
-
-                <Image 
-                    Grid.Column="0"
-                    RenderOptions.BitmapScalingMode="HighQuality"
-                    Source="{Binding TourImage.img}"/>
-
-                <CheckBox 
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Top"
-                    Grid.Column="0"
-                    Margin="0,8,8,0"
-                    IsChecked="{Binding LikedCheck, Mode=OneWay}"
-                    Checked="CheckBox_Checked"
-                    Unchecked="CheckBox_Unchecked"/>
-
-                <StackPanel Grid.Column="1">
-                    <TextBlock
-                        TextWrapping="Wrap"
-                        FontSize="16" 
-                        Padding="10,10" 
-                        Text="{Binding TourName}"
-                        FontFamily="Segoe UI Semibold"/>
-
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock 
-                            FontSize="14" 
-                            Width="100"
-                            Padding="10,10,10,0" 
-                            FontWeight="DemiBold"
-                            Text="Начало" />
-
-                        <TextBlock 
-                            FontSize="14" 
-                            Padding="10,10,10,0" 
-                            Text="{Binding BeginCity}" 
-                            FontFamily="Segoe UI Semilight"/>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock 
-                            Width="100"
-                            FontSize="14" 
-                            Padding="10,0,10,0"
-                            FontWeight="DemiBold"
-                            Text="Конец" />
-
-                        <TextBlock 
-                            FontSize="14" 
-                            Padding="10,0,10,0"
-                            Text="{Binding EndCity}" 
-                            FontFamily="Segoe UI Semilight"/>
-                    </StackPanel>
-                </StackPanel>
-
-                <Grid Grid.Column="2" Margin="0,10,0,0">
+            <Grid>
+                <Border CornerRadius="8" Background="White" Effect="{StaticResource DropShadowEffect}"/>
+                
+                <Grid >
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="200"/>
                     </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
-                        <TextBlock 
+                    <Rectangle 
+                        RenderOptions.BitmapScalingMode="HighQuality"
+                        Height="160" Width="300"
+                        RadiusX="8" RadiusY="8"
+                        Grid.Column="0">
+                        <Rectangle.Fill>
+                            <ImageBrush 
+                                ImageSource="{Binding TourImage.img}"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+
+                    <!--<Border 
+                        CornerRadius="8"
+                        Grid.Column="0"
+                        >
+                        <Image 
+                            RenderOptions.BitmapScalingMode="HighQuality"
+                            Source="{Binding TourImage.img}"/>
+                    </Border>-->
+
+                    <CheckBox 
+                        Style="{StaticResource LikeToggleButton}"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Grid.Column="0"
+                        Margin="0,8,8,0"
+                        IsChecked="{Binding LikedCheck, Mode=OneWay}"
+                        Checked="CheckBox_Checked"
+                        Unchecked="CheckBox_Unchecked"/>
+
+                    <StackPanel Grid.Column="1">
+                        <TextBlock
                             TextWrapping="Wrap"
-                            FontSize="12"
-                            Text="Дней в туре:" />
-
-                        <TextBlock 
-                            FontSize="14" 
-                            Text="{Binding DayCount}"
-                            FontWeight="DemiBold"/>
-
-                        <TextBlock 
-                            TextWrapping="Wrap"
-                            Margin="0,5,0,0"
-                            FontSize="12"
-                            Text="Цена за день:" />
+                            FontSize="16" 
+                            Padding="10,10" 
+                            Text="{Binding TourName}"
+                            FontFamily="Segoe UI Semibold"/>
 
                         <StackPanel Orientation="Horizontal">
                             <TextBlock 
                                 FontSize="14" 
-                                Text="{Binding PricePerDay, StringFormat={}{0:C}}"
-                                Language="ru"
-                                FontWeight="DemiBold"/>
-                        </StackPanel>
-                    </StackPanel>
+                                Width="100"
+                                Padding="10,10,10,0" 
+                                FontWeight="DemiBold"
+                                Text="Начало" />
 
-                    <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
-                        <TextBlock 
-                            Margin="0,0,0,0"
-                            TextWrapping="Wrap"
-                            FontSize="18"
-                            Text="От:" />
+                            <TextBlock 
+                                FontSize="14" 
+                                Padding="10,10,10,0" 
+                                Text="{Binding BeginCity}" 
+                                FontFamily="Segoe UI Semilight"/>
+                        </StackPanel>
 
                         <StackPanel Orientation="Horizontal">
                             <TextBlock 
-                            FontSize="20" 
-                            Text="{Binding Price, StringFormat={}{0:C}}"
-                            Language="ru"
-                            FontWeight="DemiBold"/>
+                                Width="100"
+                                FontSize="14" 
+                                Padding="10,0,10,0"
+                                FontWeight="DemiBold"
+                                Text="Конец" />
+
+                            <TextBlock 
+                                FontSize="14" 
+                                Padding="10,0,10,0"
+                                Text="{Binding EndCity}" 
+                                FontFamily="Segoe UI Semilight"/>
                         </StackPanel>
                     </StackPanel>
 
-                    <Button
-                        x:Name="ViewTourButton"
-                        Margin="0,10"
-                        Content="Смотреть тур"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="1"
-                        Style="{StaticResource AcceptButton}"
-                        Click="ViewTourButton_Click"
-                        />
+                    <Grid Grid.Column="2" Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+                            <TextBlock 
+                                TextWrapping="Wrap"
+                                FontSize="12"
+                                Text="Дней в туре:" />
+
+                            <TextBlock 
+                                FontSize="14" 
+                                Text="{Binding DayCount}"
+                                FontWeight="DemiBold"/>
+
+                            <TextBlock 
+                                TextWrapping="Wrap"
+                                Margin="0,5,0,0"
+                                FontSize="12"
+                                Text="Цена за день:" />
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock 
+                                    FontSize="14" 
+                                    Text="{Binding PricePerDay, StringFormat={}{0:C}}"
+                                    Language="ru"
+                                    FontWeight="DemiBold"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
+                            <TextBlock 
+                                Margin="0,0,0,0"
+                                TextWrapping="Wrap"
+                                FontSize="18"
+                                Text="От:" />
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock 
+                                    FontSize="20" 
+                                    Text="{Binding Price, StringFormat={}{0:C}}"
+                                    Language="ru"
+                                    FontWeight="DemiBold"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <Button
+                            x:Name="ViewTourButton"
+                            Margin="0,10"
+                            Content="Смотреть тур"
+                            Grid.ColumnSpan="2"
+                            Grid.Row="1"
+                            Style="{StaticResource AcceptButton}"
+                            Click="ViewTourButton_Click"
+                            />
+                    </Grid>
                 </Grid>
             </Grid>
         </DataTemplate>
@@ -147,7 +167,7 @@
 
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <StackPanel Orientation="Vertical" Width="820"/>
+                    <StackPanel Orientation="Vertical" Width="810"/>
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
 

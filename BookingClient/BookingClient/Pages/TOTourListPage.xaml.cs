@@ -49,7 +49,7 @@ namespace BookingClient.Pages
 
             string result = $"{PersonCount} туристов";
 
-            if (!(PersonCount > 5 && PersonCount < 14))
+            if (!(PersonCount > 5 && PersonCount < 15))
             {
                 if (PersonCount % 10 == 1)
                 {
@@ -74,11 +74,21 @@ namespace BookingClient.Pages
 
     public partial class TOTourListPage : Page
     {
-        public TOTourListPage()
+        int _TourId;
+        int _AccountId;
+
+        public TOTourListPage(int TourId, int AccountID)
         {
             InitializeComponent();
+            _TourId = TourId;
+            _AccountId = AccountID;
+
             //OrdersListBox.ItemsSource = SourceCore.entities.orders.ToList();
-            DeparturesListBox.ItemsSource = SourceCore.entities.departures.ToList();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            DeparturesListBox.ItemsSource = SourceCore.entities.departures.Where(U => U.tour_id ==_TourId).ToList();
         }
 
         private void OrderListBox_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -127,7 +137,22 @@ namespace BookingClient.Pages
         {
             AppFrame.frameMain.GoBack();
         }
-    }
 
-    
+        private void CreateReport_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddDateButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteDateButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+    }
 }

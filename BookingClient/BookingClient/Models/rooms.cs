@@ -25,6 +25,7 @@ namespace BookingClient.Models
         public Nullable<int> tour_id { get; set; }
         public Nullable<int> beds_count { get; set; }
         public Nullable<decimal> price { get; set; }
+        public string room_description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order_rooms> order_rooms { get; set; }

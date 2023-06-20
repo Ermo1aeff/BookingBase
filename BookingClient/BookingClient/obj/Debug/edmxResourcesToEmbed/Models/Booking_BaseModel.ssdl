@@ -162,6 +162,7 @@
     </Key>
     <Property Name="room_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="room_name" Type="varchar" MaxLength="100" />
+    <Property Name="room_description" Type="varchar" MaxLength="300" />
     <Property Name="tour_id" Type="int" />
     <Property Name="beds_count" Type="int" />
     <Property Name="price" Type="decimal" Precision="18" Scale="2" />
@@ -181,6 +182,7 @@
       <PropertyRef Name="tour_id" />
     </Key>
     <Property Name="tour_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="account_id" Type="int" />
     <Property Name="tour_name" Type="varchar" MaxLength="100" />
     <Property Name="tour_description" Type="varchar" MaxLength="5000" />
     <Property Name="city_begin_id" Type="int" />

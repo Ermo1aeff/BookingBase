@@ -46,7 +46,6 @@ namespace BookingClient.PagesOnWindow
             List<string> RoomL = new List<string>();
             bool flag = false;
 
-
             for (int i = 0; i < RoomList.Count; i++)
             {
                 if (RoomList[i][0] == Room.room_id.ToString())

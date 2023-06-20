@@ -167,6 +167,7 @@
           </Key>
           <Property Name="room_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="room_name" Type="varchar" MaxLength="100" />
+          <Property Name="room_description" Type="varchar" MaxLength="300" />
           <Property Name="tour_id" Type="int" />
           <Property Name="beds_count" Type="int" />
           <Property Name="price" Type="decimal" Precision="18" Scale="2" />
@@ -186,6 +187,7 @@
             <PropertyRef Name="tour_id" />
           </Key>
           <Property Name="tour_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="account_id" Type="int" />
           <Property Name="tour_name" Type="varchar" MaxLength="100" />
           <Property Name="tour_description" Type="varchar" MaxLength="5000" />
           <Property Name="city_begin_id" Type="int" />
@@ -869,6 +871,7 @@
           <Property Name="price" Type="Decimal" Precision="18" Scale="2" />
           <NavigationProperty Name="order_rooms" Relationship="Self.FK_order_rooms_rooms" FromRole="rooms" ToRole="order_rooms" />
           <NavigationProperty Name="tours" Relationship="Self.FK_rooms_tours" FromRole="rooms" ToRole="tours" />
+          <Property Name="room_description" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -906,6 +909,7 @@
           <NavigationProperty Name="passed_tours" Relationship="Self.FK_account_tours_tours" FromRole="tours" ToRole="passed_tours" />
           <NavigationProperty Name="rooms" Relationship="Self.FK_rooms_tours" FromRole="tours" ToRole="rooms" />
           <NavigationProperty Name="viewed_tours" Relationship="Self.FK_viewed_lists_tours" FromRole="tours" ToRole="viewed_tours" />
+          <Property Name="account_id" Type="Int32" />
         </EntityType>
         <EntityType Name="viewed_tours">
           <Key>
@@ -1556,6 +1560,7 @@
           <EntitySetMapping Name="rooms">
             <EntityTypeMapping TypeName="Booking_BaseModel.rooms">
               <MappingFragment StoreEntitySet="rooms">
+                <ScalarProperty Name="room_description" ColumnName="room_description" />
                 <ScalarProperty Name="room_id" ColumnName="room_id" />
                 <ScalarProperty Name="room_name" ColumnName="room_name" />
                 <ScalarProperty Name="tour_id" ColumnName="tour_id" />
@@ -1578,6 +1583,7 @@
           <EntitySetMapping Name="tours">
             <EntityTypeMapping TypeName="Booking_BaseModel.tours">
               <MappingFragment StoreEntitySet="tours">
+                <ScalarProperty Name="account_id" ColumnName="account_id" />
                 <ScalarProperty Name="tour_id" ColumnName="tour_id" />
                 <ScalarProperty Name="tour_name" ColumnName="tour_name" />
                 <ScalarProperty Name="tour_description" ColumnName="tour_description" />

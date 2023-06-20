@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -75,7 +76,7 @@ namespace BookingClient
             if (WindowState == WindowState.Maximized)
             {
                 MainBorder.Padding = new Thickness(8);
-                WinChrome.CaptionHeight = 34;
+                WinChrome.CaptionHeight = 40;
                 PART_MaxButton_Path.Data = Geometry.Parse("M1,12 10,12 10,3, 1,3 1,12.6 M3,3 3,1 12,1, 12,10, 10,10");
             }
 
@@ -97,10 +98,10 @@ namespace BookingClient
                     CreateOrderButton.Visibility = Visibility.Collapsed;
                     break;
                 case 4:
+                    DirectoryButton.Visibility = Visibility.Collapsed;
                     RootFrame.Navigate(new ListToursPage(AccountID));
                     //NewTourButton.Visibility = Visibility.Collapsed;
-                    TourListButton.Visibility = Visibility.Collapsed;
-                    DirectoryButton.Visibility = Visibility.Collapsed;
+                    //TourListButton.Visibility = Visibility.Collapsed;
                     break;
                 default:
                     break;
@@ -112,13 +113,13 @@ namespace BookingClient
             if (WindowState == WindowState.Maximized)
             {
                 MainBorder.Padding = new Thickness(8);
-                WinChrome.CaptionHeight = 34;
+                WinChrome.CaptionHeight = 40;
                 ((Path)FindName("PART_MaxButton_Path")).Data = Geometry.Parse("M1,12 10,12 10,3, 1,3 1,12.6 M3,3 3,1 12,1, 12,10, 10,10");
             }
             else
             {
                 MainBorder.Padding = new Thickness(0);
-                WinChrome.CaptionHeight = 26;
+                WinChrome.CaptionHeight = 36;
                 PART_MaxButton_Path.Data = Geometry.Parse("M1,1 L12,1 L12,12 L1,12 Z");
             }
         }
@@ -165,10 +166,10 @@ namespace BookingClient
             //AuthorizationWin.Show();
         }
 
-        private void NewTourButton_Click(object sender, RoutedEventArgs e)
-        {
-            RootFrame.Navigate(new NewTourPage());
-        }
+        //private void NewTourButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    RootFrame.Navigate(new NewTourPage());
+        //}
 
         private void DirectoryButton_Click(object sender, RoutedEventArgs e)
         {
@@ -211,11 +212,10 @@ namespace BookingClient
             //}
         }
 
-        private void TourListButton_Click(object sender, RoutedEventArgs e)
-        {
-            RootFrame.Navigate(new TOTourListPage());
-
-        }
+        //private void TourListButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    RootFrame.Navigate(new TOTourListPage());
+        //}
 
         public BitmapImage ToImage(byte[] array)
         {

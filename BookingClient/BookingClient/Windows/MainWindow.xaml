@@ -83,11 +83,11 @@
                                     Content="Создать тур"
                                     Click="NewTourButton_Click"/>-->
 
-                                <Button
+                                <!--<Button
                                     Style="{StaticResource TextTitleBarButton}"
                                     x:Name="TourListButton"
                                     Content="Список туров"
-                                    Click="TourListButton_Click"/>
+                                    Click="TourListButton_Click"/>-->
 
                                 <Button
                                     Style="{StaticResource TextTitleBarButton}"
