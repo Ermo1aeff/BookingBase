@@ -17,7 +17,7 @@ namespace BookingClient
 {
     public partial class MainWindow : Window
     {
-        public int AccountID { get; set; }
+        public int AccountID;
 
         public MainWindow()
         {
@@ -96,6 +96,7 @@ namespace BookingClient
                     break;
                 case 3:
                     CreateOrderButton.Visibility = Visibility.Collapsed;
+                    RootFrame.Navigate(new ProfilePage(AccountID));
                     break;
                 case 4:
                     DirectoryButton.Visibility = Visibility.Collapsed;
@@ -156,8 +157,8 @@ namespace BookingClient
 
         private void AccountCaptionButtonClick(object sender, RoutedEventArgs e)
         {
-            ProfilePage profilePage = new ProfilePage();
-            profilePage.AccountID = AccountID;
+            ProfilePage profilePage = new ProfilePage(AccountID);
+            //profilePage.AccountID = AccountID;
 
             RootFrame.Navigate(profilePage);
 

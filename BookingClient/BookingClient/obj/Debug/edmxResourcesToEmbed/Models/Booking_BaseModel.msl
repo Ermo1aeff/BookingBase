@@ -159,6 +159,7 @@
     <EntitySetMapping Name="persons">
       <EntityTypeMapping TypeName="Booking_BaseModel.persons">
         <MappingFragment StoreEntitySet="persons">
+          <ScalarProperty Name="passport" ColumnName="passport" />
           <ScalarProperty Name="person_id" ColumnName="person_id" />
           <ScalarProperty Name="order_id" ColumnName="order_id" />
           <ScalarProperty Name="first_name_id" ColumnName="first_name_id" />

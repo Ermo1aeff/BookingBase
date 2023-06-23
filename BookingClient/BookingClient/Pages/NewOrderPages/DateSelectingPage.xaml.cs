@@ -73,6 +73,7 @@ namespace BookingClient.PagesOnWindow
             MaxGroupSizeTextBlock.Text = Tour.max_group_size.ToString();
             AgeTextBlock.Text = "От " + Tour.min_age.ToString() + " до " + Tour.max_age;
             TourIdTextBlock.Text = Tour.tour_id.ToString();
+            TourOperatorTextBlock.Text = Tour.accounts.first_names.first_name;
             TourPriceTextBlock.Text = Tour.price.ToString();
 
             viewed_tours DelViewedTour = SourceCore.entities.viewed_tours.SingleOrDefault(U => U.account_id == AccountId && U.tour_id == TourId);

@@ -21,6 +21,7 @@ namespace BookingClient.Models
             this.grades = new HashSet<grades>();
             this.viewed_tours = new HashSet<viewed_tours>();
             this.liked_tours = new HashSet<liked_tours>();
+            this.tours = new HashSet<tours>();
         }
     
         public int account_id { get; set; }
@@ -45,5 +46,7 @@ namespace BookingClient.Models
         public virtual ICollection<viewed_tours> viewed_tours { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<liked_tours> liked_tours { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tours> tours { get; set; }
     }
 }

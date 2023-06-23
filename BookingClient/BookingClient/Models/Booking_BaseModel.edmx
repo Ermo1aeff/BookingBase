@@ -153,6 +153,7 @@
           <Property Name="first_name_id" Type="int" />
           <Property Name="last_name_id" Type="int" />
           <Property Name="birthday" Type="date" />
+          <Property Name="passport" Type="bigint" />
         </EntityType>
         <EntityType Name="roles">
           <Key>
@@ -458,6 +459,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tours_accounts">
+          <End Role="accounts" Type="Self.accounts" Multiplicity="0..1" />
+          <End Role="tours" Type="Self.tours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="accounts">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="tours">
+              <PropertyRef Name="account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tours_cities">
           <End Role="cities" Type="Self.cities" Multiplicity="0..1" />
           <End Role="tours" Type="Self.tours" Multiplicity="*" />
@@ -637,6 +650,10 @@
             <End Role="tours" EntitySet="tours" />
             <End Role="rooms" EntitySet="rooms" />
           </AssociationSet>
+          <AssociationSet Name="FK_tours_accounts" Association="Self.FK_tours_accounts">
+            <End Role="accounts" EntitySet="accounts" />
+            <End Role="tours" EntitySet="tours" />
+          </AssociationSet>
           <AssociationSet Name="FK_tours_cities" Association="Self.FK_tours_cities">
             <End Role="cities" EntitySet="cities" />
             <End Role="tours" EntitySet="tours" />
@@ -687,6 +704,7 @@
           <NavigationProperty Name="liked_tours" Relationship="Self.FK_wish_lists_accounts" FromRole="accounts" ToRole="liked_tours" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="dayofbirth" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tours" Relationship="Booking_BaseModel.FK_tours_accounts" FromRole="accounts" ToRole="tours" />
         </EntityType>
         <EntityType Name="cities">
           <Key>
@@ -851,6 +869,7 @@
           <NavigationProperty Name="first_names" Relationship="Self.FK_persons_first_names" FromRole="persons" ToRole="first_names" />
           <NavigationProperty Name="last_names" Relationship="Self.FK_persons_last_names" FromRole="persons" ToRole="last_names" />
           <NavigationProperty Name="orders" Relationship="Self.FK_persons_orders" FromRole="persons" ToRole="orders" />
+          <Property Name="passport" Type="Int64" />
         </EntityType>
         <EntityType Name="roles">
           <Key>
@@ -910,6 +929,7 @@
           <NavigationProperty Name="rooms" Relationship="Self.FK_rooms_tours" FromRole="tours" ToRole="rooms" />
           <NavigationProperty Name="viewed_tours" Relationship="Self.FK_viewed_lists_tours" FromRole="tours" ToRole="viewed_tours" />
           <Property Name="account_id" Type="Int32" />
+          <NavigationProperty Name="accounts" Relationship="Booking_BaseModel.FK_tours_accounts" FromRole="tours" ToRole="accounts" />
         </EntityType>
         <EntityType Name="viewed_tours">
           <Key>
@@ -1376,7 +1396,23 @@
             <End Role="tours" EntitySet="tours" />
             <End Role="viewed_tours" EntitySet="viewed_tours" />
           </AssociationSet>
+          <AssociationSet Name="FK_tours_accounts" Association="Booking_BaseModel.FK_tours_accounts">
+            <End Role="accounts" EntitySet="accounts" />
+            <End Role="tours" EntitySet="tours" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_tours_accounts">
+          <End Type="Booking_BaseModel.accounts" Role="accounts" Multiplicity="0..1" />
+          <End Type="Booking_BaseModel.tours" Role="tours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="accounts">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="tours">
+              <PropertyRef Name="account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1541,6 +1577,7 @@
           <EntitySetMapping Name="persons">
             <EntityTypeMapping TypeName="Booking_BaseModel.persons">
               <MappingFragment StoreEntitySet="persons">
+                <ScalarProperty Name="passport" ColumnName="passport" />
                 <ScalarProperty Name="person_id" ColumnName="person_id" />
                 <ScalarProperty Name="order_id" ColumnName="order_id" />
                 <ScalarProperty Name="first_name_id" ColumnName="first_name_id" />

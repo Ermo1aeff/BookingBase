@@ -53,9 +53,10 @@ namespace BookingClient.Pages
             }
         }
 
-        public ProfilePage()
+        public ProfilePage(int AccountID)
         {
             InitializeComponent();
+            _AccountID = AccountID;
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -166,13 +167,22 @@ namespace BookingClient.Pages
                 AvatarImageBrush.ImageSource = ToImage(Account.image);
             }
 
-            if (Account.last_names != null)
+            switch (SourceCore.entities.accounts.FirstOrDefault(U => U.account_id == _AccountID).role_id)
             {
-                ProfileCaptionTextBlock.Text = $"Привет {Account.first_names.first_name} {Account.last_names.last_name}!";
-            }
-            else
-            {
-                ProfileCaptionTextBlock.Text = $"Тур оператор {Account.first_names.first_name}";
+                case 1:
+                    ProfileCaptionTextBlock.Text = $"Администратор {Account.first_names.first_name} {Account.last_names.last_name}";
+                    break;
+                case 2:
+                    ProfileCaptionTextBlock.Text = $"Менеджер {Account.first_names.first_name} {Account.last_names.last_name}";
+                    break;
+                case 3:
+                    ProfileCaptionTextBlock.Text = $"Тур оператор {Account.first_names.first_name}";
+                    break;
+                case 4:
+                    ProfileCaptionTextBlock.Text = $"Привет {Account.first_names.first_name} {Account.last_names.last_name}!";
+                    break;
+                default:
+                    break;
             }
 
             if (Account.email != null)
@@ -183,7 +193,6 @@ namespace BookingClient.Pages
             {
                 EmailTextBlock.Text = "Почта еще не добавлена";
             }
-
         }
 
         public BitmapImage ToImage(byte[] array)

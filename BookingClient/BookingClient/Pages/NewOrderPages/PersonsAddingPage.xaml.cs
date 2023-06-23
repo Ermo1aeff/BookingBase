@@ -39,11 +39,25 @@ namespace BookingClient.PagesOnWindow
 
         private void AddPersonAndCommitOrderButton_Click(object sender, RoutedEventArgs e)
         {
+            if (ContactPhone.Text == "")
+            {
+                MessageBox.Show("Необходимо указать контактный номер телефона!");
+                return;
+            }
+            foreach (List<string> item in PersonList)
+            {
+                if (item[0] == "" || item[1] == "" || item[2] == "" || item[3] == "")
+                {
+                    MessageBox.Show("Данные были заполнены не полностью!");
+                    return;
+                }
+            }
             // Добавление заказа
             orders NewOrder = new orders
             {
                 departures_id = DepartureId,
-                price = TotalPrice
+                price = TotalPrice,
+                contact_phone = Convert.ToInt64(ContactPhone.Text),
             };
             SourceCore.entities.orders.Add(NewOrder);
             SourceCore.entities.SaveChanges();
@@ -51,7 +65,7 @@ namespace BookingClient.PagesOnWindow
             // Добавление комнат
             foreach (var item in RoomList)
             {
-                order_rooms NewOrderRoom  = new order_rooms
+                order_rooms NewOrderRoom = new order_rooms
                 {
                     orders = NewOrder,
                     room_id = Convert.ToInt32(item[0]),
@@ -64,9 +78,11 @@ namespace BookingClient.PagesOnWindow
             // Добавление туристов
             foreach (List<string> item in PersonList)
             {
-                string BufLastName = item[0];
-                string BufFirstName = item[1];
+                string BufFirstName = item[0];
+                string BufLastName = item[1];
                 DateTime BufDateOfBirth = Convert.ToDateTime(item[2]);
+                long BufPassport = Convert.ToInt64(item[3]);
+
 
                 last_names LastName = new last_names();
                 first_names FirstName = new first_names();
@@ -105,10 +121,18 @@ namespace BookingClient.PagesOnWindow
                     last_names = LastName,
                     first_names = FirstName,
                     birthday = BufDateOfBirth,
+                    passport = BufPassport,
                 };
                 SourceCore.entities.persons.Add(NewPerson);
                 SourceCore.entities.SaveChanges();
             }
+
+            MessageBox.Show("Ваш заказ создан, в ближайшее время к вам обратится ваш тур оператор.");
+        }
+
+        private void PassportTextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = "0123456789,".IndexOf(e.Text) < 0;
         }
     }
 }

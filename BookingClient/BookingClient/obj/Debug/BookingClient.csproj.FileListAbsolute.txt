@@ -425,3 +425,4 @@ C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClie
 C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Pages\ProfilePage.baml
 C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Windows\DlgWindows\ProfileDlgWindow.g.cs
 C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\Windows\DlgWindows\ProfileDlgWindow.baml
+C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\bin\Debug\ru\EntityFramework.SqlServer.resources.dll

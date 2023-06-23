@@ -24,7 +24,7 @@
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <TextBlock 
-                            Text="Турист "
+                            Text="Турист №"
                             FontFamily="{StaticResource InterMedium}"
                             FontSize="16"
                         />
@@ -48,47 +48,42 @@
 
                         <TextBox
                             Margin="10"
-                            Height="48"
                             Width="254"
                             Tag="Имя"
                             Grid.Row="0"
                             Grid.Column="0"
                             Text="{Binding [0]}"
-                            FontSize="14"
-                            FontFamily="{StaticResource InterMedium}"/>
+                            Style="{StaticResource RoundedCaptionTextBox}"/>
 
                         <TextBox
                             Margin="10"
-                            Height="48"
                             Width="254"
                             Tag="Фамилия"
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            Text="{Binding [1]}"
-                            FontSize="14"
-                            FontFamily="{StaticResource InterMedium}"/>
-
-                        <TextBox
-                            Margin="10"
-                            Height="48"
-                            Width="254"
-                            Tag="Дата рождения"
                             Grid.Row="1"
                             Grid.Column="0"
-                            Text="{Binding [2]}"
-                            FontSize="14"
-                            FontFamily="{StaticResource InterMedium}"/>
+                            Text="{Binding [1]}"
+                            Style="{StaticResource RoundedCaptionTextBox}"/>
 
                         <TextBox
                             Margin="10"
-                            Height="48"
                             Width="254"
-                            Tag="Паспорт"
+                            Tag="Дата рождения"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="{Binding [2]}"
+                            Style="{StaticResource RoundedCaptionTextBox}"/>
+
+                        <TextBox
+                            Margin="10"
+                            Width="254"
+                            Tag="Загран. паспорт (серия, номер)"
                             Grid.Row="1"
                             Grid.Column="1"
                             Text="{Binding [3]}"
-                            FontSize="14"
-                            FontFamily="{StaticResource InterMedium}"/>
+                            Style="{StaticResource RoundedCaptionTextBox}"
+                            MaxLength="9"
+                            x:Name="PassportTextBox"
+                            PreviewTextInput="PassportTextBox_PreviewTextInput"/>
                     </Grid>
                 </Grid>
             </Grid>
@@ -101,15 +96,26 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Button 
-            Grid.Row="0"
-            Height="60"
-            Width="200"
-            x:Name="AddPersonAndCommitOrderButton"
-            Click="AddPersonAndCommitOrderButton_Click"
-            Content="Оформить заказ"
-            Style="{StaticResource AcceptButton}"
+        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+            <TextBox
+                x:Name="ContactPhone"
+                Margin="0 0 20 0"
+                Width="254"
+                Tag="Контактный номер"
+                Style="{StaticResource RoundedCaptionTextBox}"
             />
+            <Button 
+                Grid.Row="0"
+                Width="200"
+                x:Name="AddPersonAndCommitOrderButton"
+                Click="AddPersonAndCommitOrderButton_Click"
+                Content="Оформить заказ"
+                Style="{StaticResource AcceptButton}"
+                FontSize="14"
+                FontFamily="{StaticResource InterMedium}"
+                />
+        </StackPanel>
+        
 
         <ListBox
             Grid.Row="1"
@@ -122,7 +128,7 @@
 
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <StackPanel Orientation="Vertical" Margin="14"/>
+                    <StackPanel Orientation="Vertical" Margin="14 0 14 0"/>
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
 

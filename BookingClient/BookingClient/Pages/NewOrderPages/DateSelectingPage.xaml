@@ -314,6 +314,7 @@
                                     FontFamily="Segoe UI Semibold"/>
 
                                 <TextBlock
+                                    x:Name="TourOperatorTextBlock"
                                     TextWrapping="Wrap"
                                     FontSize="16"
                                     Text="-" 

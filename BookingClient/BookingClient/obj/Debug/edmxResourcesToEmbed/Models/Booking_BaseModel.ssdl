@@ -148,6 +148,7 @@
     <Property Name="first_name_id" Type="int" />
     <Property Name="last_name_id" Type="int" />
     <Property Name="birthday" Type="date" />
+    <Property Name="passport" Type="bigint" />
   </EntityType>
   <EntityType Name="roles">
     <Key>
@@ -453,6 +454,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tours_accounts">
+    <End Role="accounts" Type="Self.accounts" Multiplicity="0..1" />
+    <End Role="tours" Type="Self.tours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="accounts">
+        <PropertyRef Name="account_id" />
+      </Principal>
+      <Dependent Role="tours">
+        <PropertyRef Name="account_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tours_cities">
     <End Role="cities" Type="Self.cities" Multiplicity="0..1" />
     <End Role="tours" Type="Self.tours" Multiplicity="*" />
@@ -631,6 +644,10 @@
     <AssociationSet Name="FK_rooms_tours" Association="Self.FK_rooms_tours">
       <End Role="tours" EntitySet="tours" />
       <End Role="rooms" EntitySet="rooms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tours_accounts" Association="Self.FK_tours_accounts">
+      <End Role="accounts" EntitySet="accounts" />
+      <End Role="tours" EntitySet="tours" />
     </AssociationSet>
     <AssociationSet Name="FK_tours_cities" Association="Self.FK_tours_cities">
       <End Role="cities" EntitySet="cities" />

@@ -145,7 +145,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-
+    
     <!--<Style x:Key="BaseImageRoundButton" TargetType="{x:Type Button}">
         <Setter Property="FontFamily" Value="{StaticResource InterMedium}"/>
         <Setter Property="FontSize" Value="18"/>
@@ -177,8 +177,6 @@
             </Setter.Value>
         </Setter>
     </Style>-->
-
-
 
     <!--Прозрачная кнопка-->
     <Style TargetType="Button" x:Key="TransparentButton" BasedOn="{StaticResource BaseButton}">
@@ -227,8 +225,6 @@
             </Trigger>
         </Style.Triggers>
     </Style>-->
-
-
 
     <!--Кнопки с иконками для справочника (в будующем)-->
     <Style TargetType="Button" x:Key="RecordsMenuButton" BasedOn="{StaticResource BaseButton}">
@@ -520,8 +516,6 @@
         </Style.Triggers>
     </Style>-->
 
-
-
     <!--Кнопка удаления текста-->
     <Style x:Key="CrossButton" TargetType="Button" BasedOn="{StaticResource BaseImageButton}">
         <Setter Property="Path.Data" Value="{DynamicResource PathCross}"/>
@@ -607,6 +601,54 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <!--Текстбокс с подписью-->
+    <Style x:Key="BaseCaptionTextBox" TargetType="TextBox">
+        <Setter Property="FontFamily" Value="{StaticResource InterMedium}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Height" Value="48"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border
+                        SnapsToDevicePixels="True"
+                        
+                        CornerRadius="{TemplateBinding Border.CornerRadius}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <ScrollViewer
+                                x:Name="PART_ContentHost"
+                                VerticalAlignment="Center"
+                                />
+
+                            <TextBlock
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Background="{TemplateBinding Background}"
+                                FontSize="12"
+                                Foreground="{TemplateBinding BorderBrush}"
+                                IsHitTestVisible="False"
+                                Text="{TemplateBinding Tag}"
+                                TextAlignment="{TemplateBinding TextAlignment}"
+                                Padding="{TemplateBinding TextBlock.Padding}"
+                                Margin="24 -10 0 0"
+                                />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="RoundedCaptionTextBox" TargetType="TextBox" BasedOn="{StaticResource BaseCaptionTextBox}">
+        <Setter Property="Border.CornerRadius" Value="4"/>
+        <Setter Property="ScrollViewer.Padding" Value="10"/>
+        <Setter Property="TextBlock.Padding" Value="2"/>
+        <Setter Property="BorderBrush" Value="#646464"/>
+        <Setter Property="Foreground" Value="#4E4E4E"/>
     </Style>
 
     <!--Текстбокс для поиска с нопкой удаления текста-->

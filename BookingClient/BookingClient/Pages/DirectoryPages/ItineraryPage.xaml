@@ -61,9 +61,10 @@
             </DockPanel>
 
             <DataGrid
+                Foreground="black"
                 ScrollViewer.CanContentScroll="False"
-                RowBackground="#DDD"
-                AlternatingRowBackground="White"
+                RowBackground="#D1D0D0"
+                AlternatingRowBackground="#9F9F9F"
                 IsReadOnly="True"
                 x:Name="RecordsDataGrid"
                 Grid.Row="1"

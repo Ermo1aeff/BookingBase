@@ -19,6 +19,7 @@ namespace BookingClient.Models
         public Nullable<int> first_name_id { get; set; }
         public Nullable<int> last_name_id { get; set; }
         public Nullable<System.DateTime> birthday { get; set; }
+        public Nullable<long> passport { get; set; }
     
         public virtual first_names first_names { get; set; }
         public virtual last_names last_names { get; set; }

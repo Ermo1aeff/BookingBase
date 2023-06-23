@@ -63,5 +63,6 @@ namespace BookingClient.Models
         public virtual ICollection<rooms> rooms { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<viewed_tours> viewed_tours { get; set; }
+        public virtual accounts accounts { get; set; }
     }
 }

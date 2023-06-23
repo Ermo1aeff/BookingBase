@@ -188,19 +188,24 @@
                 </Grid.RowDefinitions>
 
                 <DataGrid
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    RowBackground="#9F9F9F"
+                    AlternatingRowBackground="#D0D0D0"
                     x:Name="PersonsDataGrid"
                     Grid.Row="1"
                     Margin="14"
                     IsReadOnly="True"
                     AutoGenerateColumns="False"
                     CanUserAddRows="true"
+                    CanUserReorderColumns="true"
                     ItemsSource="{Binding ElementName=OrdersListBox, Path=SelectedItem.persons}"
                     >
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Фамилия" Binding="{Binding last_names.last_name}" Width="10*"/>
-                        <DataGridTextColumn Header="Имя" Binding="{Binding first_names.first_name}" Width="10*"/>
-                        <!--<DataGridTextColumn Header="Номер паспорта" Binding="{Binding passport}" Width="100"/>-->
-                        <DataGridTextColumn Header="Дата рождения" Binding="{Binding birthday, StringFormat=dd.MM.yyyy}" Width="100"/>
+                        <DataGridTextColumn Header="Фамилия" Binding="{Binding last_names.last_name}" Width="12*"/>
+                        <DataGridTextColumn Header="Имя" Binding="{Binding first_names.first_name}" Width="12*"/>
+                        <DataGridTextColumn Header="Загран. паспорт" Binding="{Binding passport, StringFormat={}## #######}" Width="10*"/>
+                        <DataGridTextColumn Header="Дата рождения" Binding="{Binding birthday, StringFormat=dd.MM.yyyy}" Width="10*"/>
                     </DataGrid.Columns>
                 </DataGrid>
 
@@ -222,7 +227,7 @@
                     Grid.Row="2" 
                     Background="#DDDDDD" 
                     CornerRadius="20" 
-                    Margin="3,14,3,3"
+                    Margin="3,0,3,3"
                     Height="79">
 
                     <DockPanel>
