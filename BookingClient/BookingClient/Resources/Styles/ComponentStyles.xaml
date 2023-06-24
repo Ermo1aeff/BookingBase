@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <FontFamily x:Key="InterMedium">pack://application:,,,/Fonts/#Inter Medium</FontFamily>
+    <FontFamily x:Key="InterBold">pack://application:,,,/Fonts/#Inter</FontFamily>
 
     <DropShadowEffect
         x:Key="DropShadowEffect"
@@ -146,6 +147,41 @@
         </Style.Triggers>
     </Style>
     
+    <!--Кнопка поумолчанию-->
+    <Style TargetType="Button" x:Key="LightStandartButton" BasedOn="{StaticResource AnotherActionButton}">
+        <Setter Property="FontFamily" Value="{StaticResource InterMedium}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Border.CornerRadius" Value="18"/>
+        <Setter Property="Width" Value="110"/>
+        <Setter Property="Height" Value="37"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#9F9F9F"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="#9F9F9F"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--Кнопка поумолчанию-->
+    <Style TargetType="Button" x:Key="DarkStandartButton" BasedOn="{StaticResource AnotherActionButton}">
+        <Setter Property="FontFamily" Value="{StaticResource InterMedium}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Border.CornerRadius" Value="18"/>
+        <Setter Property="Width" Value="110"/>
+        <Setter Property="Height" Value="37"/>
+        <Setter Property="Background" Value="#D1D0D0"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#9F9F9F"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="#9F9F9F"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
     <!--<Style x:Key="BaseImageRoundButton" TargetType="{x:Type Button}">
         <Setter Property="FontFamily" Value="{StaticResource InterMedium}"/>
         <Setter Property="FontSize" Value="18"/>
@@ -226,24 +262,101 @@
         </Style.Triggers>
     </Style>-->
 
-    <!--Кнопки с иконками для справочника (в будующем)-->
-    <Style TargetType="Button" x:Key="RecordsMenuButton" BasedOn="{StaticResource BaseButton}">
+    <!--Кнопки с иконками для справочника-->
+    <Style TargetType="Button" x:Key="MenuItemButton" >
         <Setter Property="Height" Value="36"/>
-        <Setter Property="FontSize" Value="18"/>
-        <Setter Property="FontFamily" Value="Segoe UI Semilight"/>
-        <Setter Property="HorizontalContentAlignment" Value="Left"/>
-        <Setter Property="Padding" Value="18, 0"/>
-        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="FontFamily" Value="{StaticResource InterBold}"/>
+        <Setter Property="FontSize" Value="14"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{StaticResource BackgroundPrimaryLightColor}"/>
-            </Trigger>
-            <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{StaticResource BackgroundSecondaryLightColor}"/>
-            </Trigger>
-        </Style.Triggers>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        CornerRadius="0 18 18 0"
+                        x:Name="Border"
+                        Background="Transparent">
+                        <StackPanel Orientation="Horizontal">
+                            <Path
+                                Margin="16 0 7 0"
+                                Height="27" 
+                                Width="27"
+                                Fill="Black"
+                                Data="{TemplateBinding Path.Data}"/>
+                            <ContentPresenter 
+                                x:Name="contentPresenter" 
+                                ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                Content="{TemplateBinding Content}" 
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Margin="{TemplateBinding Padding}" 
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="#D1D0D0"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
+
+    <Style x:Key="OrderItemButton" TargetType="Button" BasedOn="{StaticResource MenuItemButton}">
+        <Setter Property="Path.Data" Value="{DynamicResource PathOrder}"/>
+    </Style>
+
+    <Style x:Key="DeparturesItemButton" TargetType="Button" BasedOn="{StaticResource MenuItemButton}">
+        <Setter Property="Path.Data" Value="{DynamicResource PathCalendarDepartures}"/>
+    </Style>
+
+    <Style x:Key="OrderRoomsItemButton" TargetType="Button" BasedOn="{StaticResource MenuItemButton}">
+        <Setter Property="Path.Data" Value="{DynamicResource PathRoomTag}"/>
+    </Style>
+
+    <Style x:Key="ToursItemButton" TargetType="Button" BasedOn="{StaticResource MenuItemButton}">
+        <Setter Property="Path.Data" Value="{DynamicResource PathTours}"/>
+    </Style>
+
+    <Style x:Key="PersonsItemButton" TargetType="Button" BasedOn="{StaticResource MenuItemButton}">
+        <Setter Property="Path.Data" Value="{DynamicResource PathTourist}"/>
+    </Style>
+
+    <Style x:Key="IncludedItemButton" TargetType="Button" BasedOn="{StaticResource MenuItemButton}">
+        <Setter Property="Path.Data" Value="{DynamicResource PathServer}"/>
+    </Style>
+
+    <Style x:Key="ItineraryItemButton" TargetType="Button" BasedOn="{StaticResource MenuItemButton}">
+        <Setter Property="Path.Data" Value="{DynamicResource PathItinerary}"/>
+    </Style>
+
+    <Style x:Key="RoomItemButton" TargetType="Button" BasedOn="{StaticResource MenuItemButton}">
+        <Setter Property="Path.Data" Value="{DynamicResource PathDoubleBed}"/>
+    </Style>
+
+    <Style x:Key="InclusionsItemButton" TargetType="Button" BasedOn="{StaticResource MenuItemButton}">
+        <Setter Property="Path.Data" Value="{DynamicResource PathCheck}"/>
+    </Style>
+
+    <Style x:Key="ImagesItemButton" TargetType="Button" BasedOn="{StaticResource MenuItemButton}">
+        <Setter Property="Path.Data" Value="{DynamicResource PathImage}"/>
+    </Style>
+
+    <Style x:Key="CitiesItemButton" TargetType="Button" BasedOn="{StaticResource MenuItemButton}">
+        <Setter Property="Path.Data" Value="{DynamicResource PathCity}"/>
+    </Style>
+    
+    <Style x:Key="CountriesNameItemButton" TargetType="Button" BasedOn="{StaticResource MenuItemButton}">
+        <Setter Property="Path.Data" Value="{DynamicResource PathCountry}"/>
+    </Style>
+
+    <Style x:Key="FirstAndLastNameItemButton" TargetType="Button" BasedOn="{StaticResource MenuItemButton}">
+        <Setter Property="Path.Data" Value="{StaticResource PathBadge}"/>
+    </Style>
+
+
+
 
     <!--Title Bar Button-->
     <Style TargetType="Button" x:Key="TitleBarButton" BasedOn="{StaticResource BaseButton}">
@@ -393,17 +506,20 @@
     <!--Кнопка с изображением для редактирования записей в справочнике-->
     <Style x:Key="BaseImageButton" TargetType="Button">
         <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Width" Value="37"/>
+        <Setter Property="Height" Value="37"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border 
-                        Background="Transparent">
-                        <Path 
+                        CornerRadius="18"
+                        Background="#CACACA">
+                        <Path
                             SnapsToDevicePixels="True"
                             x:Name="PART_ButtonPath"
                             Fill="{TemplateBinding Foreground}"
-                            Width="30"
-                            Height="30"
+                            Width="27"
+                            Height="27"
                             Data="{TemplateBinding Path.Data}"/>
                     </Border>
                 </ControlTemplate>
@@ -413,7 +529,6 @@
 
     <!--Промежуточная кнопка-->
     <Style x:Key="RecordChangeButton" TargetType="Button" BasedOn="{StaticResource BaseImageButton}">
-        <Setter Property="Width" Value="60"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Foreground" Value="Darkgray"/>
@@ -430,13 +545,13 @@
 
     <Style x:Key="RightArrowButton" TargetType="Button" BasedOn="{StaticResource RecordChangeButton}">
         <Setter Property="Path.Data" Value="{DynamicResource PathArrowRight}"/>
-        <Setter Property="ToolTip" Value="Следующая страница"/>
+        <Setter Property="ToolTip" Value="Вперёд"/>
     </Style>
 
     <Style x:Key="LeftArrowButton" TargetType="Button" BasedOn="{StaticResource RecordChangeButton}">
         <Setter Property="Path.Data" Value="{DynamicResource PathArrowLeft}"/>
-        <Setter Property="ToolTip" Value="Предыдущая страница"/>
-    </Style>
+        <Setter Property="ToolTip" Value="Назад"/>
+    </Style>    
 
     <Style x:Key="ClosePageButton" TargetType="Button" BasedOn="{StaticResource RecordChangeButton}">
         <Setter Property="Path.Data" Value="{DynamicResource PathClosePage}"/>
@@ -462,6 +577,7 @@
         <Setter Property="Path.Data" Value="{DynamicResource PathDelete}"/>
         <Setter Property="ToolTip" Value="Удалить"/>
     </Style>
+    
 
     <!--Скругленная кнопка с изображением и текстом-->
     <Style x:Key="BaseRoundImageButton" TargetType="Button">
@@ -520,17 +636,13 @@
     <Style x:Key="CrossButton" TargetType="Button" BasedOn="{StaticResource BaseImageButton}">
         <Setter Property="Path.Data" Value="{DynamicResource PathCross}"/>
         <Setter Property="ToolTip" Value="Стереть"/>
-        <Setter Property="Foreground" Value="Gray"/>
+        <Setter Property="Foreground" Value="Black"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Foreground" Value="Black"/>
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="Foreground" Value="Darkgray"/>
-            </Trigger>
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Foreground" Value="LightGray"/>
-                <Setter Property="Cursor" Value=""/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -653,35 +765,39 @@
 
     <!--Текстбокс для поиска с нопкой удаления текста-->
     <Style TargetType="TextBox" x:Key="SearchTextBox">
-        <Setter Property="FontFamily" Value="Segoe UI Semilight"/>
-        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontFamily" Value="{StaticResource InterMedium}"/>
+        <Setter Property="FontSize" Value="14"/>
         <Setter Property="Cursor" Value="IBeam"/>
         <Setter Property="Tag" Value="Поиск"/>
+        <Setter Property="Height" Value="37"/>
+        <Setter Property="Background" Value="#CACACA"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
-                    <Border>
-                        <Grid>
+                    <Border CornerRadius="18">
+                        <Grid Margin="0 0 17 0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="36"/>
                             </Grid.ColumnDefinitions>
 
                             <Border
+                                CornerRadius="18"
                                 Grid.ColumnSpan="2"      
-                                RenderOptions.EdgeMode="Aliased"
-                                TextOptions.TextRenderingMode="ClearType"
-                                TextOptions.TextFormattingMode="Display"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}">
-                                <Grid>
+                                <Grid Margin="17 0 0 0"
+                                    >
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="36"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <Grid Grid.Column="0" Margin="5,0,0,0">
+                                    <Grid Grid.Column="0">
                                         <ScrollViewer 
                                             x:Name="PART_ContentHost"
                                             VerticalAlignment="Center"
@@ -708,7 +824,7 @@
                                 x:Name="PART_PathSearch"
                                 Height="25" 
                                 Width="25"
-                                Fill="Gray"
+                                Fill="Black"
                                 Visibility="Collapsed"
                                 Data="{DynamicResource PathSearch}"
                                 />

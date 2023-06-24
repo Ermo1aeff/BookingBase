@@ -58,6 +58,7 @@
                     />
                 
                 <TextBox 
+                    MaxLength="18"
                     x:Name="LoginTextBox"
                     Tag="Логин" 
                     Height="30"
@@ -66,6 +67,7 @@
 
                 <Grid Margin="0,0,0,14">
                     <TextBox 
+                        MaxLength="18"
                         Height="30"
                         x:Name="PasswordTextBox"
                         Tag="Пароль"
@@ -89,6 +91,7 @@
                 
                 <Grid>
                     <TextBox 
+                        MaxLength="18"
                         Height="30"
                         x:Name="ConfirmPasswordTextBox"
                         Tag="Подтвердите пароль"

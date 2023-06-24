@@ -7,60 +7,76 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="OrderRoomsPage"    
-      Background="White"
+      Background="#CACACA"
       Loaded="Page_Loaded">
+
+    <Page.Resources>
+        <Style x:Key="DarkStandartButton" TargetType="Button" BasedOn="{StaticResource DarkStandartButton}"/>
+        <Style x:Key="AddButton" TargetType="Button" BasedOn="{StaticResource AddButton}"/>
+        <Style x:Key="CopyButton" TargetType="Button" BasedOn="{StaticResource CopyButton}"/>
+        <Style x:Key="EditButton" TargetType="Button" BasedOn="{StaticResource EditButton}"/>
+        <Style x:Key="DeleteButton" TargetType="Button" BasedOn="{StaticResource DeleteButton}"/>
+    </Page.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="230" MinWidth="230" MaxWidth="500" x:Name="RecordChangeBlock"/>
+            <ColumnDefinition Width="auto" x:Name="RecordChangeBlock"/>
         </Grid.ColumnDefinitions>
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="36"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <DockPanel>
-                <Button
-                    x:Name="AddRecordButton"
-                    Style="{StaticResource AddButton}"
-                    ToolTip="Добавить"
-                    Click="AddRecordButton_Click"
-                    />
-                <Button
-                    x:Name="CopyRecordButton"
-                    Style="{StaticResource CopyButton}" 
-                    ToolTip="Копировать"
-                    Click="CopyRecordButton_Click"
-                    />
-                <Button
-                    x:Name="EditRecordButton"
-                    Style="{StaticResource EditButton}"
-                    ToolTip="Редактировать"
-                    Click="EditRecordButton_Click"
-                    />
-                <Button
-                    x:Name="DeleteRecordButton"
-                    Style="{StaticResource DeleteButton}"
-                    ToolTip="Удалить"
-                    Click="DeleteRecordButton_Click"
-                    />
-                <ComboBox
-                    x:Name="FilterComboBox"
-                    Width="180"
-                    SelectionChanged="FilterComboBox_SelectionChanged"
-                    />
-                <TextBox
-                    Style="{StaticResource SearchTextBox}"
-                    x:Name="FilterTextBox"
-                    TextChanged="FilterTextBox_TextChanged"
-                    />
-            </DockPanel>
+            <Border Height="79" Grid.Row="0" Margin="3 3 3 0" CornerRadius="20" Background="#DDDDDD" x:Name="ChangePanel" SizeChanged="ChangePanel_SizeChanged">
+                <DockPanel Margin="16 0">
+                    <Button
+                        Style="{StaticResource DarkStandartButton}"
+                        x:Name="AddRecordButton"
+                        Content="Добавить"
+                        Click="AddRecordButton_Click"
+                        Margin="0 0 12 0"
+                        />
+                    <Button
+                        Style="{StaticResource DarkStandartButton}"
+                        x:Name="CopyRecordButton"
+                        Content="Копировать"
+                        Click="CopyRecordButton_Click"
+                        Margin="0 0 12 0"
+                        />
+                    <Button
+                        Style="{StaticResource DarkStandartButton}"
+                        x:Name="EditRecordButton"
+                        Content="Изменить"
+                        Click="EditRecordButton_Click"
+                        Margin="0 0 12 0"
+                        />
+                    <Button
+                        Style="{StaticResource DarkStandartButton}"
+                        x:Name="DeleteRecordButton"
+                        Content="Удалить"
+                        Click="DeleteRecordButton_Click"
+                        Margin="0 0 12 0"
+                        />
+                    <ComboBox
+                        x:Name="FilterComboBox"
+                        Width="180"
+                        SelectionChanged="FilterComboBox_SelectionChanged"
+                        Margin="0 0 12 0"
+                        />
+                    <TextBox
+                        Style="{StaticResource SearchTextBox}"
+                        x:Name="FilterTextBox"
+                        TextChanged="FilterTextBox_TextChanged"
+                        />
+                </DockPanel>
+            </Border>
 
             <DataGrid
+                Margin="14"
                 x:Name="RecordsDataGrid"
                 Grid.Row="1"
                 AutoGenerateColumns="False"
@@ -74,16 +90,11 @@
             </DataGrid>
         </Grid>
 
-        <GridSplitter 
-            x:Name="DialogGridSplitter" 
-            Grid.Column="1" 
-            HorizontalAlignment="Stretch"/>
-
-        <Grid Grid.Column="2" >
+        <Grid Grid.Column="2" Background="#DDDDDD" Width="270" Visibility="Collapsed" x:Name="DlgPanel">
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"/>
                 <RowDefinition />
-                <RowDefinition Height="60"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
             <Label 
@@ -116,9 +127,9 @@
             </ScrollViewer>
 
             <Grid 
-                Grid.Row="3" 
+                Grid.Row="2" 
                 Height="30"
-                Margin="10,15">
+                Margin="10,0,10,0">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -130,10 +141,10 @@
                     x:Name="CommitChangeRecordsButton" 
                     Grid.Column="0"
                     Content="Принять"
-                    Margin="0,0,5,0" 
+                    Margin="0,0,5,0"
                     Click="CommitChangeRecordsButton_Click"/>
-                
-                <Button 
+
+                <Button
                     x:Name="RollbackChangeRecordsButton"
                     Style="{StaticResource CancelButton}"
                     Grid.Column="1"

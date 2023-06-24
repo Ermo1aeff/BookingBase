@@ -33,15 +33,11 @@ namespace BookingClient.Pages
         {
             if (DlgStatus)
             {
-                RecordChangeBlock.MinWidth = 230;
-                RecordChangeBlock.Width = new GridLength(230);
-                DialogGridSplitter.Visibility = Visibility.Visible;
+                DlgPanel.Visibility = Visibility.Visible;
             }
             else
             {
-                //RecordChangeBlock.MinWidth = 0;
-                //RecordChangeBlock.Width = new GridLength(0);
-                //DialogGridSplitter.Visibility = Visibility.Collapsed;
+                DlgPanel.Visibility = Visibility.Collapsed;
                 DlgMode = false;
             }
 
@@ -188,6 +184,24 @@ namespace BookingClient.Pages
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void ChangePanel_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (ChangePanel.ActualWidth < 850)
+            {
+                AddRecordButton.Style = Resources["AddButton"] as Style;
+                CopyRecordButton.Style = Resources["CopyButton"] as Style;
+                EditRecordButton.Style = Resources["EditButton"] as Style;
+                DeleteRecordButton.Style = Resources["DeleteButton"] as Style;
+            }
+            else
+            {
+                AddRecordButton.Style = Resources["DarkStandartButton"] as Style;
+                CopyRecordButton.Style = Resources["DarkStandartButton"] as Style;
+                EditRecordButton.Style = Resources["DarkStandartButton"] as Style;
+                DeleteRecordButton.Style = Resources["DarkStandartButton"] as Style;
             }
         }
     }

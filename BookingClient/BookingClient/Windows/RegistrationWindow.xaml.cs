@@ -121,7 +121,7 @@ namespace BookingClient
                 Accounts.first_names = SourceCore.entities.first_names.Where(U => U.first_name == firstName).FirstOrDefault();
                 Accounts.account_login = login;
                 Accounts.account_password = password;
-                Accounts.role_id = 4;
+                Accounts.roles = SourceCore.entities.roles.FirstOrDefault(U => U.role_name == "Пользователь");
                 SourceCore.entities.accounts.Add(Accounts);
                 SourceCore.entities.SaveChanges();
                 MessageTextBox.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("LightGreen");

@@ -201,6 +201,10 @@
                     CanUserReorderColumns="true"
                     ItemsSource="{Binding ElementName=OrdersListBox, Path=SelectedItem.persons}"
                     >
+                    <DataGrid.Resources>
+                        <Style TargetType="ScrollBar" BasedOn="{StaticResource LightScrollBar}"/>
+                    </DataGrid.Resources>
+
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Фамилия" Binding="{Binding last_names.last_name}" Width="12*"/>
                         <DataGridTextColumn Header="Имя" Binding="{Binding first_names.first_name}" Width="12*"/>
@@ -248,6 +252,7 @@
                         </StackPanel>
                         
                         <Button 
+                            Visibility="Collapsed"
                             x:Name="CreateReport"
                             Background="#CACACA"
                             HorizontalAlignment="Right"

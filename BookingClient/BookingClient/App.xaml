@@ -9,6 +9,7 @@
         <ResourceDictionary>
             <FontFamily x:Key="InterMedium">pack://application:,,,/Fonts/#Inter Medium</FontFamily>
             <FontFamily x:Key="InterSemiBold">pack://application:,,,/Fonts/#Inter SemiBold</FontFamily>
+            <FontFamily x:Key="InterBold">pack://application:,,,/Fonts/#Inter</FontFamily>
             <FontFamily x:Key="SourceCodeProRegular">pack://application:,,,/Fonts/#Source Code Pro Regular</FontFamily>
             <FontFamily x:Key="SourceCodeProSemiBold">pack://application:,,,/Fonts/#Source Code Pro SemiBold</FontFamily>
 

@@ -190,7 +190,7 @@ namespace BookingClient
 
         private void BookingClient_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (WindowState == WindowState.Maximized || Width >= 1250) 
+            if (WindowState == WindowState.Maximized || Width >= 1250)
             {
                 Grid.SetColumn(TitleCaption, 0);
                 Grid.SetColumnSpan(TitleCaption, 4);

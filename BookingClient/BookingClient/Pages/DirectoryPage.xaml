@@ -5,9 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BookingClient.Pages"
       mc:Ignorable="d" 
-      Background="White"
-      d:DesignHeight="450" 
-      d:DesignWidth="800"
+      Background="#D1D0D0"
+      d:DesignHeight="1050" 
+      d:DesignWidth="1680"
       Title="DirectoryPage">
 
     <Grid>
@@ -16,75 +16,106 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Background="#e6e6e6">
-            <StackPanel.Resources>
-                <Style TargetType="Button" BasedOn="{StaticResource RecordsMenuButton}"/>
-            </StackPanel.Resources>
-            <Button
-                x:Name="OrdersButton"
-                Content="Заказы"
-                Click="OrdersButton_Click"
-                />
-            <Button 
-                x:Name="DeparturesButton"
-                Content="Расписание туров" 
-                Click="DeparturesButton_Click" 
-                />
-            <Button
-                x:Name="OrderRoomsButton"
-                Content="Номера заказов"
-                Click="OrderRoomsButton_Click"
-                />
-            <Button
-                x:Name="ToursButton"
-                Content="Туры"
-                Click="ToursButton_Click"/>
-            <Button
-                x:Name="PersonsButton"
-                Content="Туристы"
-                Click="PersonsButton_Click"
-                />
-            <Button
-                x:Name="IncludedButton"
-                Content="Услуги"
-                Click="IncludedButton_Click"
-                />
-            <Button
-                x:Name="InteraryButton"
-                Content="Маршруты"
-                Click="InteraryButton_Click"
-                />
-            <Button
-                x:Name="RoomsButton"
-                Content="Номера туров"
-                Click="RoomsButton_Click"
-                />
-            <Button
-                x:Name="InclusionsButton"
-                Content="Список услуг"
-                Click="InclusionsButton_Click"
-                />
-            <Button
-                x:Name="ImagesButton"
-                Content="Изображения"
-                Click="ImagesButton_Click"
-                />
-            <Button
-                x:Name="CountriesButton"
-                Content="Страны"
-                Click="CountriesButton_Click"
-                />
-            <Button
-                x:Name="CitiesButton"
-                Content="Города"
-                Click="CitiesButton_Click"
-                />
-        </StackPanel>
+        <Grid Width="236" Background="#DDDDDD" >
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+            <ScrollViewer Margin="0 18 10 0">
+                <ScrollViewer.Resources>
+                    <Style TargetType="ScrollBar" BasedOn="{StaticResource DarkScrollBar}"/>
+                </ScrollViewer.Resources>
+
+                <StackPanel HorizontalAlignment="Left">
+                    <StackPanel.Resources>
+                        <Style TargetType="Button" BasedOn="{StaticResource MenuItemButton}"/>
+                    </StackPanel.Resources>
+                    <Button
+                        Style="{StaticResource OrderItemButton}"
+                        x:Name="OrdersButton"
+                        Content="Заказы"
+                        Click="OrdersButton_Click"
+                        />
+                    <Button 
+                        Style="{StaticResource DeparturesItemButton}"
+                        x:Name="DeparturesButton"
+                        Content="Расписания" 
+                        Click="DeparturesButton_Click" 
+                        />
+                    <Button
+                        Style="{StaticResource OrderRoomsItemButton}"
+                        x:Name="OrderRoomsButton"
+                        Content="Бронь номеров"
+                        Click="OrderRoomsButton_Click"
+                        />
+                    <Button
+                        Style="{StaticResource ToursItemButton}"
+                        x:Name="ToursButton"
+                        Content="Туры"
+                        Click="ToursButton_Click"/>
+                    <Button
+                        Style="{StaticResource PersonsItemButton}"
+                        x:Name="PersonsButton"
+                        Content="Туристы"
+                        Click="PersonsButton_Click"
+                        />
+                    <Button
+                        Style="{StaticResource IncludedItemButton}"
+                        x:Name="IncludedButton"
+                        Content="Услуги туров"
+                        Click="IncludedButton_Click"
+                        />
+                    <Button
+                        Style="{StaticResource ItineraryItemButton}"
+                        x:Name="InteraryButton"
+                        Content="Маршруты"
+                        Click="InteraryButton_Click"
+                        />
+                    <Button
+                        Style="{StaticResource RoomItemButton}"
+                        x:Name="RoomsButton"
+                        Content="Типы номеров"
+                        Click="RoomsButton_Click"
+                        />
+                    <Button
+                        Style="{StaticResource InclusionsItemButton}"
+                        x:Name="InclusionsButton"
+                        Content="Типы услуг"
+                        Click="InclusionsButton_Click"
+                        />
+                    <Button
+                        Style="{StaticResource ImagesItemButton}"
+                        x:Name="ImagesButton"
+                        Content="Изображения"
+                        Click="ImagesButton_Click"
+                        />
+                    <Button
+                        Style="{StaticResource CitiesItemButton}"
+                        x:Name="CountriesButton"
+                        Content="Страны"
+                        Click="CountriesButton_Click"
+                        />
+                    <Button
+                        Style="{StaticResource CountriesNameItemButton}"
+                        x:Name="CitiesButton"
+                        Content="Города"
+                        Click="CitiesButton_Click"
+                        />
+                </StackPanel>
+            </ScrollViewer>
+
+            <Border Grid.Row="1" Height="79" CornerRadius="20" Margin="3" Background="#D1D0D0">
+
+            </Border>
+        </Grid>
+        
+
+
 
         <Grid Grid.Column="1" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition />
-                <RowDefinition Height="36"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0" x:Name="MainGrid" Grid.ColumnSpan="2">
@@ -110,31 +141,36 @@
 
             <Frame x:Name="RootFrame" Grid.Row="0" NavigationUIVisibility="Hidden" LoadCompleted="RootFrame_LoadCompleted" Grid.ColumnSpan="2"/>
 
-            <Border Grid.Row="1" Grid.ColumnSpan="2" Background="#e6e6e6"/>
-
-            <Button 
-                x:Name="CloseButton"
-                Style="{StaticResource ClosePageButton}"
-                Grid.Row="1"
-                HorizontalAlignment="Right" 
-                Click="CloseButton_Click"
-                IsEnabled="False" 
-                />
-            <StackPanel Grid.Row="1" Orientation="Horizontal" Grid.ColumnSpan="2">
-                <Button
-                    x:Name="PreviousButton"
-                    Style="{StaticResource LeftArrowButton}"
-                    Click="PreviousButton_Click"
-                    IsEnabled="False"
-                    />
-                <Button
-                    x:Name="NextButton"
-                    Style="{StaticResource RightArrowButton}"
-                    Click="NextButton_Click"
-                    IsEnabled="False"
-                    />
-            </StackPanel>
-
+            <Border Grid.Row="1" Background="#e6e6e6" Margin="3 0 3 3" Height="79" CornerRadius="20">
+                <DockPanel Margin="16 0">
+                    <StackPanel Orientation="Horizontal">
+                        <Button
+                            x:Name="PreviousButton"
+                            Style="{StaticResource DarkStandartButton}"
+                            Click="PreviousButton_Click"
+                            IsEnabled="False"
+                            Content="Назад"
+                            Margin="0 0 12 0"
+                            />
+                        <Button
+                            Content="Вперёд"
+                            x:Name="NextButton"
+                            Style="{StaticResource DarkStandartButton}"
+                            Click="NextButton_Click"
+                            IsEnabled="False"
+                            />
+                    </StackPanel>
+                
+                    <Button 
+                        x:Name="CloseButton"
+                        Style="{StaticResource DarkStandartButton}"
+                        HorizontalAlignment="Right" 
+                        Click="CloseButton_Click"
+                        IsEnabled="False" 
+                        Content="Закрыть"
+                        />
+                </DockPanel>
+            </Border>
         </Grid>
     </Grid>
 </Page>

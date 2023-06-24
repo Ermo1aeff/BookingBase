@@ -397,6 +397,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Booking_BaseModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Resource Include="Fonts\Inter-Bold.ttf" />
     <None Include="Models\Booking_BaseModel.edmx.diagram">
       <DependentUpon>Booking_BaseModel.edmx</DependentUpon>
     </None>

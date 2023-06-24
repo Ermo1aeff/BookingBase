@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -140,7 +141,23 @@ namespace BookingClient.Pages
 
         private void CreateReport_Click(object sender, RoutedEventArgs e)
         {
+            //using (PdfDocument document = new PdfDocument())
+            //{
+            //    //Add a page to the document
+            //    PdfPage page = document.Pages.Add();
 
+            //    //Create PDF graphics for a page
+            //    PdfGraphics graphics = page.Graphics;
+
+            //    //Set the standard font
+            //    PdfFont font = new PdfStandardFont(PdfFontFamily.Helvetica, 20);
+
+            //    //Draw the text
+            //    graphics.DrawString("Hello World!!!", font, PdfBrushes.Black, new PointF(0, 0));
+
+            //    //Save the document
+            //    document.Save("Output.pdf");
+            //}
         }
 
         private void AddDateButton_Click(object sender, RoutedEventArgs e)

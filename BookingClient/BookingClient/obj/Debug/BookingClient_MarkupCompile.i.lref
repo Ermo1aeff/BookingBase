@@ -1,20 +1,9 @@
-﻿C:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\obj\Debug\GeneratedInternalTypeHelper.g.i.cs
-FC:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\App.xaml;;
-FC:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\Pages\NewOrderPages\ListToursPage.xaml;;
-FC:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\Pages\NewTourPages\NewTourPage.xaml;;
-FC:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\Pages\ProfilePage.xaml;;
+﻿
+
 FC:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\Pages\TOTourListPage.xaml;;
-FC:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\Windows\AuthorizationWindow.xaml;;
-FC:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\Windows\ConnectionWindow.xaml;;
-FC:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\Windows\MainWindow.xaml;;
-FC:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\Pages\NewOrderPages\DateSelectingPage.xaml;;
-FC:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\Pages\NewOrderPages\PersonsAddingPage.xaml;;
-FC:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\Pages\NewOrderPages\RoomsSelectingPage.xaml;;
 FC:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\Pages\DirectoryPages\CitiesPage.xaml;;
 FC:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\Pages\DirectoryPages\CountriesPage.xaml;;
 FC:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\Pages\DirectoryPages\DeparturesPage.xaml;;
-FC:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\Pages\DirectoryPage.xaml;;
-FC:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\Pages\DirectoryPages\ImagesPage.xaml;;
 FC:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\Pages\DirectoryPages\IncludedPage.xaml;;
 FC:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\Pages\DirectoryPages\InclusionsPage.xaml;;
 FC:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\Pages\DirectoryPages\ItineraryPage.xaml;;
@@ -23,6 +12,5 @@ FC:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingCli
 FC:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\Pages\DirectoryPages\PersonsPage.xaml;;
 FC:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\Pages\DirectoryPages\RoomPage.xaml;;
 FC:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\Pages\DirectoryPages\ToursPage.xaml;;
-FC:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\Windows\DlgWindows\ProfileDlgWindow.xaml;;
 FC:\Users\1\OneDrive\Рабочий стол\Диплом\BookingBase\BookingClient\BookingClient\Windows\RegistrationWindow.xaml;;
 
